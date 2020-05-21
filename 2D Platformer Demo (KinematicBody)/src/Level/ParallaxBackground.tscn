@@ -158,7 +158,8 @@ position = Vector2( 0, 243 )
 motion_scale = Vector2( 0.2, 1 )
 
 [node name="Sprite" type="Sprite" parent="Mountains2"]
-position = Vector2( 0, -64 )
+position = Vector2( 518.173, -64 )
+scale = Vector2( 0.493972, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 2048, 128 )
@@ -168,7 +169,8 @@ position = Vector2( 0, 246 )
 motion_scale = Vector2( 0.4, 1 )
 
 [node name="Sprite" type="Sprite" parent="Mountains1"]
-position = Vector2( 0, -64 )
+position = Vector2( 511.696, -64 )
+scale = Vector2( 0.500297, 1 )
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 2048, 128 )
