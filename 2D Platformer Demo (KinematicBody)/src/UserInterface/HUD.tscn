@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Objects/CoinHUD.gd" type="Script" id=1]
+[ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/theme/fonts/kenney_mini_square.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinHUD" parent="Counter" instance=ExtResource( 2 )]
+position = Vector2( 13.9515, 13.9515 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="center" type="Label" parent="Counter"]
+margin_left = 29.2275
+margin_top = 3.56063
+margin_right = 87.2275
+margin_bottom = 46.5606
+custom_fonts/font = SubResource( 2 )
+text = "x       /
+ "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="collected" type="Label" parent="Counter"]
+margin_left = 9.15351
+margin_top = 4.19088
+margin_right = 67.1535
+margin_bottom = 24.1909
+custom_fonts/font = SubResource( 2 )
+text = "_q"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total" type="Label" parent="Counter"]
+margin_left = 79.2899
+margin_top = 3.88417
+margin_right = 137.29
+margin_bottom = 23.8842
+custom_fonts/font = SubResource( 2 )
+text = "_n"
+__meta__ = {
+"_edit_use_anchors_": false
+}
