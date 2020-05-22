@@ -72,7 +72,14 @@ func _physics_process(_delta):
 		if is_shooting:
 			shoot_timer.start()
 		animation_player.play(animation)
+	if(animation[0]=='r'):
+		animation_player.playback_speed=rbf(_velocity.x/50);
+	else:
+		animation_player.playback_speed=2.6;
 
+func rbf(a):
+	a=abs(a);
+	return a+1/(a+1);
 
 func get_direction():
 	var out=Vector2(Input.get_action_strength("move_right"+action_suffix)-Input.get_action_strength("move_left"+action_suffix),0);
@@ -101,7 +108,7 @@ func calculate_move_velocity(
 func get_new_animation(is_shooting = false):
 	var animation_new = ""
 	if is_on_floor():
-		animation_new = "run" if abs(_velocity.x) > 10 else "idle"
+		animation_new = "run" if abs(_velocity.x) > .1 else "idle"
 	else:
 		animation_new = "falling" if _velocity.y > 0 else "jumping"
 	if is_shooting:
