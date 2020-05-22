@@ -9,13 +9,13 @@ var collected = 0
 
 
 func _ready():
-	add_to_group("coinCounter")
 	$Counter/total.text = String(total)
 	$Counter/collected.text = String(collected)
 	
-func coinCollected():
-	collected = collected + 1
-	_ready()
+func coinCollected(body):
+	if body.name == "Player":
+		collected = collected + 1
+		_ready()
 	
 	
 	
