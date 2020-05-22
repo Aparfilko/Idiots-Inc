@@ -191,9 +191,7 @@ position = Vector2( 0, 243 )
 motion_scale = Vector2( 0.2, 1 )
 
 [node name="Sprite" type="Sprite" parent="Mountains2"]
-<<<<<<< Updated upstream
-position = Vector2( 518.173, -64 )
-=======
+
 position = Vector2( 505.219, -64 )
 scale = Vector2( 0.493972, 1 )
 texture = ExtResource( 1 )
@@ -216,7 +214,8 @@ region_rect = Rect2( 0, 0, 2048, 128 )
 
 [node name="Sprite4" type="Sprite" parent="Mountains2"]
 position = Vector2( 1104.77, -65.1468 )
->>>>>>> Stashed changes
+
+
 scale = Vector2( 0.493972, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -227,9 +226,7 @@ position = Vector2( 0, 246 )
 motion_scale = Vector2( 0.4, 1 )
 
 [node name="Sprite" type="Sprite" parent="Mountains1"]
-<<<<<<< Updated upstream
-position = Vector2( 511.696, -64 )
-=======
+
 position = Vector2( 388.435, -67.6835 )
 scale = Vector2( 0.500297, 1 )
 texture = ExtResource( 6 )
@@ -273,7 +270,8 @@ region_rect = Rect2( 0, 0, 2048, 128 )
 
 [node name="Sprite7" type="Sprite" parent="Mountains1"]
 position = Vector2( 1624.91, -68.1227 )
->>>>>>> Stashed changes
+
+
 scale = Vector2( 0.500297, 1 )
 texture = ExtResource( 6 )
 region_enabled = true
