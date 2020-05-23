@@ -2,10 +2,8 @@ extends Control
 
 #Script for HUD, currently only keeps tracks of coins the player picks up.
 
-#need a way to provide the count of coins per level, for now it's hardcoded here
-var total = 40
-var collected = 0
-
+onready var total = get_tree().get_nodes_in_group("coins").size()
+onready var collected = 0
 
 
 func _ready():
@@ -15,7 +13,7 @@ func _ready():
 func coinCollected(body):
 	if body.name == "Player":
 		collected = collected + 1
-		_ready()
+		$Counter/collected.text = String(collected)
 	
 	
 	

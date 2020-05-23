@@ -1,6 +1,7 @@
 class_name Coin
 extends Area2D
 
+
 # Collectible that disappears when the player touches it, adding to the coin counter
 # in the HUD
 
@@ -17,6 +18,7 @@ onready var animation_player = $AnimationPlayer
 
 #also used body_entered to send a signal to HUD to increment the coin counter
 func _ready():
+	add_to_group("coins")
 	self.connect("body_entered",get_node('/root/Game/InterfaceLayer/HUD'),"coinCollected")
 
 func _on_body_entered(_body):
