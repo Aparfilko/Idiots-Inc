@@ -377,3 +377,4 @@ position = Vector2( 3029.72, 169.444 )
 stream = ExtResource( 8 )
 autoplay = true
 script = ExtResource( 9 )
+base_volume_db = -30

@@ -7,7 +7,7 @@ const LIMIT_BOTTOM = 690
 
 func _ready():
 	for child in get_children():
-		if child is Player:
+		if child.get_class()=="Player":
 			var camera = child.get_node("Camera")
 			camera.limit_left = LIMIT_LEFT
 			camera.limit_top = LIMIT_TOP
