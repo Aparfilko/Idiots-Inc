@@ -18,6 +18,6 @@ position = Vector2( 90, 546 )
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
-
 [node name="HUD" parent="InterfaceLayer" instance=ExtResource( 6 )]
+
+[node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 1 )]
