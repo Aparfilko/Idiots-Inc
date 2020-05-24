@@ -61,6 +61,9 @@ func _physics_process(_delta):
 		if collision.collider.name.begins_with ("Enemy"):
 			_velocity.x = collision.get_normal().x * 200
 			_velocity.y = collision.get_normal().y * 200
+			# things to fix:
+			# knockback only occurs when Player moves
+			# vertical knockback only works when JUMPING OFF the Enemy, allowing high jumps
 
 	# When the character’s direction changes, we want to to scale the Sprite accordingly to flip it.
 	# This will make Robi face left or right depending on the direction you move.
