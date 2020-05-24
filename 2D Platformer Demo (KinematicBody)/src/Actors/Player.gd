@@ -44,7 +44,7 @@ func _ready():
 # - If you split the character into a state machine or more advanced pattern,
 #   you can easily move individual functions.
 func _physics_process(_delta):
-	timeJump+=_delta;
+	timeJump+=_delta
 	var direction = get_direction()
 	_velocity = calculate_move_velocity(_velocity, direction, speed,_delta)
 
@@ -53,6 +53,14 @@ func _physics_process(_delta):
 	_velocity = move_and_slide_with_snap(
 		_velocity, snap_vector, FLOOR_NORMAL, not is_on_platform, 4, 0.9, false
 	)
+	
+# Detects collisions between the Player and an Enemy
+# Sends the Player away from the Enemy in the normal direction of collision
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.name.begins_with ("Enemy"):
+			_velocity.x = collision.get_normal().x * 200
+			_velocity.y = collision.get_normal().y * 200
 
 	# When the character’s direction changes, we want to to scale the Sprite accordingly to flip it.
 	# This will make Robi face left or right depending on the direction you move.
