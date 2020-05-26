@@ -1,30 +1,48 @@
 extends KinematicBody2D
+signal death
 
-#these values all relate to movement, subject to change
-const MAXSPEED = 250
 const ACCEL = 0.33
 const DEACCEL = 0.33
-
+const MAXSPEED = 250
+const HEALSPEED = 0.033
+#these values all relate to movement, subject to change
+var maxSpeedActual = MAXSPEED
 var direction = Vector2()
 var velocity = Vector2()
 var speed = 0
-var input = false
+#health values
+const HEALSPEED = 0.033
+var light = false
+#this is also the transparency
+var health = 100
 
 func _ready():
 	pass
 
 
 func _physics_process(delta):
-	#grab input
-	get_input()
+	#in light? take damage and slow down
+	if light:
+		health = lerp(health, 0, HEALSPEED)
+		maxSpeedActual = MAXSPEED/2
+	else:
+		light = false
+		health = lerp(health, 100, HEALSPEED)
+		maxSpeedActual = MAXSPEED
+	#check if alive, if not then die and slow down, otherwise get input
+	if health == 0:
+		emit_signal("death")
+		speed = lerp(speed, 0, DEACCEL)
+	else:
+		get_input()
 	#deterime speed
-	get_velocity(input)
 	#move
 	move_and_slide(velocity*speed)
+	
+	
 
-#get the direction
+#get the direction+speed
 func get_input():
-	input = false
 	direction = Vector2()
 	#x axis
 	if Input.is_action_pressed("ui_right"):
@@ -36,18 +54,16 @@ func get_input():
 		direction.y -= 1
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 1
-	#check if input was applied
+	#check if input was applied, apply speed if so
+	#otherwise, use previous direction and apply deacceleration
 	if direction.length_squared() > 0:
-		input = true
-	direction = direction.normalized()
-
-#apply acceleration
-func get_velocity(input):
-	#input happened, accelerate
-	if input:	
-		speed = lerp(speed, MAXSPEED, ACCEL)
-		velocity = direction
-	#grab previous direction if no input, deaccelerate
+		speed = lerp(speed, maxSpeedActual, ACCEL)
+		velocity = direction.normalized()
 	else:
 		speed = lerp(speed, 0, DEACCEL)
-		velocity = velocity
+
+
+
+#catcher function to make shadowed must receive
+func lit_up():
+	light = false
