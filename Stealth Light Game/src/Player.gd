@@ -11,7 +11,6 @@ var direction = Vector2()
 var velocity = Vector2()
 var speed = 0
 #health values
-const HEALSPEED = 0.033
 var light = false
 #this is also the transparency
 var health = 100
