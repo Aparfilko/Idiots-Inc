@@ -2,7 +2,6 @@ extends KinematicBody2D
 signal death
 
 const ACCEL = 0.33
-const DEACCEL = 0.33
 const MAXSPEED = 250
 const HEALSPEED = 0.033
 #these values all relate to movement, subject to change
@@ -14,6 +13,7 @@ var speed = 0
 var light = false
 #this is also the transparency
 var health = 100
+var dead = false
 
 func _ready():
 	pass
@@ -28,10 +28,13 @@ func _physics_process(delta):
 		light = false
 		health = lerp(health, 100, HEALSPEED)
 		maxSpeedActual = MAXSPEED
-	#check if alive, if not then die and slow down, otherwise get input
-	if health == 0:
+	#check if health 0, if not then die and let everyone know you are dead
+	if health == 0 and not dead:
+		dead = true
 		emit_signal("death")
-		speed = lerp(speed, 0, DEACCEL)
+	#if dead then slow down! otherwise get input
+	if dead:
+		speed = lerp(speed, 0, ACCEL)
 	else:
 		get_input()
 	#deterime speed
@@ -59,7 +62,7 @@ func get_input():
 		speed = lerp(speed, maxSpeedActual, ACCEL)
 		velocity = direction.normalized()
 	else:
-		speed = lerp(speed, 0, DEACCEL)
+		speed = lerp(speed, 0, ACCEL)
 
 
 
