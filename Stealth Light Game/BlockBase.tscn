@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://img/blockBasicNormal.png" type="Texture" id=1]
+[ext_resource path="res://img/blockBasicTexture.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment(){
+	COLOR=texture(TEXTURE,UV)+vec4(texture(NORMAL_TEXTURE,UV).rgb,0)/vec4(10,10,10,1);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="BlockBase" type="Sprite"]
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 1 )
