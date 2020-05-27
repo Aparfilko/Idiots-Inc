@@ -1,16 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://img/bg.png" type="Texture" id=2]
 [ext_resource path="res://Level.gd" type="Script" id=4]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 3, 2 )
-texture = ExtResource( 2 )
-centered = false
-region_rect = Rect2( 0, 0, 1000, 1000 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
