@@ -15,7 +15,9 @@ var origin;
 func _ready():
 	FLOORTILE=preload("res://FloorTile.tscn");
 	TEXTURES=[
+		preload("res://tex/floor0.tres"),
 		preload("res://tex/floor1.tres"),
+		preload("res://tex/floor2.tres"),
 	];
 	origin=get_viewport().size/2;
 	genLvl("lvl0.txt");
@@ -36,16 +38,17 @@ func genLvl(filename):
 		var currLine=fid.get_line();
 		if len(currLine) and currLine[0]!='#':
 			var a=currLine.split(" ",true);
-			if len(a)<7:
-				a.resize(7);
-				a[4]=a[1];a[5]=a[2];a[6]=a[3];
-			for x in range(int(a[1]),int(a[4])+1):
-				for y in range(int(a[2]),int(a[5])+1):
-					for z in range(int(a[3]),int(a[6])+1):
+			if len(a)<8:
+				a.resize(8);
+				a[5]=a[2];a[6]=a[3];a[7]=a[4];
+			for x in range(int(a[2]),int(a[5])+1):
+				for y in range(int(a[3]),int(a[6])+1):
+					for z in range(int(a[4]),int(a[7])+1):
 						while(len(floors)<=y):
 							floors.append(Node2D.new());
+							floors[-1].z_index=2*len(floors);
 							self.add_child(floors[-1]);
-						addBlock(int(a[0]),x,y,z);
+						addBlock(int(a[1]),x,y,z);
 
 func shiftFloors():
 	for i in range(len(floors)):
