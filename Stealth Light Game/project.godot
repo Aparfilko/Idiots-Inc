@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Stealth Light Game"
+run/main_scene="res://Stealth-Light-Game.tscn"
 config/icon="res://icon.png"
 
 [input]
@@ -51,4 +52,5 @@ ui_down={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

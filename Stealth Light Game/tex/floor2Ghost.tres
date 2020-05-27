@@ -1,0 +1,5 @@
+[gd_resource type="StreamTexture" format=2]
+
+[resource]
+flags = 4
+load_path = "res://.import/floor2Ghost.png-d95340d7c35a8781114bc9543a0b7603.stex"
