@@ -9,8 +9,6 @@ var floors;
 var walls;
 var tileInstance;
 
-var temp;
-
 var origin;
 
 func _ready():
@@ -49,7 +47,6 @@ func addWall(type,pX,pY,pZ,o):
 	a.set_uv(b);
 	a.position=Vector2(pX*shiftFlat*scl,pZ*shiftFlat*scl);
 	walls[pY].add_child(a);
-	temp=a;
 	
 func genLvl(filename):
 	floors=[];walls=[];tileInstance=[];
@@ -83,7 +80,7 @@ func shiftFloors():
 			var a=w.get_polygon();
 			a.set(2,a[1]+s);
 			a.set(3,a[0]+s);
-			temp.set_polygon(a);
+			w.set_polygon(a);
 
 func _process(dt):
 	if Input.is_action_pressed("ui_left"):
