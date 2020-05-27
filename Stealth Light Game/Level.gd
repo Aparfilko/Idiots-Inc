@@ -1,6 +1,6 @@
 extends Node2D
 
-const scl=.2;
+const scl=.1;
 const shiftX=(400)*scl;
 const shiftY=(1)*scl;
 const shiftZ=(400)*scl;
@@ -10,15 +10,15 @@ var TEXTURES;
 var floors;
 var tileInstance;
 
+var origin;
+
 func _ready():
 	FLOORTILE=preload("res://FloorTile.tscn");
 	TEXTURES=[
 		preload("res://tex/floor1.tres"),
 	];
+	origin=get_viewport().size/2;
 	genLvl("lvl0.txt");
-	print(self.get_children());
-	for i in range(len(floors)):
-		print(floors[i].get_children());
 
 func addBlock(type,pX,pY,pZ):
 	var a=FLOORTILE.instance();
@@ -49,7 +49,7 @@ func genLvl(filename):
 
 func shiftFloors():
 	for i in range(len(floors)):
-		floors[i].position=self.position*shiftY*i;
+		floors[i].position=self.position*shiftY*i+origin;
 
 func _process(dt):
 	if Input.is_action_pressed("ui_left"):
