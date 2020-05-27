@@ -5,8 +5,8 @@ enum State {RELAXED,SUS,ALERT}
 var _state = State.RELAXED
 var direction = Vector2()
 
-func _ready():
-	pass
+const angle = 20
+onready var vision_cone = $VisionCone
 
 
 func _process(_delta):
@@ -31,3 +31,6 @@ func _process(_delta):
 			#look for the player based on available pathways
 	else:
 		_state = State.RELAXED
+	
+	for i in range(-angle,angle):
+		pass
