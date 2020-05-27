@@ -66,7 +66,7 @@ func get_impulse():
 	if impulse.length_squared() > 0:
 		#below value exists because it takes a bit for velocity.length() to reach zero, 
 		#if so direction immediately equals impulse
-		if velocity.length() < GENEROUS:
+		if velocity.length_squared() < GENEROUS:
 			direction = impulse
 		#no? then apply turn acceleration
 		else:
