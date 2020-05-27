@@ -1,24 +1,35 @@
 extends Node2D
 
-const scl=.1;
-const shiftX=Vector2(265,110)*scl;
-const shiftY=Vector2(0,-145)*scl;
-const shiftZ=Vector2(-120,220)*scl;
+const scl=.2;
+const shiftX=(400)*scl;
+const shiftY=(1)*scl;
+const shiftZ=(400)*scl;
 
-var origin=Vector2(200,200);
-var blockTemplate=[];
-var blockInstance=[];
+var FLOORTILE;
+var TEXTURES;
+var floors;
+var tileInstance;
+
 func _ready():
-	blockTemplate.append(preload("res://BlockBase.tscn"));
+	FLOORTILE=preload("res://FloorTile.tscn");
+	TEXTURES=[
+		preload("res://tex/floor1.tres"),
+	];
 	genLvl("lvl0.txt");
-	
+	print(self.get_children());
+	for i in range(len(floors)):
+		print(floors[i].get_children());
+
 func addBlock(type,pX,pY,pZ):
-	var a=blockTemplate[type].instance();
+	var a=FLOORTILE.instance();
 	a.scale=Vector2(scl,scl);
-	self.add_child(a);
-	blockInstance.append([a,pX,pY,pZ]);
+	a.position=Vector2(pX*shiftX,pZ*shiftZ);
+	a.set_texture(TEXTURES[type]);
+	floors[pY].add_child(a);
+	tileInstance.append([a,pX,pY,pZ]);
 
 func genLvl(filename):
+	floors=[];tileInstance=[];
 	var fid=File.new();
 	fid.open("res://lvl/"+filename,File.READ);
 	while not fid.eof_reached():
@@ -31,31 +42,22 @@ func genLvl(filename):
 			for x in range(int(a[1]),int(a[4])+1):
 				for y in range(int(a[2]),int(a[5])+1):
 					for z in range(int(a[3]),int(a[6])+1):
+						while(len(floors)<=y):
+							floors.append(Node2D.new());
+							self.add_child(floors[-1]);
 						addBlock(int(a[0]),x,y,z);
-	blockInstance.sort_custom(self,"sortBlock");
-	for i in range(len(blockInstance)):
-		#only 10 dudes can stand on a single tile before they start glitching
-		blockInstance[i][0].z_index=i;
-	updateBlockPos();
 
-func sortBlock(a,b):
-	if a[2]!=b[2]:
-		return a[2]<b[2];
-	if a[3]!=b[3]:
-		return a[3]<b[3];
-	return a[1]<b[1];
-
-func updateBlockPos():
-	for a in blockInstance:
-		a[0].position=shiftX*a[1]+shiftY*a[2]+shiftZ*a[3]+origin;
+func shiftFloors():
+	for i in range(len(floors)):
+		floors[i].position=self.position*shiftY*i;
 
 func _process(dt):
 	if Input.is_action_pressed("ui_left"):
-		origin[0]+=dt*100;
+		self.position[0]+=dt*200;
 	if Input.is_action_pressed("ui_right"):
-		origin[0]-=dt*100;
+		self.position[0]-=dt*200;
 	if Input.is_action_pressed("ui_up"):
-		origin[1]+=dt*100;
+		self.position[1]+=dt*200;
 	if Input.is_action_pressed("ui_down"):
-		origin[1]-=dt*100;
-	updateBlockPos();
+		self.position[1]-=dt*200;
+	shiftFloors();
