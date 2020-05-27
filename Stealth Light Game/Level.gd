@@ -5,6 +5,8 @@ const shiftFlat=(400);
 const shiftUp=(1)*scl;
 
 var TEXTURES;
+var LIGHTTEX;
+var CANBELIT;
 var floors;
 var walls;
 var tileInstance;
@@ -17,12 +19,24 @@ func _ready():
 		preload("res://tex/floor1.tres"),
 		preload("res://tex/floor2.tres"),
 	];
+	LIGHTTEX=preload("res://tex/light.tres");
+	CANBELIT=preload("res://tex/canBeLit.tres");
 	origin=get_viewport().size/2;
 	genLvl("lvl0.txt");
+	addLight(0,0,0);
+
+func addLight(pX,pY,pZ):
+	var a=Light2D.new();
+	a.set_texture(LIGHTTEX);
+	a.mode=Light2D.MODE_MIX;
+	a.shadow_enabled=true;
+	a.position=Vector2(pX*shiftFlat*scl,pZ*shiftFlat*scl)
+	floors[pY].add_child(a);
 
 func addFloor(type,pX,pY,pZ):
 	var a=Sprite.new();
 	a.set_texture(TEXTURES[type]);
+	a.set_material(CANBELIT);
 	a.scale=Vector2(scl,scl);
 	a.position=Vector2(pX*shiftFlat*scl,pZ*shiftFlat*scl);
 	floors[pY].add_child(a);
@@ -31,6 +45,7 @@ func addFloor(type,pX,pY,pZ):
 func addWall(type,pX,pY,pZ,o):
 	var a=Polygon2D.new();
 	a.set_texture(TEXTURES[type]);
+	a.set_material(CANBELIT);
 	var c=shiftFlat*.5*scl;
 	var b;
 	b=PoolVector2Array();
@@ -47,6 +62,14 @@ func addWall(type,pX,pY,pZ,o):
 	a.set_uv(b);
 	a.position=Vector2(pX*shiftFlat*scl,pZ*shiftFlat*scl);
 	walls[pY].add_child(a);
+	var d=LightOccluder2D.new();
+	d.occluder=OccluderPolygon2D.new();
+	b=PoolVector2Array();
+	b.append(Vector2(-1 if o<5 else 1,-1 if o<3 or o>6 else 1)*c);
+	b.append(Vector2(-1 if o<8 and o>3 else 1,-1 if o<6 and o>1 else 1)*c);
+	d.occluder.set_polygon(b);
+	a.add_child(d);
+	
 	
 func genLvl(filename):
 	floors=[];walls=[];tileInstance=[];
