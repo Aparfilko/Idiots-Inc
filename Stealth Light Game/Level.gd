@@ -5,11 +5,11 @@ const shiftFlat=(400);
 const shiftUp=(1)*scl;
 
 var TEXTURES;
+var GHOSTTEX;
 var LIGHTTEX;
 var CANBELIT;
 var floors;
 var walls;
-var tileInstance;
 
 var origin;
 
@@ -18,6 +18,11 @@ func _ready():
 		preload("res://tex/floor0.tres"),
 		preload("res://tex/floor1.tres"),
 		preload("res://tex/floor2.tres"),
+	];
+	GHOSTTEX=[
+		preload("res://tex/floor0Ghost.tres"),
+		preload("res://tex/floor1Ghost.tres"),
+		preload("res://tex/floor2Ghost.tres"),
 	];
 	LIGHTTEX=preload("res://tex/light.tres");
 	CANBELIT=preload("res://tex/canBeLit.tres");
@@ -35,18 +40,19 @@ func addLight(pX,pY,pZ):
 
 func addFloor(type,pX,pY,pZ):
 	var a=Sprite.new();
-	a.set_texture(TEXTURES[type]);
-	a.set_material(CANBELIT);
+	a.set_texture(GHOSTTEX[type]);
 	a.scale=Vector2(scl,scl);
 	a.position=Vector2(pX*shiftFlat*scl,pZ*shiftFlat*scl);
+	var g=Sprite.new();
+	g.set_texture(TEXTURES[type]);
+	g.set_material(CANBELIT);
+	a.add_child(g);
 	floors[pY].add_child(a);
-	tileInstance.append([a,pX,pY,pZ]);
 
 func addWall(type,pX,pY,pZ,o):
-	var a=Polygon2D.new();
-	a.set_texture(TEXTURES[type]);
-	a.set_material(CANBELIT);
 	var c=shiftFlat*.5*scl;
+	var a=Polygon2D.new();
+	a.set_texture(GHOSTTEX[type]);
 	var b;
 	b=PoolVector2Array();
 	b.append(Vector2(-1 if o<5 else 1,-1 if o<3 or o>6 else 1)*c);
@@ -61,6 +67,12 @@ func addWall(type,pX,pY,pZ,o):
 	b.append(Vector2(shiftFlat,0));
 	a.set_uv(b);
 	a.position=Vector2(pX*shiftFlat*scl,pZ*shiftFlat*scl);
+	var g=Polygon2D.new();
+	g.set_texture(TEXTURES[type]);
+	g.set_material(CANBELIT);
+	g.set_polygon(a.get_polygon());
+	g.set_uv(a.get_uv());
+	a.add_child(g);
 	walls[pY].add_child(a);
 	var d=LightOccluder2D.new();
 	d.occluder=OccluderPolygon2D.new();
@@ -72,7 +84,7 @@ func addWall(type,pX,pY,pZ,o):
 	
 	
 func genLvl(filename):
-	floors=[];walls=[];tileInstance=[];
+	floors=[];walls=[];
 	var fid=File.new();
 	fid.open("res://lvl/"+filename,File.READ);
 	while not fid.eof_reached():
@@ -104,6 +116,7 @@ func shiftFloors():
 			a.set(2,a[1]+s);
 			a.set(3,a[0]+s);
 			w.set_polygon(a);
+			w.get_child(0).set_polygon(w.get_polygon());
 
 func _process(dt):
 	if Input.is_action_pressed("ui_left"):
