@@ -52,3 +52,10 @@ func _process(_delta):
 		_state = State.SUS
 	else:
 		_state = State.RELAXED
+
+
+
+#code I used to test collision in the other project
+#for i in get_slide_count():
+	#var collision = get_slide_collision(i)
+	#if collision.collider.name.begins_with ("Enemy"): 
