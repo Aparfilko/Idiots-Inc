@@ -9,14 +9,15 @@ const time_sus = 5
 const time_alert = 20
 var time = 0
 
-const angle = 20
-onready var vision_cone = $VisionCone
-var vision_distance = 20
+const angle = deg2rad(20)
+onready var vision_cone = get_node("VisionCone")
+const vision_dist_relaxed = 7 #fine tune later
+const vision_dist_not_relaxed = 5 #fine tune later
+var vision_dist = vision_dist_relaxed
 
 func _process(_delta):
-	for i in range(deg2rad(-angle),deg2rad(angle)):
-		pass
-		#sweep in front of enemy over i with vision_distance x 
+	for i in range(-angle,angle):
+		vision_cone.cast_to(2*vision_dist*tan(i),vision_dist)
 		#if vision_cone hits player and _state == State.RELAXED:
 			#_state = State.SUS
 			#distance = x+y
@@ -26,17 +27,18 @@ func _process(_delta):
 	if _state == State.RELAXED:
 		pass
 		#walk predetermined path
+		#vision_dist = vision_dist_relaxed
 	elif _state == State.SUS:
 		pass
 		#for time < time_sus:
 			#don't change speed but follow the player for a bit
+			#vision_dist = vision_dist_not_relaxed
 			#if player is still in sus range
 				#time = 0
 			#else
 				#time += delta
 		time = 0
 		_state = State.RELAXED
-		#vision_distance = x
 	elif _state == State.ALERT:
 		pass
 		#for time < time_alert:
@@ -50,4 +52,3 @@ func _process(_delta):
 		_state = State.SUS
 	else:
 		_state = State.RELAXED
-	
