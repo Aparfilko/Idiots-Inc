@@ -4,7 +4,7 @@ signal death
 const ACCEL = 0.2
 const DEACCEL = 0.2
 const TURNACCEL = 0.33
-const MAXSPEED = 250
+const MAXSPEED = 200
 const HEALSPEED = 0.033
 const GENEROUS = 5
 #these values all relate to movement, subject to change
@@ -27,11 +27,9 @@ func _physics_process(delta):
 	#in light? take damage and slow down
 	if light:
 		health = lerp(health, 0, HEALSPEED)
-		maxSpeedActual = MAXSPEED/2
 	else:
 		light = false
 		health = lerp(health, 100, HEALSPEED)
-		maxSpeedActual = MAXSPEED
 	#check if health 0, if not then die and let everyone know you are dead
 	if health == 0 and not dead:
 		dead = true
@@ -40,43 +38,7 @@ func _physics_process(delta):
 	if dead:
 		speed = lerp(speed, 0, ACCEL)
 	else:
-		get_impulse()
-	#deterime speed
-	#move
-	move_and_slide(velocity)
-	
-	
-
-#get the direction+speed
-func get_impulse():
-	impulse = Vector2(0,0)
-	#x axis
-	if Input.is_action_pressed("ui_right"):
-		impulse.x += 1
-	if Input.is_action_pressed("ui_left"):
-		impulse.x -= 1
-	#y axis
-	if Input.is_action_pressed("ui_up"):
-		impulse.y -= 1
-	if Input.is_action_pressed("ui_down"):
-		impulse.y += 1
-	#some bullshit right here
-	
-	impulse = impulse.normalized()
-	if impulse.length_squared() > 0:
-		#below value exists because it takes a bit for velocity.length() to reach zero, 
-		#if so direction immediately equals impulse
-		if velocity.length_squared() < GENEROUS:
-			direction = impulse
-		#no? then apply turn acceleration
-		else:
-			direction = direction.linear_interpolate(impulse, TURNACCEL)
-		speed = lerp(speed, MAXSPEED, ACCEL)
-	#no impulse means slow down
-	else:
-		speed = lerp(speed, 0, DEACCEL)
-	#finish by applying velocity
-	velocity = direction*speed
+		pass
 
 
 

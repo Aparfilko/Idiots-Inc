@@ -3,6 +3,8 @@ extends Node2D
 const scl=.1;
 const shiftFlat=(400);
 const shiftUp=(1)*scl;
+const shiftSpeed = 200;
+const shiftAccel = 0.3;
 
 var TEXTURES;
 var GHOSTTEX;
@@ -10,6 +12,8 @@ var LIGHTTEX;
 var CANBELIT;
 var floors;
 var walls;
+var impulse;
+var speed;
 
 var origin;
 
@@ -29,6 +33,7 @@ func _ready():
 	origin=get_viewport().size/2;
 	genLvl("lvl0.txt");
 	addLight(0,0,0);
+	speed = 0;
 
 func addLight(pX,pY,pZ):
 	var a=Light2D.new();
@@ -119,12 +124,23 @@ func shiftFloors():
 			w.get_child(0).set_polygon(w.get_polygon());
 
 func _process(dt):
-	if Input.is_action_pressed("ui_left"):
-		self.position[0]+=dt*200;
+	impulse = Vector2(0,0)
+	#x axis
 	if Input.is_action_pressed("ui_right"):
-		self.position[0]-=dt*200;
+		impulse.x -=1
+	if Input.is_action_pressed("ui_left"):
+		impulse.x += 1
+	#y axis
 	if Input.is_action_pressed("ui_up"):
-		self.position[1]+=dt*200;
+		impulse.y += 1
 	if Input.is_action_pressed("ui_down"):
-		self.position[1]-=dt*200;
+		impulse.y -= 1
+	#find current speed
+	impulse = impulse.normalized()
+	if impulse.length_squared() == 0:
+		speed = lerp(speed, 0, shiftAccel)
+	else:
+		speed = lerp(speed, shiftSpeed, shiftAccel)
+	self.position[0] += dt * speed * impulse.x
+	self.position[1] += dt * speed * impulse.y
 	shiftFloors();
