@@ -27,7 +27,7 @@ func _ready():
 	LIGHTTEX=preload("res://tex/light.tres");
 	CANBELIT=preload("res://tex/canBeLit.tres");
 	origin=get_viewport().size/2;
-	genLvl("lvl0.txt");
+	genLvl("SquareWithHole.txt");
 	addLight(0,0,0);
 
 func addLight(pX,pY,pZ):
