@@ -12,6 +12,7 @@ var time = 0
 const angle = deg2rad(20)
 onready var vision_cone = get_node("VisionCone")
 const vision_dist_relaxed = 7 #fine tune later
+const vision_dist_sus = 6 #fine tune later
 const vision_dist_not_relaxed = 5 #fine tune later
 var vision_dist = vision_dist_relaxed
 
@@ -20,9 +21,13 @@ func _process(_delta):
 		vision_cone.cast_to(2*vision_dist*tan(i),vision_dist)
 		#if vision_cone hits player and _state == State.RELAXED:
 			#_state = State.SUS
-			#distance = x+y
+			#short pause
+			#? sound
 		#elif vision_cone hits player and _state == State.SUS:
 			#_state = State.ALERT
+			#short pause
+			#alert music
+			#if collision occurs hurt the player
 		
 	if _state == State.RELAXED:
 		pass
@@ -32,8 +37,8 @@ func _process(_delta):
 		pass
 		#for time < time_sus:
 			#don't change speed but follow the player for a bit
-			#vision_dist = vision_dist_not_relaxed
-			#if player is still in sus range
+			#vision_dist = vision_dist_sus
+			#if player is still in sus range after a short pause
 				#time = 0
 			#else
 				#time += delta
