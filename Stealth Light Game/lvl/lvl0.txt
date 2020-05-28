@@ -1,5 +1,5 @@
 # every line in this file is a set of floors or walls
-# only totally empty lines, and lines with a '#' character are ignored
+# only totally empty lines, and lines that begin with a '#' character are ignored
 
 # standard form is 8 integers long:
 # [wallOrientation(0 for floor),textureIndex,lowX,lowY,lowZ,highX,highY,highZ]
