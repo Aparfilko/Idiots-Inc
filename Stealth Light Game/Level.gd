@@ -13,6 +13,12 @@ var walls;
 
 var origin;
 
+var lightTemp;
+var lightTempT1=0;
+var lightTempT2=0;
+var lightTempV1=0;
+var lightTempV2=0;
+
 func _ready():
 	TEXTURES=[
 		preload("res://tex/floor0.tres"),
@@ -27,7 +33,7 @@ func _ready():
 	LIGHTTEX=preload("res://tex/light.tres");
 	CANBELIT=preload("res://tex/canBeLit.tres");
 	origin=get_viewport().size/2;
-	genLvl("SquareWithHole.txt");
+	genLvl("lvl1.txt");
 	addLight(0,0,0);
 
 func addLight(pX,pY,pZ):
@@ -37,6 +43,7 @@ func addLight(pX,pY,pZ):
 	a.shadow_enabled=true;
 	a.position=Vector2(pX*shiftFlat*scl,pZ*shiftFlat*scl)
 	floors[pY].add_child(a);
+	lightTemp=a;
 
 func addFloor(type,pX,pY,pZ):
 	var a=Sprite.new();
@@ -128,3 +135,10 @@ func _process(dt):
 	if Input.is_action_pressed("ui_down"):
 		self.position[1]-=dt*200;
 	shiftFloors();
+	
+	lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
+	lightTempV2=clamp(lightTempV2+(randf()-.5)*.01,-5,5);
+	lightTempT1+=lightTempV1*dt;
+	lightTempT2+=lightTempV2*dt;
+	lightTemp.position=Vector2(shiftFlat*sin(lightTempT1),shiftFlat*sin(lightTempT2));
+	
