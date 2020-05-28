@@ -1,9 +1,7 @@
 extends KinematicBody2D
 signal death
 #movement values, deprecated for now
-const ACCEL = 0.2
-const DEACCEL = 0.2
-const TURNACCEL = 0.33
+const ACCEL = 0.3
 const MAXSPEED = 200
 const HEALSPEED = 0.033
 const GENEROUS = 5
@@ -65,17 +63,12 @@ func get_impulse():
 	#some bullshit right here
 
 	impulse = impulse.normalized()
+	#if impulse directed, go that direction and speed up
 	if impulse.length_squared() > 0:
-		#below value exists because it takes a bit for velocity.length() to reach zero, 
-		#if so direction immediately equals impulse
-		if velocity.length_squared() < GENEROUS:
-			direction = impulse
-		#no? then apply turn acceleration
-		else:
-			direction = direction.linear_interpolate(impulse, TURNACCEL)
 		speed = lerp(speed, MAXSPEED, ACCEL)
-	#no impulse means slow down
+		direction = impulse
+	#no impulse, keep going previous direction and slow down
 	else:
-		speed = lerp(speed, 0, DEACCEL)
+		speed = lerp(speed, 0, ACCEL)
 	#finish by applying velocity
 	velocity = direction*speed

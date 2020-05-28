@@ -15,5 +15,6 @@ centered = false
 
 [node name="Player" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 512.5, 300 )
+z_index = 2
 
 [node name="UI" type="Node2D" parent="."]

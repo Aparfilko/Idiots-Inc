@@ -4,7 +4,6 @@ const scl=.1;
 const shiftFlat=(400);
 const shiftUp=(1)*scl;
 const shiftSpeed = 200;
-const shiftAccel = 0.3;
 
 var TEXTURES;
 var GHOSTTEX;
@@ -13,7 +12,6 @@ var CANBELIT;
 var floors;
 var walls;
 var impulse;
-var speed;
 
 var origin;
 
@@ -39,7 +37,6 @@ func _ready():
 	origin=get_viewport().size/2;
 	genLvl("lvl1.txt");
 	addLight(0,0,0);
-	speed = 0;
 
 func addLight(pX,pY,pZ):
 	var a=Light2D.new();
@@ -144,12 +141,8 @@ func _process(dt):
 		impulse.y -= 1
 	#find current speed
 	impulse = impulse.normalized()
-	if impulse.length_squared() == 0:
-		speed = lerp(speed, 0, shiftAccel)
-	else:
-		speed = lerp(speed, shiftSpeed, shiftAccel)
-	self.position[0] += dt * speed * impulse.x
-	self.position[1] += dt * speed * impulse.y
+	self.position[0] += dt * shiftSpeed * impulse.x
+	self.position[1] += dt * shiftSpeed * impulse.y
 	shiftFloors();
 	
 	lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
