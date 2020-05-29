@@ -139,13 +139,14 @@ func _process(dt):
 		impulse.y -= 1
 	#find current speed
 	impulse = impulse.normalized()
-	self.position[0] += dt * shiftSpeed * impulse.x
-	self.position[1] += dt * shiftSpeed * impulse.y
+	#it might be better to have this dependent on player position
+	self.position[0] = dt * shiftSpeed * impulse.x
+	self.position[1] = dt * shiftSpeed * impulse.y
 	shiftFloors();
-	
+
 	lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
 	lightTempV2=clamp(lightTempV2+(randf()-.5)*.01,-5,5);
 	lightTempT1+=lightTempV1*dt;
 	lightTempT2+=lightTempV2*dt;
 	lightTemp.position=lightTemp.scale*shiftFlat*Vector2(sin(lightTempT1),sin(lightTempT2));
-	
+#

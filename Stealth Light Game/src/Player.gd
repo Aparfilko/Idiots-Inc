@@ -2,7 +2,6 @@ extends KinematicBody2D
 signal death
 #movement values
 const ACCEL = 0.33
-const TURNACCEL = 0.5
 const MAXSPEED = 200
 const HEALSPEED = 0.033
 const GENEROUS = 5
@@ -35,6 +34,7 @@ func _physics_process(delta):
 		dead = true
 	#check if dead, if not then move, otherwise slow down
 	if dead:
+		print("dead")
 		speed = lerp(speed, 0, ACCEL)
 	else:
 		get_impulse()
@@ -67,7 +67,7 @@ func get_impulse():
 	#if impulse directed, go that direction and speed up
 	if impulse.length_squared() > 0:
 		speed = lerp(speed, MAXSPEED, ACCEL)
-		direction = direction.linear_interpolate(impulse, TURNACCEL)
+		direction = impulse
 	#no impulse, keep going previous direction and slow down
 	else:
 		speed = lerp(speed, 0, ACCEL)
