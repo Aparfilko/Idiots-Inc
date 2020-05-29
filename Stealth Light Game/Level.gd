@@ -44,14 +44,15 @@ func addLight(pX,pY,pZ):
 	a.mode=Light2D.MODE_MIX;
 	a.shadow_enabled=true;
 	a.position=Vector2(pX*shiftFlat*scl,pZ*shiftFlat*scl)
+	a.scale=Vector2(1,1)/scl;
 	floors[pY].add_child(a);
 	lightTemp=a;
 
 func addFloor(type,pX,pY,pZ):
 	var a=Sprite.new();
 	a.set_texture(GHOSTTEX[type]);
-	a.scale=Vector2(scl,scl);
-	a.position=Vector2(pX*shiftFlat*scl,pZ*shiftFlat*scl);
+	#a.scale=Vector2(scl,scl);
+	a.position=Vector2(pX*shiftFlat,pZ*shiftFlat);
 	var g=Sprite.new();
 	g.set_texture(TEXTURES[type]);
 	g.set_material(CANBELIT);
@@ -109,6 +110,7 @@ func genLvl(filename):
 						while(len(floors)<=y):
 							floors.append(Node2D.new());walls.append(Node2D.new());
 							floors[-1].z_index=2*len(floors)-1;walls[-1].z_index=2*len(walls);
+							floors[-1].scale=Vector2(1,1)*scl*pow(1.09,len(floors)-1);
 							self.add_child(floors[-1]);self.add_child(walls[-1]);
 						if int(a[0]):
 							addWall(int(a[1]),x,y,z,int(a[0]));
@@ -116,14 +118,13 @@ func genLvl(filename):
 							addFloor(int(a[1]),x,y,z);
 
 func shiftFloors():
-	var s=self.position*shiftUp;
 	for i in range(len(floors)):
-		floors[i].position=s*i+origin;
-		walls[i].position=s*i+origin;
+		floors[i].position=self.position*shiftUp*i+origin;
+		walls[i].position=self.position*shiftUp*i+origin;
 		for w in walls[i].get_children():
 			var a=w.get_polygon();
-			a.set(2,a[1]+s);
-			a.set(3,a[0]+s);
+			a.set(2,a[1]+(self.position+w.position)*shiftUp);
+			a.set(3,a[0]+(self.position+w.position)*shiftUp);
 			w.set_polygon(a);
 			w.get_child(0).set_polygon(w.get_polygon());
 
@@ -149,5 +150,5 @@ func _process(dt):
 	lightTempV2=clamp(lightTempV2+(randf()-.5)*.01,-5,5);
 	lightTempT1+=lightTempV1*dt;
 	lightTempT2+=lightTempV2*dt;
-	lightTemp.position=Vector2(shiftFlat*sin(lightTempT1),shiftFlat*sin(lightTempT2));
+	lightTemp.position=Vector2(shiftFlat/scl*sin(lightTempT1),shiftFlat/scl*sin(lightTempT2));
 	
