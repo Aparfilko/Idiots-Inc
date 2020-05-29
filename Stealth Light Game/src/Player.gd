@@ -1,20 +1,21 @@
 extends KinematicBody2D
 signal death
-#movement values, deprecated for now
-const ACCEL = 0.3
+#movement values
+const ACCEL = 0.33
+const TURNACCEL = 0.5
 const MAXSPEED = 200
 const HEALSPEED = 0.033
 const GENEROUS = 5
-#health values
-var light = false
-#this is also the transparency
-var health = 100
-var dead = false
 var speed = 0
 var velocity = Vector2()
 var direction = Vector2()
 var impulse
 var maxSpeedActual
+
+#health values
+var light = false
+var health = 100
+var dead = false
 
 func _ready():
 	pass
@@ -66,7 +67,7 @@ func get_impulse():
 	#if impulse directed, go that direction and speed up
 	if impulse.length_squared() > 0:
 		speed = lerp(speed, MAXSPEED, ACCEL)
-		direction = impulse
+		direction = direction.linear_interpolate(impulse, TURNACCEL)
 	#no impulse, keep going previous direction and slow down
 	else:
 		speed = lerp(speed, 0, ACCEL)
