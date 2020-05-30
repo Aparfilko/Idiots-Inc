@@ -62,12 +62,17 @@ func addFloor(type,pX,pY,pZ):
 	floors[pY].add_child(a);
 
 func addWall(type,pX,pY,pZ,o):
+	var v0=Vector2(-1 if o<5 else 1,-1 if o<3 or o>6 else 1)*shiftFlat*.5;
+	var v1=Vector2(-1 if o<8 and o>3 else 1,-1 if o<6 and o>1 else 1)*shiftFlat*.5;
+	var p=StaticBody2D.new();
+	p.position=Vector2(pX,pZ)*shiftFlat;
+	
 	var a=Polygon2D.new();
 	a.set_texture(GHOSTTEX[type]);
 	var b;
 	b=PoolVector2Array();
-	b.append(Vector2(-1 if o<5 else 1,-1 if o<3 or o>6 else 1)*shiftFlat*.5);
-	b.append(Vector2(-1 if o<8 and o>3 else 1,-1 if o<6 and o>1 else 1)*shiftFlat*.5);
+	b.append(v0);
+	b.append(v1);
 	b.append(Vector2(0,0));
 	b.append(Vector2(0,0));
 	a.set_polygon(b);
@@ -77,21 +82,30 @@ func addWall(type,pX,pY,pZ,o):
 	b.append(Vector2(1,1)*shiftFlat);
 	b.append(Vector2(1,0)*shiftFlat);
 	a.set_uv(b);
-	a.position=Vector2(pX,pZ)*shiftFlat;
+	p.add_child(a);
+	
 	var g=Polygon2D.new();
 	g.set_texture(TEXTURES[type]);
 	g.set_material(CANBELIT);
 	g.set_polygon(a.get_polygon());
 	g.set_uv(a.get_uv());
-	a.add_child(g);
-	walls[pY].add_child(a);
+	p.add_child(g);
+	
+	var c=CollisionShape2D.new();
+	c.shape=SegmentShape2D.new();
+	c.shape.a=v0;
+	c.shape.b=v1;
+	p.add_child(c);
+	
 	var d=LightOccluder2D.new();
 	d.occluder=OccluderPolygon2D.new();
 	b=PoolVector2Array();
-	b.append(Vector2(-1 if o<5 else 1,-1 if o<3 or o>6 else 1)*shiftFlat*.5);
-	b.append(Vector2(-1 if o<8 and o>3 else 1,-1 if o<6 and o>1 else 1)*shiftFlat*.5);
+	b.append(v0);
+	b.append(v1);
 	d.occluder.set_polygon(b);
-	a.add_child(d);
+	p.add_child(d);
+	
+	walls[pY].add_child(p);
 	
 	
 func genLvl(filename):
@@ -130,11 +144,11 @@ func shiftFloors():
 		floors[i].position=(self.position-get_viewport().size/2)*(pow(sclUp,i)-1);
 		walls[i].position=(self.position-get_viewport().size/2)*(pow(sclUp,i)-1);
 		for w in walls[i].get_children():
-			var a=w.get_polygon();
+			var a=w.get_child(0).get_polygon();
 			a.set(2,a[1]+((self.position-get_viewport().size/2)+(walls[i].position+w.position+a[1])*sclFlat)*pow(sclUp,i+1));
 			a.set(3,a[0]+((self.position-get_viewport().size/2)+(walls[i].position+w.position+a[0])*sclFlat)*pow(sclUp,i+1));
-			w.set_polygon(a);
-			w.get_child(0).set_polygon(w.get_polygon());
+			w.get_child(0).set_polygon(a);
+			w.get_child(1).set_polygon(a);
 
 func _physics_process(dt):
 #	impulse = Vector2(0,0)
