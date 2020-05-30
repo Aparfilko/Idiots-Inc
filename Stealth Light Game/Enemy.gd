@@ -11,9 +11,9 @@ var time = 0
 
 const angle = deg2rad(20)
 onready var vision_cone = get_node("VisionCone")
-const vision_dist_relaxed = 7 #fine tune later
-const vision_dist_sus = 6 #fine tune later
-const vision_dist_not_relaxed = 5 #fine tune later
+const vision_dist_relaxed = 40*7 #fine tune later
+const vision_dist_sus = 40*6 #fine tune later
+const vision_dist_not_relaxed = 40*5 #fine tune later
 var vision_dist = vision_dist_relaxed
 
 func _process(_delta):
