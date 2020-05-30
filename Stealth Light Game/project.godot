@@ -24,6 +24,11 @@ config/name="Stealth Light Game"
 run/main_scene="res://Stealth-Light-Game.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1200
+window/size/height=800
+
 [input]
 
 ui_left={
