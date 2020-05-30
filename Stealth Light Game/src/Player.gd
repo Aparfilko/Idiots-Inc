@@ -1,26 +1,26 @@
 extends KinematicBody2D
 signal death
-#movement values, deprecated for now
-const ACCEL = 0.3
+#movement values
+const ACCEL = 0.33
 const MAXSPEED = 200
 const HEALSPEED = 0.033
 const GENEROUS = 5
-#health values
-var light = false
-#this is also the transparency
-var health = 100
-var dead = false
 var speed = 0
 var velocity = Vector2()
 var direction = Vector2()
 var impulse
 var maxSpeedActual
 
+#health values
+var light = false
+var health = 100
+var dead = false
+
 func _ready():
 	pass
 
 
-func _physics_process(delta):
+func _process(delta):
 	#in light? take damage and slow down
 	if light:
 		health = lerp(health, 0, HEALSPEED)
@@ -34,10 +34,10 @@ func _physics_process(delta):
 		dead = true
 	#check if dead, if not then move, otherwise slow down
 	if dead:
+		print("dead")
 		speed = lerp(speed, 0, ACCEL)
 	else:
 		get_impulse()
-	#deterime speed
 	#move
 	move_and_slide(velocity)
 
