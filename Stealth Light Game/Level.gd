@@ -38,6 +38,7 @@ func _ready():
 	self.position=get_viewport().size/2;
 	initPlayer = self.position
 	genLvl("lvl1.txt");
+
 	print(EnemyMovementNodes);
 	addLight(0,0,0);
 
@@ -168,9 +169,8 @@ func _physics_process(dt):
 	self.position = -$Player.position + get_viewport().size/2
 	shiftFloors();
 
-	lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
-	lightTempV2=clamp(lightTempV2+(randf()-.5)*.01,-5,5);
-	lightTempT1+=lightTempV1*dt;
-	lightTempT2+=lightTempV2*dt;
-	lightTemp.position=lightTemp.scale*shiftFlat*Vector2(sin(lightTempT1),sin(lightTempT2));
-#
+#	lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
+#	lightTempV2=clamp(lightTempV2+(randf()-.5)*.01,-5,5);
+#	lightTempT1+=lightTempV1*dt;
+#	lightTempT2+=lightTempV2*dt;
+#	lightTemp.position=lightTemp.scale*shiftFlat*Vector2(sin(lightTempT1),sin(lightTempT2));
