@@ -14,6 +14,7 @@ var walls;
 var impulse;
 var initPlayer;
 
+var EnemyMovementNodes;
 
 var lightTemp;
 var lightTempT1=0;
@@ -37,6 +38,7 @@ func _ready():
 	self.position=get_viewport().size/2;
 	initPlayer = self.position
 	genLvl("lvl1.txt");
+	print(EnemyMovementNodes);
 	addLight(0,0,0);
 
 func addLight(pX,pY,pZ):
@@ -94,12 +96,18 @@ func addWall(type,pX,pY,pZ,o):
 	
 func genLvl(filename):
 	floors=[];walls=[];
+	EnemyMovementNodes=[];
 	var fid=File.new();
 	fid.open("res://lvl/"+filename,File.READ);
 	while not fid.eof_reached():
 		var currLine=fid.get_line();
 		if len(currLine) and currLine[0]!='#':
 			var a=currLine.split(" ",true);
+			if int(a[0])<0:
+				EnemyMovementNodes.append([]);
+				for i in range(1,len(a)):
+					EnemyMovementNodes[-1].append(int(a[i]));
+				continue;
 			if len(a)<8:
 				a.resize(8);
 				a[5]=a[2];a[6]=a[3];a[7]=a[4];
@@ -112,7 +120,7 @@ func genLvl(filename):
 							floors[-1].scale=Vector2(1,1)*sclFlat*pow(sclUp,len(floors)-1);
 							walls[-1].scale=Vector2(1,1)*sclFlat*pow(sclUp,len(floors)-1);
 							self.add_child(floors[-1]);self.add_child(walls[-1]);
-						if int(a[0]):
+						if int(a[0])>0:
 							addWall(int(a[1]),x,y,z,int(a[0]));
 						else:
 							addFloor(int(a[1]),x,y,z);
