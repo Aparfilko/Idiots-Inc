@@ -12,6 +12,8 @@ var CANBELIT;
 var floors;
 var walls;
 var impulse;
+var initPlayer = Vector2(600,400);
+
 
 var lightTemp;
 var lightTempT1=0;
@@ -140,7 +142,7 @@ func _physics_process(dt):
 #	#find current speed
 #	impulse = impulse.normalized()
 	#it might be better to have this dependent on player position
-	self.position = -$Player.position
+	self.position = -$Player.position + initPlayer
 	shiftFloors();
 
 	lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
