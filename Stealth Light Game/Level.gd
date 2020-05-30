@@ -34,7 +34,7 @@ func _ready():
 	CANBELIT=preload("res://tex/canBeLit.tres");
 	self.position=get_viewport().size/2;
 	genLvl("lvl1.txt");
-	addLight(0,0,0);
+#	addLight(0,0,0);
 
 func addLight(pX,pY,pZ):
 	var a=Light2D.new();
@@ -143,9 +143,9 @@ func _process(dt):
 	self.position[1] += dt * shiftSpeed * impulse.y
 	shiftFloors();
 	
-	lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
-	lightTempV2=clamp(lightTempV2+(randf()-.5)*.01,-5,5);
-	lightTempT1+=lightTempV1*dt;
-	lightTempT2+=lightTempV2*dt;
-	lightTemp.position=lightTemp.scale*shiftFlat*Vector2(sin(lightTempT1),sin(lightTempT2));
+#	lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
+#	lightTempV2=clamp(lightTempV2+(randf()-.5)*.01,-5,5);
+#	lightTempT1+=lightTempV1*dt;
+#	lightTempT2+=lightTempV2*dt;
+#	lightTemp.position=lightTemp.scale*shiftFlat*Vector2(sin(lightTempT1),sin(lightTempT2));
 	
