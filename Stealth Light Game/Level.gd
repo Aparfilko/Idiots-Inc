@@ -14,6 +14,7 @@ var walls;
 var impulse;
 var initPlayer = Vector2(600,400);
 
+var EnemyMovementNodes;
 
 var lightTemp;
 var lightTempT1=0;
@@ -93,6 +94,7 @@ func addWall(type,pX,pY,pZ,o):
 	
 func genLvl(filename):
 	floors=[];walls=[];
+	EnemyMovementNodes=[];
 	var fid=File.new();
 	fid.open("res://lvl/"+filename,File.READ);
 	while not fid.eof_reached():
@@ -113,6 +115,10 @@ func genLvl(filename):
 							self.add_child(floors[-1]);self.add_child(walls[-1]);
 						if int(a[0]):
 							addWall(int(a[1]),x,y,z,int(a[0]));
+						elif int(a[0])==-1:
+							EnemyMovementNodes.append([]);
+							for i in range(1,len(a)):
+								a.append(int(a[i]));
 						else:
 							addFloor(int(a[1]),x,y,z);
 
