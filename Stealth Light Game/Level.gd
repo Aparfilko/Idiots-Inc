@@ -126,22 +126,21 @@ func shiftFloors():
 			w.get_child(0).set_polygon(w.get_polygon());
 
 func _process(dt):
-	impulse = Vector2(0,0)
-	#x axis
-	if Input.is_action_pressed("ui_right"):
-		impulse.x -=1
-	if Input.is_action_pressed("ui_left"):
-		impulse.x += 1
-	#y axis
-	if Input.is_action_pressed("ui_up"):
-		impulse.y += 1
-	if Input.is_action_pressed("ui_down"):
-		impulse.y -= 1
-	#find current speed
-	impulse = impulse.normalized()
+#	impulse = Vector2(0,0)
+#	#x axis
+#	if Input.is_action_pressed("ui_right"):
+#		impulse.x -=1
+#	if Input.is_action_pressed("ui_left"):
+#		impulse.x += 1
+#	#y axis
+#	if Input.is_action_pressed("ui_up"):
+#		impulse.y += 1
+#	if Input.is_action_pressed("ui_down"):
+#		impulse.y -= 1
+#	#find current speed
+#	impulse = impulse.normalized()
 	#it might be better to have this dependent on player position
-	self.position[0] = dt * shiftSpeed * impulse.x
-	self.position[1] = dt * shiftSpeed * impulse.y
+	self.position = -$Player.position
 	shiftFloors();
 
 	lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);

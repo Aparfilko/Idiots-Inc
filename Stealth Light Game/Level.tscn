@@ -12,7 +12,3 @@ position = Vector2( 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 z_index = 2
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-smoothing_enabled = true
