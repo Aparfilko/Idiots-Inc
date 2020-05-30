@@ -16,7 +16,7 @@ const vision_dist_sus = 40*6 #fine tune later
 const vision_dist_not_relaxed = 40*5 #fine tune later
 var vision_dist = vision_dist_relaxed
 
-func _process(_delta):
+func _physics_process(_delta):
 	for i in range(-angle,angle):
 		vision_cone.cast_to(2*vision_dist*tan(i),vision_dist)
 #		if vision_cone hits player and _state == State.RELAXED:
