@@ -125,7 +125,7 @@ func shiftFloors():
 			w.set_polygon(a);
 			w.get_child(0).set_polygon(w.get_polygon());
 
-func _process(dt):
+func _physics_process(dt):
 #	impulse = Vector2(0,0)
 #	#x axis
 #	if Input.is_action_pressed("ui_right"):

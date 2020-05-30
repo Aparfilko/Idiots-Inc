@@ -20,7 +20,7 @@ func _ready():
 	pass
 
 
-func _process(delta):
+func _physics_process(delta):
 	#in light? take damage and slow down
 	if light:
 		health = lerp(health, 0, HEALSPEED)
