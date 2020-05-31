@@ -16,11 +16,9 @@ var initPlayer;
 
 var EnemyMovementNodes;
 
+var tween;
 var lightTemp;
-var lightTempT1=0;
-var lightTempT2=0;
-var lightTempV1=0;
-var lightTempV2=0;
+var lightTempInd=0;
 
 func _ready():
 	TEXTURES=[
@@ -40,6 +38,8 @@ func _ready():
 	genLvl("Real_Level.txt");
 
 	print(EnemyMovementNodes);
+	tween=Tween.new();
+	self.add_child(tween);
 	addLight(-7,0,-8);
 
 func addLight(pX,pY,pZ):
@@ -51,6 +51,14 @@ func addLight(pX,pY,pZ):
 	a.scale=Vector2(1,1)/sclFlat;
 	floors[pY].add_child(a);
 	lightTemp=a;
+	lightTemp.position=Vector2(EnemyMovementNodes[0][0],EnemyMovementNodes[0][1])*shiftFlat;
+	lightTempPosCallback();
+	
+func lightTempPosCallback():
+	lightTempInd=(lightTempInd+1)%len(EnemyMovementNodes);
+	tween.interpolate_property(lightTemp,"position",lightTemp.position,Vector2(EnemyMovementNodes[lightTempInd][0],EnemyMovementNodes[lightTempInd][1])*shiftFlat,10,Tween.TRANS_SINE);
+	tween.interpolate_callback(self,10,"lightTempPosCallback");
+	tween.start();
 
 func addFloor(type,pX,pY,pZ):
 	var a=Sprite.new();
@@ -170,7 +178,7 @@ func _physics_process(dt):
 	#it might be better to have this dependent on player position
 	self.position = -$Player.position + get_viewport().size/2
 	shiftFloors();
-
+		
 	#lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
 	#lightTempV2=clamp(lightTempV2+(randf()-.5)*.01,-5,5);
 	#lightTempT1+=lightTempV1*dt;
