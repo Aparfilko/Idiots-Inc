@@ -59,6 +59,7 @@ func addFloor(type,pX,pY,pZ):
 	var g=Sprite.new();
 	g.set_texture(TEXTURES[type]);
 	g.set_material(CANBELIT);
+	g.light_mask=1<<pY;
 	a.add_child(g);
 	floors[pY].add_child(a);
 
@@ -90,6 +91,7 @@ func addWall(type,pX,pY,pZ,o):
 	g.set_material(CANBELIT);
 	g.set_polygon(a.get_polygon());
 	g.set_uv(a.get_uv());
+	g.light_mask=1<<pY;
 	p.add_child(g);
 	
 	var c=CollisionShape2D.new();
