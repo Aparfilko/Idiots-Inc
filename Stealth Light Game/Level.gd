@@ -22,12 +22,12 @@ var lightTempInd=0;
 
 func _ready():
 	TEXTURES=[
-		preload("res://tex/floor0.tres"),
+		preload("res://img/light2.png"),
 		preload("res://tex/floor1.tres"),
 		preload("res://tex/floor2.tres"),
 	];
 	GHOSTTEX=[
-		preload("res://tex/floor0Ghost.tres"),
+		preload("res://img/dark2.png"),
 		preload("res://tex/floor1Ghost.tres"),
 		preload("res://tex/floor2Ghost.tres"),
 	];
@@ -35,12 +35,12 @@ func _ready():
 	CANBELIT=preload("res://tex/canBeLit.tres");
 	self.position=get_viewport().size/2;
 	initPlayer = self.position
-	genLvl("Real_Level.txt");
+	genLvl("Real_Level2.txt");
 
 	print(EnemyMovementNodes);
 	tween=Tween.new();
 	self.add_child(tween);
-	addLight(-7,0,-8);
+	addLight(71,0,-29);
 
 func addLight(pX,pY,pZ):
 	var a=Light2D.new();
@@ -164,7 +164,7 @@ func shiftFloors():
 func _physics_process(dt):
 	self.position = -$Player.position + get_viewport().size/2
 	shiftFloors();
-		
+	
 	#lightTempV1=clamp(lightTempV1+(randf()-.5)*.01,-5,5);
 	#lightTempV2=clamp(lightTempV2+(randf()-.5)*.01,-5,5);
 	#lightTempT1+=lightTempV1*dt;
