@@ -162,20 +162,6 @@ func shiftFloors():
 			w.get_child(1).set_polygon(a);
 
 func _physics_process(dt):
-#	impulse = Vector2(0,0)
-#	#x axis
-#	if Input.is_action_pressed("ui_right"):
-#		impulse.x -=1
-#	if Input.is_action_pressed("ui_left"):
-#		impulse.x += 1
-#	#y axis
-#	if Input.is_action_pressed("ui_up"):
-#		impulse.y += 1
-#	if Input.is_action_pressed("ui_down"):
-#		impulse.y -= 1
-#	#find current speed
-#	impulse = impulse.normalized()
-	#it might be better to have this dependent on player position
 	self.position = -$Player.position + get_viewport().size/2
 	shiftFloors();
 		
