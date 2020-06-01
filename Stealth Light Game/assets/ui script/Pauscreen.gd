@@ -17,7 +17,8 @@ func _ready():
 
 
 func _on_Button_pressed():
-	pass # Replace with function body.
+	get_tree().paused = false
+	visible = false
 
 
 func _on_Button2_pressed():
@@ -25,4 +26,6 @@ func _on_Button2_pressed():
 
 
 func _on_Button4_pressed():
+	get_tree().paused = false
+	visible = false
 	get_tree().quit()
