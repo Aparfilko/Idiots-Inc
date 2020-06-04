@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/character movement.wav-112a31bd462ab3a7b9ae5679e93bfe15.sample"
+path="res://.import/character movement.wav-dfc21b8891d1dad7772cae5badace0f2.sample"
 
 [deps]
 
-source_file="res://assets/character movement.wav"
-dest_files=[ "res://.import/character movement.wav-112a31bd462ab3a7b9ae5679e93bfe15.sample" ]
+source_file="res://Assets/character movement.wav"
+dest_files=[ "res://.import/character movement.wav-dfc21b8891d1dad7772cae5badace0f2.sample" ]
 
 [params]
 

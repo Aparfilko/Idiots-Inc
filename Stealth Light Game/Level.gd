@@ -10,6 +10,7 @@ var GHOSTTEX;
 var LIGHTTEX;
 var CANBELIT;
 var floors;
+onready var floorCood = [];
 var walls;
 var impulse;
 var initPlayer;
@@ -35,7 +36,7 @@ func _ready():
 	CANBELIT=preload("res://tex/canBeLit.tres");
 	self.position=get_viewport().size/2;
 	initPlayer = self.position
-	genLvl("Real_Level2.txt");
+	genLvl("Real_Level.txt");
 
 	print(EnemyMovementNodes);
 	tween=Tween.new();
@@ -70,6 +71,7 @@ func addFloor(type,pX,pY,pZ):
 	g.light_mask=1<<pY;
 	a.add_child(g);
 	floors[pY].add_child(a);
+	floorCood.append(Vector3(pX,pY,pZ));
 
 func addWall(type,pX,pY,pZ,o):
 	var v0=Vector2(-1 if o<5 else 1,-1 if o<3 or o>6 else 1)*shiftFlat*.5;
@@ -171,10 +173,9 @@ func _physics_process(_dt):
 	#lightTempT2+=lightTempV2*dt;
 	#lightTemp.position=lightTemp.scale*shiftFlat*Vector2(sin(lightTempT1),sin(lightTempT2));
 	
-func findFloorAbove(playerLevel):
-	#
-	if playerLevel + 1 <= floors.size():
-		for f in floors[playerLevel+1].get_children():
-			if f.position.x>0 and f.position.x<shiftFlat*sclFlat and f.position.y>0 and f.position.y<shiftFlat*sclFlat:
-				return f;
-	return null;
+func findFloor(playerLevel):
+	for f in floorCood:
+		if f.y == playerLevel:
+			if int($Player.position.x/40) == f.x and int($Player.position.y/40) == f.z:
+				return true
+	return false;
