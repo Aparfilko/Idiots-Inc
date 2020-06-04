@@ -161,7 +161,7 @@ func shiftFloors():
 			w.get_child(0).set_polygon(a);
 			w.get_child(1).set_polygon(a);
 
-func _physics_process(dt):
+func _physics_process(_dt):
 	self.position = -$Player.position + get_viewport().size/2
 	shiftFloors();
 		
@@ -170,3 +170,11 @@ func _physics_process(dt):
 	#lightTempT1+=lightTempV1*dt;
 	#lightTempT2+=lightTempV2*dt;
 	#lightTemp.position=lightTemp.scale*shiftFlat*Vector2(sin(lightTempT1),sin(lightTempT2));
+	
+func findFloorAbove(playerLevel):
+	#
+	if playerLevel + 1 <= floors.size():
+		for f in floors[playerLevel+1].get_children():
+			if f.position.x>0 and f.position.x<shiftFlat*sclFlat and f.position.y>0 and f.position.y<shiftFlat*sclFlat:
+				return f;
+	return null;
