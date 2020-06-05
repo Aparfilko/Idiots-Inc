@@ -36,7 +36,7 @@ func _ready():
 	CANBELIT=preload("res://tex/canBeLit.tres");
 	self.position=get_viewport().size/2;
 	initPlayer = self.position
-	genLvl("Real_Level.txt");
+	genLvl("Real_Level2.txt");
 
 	print(EnemyMovementNodes);
 	tween=Tween.new();
