@@ -176,6 +176,6 @@ func _physics_process(_dt):
 func findFloor(playerLevel):
 	for f in floorCood:
 		if f.y == playerLevel:
-			if int($Player.position.x/40) == f.x and (int($Player.position.y/40) <= f.z+1 and int($Player.position.y/40) >= f.z-1):
+			if int($Player.position.x/shiftFlat/sclFlat) == f.x and (int($Player.position.y/shiftFlat/sclFlat) <= f.z+1 and int($Player.position.y/40) >= f.z-1):
 				return true
 	return false;
