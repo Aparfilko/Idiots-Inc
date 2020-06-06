@@ -7,54 +7,37 @@ enum State {PATROL,FLASH}
 var _state = State.PATROL
 var direction = Vector2()
 
-const time_run = 2000
+const time_run = 3000
 const time_flash = 100
-const time_pause = 500
+const time_pause = 1000
 var time = 0
 
-const angle = deg2rad(20)
+const angle = deg2rad(30)
 onready var vision_cone = get_node("VisionCone")
-const vision_dist_patrol = 1000 #fine tune later
-const vision_dist_final = 40*6 #fine tune later
-var vision_dist = vision_dist_patrol
+const vision_dist = 200 #fine tune
+const ouch = 5000 #doesn't matter as long as it's functionally infinite
 
 func _physics_process(_delta):
-	for i in range(-angle,angle):
-		vision_cone.cast_to(2*vision_dist*tan(i),vision_dist)
+	if _state == State.PATROL:
+		for i in range(-angle,angle):
+			vision_cone.cast_to(vision_dist*tan(i),vision_dist)
+#			raycast collision check
+		
 		for i in get_slide_count():
 			var collision = get_slide_collision(i)
 			if collision.collider.name.begins_with ("Player"): #or vision_cone hits ("Player"):
 				_state = State.FLASH
-#			
-#			short pause
-#			alert music
-#			if collision occurs hurt the player
-		
-	if _state == State.PATROL:
-		pass
-#		walk from node to node, pausing at each node and looking at the current node
-		vision_dist = vision_dist_patrol
+			
+#		walk from node to node, pausing at each node and looking at the next node
 	elif _state == State.FLASH:
-		pass
-#		for time = time_run 
-#			don't change speed but follow the player for a bit
-#			vision_dist = vision_dist_sus
-#			if player is still in sus range after a short pause
-#				time = 0
-#			else
-#				time += delta
+		for i in time < time_run:
+			time += _delta
+			vision_cone.cast_to(0,0)
+#			enemy sprite goes between lighter and normal colors for time_run
+#			sound cue of increasing pitch
 		time = 0
-		_state = State.RELAXED
-#	elif _state == State.ALERT:
-#		pass
-#		for time < time_alert:
-#			aggressive action/attack the player
-#			speed up and follow the player
-#			if player is still in alert range
-#				time = 0
-#			else:
-#				time += delta
-		time = 0
-		_state = State.SUS
-	else:
-		_state = State.RELAXED
+#		raycast in all directions with a light for time_flash
+#		if the raycast hit the player:
+#			decrease player HP
+#		wait for time_pause
+		_state = State.PATROL
