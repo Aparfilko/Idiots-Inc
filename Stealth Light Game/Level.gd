@@ -10,6 +10,7 @@ var GHOSTTEX;
 var LIGHTTEX;
 var CANBELIT;
 var floors;
+onready var floorCood = [];
 var walls;
 var impulse;
 var initPlayer;
@@ -70,6 +71,7 @@ func addFloor(type,pX,pY,pZ):
 	g.light_mask=1<<pY;
 	a.add_child(g);
 	floors[pY].add_child(a);
+	floorCood.append(Vector3(pX,pY,pZ));
 
 func addWall(type,pX,pY,pZ,o):
 	var v0=Vector2(-1 if o<5 else 1,-1 if o<3 or o>6 else 1)*shiftFlat*.5;
@@ -161,7 +163,7 @@ func shiftFloors():
 			w.get_child(0).set_polygon(a);
 			w.get_child(1).set_polygon(a);
 
-func _physics_process(dt):
+func _physics_process(_dt):
 	self.position = -$Player.position + get_viewport().size/2
 	shiftFloors();
 	
@@ -170,3 +172,10 @@ func _physics_process(dt):
 	#lightTempT1+=lightTempV1*dt;
 	#lightTempT2+=lightTempV2*dt;
 	#lightTemp.position=lightTemp.scale*shiftFlat*Vector2(sin(lightTempT1),sin(lightTempT2));
+	
+func findFloor(playerLevel):
+	for f in floorCood:
+		if f.y == playerLevel:
+			if int($Player.position.x/shiftFlat/sclFlat) == f.x and (int($Player.position.y/shiftFlat/sclFlat) <= f.z+1 and int($Player.position.y/40) >= f.z-1):
+				return true
+	return false;
