@@ -82,4 +82,5 @@ margin_bottom = 163.0
 hint_tooltip = "Quit Game"
 text = "Quit"
 [connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_on_Button3_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button2" to="." method="_on_Button2_pressed"]

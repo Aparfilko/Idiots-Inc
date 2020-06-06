@@ -65,7 +65,7 @@ func get_impulse():
 		impulse.y -= 1
 	if Input.is_action_pressed("ui_down"):
 		impulse.y += 1
-	#some bullshit right here
+	
 
 	impulse = impulse.normalized()
 	#if impulse directed, go that direction and speed up
@@ -95,6 +95,7 @@ func change_z():
 			self.set_scale(self.get_scale()/1.1)
 	else:
 		pass
+
 #reduce the z level if on a higher level
 func fall(z):
 	if z/2-1 > 0 and not level.findFloor(z/2-1):
@@ -103,5 +104,6 @@ func fall(z):
 
 func check_light():
 	pass
+	
 
 

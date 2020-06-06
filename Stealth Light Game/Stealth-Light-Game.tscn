@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Level.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Pauscreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui script/Pause.gd" type="Script" id=2]
+[ext_resource path="res://assets/theme/UITheme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/theme/Montserrat-SemiBoldItalic.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.227451, 0.227451, 0.227451, 0.47451 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+use_filter = true
+font_data = ExtResource( 4 )
 
 [node name="Game" type="Node2D"]
 
@@ -10,11 +20,68 @@ scale = Vector2( 3, 2 )
 centered = false
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -30.0
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 
-[node name="Pauscreen" parent="CanvasLayer" instance=ExtResource( 2 )]
+[node name="Pause" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Pause"]
+margin_right = 1200.0
+margin_bottom = 800.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/Panel"]
+margin_left = 460.0
+margin_top = 285.0
+margin_right = 791.0
+margin_bottom = 585.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/Panel/VBoxContainer"]
+margin_right = 330.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Paused"
+align = 1
+valign = 1
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/Pause/Panel/VBoxContainer"]
+margin_top = 66.0
+margin_right = 330.0
+margin_bottom = 106.0
+text = "Resume"
+
+[node name="ToStart" type="Button" parent="CanvasLayer/Pause/Panel/VBoxContainer"]
+margin_top = 110.0
+margin_right = 330.0
+margin_bottom = 150.0
+text = "Back To Start "
+
+[node name="MusicToggle" type="Button" parent="CanvasLayer/Pause/Panel/VBoxContainer"]
+margin_top = 154.0
+margin_right = 330.0
+margin_bottom = 194.0
+text = "Music Toggle[]"
+[connection signal="pressed" from="CanvasLayer/Pause/Panel/VBoxContainer/ResumeButton" to="CanvasLayer/Pause" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/Panel/VBoxContainer/ToStart" to="CanvasLayer/Pause" method="_on_ToStart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/Panel/VBoxContainer/MusicToggle" to="CanvasLayer/Pause" method="_on_MusicToggle_pressed"]

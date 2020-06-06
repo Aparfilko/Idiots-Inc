@@ -43,6 +43,7 @@ func _ready():
 	self.add_child(tween);
 	addLight(71,0,-29);
 
+
 func addLight(pX,pY,pZ):
 	var a=Light2D.new();
 	a.set_texture(LIGHTTEX);
@@ -179,3 +180,5 @@ func findFloor(playerLevel):
 			if int($Player.position.x/shiftFlat/sclFlat) == f.x and (int($Player.position.y/shiftFlat/sclFlat) <= f.z+1 and int($Player.position.y/40) >= f.z-1):
 				return true
 	return false;
+
+
