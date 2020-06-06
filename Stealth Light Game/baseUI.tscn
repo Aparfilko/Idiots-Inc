@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/theme/UITheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/intro.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/ui script/baseUI.gd" type="Script" id=3]
 [ext_resource path="res://assets/StartScreenBkgnd.png" type="Texture" id=4]
 [ext_resource path="res://assets/theme/Montserrat-SemiBoldItalic.ttf" type="DynamicFontData" id=5]
@@ -81,6 +82,10 @@ margin_right = 300.0
 margin_bottom = 163.0
 hint_tooltip = "Quit Game"
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
 [connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_on_Button3_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button2" to="." method="_on_Button2_pressed"]
