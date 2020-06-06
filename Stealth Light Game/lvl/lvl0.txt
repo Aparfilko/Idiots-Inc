@@ -1,0 +1,29 @@
+# every line in this file is a set of floors or walls
+# only totally empty lines, and lines that begin with a '#' character are ignored
+
+# standard form is 8 integers long:
+# [wallOrientation(0 for floor),textureIndex,lowX,lowY,lowZ,highX,highY,highZ]
+# x moves from right to left on the screen, y changes the layer, z moves from top to bottom
+# lowX,Y,Z and highX,Y,Z are used to define a cube, where a sprite is
+# assigned to every 'spot' that lies within the cube's boundaries
+
+# this line makes a group of floors with texture 0 from (-5,0,-5) to (5,0,5)
+0 0 -5 0 -5 5 0 5
+
+# these lines make a ring of floors at y=1
+0 1 -5 1 -5 5 1 -5
+0 1 -5 1 5 5 1 5
+0 2 -5 1 -4 -5 1 4
+0 2 5 1 -4 5 1 4
+
+# lines with only 5 elements are treated as a single spot
+# this line places a single floor with texture 1 at (0,1,0)
+0 2 0 1 0
+
+# the wallOrientation element can be any integer from 1 to 8 (or 0 for floors)
+# the wall normal will face outwards with an angle of (wallOrientation)*(pi/4)
+# this places a group of walls facing towards the left from (-5,0,-5) to (-5,0,5)
+4 1 -5 0 -5 -5 0 5
+
+# this places a wall facing up-right at (3,0,-3) with texture 2
+1 2 3 0 -3
