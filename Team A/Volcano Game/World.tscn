@@ -18,3 +18,10 @@ depth = 80.0
 
 [node name="Test Person" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, 0 )
+
+[node name="Camera Hook" type="Spatial" parent="Test Person"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+
+[node name="Camera" type="Camera" parent="Test Person/Camera Hook"]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 30, 30 )
+current = true
