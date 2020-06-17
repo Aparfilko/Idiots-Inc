@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Test Person.tscn" type="PackedScene" id=1]
 [ext_resource path="res://volcano.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
+[ext_resource path="res://Main.gd" type="Script" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 40, 1, 40 )
 
 [node name="World" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="Floor" type="StaticBody" parent="."]
 
@@ -19,12 +22,16 @@ depth = 80.0
 
 [node name="Test Person" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -25.4818, 1, 0 )
+script = ExtResource( 3 )
 
-[node name="Camera Hook" type="Spatial" parent="Test Person"]
+[node name="xHook" type="Spatial" parent="Test Person"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
 
-[node name="Camera" type="Camera" parent="Test Person/Camera Hook"]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 30, 30 )
+[node name="yHook" type="Spatial" parent="Test Person/xHook"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="Test Person/xHook/yHook"]
+transform = Transform( 3.33333, 0, 0, 0, 2.35702, 2.35702, 0, -2.35702, 2.35702, 0, 30, 30 )
 current = true
 
 [node name="volcano" type="MeshInstance" parent="."]
