@@ -24,14 +24,11 @@ depth = 80.0
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -25.4818, 1, 0 )
 script = ExtResource( 3 )
 
-[node name="xHook" type="Spatial" parent="Test Person"]
+[node name="yHook" type="Spatial" parent="Test Person"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
 
-[node name="yHook" type="Spatial" parent="Test Person/xHook"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-
-[node name="Camera" type="Camera" parent="Test Person/xHook/yHook"]
-transform = Transform( 3.33333, 0, 0, 0, 2.35702, 2.35702, 0, -2.35702, 2.35702, 0, 30, 30 )
+[node name="Camera" type="Camera" parent="Test Person/yHook"]
+transform = Transform( 3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 0, 30 )
 current = true
 
 [node name="volcano" type="MeshInstance" parent="."]
