@@ -21,7 +21,7 @@ width = 80.0
 depth = 80.0
 
 [node name="Test Person" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -25.4818, 1, 0 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -26, 1, 0 )
 script = ExtResource( 3 )
 
 [node name="yHook" type="Spatial" parent="Test Person"]
