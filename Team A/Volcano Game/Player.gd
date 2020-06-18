@@ -71,3 +71,5 @@ func jumpy():
 	if Input.is_action_just_pressed("ui_select"):
 		if (is_on_wall()):
 			velocity.y = jump
+func pick_up():
+	pass
