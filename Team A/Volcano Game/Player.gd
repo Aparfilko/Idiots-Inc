@@ -3,7 +3,7 @@ onready var sensitivity = 0.1
 onready var camera_angle = Vector2()
 
 const jump = 50
-const term = -70
+const term = -55
 onready var jumpLow = 0.2
 onready var fall = 0.4
 onready var gravity = 6
@@ -26,7 +26,7 @@ func _input(event):
 		self.rotate_y(deg2rad(camera_change.x))
 		camera_angle.x = (camera_angle.x + camera_change.x)
 		if camera_angle.x > 360:
-			camera_angle += -360
+			camera_angle.x += -360
 		if camera_change.y + camera_angle.y < 90 and camera_change.y + camera_angle.y > -90:
 			$yHook.rotate_x(deg2rad(camera_change.y))
 			camera_angle.y += camera_change.y
