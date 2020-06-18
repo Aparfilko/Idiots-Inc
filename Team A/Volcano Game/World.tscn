@@ -35,3 +35,8 @@ current = true
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.18997, 1.47129, 2.72816 )
 mesh = ExtResource( 2 )
 material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.18997, 1.47129, 2.72816 )
