@@ -25,10 +25,10 @@ transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -25.4818, 1, 0 )
 script = ExtResource( 3 )
 
 [node name="yHook" type="Spatial" parent="Test Person"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0 )
 
 [node name="Camera" type="Camera" parent="Test Person/yHook"]
-transform = Transform( 3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 0, 30 )
+transform = Transform( 3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 0, 50 )
 current = true
 
 [node name="volcano" type="MeshInstance" parent="."]
