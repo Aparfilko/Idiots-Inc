@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/cake shape.tres" type="ArrayMesh" id=2]
 [ext_resource path="res://assets/Material_003.material" type="Material" id=3]
 
-[sub_resource type="ArrayMesh" id=2]
+[sub_resource type="ArrayMesh" id=1]
 resource_name = "Cylinder001"
 surfaces/0 = {
 "aabb": AABB( -1, -1, -12.7792, 25.5449, 2.00001, 25.5043 ),
@@ -19,7 +19,7 @@ surfaces/0 = {
 "vertex_count": 2976
 }
 
-[sub_resource type="ArrayMesh" id=3]
+[sub_resource type="ArrayMesh" id=2]
 resource_name = "Sphere"
 surfaces/0 = {
 "aabb": AABB( -7.41559, -1.00001, -1, 14.8332, 2.00001, 14.7929 ),
@@ -34,7 +34,7 @@ surfaces/0 = {
 "vertex_count": 11340
 }
 
-[sub_resource type="CylinderShape" id=4]
+[sub_resource type="CylinderShape" id=3]
 height = 0.95244
 
 [node name="cake" type="RigidBody"]
@@ -52,14 +52,14 @@ material/0 = null
 
 [node name="Cylinder001" type="MeshInstance" parent="."]
 transform = Transform( 0.0417631, 0, 0, 0, 0.191433, 0, 0, 0, 0.0417631, -0.492219, 0.980557, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Sphere" type="MeshInstance" parent="."]
 transform = Transform( 0.156144, 0, 0, 0, 0.156144, 0, 0, 0, 0.156144, 0, 0.781159, -1.00508 )
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50356, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )

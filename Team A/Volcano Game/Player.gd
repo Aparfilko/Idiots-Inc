@@ -71,5 +71,13 @@ func jumpy():
 	if Input.is_action_just_pressed("ui_select"):
 		if (is_on_wall()):
 			velocity.y = jump
-func pick_up():
-	pass
+
+
+
+func _no_item(_body):
+	$yHook/crosshair.play("default")
+
+
+func pick_up(body):
+	if body.is_in_group("pickup"):
+		$yHook/crosshair.play("select")
