@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Test Person.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/volcano.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/volcano3.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://assets/cake.tscn" type="PackedScene" id=5]
@@ -74,15 +74,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10 )
 [node name="CollisionShape" type="CollisionShape" parent="Test Person/yHook/select"]
 shape = SubResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.18997, 1.47129, 2.72816 )
-
-[node name="volcano" type="MeshInstance" parent="StaticBody/CollisionShape"]
-mesh = ExtResource( 2 )
-material/0 = null
-
 [node name="cake" parent="." groups=[
 "pickup",
 ] instance=ExtResource( 5 )]
@@ -93,5 +84,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="cake/cakeArea"]
 shape = SubResource( 6 )
+
+[node name="volcano3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 10.5, 0 )
 [connection signal="area_exited" from="Test Person/yHook/select" to="Test Person" method="_no_item"]
 [connection signal="body_entered" from="Test Person/yHook/select" to="Test Person" method="pick_up"]
