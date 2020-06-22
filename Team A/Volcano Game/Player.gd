@@ -2,11 +2,11 @@ extends KinematicBody
 onready var sensitivity = 0.1
 onready var camera_angle = Vector2()
 
-const jump = 50
-const term = -55
+const jump = 40
+const term = -40
 onready var jumpLow = 0.2
 onready var fall = 0.4
-onready var gravity = 6
+onready var gravity = 4
 
 onready var direction = Vector3()
 onready var velocity = Vector3()
@@ -68,8 +68,7 @@ func jumpy():
 			velocity.y += -gravity * jumpLow
 		else:
 			velocity.y += -gravity * fall
-	if Input.is_action_just_pressed("ui_select"):
-		if (is_on_wall()):
+	if is_on_wall() and Input.is_action_just_pressed("ui_select"):
 			velocity.y = jump
 
 
