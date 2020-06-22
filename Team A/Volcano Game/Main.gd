@@ -14,3 +14,9 @@ func _input(event):
 		get_tree().quit()
 	if Input.is_action_just_pressed("ui_reset"):		
 		get_tree().change_scene("res://Game.tscn")
+
+
+func _on_DeathZone_body_entered(body):
+	if body.name == "Test Person":
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene("res://ENDSCREN.tscn")
