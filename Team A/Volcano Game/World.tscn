@@ -85,6 +85,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="cake/cakeArea"]
 shape = SubResource( 6 )
 
+[node name="cake2" parent="." groups=[
+"pickup",
+] instance=ExtResource( 5 )]
+transform = Transform( 0.987995, 0.154486, 0, -0.154486, 0.987995, 0, 0, 0, 1, -25.29, 3.90685, -4.95847 )
+
+[node name="cakeArea" type="Area" parent="cake2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="cake2/cakeArea"]
+shape = SubResource( 6 )
+
 [node name="volcano3" parent="." instance=ExtResource( 2 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 10.5, 0 )
 [connection signal="area_exited" from="Test Person/yHook/select" to="Test Person" method="_no_item"]

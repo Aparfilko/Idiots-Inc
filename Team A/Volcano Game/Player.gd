@@ -14,6 +14,11 @@ onready var speed = 0
 const MAXSPEED = 30
 const ACCEL = 0.1
 
+onready var holding = false
+onready var pick = false
+onready var prevNode = self
+var itemNode
+
 onready var position = Vector3(-25,1,0)
 func _ready():
 	pass
@@ -30,14 +35,30 @@ func _input(event):
 		if camera_change.y + camera_angle.y < 90 and camera_change.y + camera_angle.y > -90:
 			$yHook.rotate_x(deg2rad(camera_change.y))
 			camera_angle.y += camera_change.y
-
+		
+	
 #general movement
 func _physics_process(_dt):
 	#get the movement wanted
 	get_impulse()
 	jumpy()
 	move_and_slide(velocity)
-	
+	if Input.is_action_just_pressed("pickup"):
+		#drop item
+		if holding:
+			$joint.queue_free()
+			holding = false
+		#pick up item
+		elif pick:
+			add_joint(self)
+			$joint.set_node_a(self.get_path())
+			$joint.set_node_b(itemNode.get_path())
+			itemNode = prevNode
+			holding = true
+		#nothing happens
+		else:
+			pass
+		
 #
 func get_impulse():
 	var impulse = Vector2()
@@ -75,8 +96,16 @@ func jumpy():
 
 func _no_item(_body):
 	$yHook/crosshair.play("default")
+	pick = false
 
 
 func pick_up(body):
-	if body.is_in_group("pickup"):
+	if body.is_in_group("pickup") and not holding:
 		$yHook/crosshair.play("select")
+		pick = true
+		itemNode = body
+		
+func add_joint(body):
+	var joint = Generic6DOFJoint.new()
+	joint.set_name("joint")
+	body.add_child(joint)
