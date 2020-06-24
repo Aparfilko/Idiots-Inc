@@ -2,8 +2,8 @@ extends KinematicBody
 onready var sensitivity = 0.1
 onready var camera_angle = Vector2()
 
-const jump = 40
-const term = -40
+const jump = 60
+const term = -60
 onready var jumpLow = 0.2
 onready var fall = 0.4
 onready var gravity = 4
@@ -43,7 +43,7 @@ func _physics_process(_dt):
 	#get the movement wanted
 	get_impulse()
 	jumpy()
-	move_and_slide(velocity, up_direction)
+	move_and_slide(velocity, up_direction, true)
 	if Input.is_action_just_pressed("pickup"):
 		#drop item
 		if holding:
@@ -83,7 +83,7 @@ func get_impulse():
 		
 func jumpy():
 	if velocity.y <= 0: #player is falling
-		if velocity.y > term and not is_on_wall():
+		if velocity.y > term and not is_on_floor():
 			velocity.y += -gravity * fall
 	elif velocity.y > 0: #jumping
 		if Input.is_action_pressed("ui_select"):
