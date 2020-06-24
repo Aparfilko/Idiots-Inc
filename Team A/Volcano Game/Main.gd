@@ -17,8 +17,21 @@ func _on_DeathZone_body_entered(body):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().change_scene("res://ENDSCREN.tscn")
 	elif body.name == "cake":
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene("res://ENDSCREN.tscn")
+	#change this if we have other objects that can fall in the volcano
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene("res://ENDSCREN.tscn")
+
+
+
+func _on_canotime_body_entered(body):
+	if body.name == "Test Person":
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene("res://ENDSCREN.tscn")
+	elif body.name == "cake":
 		emit_signal("cakeIn")	
 	#change this if we have other objects that can fall in the volcano
 	else:
 		emit_signal("sacrificesIn")
-
