@@ -43,7 +43,7 @@ func _physics_process(_dt):
 	#get the movement wanted
 	get_impulse()
 	jumpy()
-	move_and_slide(velocity, up_direction, true)
+	move_and_slide(velocity, up_direction)
 	if Input.is_action_just_pressed("pickup"):
 		#drop item
 		if holding:
