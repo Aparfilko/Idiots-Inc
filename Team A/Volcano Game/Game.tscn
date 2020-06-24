@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://World.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/PAUSESCREN.gd" type="Script" id=2]
+[ext_resource path="res://assets/Montserrat-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 55, 1, 55 )
@@ -8,6 +10,34 @@ extents = Vector3( 55, 1, 55 )
 [sub_resource type="CylinderShape" id=2]
 radius = 10.0
 height = 10.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.290196, 0.290196, 0.290196, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.2, 0.2, 0.2, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.290196, 0.290196, 0.290196, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.2, 0.2, 0.2, 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 20
+use_filter = true
+font_data = ExtResource( 3 )
 
 [node name="Game" type="Spatial"]
 
@@ -23,4 +53,76 @@ shape = SubResource( 1 )
 [node name="InCano" type="CollisionShape" parent="World/DeathZone"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0 )
 shape = SubResource( 2 )
+
+[node name="pauseholder" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 2
+
+[node name="PAUSESCREN" type="Control" parent="pauseholder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="darkoverlay" type="ColorRect" parent="pauseholder/PAUSESCREN"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.313726, 0.313726, 0.313726, 0.278431 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pauseholder/PAUSESCREN/darkoverlay"]
+margin_left = 545.0
+margin_top = 335.0
+margin_right = 770.0
+margin_bottom = 485.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="resume" type="Button" parent="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer"]
+margin_top = 32.0
+margin_right = 225.0
+margin_bottom = 58.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.580392, 0.580392, 0.580392, 1 )
+custom_colors/font_color_pressed = Color( 0.960784, 0.960784, 0.960784, 1 )
+text = "Resume"
+
+[node name="restart" type="Button" parent="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer"]
+margin_top = 62.0
+margin_right = 225.0
+margin_bottom = 88.0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.580392, 0.580392, 0.580392, 1 )
+custom_colors/font_color_pressed = Color( 0.960784, 0.960784, 0.960784, 1 )
+text = "Restart Level"
+
+[node name="quit" type="Button" parent="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer"]
+margin_top = 92.0
+margin_right = 225.0
+margin_bottom = 118.0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.580392, 0.580392, 0.580392, 1 )
+custom_colors/font_color_pressed = Color( 0.960784, 0.960784, 0.960784, 1 )
+text = "Quit"
 [connection signal="body_entered" from="World/DeathZone" to="World" method="_on_DeathZone_body_entered"]
+[connection signal="pressed" from="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer/resume" to="pauseholder/PAUSESCREN" method="_on_resume_pressed"]
+[connection signal="pressed" from="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer/restart" to="pauseholder/PAUSESCREN" method="_on_restart_pressed"]
+[connection signal="pressed" from="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer/quit" to="pauseholder/PAUSESCREN" method="_on_quit_pressed"]
