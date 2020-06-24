@@ -10,6 +10,7 @@ onready var gravity = 4
 
 onready var direction = Vector3()
 onready var velocity = Vector3()
+onready var up_direction = Vector3(0,1,0)
 onready var speed = 0
 const MAXSPEED = 30
 const ACCEL = 0.1
@@ -42,7 +43,7 @@ func _physics_process(_dt):
 	#get the movement wanted
 	get_impulse()
 	jumpy()
-	move_and_slide(velocity)
+	move_and_slide(velocity, up_direction)
 	if Input.is_action_just_pressed("pickup"):
 		#drop item
 		if holding:
@@ -89,7 +90,7 @@ func jumpy():
 			velocity.y += -gravity * jumpLow
 		else:
 			velocity.y += -gravity * fall
-	if is_on_wall() and Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("ui_select") and is_on_floor() == true:
 			velocity.y = jump
 
 

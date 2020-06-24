@@ -49,6 +49,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
 
 [node name="belowWorld" type="CollisionShape" parent="World/DeathZone"]
 shape = SubResource( 1 )
+disabled = true
 
 [node name="canotime" type="Area" parent="World"]
 

@@ -27,6 +27,8 @@ func _on_DeathZone_body_entered(body):
 
 
 func _on_canotime_body_entered(body):
+	if body.name != "volcano3":
+		body.hide()
 	if body.name == "Test Person":
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().change_scene("res://ENDSCREN.tscn")
