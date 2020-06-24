@@ -71,7 +71,7 @@ __meta__ = {
 [node name="darkoverlay" type="ColorRect" parent="pauseholder/PAUSESCREN"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.313726, 0.313726, 0.313726, 0.278431 )
+color = Color( 0.411765, 0.411765, 0.411765, 0.305882 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
