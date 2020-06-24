@@ -22,3 +22,4 @@ func _on_Retry_pressed():
 
 func _on_Quit2_pressed():
 	get_tree().quit()
+

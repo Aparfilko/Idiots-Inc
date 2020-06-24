@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/Montserrat-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 55, 1, 55 )
+extents = Vector3( 75, 1, 75 )
 
 [sub_resource type="CylinderShape" id=2]
 radius = 10.0
@@ -87,9 +87,9 @@ __meta__ = {
 }
 
 [node name="resume" type="Button" parent="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer"]
-margin_top = 32.0
+margin_top = 17.0
 margin_right = 225.0
-margin_bottom = 58.0
+margin_bottom = 43.0
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
@@ -100,9 +100,9 @@ custom_colors/font_color_pressed = Color( 0.960784, 0.960784, 0.960784, 1 )
 text = "Resume"
 
 [node name="restart" type="Button" parent="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer"]
-margin_top = 62.0
+margin_top = 47.0
 margin_right = 225.0
-margin_bottom = 88.0
+margin_bottom = 73.0
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
@@ -112,10 +112,23 @@ custom_colors/font_color_hover = Color( 0.580392, 0.580392, 0.580392, 1 )
 custom_colors/font_color_pressed = Color( 0.960784, 0.960784, 0.960784, 1 )
 text = "Restart Level"
 
-[node name="quit" type="Button" parent="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer"]
-margin_top = 92.0
+[node name="Back" type="Button" parent="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer"]
+margin_top = 77.0
 margin_right = 225.0
-margin_bottom = 118.0
+margin_bottom = 103.0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.580392, 0.580392, 0.580392, 1 )
+custom_colors/font_color_pressed = Color( 0.960784, 0.960784, 0.960784, 1 )
+text = "Back to Start"
+
+[node name="quit" type="Button" parent="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer"]
+margin_top = 107.0
+margin_right = 225.0
+margin_bottom = 133.0
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
@@ -128,4 +141,5 @@ text = "Quit"
 [connection signal="body_entered" from="World/canotime" to="World" method="_on_canotime_body_entered"]
 [connection signal="pressed" from="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer/resume" to="pauseholder/PAUSESCREN" method="_on_resume_pressed"]
 [connection signal="pressed" from="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer/restart" to="pauseholder/PAUSESCREN" method="_on_restart_pressed"]
+[connection signal="pressed" from="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer/Back" to="pauseholder/PAUSESCREN" method="_on_Back_pressed"]
 [connection signal="pressed" from="pauseholder/PAUSESCREN/darkoverlay/VBoxContainer/quit" to="pauseholder/PAUSESCREN" method="_on_quit_pressed"]

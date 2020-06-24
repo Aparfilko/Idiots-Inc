@@ -32,3 +32,9 @@ func _on_restart_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_Back_pressed():
+	get_tree().paused = false
+	visible = false
+	get_tree().change_scene("res://STARTSCREN.tscn")
