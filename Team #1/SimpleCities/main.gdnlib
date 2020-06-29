@@ -1,0 +1,15 @@
+[general]
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=false
+
+[entry]
+X11.64=""
+Windows.64="res://bin/libgdmain.dll"
+OSX.64=""
+
+[dependencies]
+X11.64=[]
+Windows.64=[]
+OSX.64=[]
