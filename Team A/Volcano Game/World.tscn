@@ -1,0 +1,176 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Test Person.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/volcano3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
+[ext_resource path="res://Main.gd" type="Script" id=4]
+[ext_resource path="res://assets/cake.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/crosshair.png" type="Texture" id=6]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 40, 1, 40 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.219608, 0.423529, 0.0705882, 1 )
+metallic_specular = 0.1
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 7
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 7
+atlas = ExtResource( 6 )
+region = Rect2( 40, 0, 40, 40 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "select",
+"speed": 2.0
+} ]
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 5, 8.50657, 4 )
+
+[sub_resource type="CylinderShape" id=7]
+radius = 1.19192
+height = 1.24058
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 42.0949, 69.1822, 3.09575 )
+
+[sub_resource type="OpenSimplexNoise" id=11]
+seed = 10
+persistence = 0.539
+
+[sub_resource type="NoiseTexture" id=12]
+noise = SubResource( 11 )
+
+[sub_resource type="NoiseTexture" id=10]
+
+[sub_resource type="SpatialMaterial" id=9]
+params_depth_draw_mode = 1
+params_line_width = 0.1
+albedo_color = Color( 0.635294, 0.0392157, 0.0392157, 0.866667 )
+albedo_texture = SubResource( 12 )
+metallic_specular = 0.3
+roughness = 0.41
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 0.82
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = SubResource( 10 )
+ao_enabled = true
+ao_light_affect = 0.17
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[node name="World" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="Floor"]
+width = 80.0
+depth = 80.0
+material = SubResource( 2 )
+
+[node name="Test Person" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -26, 1, 0 )
+script = ExtResource( 3 )
+
+[node name="yHook" type="Spatial" parent="Test Person"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+
+[node name="Camera" type="Camera" parent="Test Person/yHook"]
+transform = Transform( 3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 4, 50 )
+current = true
+
+[node name="crosshair" type="AnimatedSprite3D" parent="Test Person/yHook"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 48 )
+pixel_size = 0.001
+frames = SubResource( 5 )
+
+[node name="select" type="Area" parent="Test Person/yHook"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Test Person/yHook/select"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.24536, 0 )
+shape = SubResource( 6 )
+
+[node name="cake" parent="." groups=[
+"cake",
+"pickup",
+] instance=ExtResource( 5 )]
+transform = Transform( 0.987995, 0.154486, 0, -0.154486, 0.987995, 0, 0, 0, 1, -25.29, 3.90685, -4.95847 )
+
+[node name="cakeArea" type="Area" parent="cake"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="cake/cakeArea"]
+shape = SubResource( 7 )
+
+[node name="cake2" parent="." groups=[
+"cake",
+"pickup",
+] instance=ExtResource( 5 )]
+transform = Transform( 0.987995, 0.154486, 0, -0.154486, 0.987995, 0, 0, 0, 1, 25.9187, 3.90685, -16.8739 )
+
+[node name="cakeArea" type="Area" parent="cake2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="cake2/cakeArea"]
+shape = SubResource( 7 )
+
+[node name="cake3" parent="." groups=[
+"cake",
+"pickup",
+] instance=ExtResource( 5 )]
+transform = Transform( 0.987995, 0.154486, 0, -0.154486, 0.987995, 0, 0, 0, 1, 25.9187, 3.90685, 29.3061 )
+
+[node name="cakeArea" type="Area" parent="cake3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="cake3/cakeArea"]
+shape = SubResource( 7 )
+
+[node name="volcano3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 10.5, 0 )
+
+[node name="World Walls" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="World Walls"]
+transform = Transform( 1, 0, 0, 0, 0.999962, -0.00872654, 0, 0.00872654, 0.999962, 0, 46.1925, -43.1809 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="World Walls"]
+transform = Transform( 1, 0, 0, 0, 0.999962, 0.00872654, 0, -0.00872654, 0.999962, 0, 46.1925, 43.1706 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="World Walls"]
+transform = Transform( -1.62921e-07, -0.00872654, 0.999962, 0, 0.999962, 0.00872654, -1, 1.42173e-09, -1.62914e-07, 42.8848, 46.1925, -0.345371 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="World Walls"]
+transform = Transform( -1.62921e-07, 0.00872654, 0.999962, 0, 0.999962, -0.00872654, -1, -1.42173e-09, -1.62914e-07, -43.1714, 46.1925, 0.249123 )
+shape = SubResource( 8 )
+
+[node name="lava" type="StaticBody" parent="."]
+
+[node name="CSGCylinder" type="CSGCylinder" parent="lava"]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 8.81688, 0 )
+material = SubResource( 9 )
+[connection signal="area_exited" from="Test Person/yHook/select" to="Test Person" method="_no_item"]
+[connection signal="body_entered" from="Test Person/yHook/select" to="Test Person" method="pick_up"]

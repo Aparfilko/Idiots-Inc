@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StartScreenBkgnd.png-048d0e00de5f710eb0788e00be004c9c.stex"
+path="res://.import/StartScreenBkgnd.png-d455f75221d11da66a6a940eb1933f4d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/StartScreenBkgnd.png"
-dest_files=[ "res://.import/StartScreenBkgnd.png-048d0e00de5f710eb0788e00be004c9c.stex" ]
+source_file="res://Assets/StartScreenBkgnd.png"
+dest_files=[ "res://.import/StartScreenBkgnd.png-d455f75221d11da66a6a940eb1933f4d.stex" ]
 
 [params]
 
