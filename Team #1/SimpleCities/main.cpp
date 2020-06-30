@@ -59,7 +59,10 @@ class GDMain:public Spatial{
 	}
 	
 	void _input(InputEvent* in){
-		if(in->is_action_pressed("w")){std::cout<<"ITSA'W'"<<std::endl;}
+		if(in->is_action_pressed("w")){cam->set_translation(cam->get_translation()+Vector3(0,0,-1));}
+		if(in->is_action_pressed("a")){cam->set_translation(cam->get_translation()+Vector3(-1,0,0));}
+		if(in->is_action_pressed("s")){cam->set_translation(cam->get_translation()+Vector3(0,0,1));}
+		if(in->is_action_pressed("d")){cam->set_translation(cam->get_translation()+Vector3(1,0,0));}
 	}
 	
 	void _process(float dt){}
