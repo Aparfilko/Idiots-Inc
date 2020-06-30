@@ -11,31 +11,26 @@
 #include <vector>
 
 #define DIM 5
+#define MATSNUM 4
+#define CUBESNUM 7
 
 namespace godot{
 class GDMain:public Spatial{
 	GODOT_CLASS(GDMain,Spatial)
 	
-	typedef struct{
-		MeshInstance* inst;
-		CubeMesh* cube;
-		SpatialMaterial* mat;
-	}MeshPart;
-	
-	void initMeshPart(MeshPart& in,Vector3 size,Vector3 pos,Vector3 rot,Color col){
-		add_child(in.inst=MeshInstance::_new());
-		in.inst->set_mesh(in.cube=CubeMesh::_new());
-		in.cube->set_material(in.mat=SpatialMaterial::_new());
-		in.mat->set_albedo(col);
-		in.cube->set_size(size);
-		in.inst->set_translation(pos);
-		in.inst->set_rotation(rot);
+	void initMeshPart(MeshInstance* &in,int cube,Vector3 pos=Vector3(0,0,0),Vector3 rot=Vector3(0,0,0)){
+		add_child(in=MeshInstance::_new());
+		in->set_mesh(cubes[cube]);
+		in->set_translation(pos);
+		in->set_rotation(rot);
 	}
+	
+	SpatialMaterial* mats[MATSNUM];//grass,road,roadCurb,building0
+	CubeMesh* cubes[CUBESNUM];//floorTile,roadCenter,roadCorner,roadCurbCenter,roadCurbCorner,buildingMain,buildingConn
 	
 	Input* input;
 	Camera* cam;
-	MeshPart floor;
-	std::vector<MeshPart> buildPads;
+	std::vector<MeshInstance*> buildPads;
 	
 	public:
 	GDMain(){}
@@ -43,19 +38,61 @@ class GDMain:public Spatial{
 
 	void _init(){
 		input=Input::get_singleton();
-		
 		add_child(cam=Camera::_new());
 		cam->set_rotation(Vector3(-1.57,0,0));
-		cam->set_translation(Vector3(DIM/2.0,5,DIM/2.0));
+		cam->set_translation(Vector3(0,5,0));
 		
-		initMeshPart(floor,Vector3(DIM,1,DIM),Vector3(DIM/2.0,0,DIM/2.0),Vector3(0,0,0),Color(.5,.5,.5));
+		{
+		for(int i=0;i<MATSNUM;i++){mats[i]=SpatialMaterial::_new();}
+		mats[0]->set_albedo(Color(.2,.7,.4));
+		mats[1]->set_albedo(Color(.2,.2,.6));
+		mats[2]->set_albedo(Color(.9,.4,.2));
+		mats[3]->set_albedo(Color(.0,.4,.9));
+		}{
+		for(int i=0;i<CUBESNUM;i++){cubes[i]=CubeMesh::_new();}
+		cubes[0]->set_size(Vector3(.98,1,.98));
+		cubes[0]->set_material(mats[0]);
+		cubes[1]->set_size(Vector3(.8,1.2,.2));
+		cubes[1]->set_material(mats[1]);
+		cubes[2]->set_size(Vector3(.2,1.2,.2));
+		cubes[2]->set_material(mats[1]);
+		cubes[3]->set_size(Vector3(.8,1.3,.02));
+		cubes[3]->set_material(mats[2]);
+		cubes[4]->set_size(Vector3(.2,1.3,.2));
+		cubes[4]->set_material(mats[2]);
+		cubes[5]->set_size(Vector3(.8,1,.8));
+		cubes[5]->set_material(mats[3]);
+		cubes[6]->set_size(Vector3(.7,1,.7));
+		cubes[6]->set_material(mats[3]);
+		}
 		
-		buildPads.resize(DIM*DIM);
-		for(int y=0;y<DIM;y++){
-			for(int x=0;x<DIM;x++){
-				initMeshPart(buildPads[DIM*y+x],Vector3(.8,1,.8),Vector3(x+.5,.01,y+.5),Vector3(0,0,0),Color(.4,.8,.1));
+		FILE* fid=fopen("lvl0.cty","r");
+		char line[256];
+		int xDim,yDim;
+		fgets(line,256,fid);
+		sscanf(line,"%d%d",&xDim,&yDim);
+		cam->set_translation(Vector3(xDim,5,yDim));
+		fgets(line,256,fid);
+		sscanf(line,"%d%d",&xDim,&yDim);
+		int lvl[yDim*xDim]{};
+		
+		while(fgets(line,256,fid)){
+			if(line[0]=='\n'||line[0]=='#'){continue;}
+			if(line[0]=='='){break;}
+			int a,b,c,d;
+			int e=sscanf(line,"%d%d%d%d",&a,&b,&c,&d);
+			if(e<2){continue;}
+			if(e<4){c=a;d=b;}
+			
+			for(int y=b;y<=d;y++){
+				for(int x=a;x<=c;x++){
+					lvl[y*xDim+x]=1;
+					buildPads.push_back(NULL);
+					initMeshPart(buildPads.back(),0,Vector3(x,0,y));
+				}
 			}
 		}
+		fclose(fid);
 	}
 	
 	void _input(InputEvent* in){
