@@ -10,6 +10,8 @@
 
 #include <vector>
 
+#define DIM 5
+
 namespace godot{
 class GDMain:public Spatial{
 	GODOT_CLASS(GDMain,Spatial)
@@ -44,14 +46,14 @@ class GDMain:public Spatial{
 		
 		add_child(cam=Camera::_new());
 		cam->set_rotation(Vector3(-1.57,0,0));
-		cam->set_translation(Vector3(10,20,10));
+		cam->set_translation(Vector3(DIM/2.0,5,DIM/2.0));
 		
-		initMeshPart(floor,Vector3(20,1,20),Vector3(10,0,10),Vector3(0,0,0),Color(.5,.5,.5));
+		initMeshPart(floor,Vector3(DIM,1,DIM),Vector3(DIM/2.0,0,DIM/2.0),Vector3(0,0,0),Color(.5,.5,.5));
 		
-		buildPads.resize(20*20);
-		for(int y=0;y<20;y++){
-			for(int x=0;x<20;x++){
-				initMeshPart(buildPads[20*y+x],Vector3(.8,1,.8),Vector3(x+.5,.01,y+.5),Vector3(0,0,0),Color(.4,.8,.1));
+		buildPads.resize(DIM*DIM);
+		for(int y=0;y<DIM;y++){
+			for(int x=0;x<DIM;x++){
+				initMeshPart(buildPads[DIM*y+x],Vector3(.8,1,.8),Vector3(x+.5,.01,y+.5),Vector3(0,0,0),Color(.4,.8,.1));
 			}
 		}
 	}
