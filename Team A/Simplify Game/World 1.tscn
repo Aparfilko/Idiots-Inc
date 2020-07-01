@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/TCB0.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/TSR0.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/glTF format/new_opensimplexnoise.tres" type="OpenSimplexNoise" id=4]
-[ext_resource path="res://pausemenu.gd" type="Script" id=5]
+[ext_resource path="res://ponderance.wav" type="AudioStream" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 12, 1, 9 )
@@ -20,7 +20,7 @@ metallic_specular = 0.21
 roughness_texture = SubResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.364706, 0.364706, 0.364706, 0.34902 )
+bg_color = Color( 0.423529, 0.423529, 0.423529, 0.0627451 )
 
 [node name="World 1" type="Spatial"]
 
@@ -29,33 +29,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 mesh = SubResource( 1 )
 material = SubResource( 3 )
 
-[node name="tree_detailed_dark" parent="." instance=ExtResource( 1 )]
+[node name="BRANCHY" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.955495, 0, 0.295008, 0, 1, 0, -0.295008, 0, 0.955495, 0, 0, 0 )
 
-[node name="tree_oak" parent="." instance=ExtResource( 2 )]
+[node name="CIRCLE" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.953995, 0, 0.299823, 0, 1, 0, -0.299823, 0, 0.953995, 1, 0, 0 )
 
-[node name="tree_blocks_fall" parent="." instance=ExtResource( 3 )]
+[node name="SQUARE" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.989293, 0, -0.145945, 0, 1, 0, 0.145945, 0, 0.989293, -1, 0, 0 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.989881, -0.059407, 0.12887, -0.0156874, 0.856771, 0.515458, -0.141034, -0.512263, 0.847169, 0.577534, 2.26469, 2.94784 )
 
-[node name="playlayer" type="CanvasLayer" parent="."]
-
-[node name="pauselayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="pausemenu" type="Control" parent="pauselayer"]
-process_priority = 1
+[node name="Control" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="pauselayer/pausemenu"]
+[node name="Panel" type="Panel" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 984.0
@@ -65,7 +58,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pauselayer/pausemenu/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
 margin_left = 422.0
 margin_top = 237.0
 margin_right = 626.0
@@ -74,24 +67,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="pauselayer/pausemenu/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/Panel/VBoxContainer"]
 margin_right = 204.0
 margin_bottom = 14.0
 text = "paused"
 align = 1
 valign = 1
 
-[node name="Button" type="Button" parent="pauselayer/pausemenu/Panel/VBoxContainer"]
+[node name="Button" type="Button" parent="Control/Panel/VBoxContainer"]
 margin_top = 18.0
 margin_right = 204.0
 margin_bottom = 38.0
 
-[node name="Button2" type="Button" parent="pauselayer/pausemenu/Panel/VBoxContainer"]
+[node name="Button2" type="Button" parent="Control/Panel/VBoxContainer"]
 margin_top = 42.0
 margin_right = 204.0
 margin_bottom = 62.0
 
-[node name="Button3" type="Button" parent="pauselayer/pausemenu/Panel/VBoxContainer"]
+[node name="Button3" type="Button" parent="Control/Panel/VBoxContainer"]
 margin_top = 66.0
 margin_right = 204.0
 margin_bottom = 86.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
