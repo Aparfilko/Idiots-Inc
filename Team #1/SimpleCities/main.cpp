@@ -7,9 +7,6 @@
 #include <MeshInstance.hpp>
 #include <CubeMesh.hpp>
 #include <SpatialMaterial.hpp>
-#include <ResourceLoader.hpp>
-#include <PackedScene.hpp>
-#include <Ref.hpp>
 
 #include <vector>
 
@@ -31,21 +28,15 @@ class GDMain:public Spatial{
 	SpatialMaterial* mats[MATSNUM];//grass,road,roadCurb,building0
 	CubeMesh* cubes[CUBESNUM];//floorTile,roadCenter,roadCorner,roadCurbCenter,roadCurbCorner,buildingMain,buildingConn
 	
-	ResourceLoader* rl;
-	Ref<PackedScene> foundationPacked;
-	Spatial* foundation;
 	Input* input;
 	Camera* cam;
-	std::vector<Spatial*> buildPads;
+	std::vector<MeshInstance*> buildPads;
 	
 	public:
 	GDMain(){}
 	~GDMain(){}
 
 	void _init(){
-		rl=ResourceLoader::get_singleton();
-		foundationPacked=rl->load("res://foundation.tscn");
-		
 		input=Input::get_singleton();
 		add_child(cam=Camera::_new());
 		cam->set_rotation(Vector3(-1.57,0,0));
@@ -96,10 +87,8 @@ class GDMain:public Spatial{
 			for(int y=b;y<=d;y++){
 				for(int x=a;x<=c;x++){
 					lvl[y*xDim+x]=1;
-					buildPads.push_back((Spatial*)foundationPacked->instance());
-					buildPads.back()->set_translation(Vector3(x,0,y));
-					add_child(buildPads.back());
-					//initMeshPart(buildPads.back(),0,Vector3(x,0,y));
+					buildPads.push_back(NULL);
+					initMeshPart(buildPads.back(),0,Vector3(x,0,y));
 				}
 			}
 		}
