@@ -13,18 +13,22 @@ font_data = ExtResource( 1 )
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 9.0
 margin_top = 9.0
-margin_right = 722.0
-margin_bottom = 335.0
+margin_right = 1018.0
+margin_bottom = 230.0
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "this is a test. This text could say whatever, I just want to know how it looks"
+text = "this is a test. This text could say whatever, I just want to know how it looks
+
+
+
+it looks like the screen ends here"
 override_selected_font_color = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( -2.72076, -1.36038 )
+position = Vector2( -4.57135, -1.36038 )
 z_index = -1
 color = Color( 0.603922, 0.376471, 0.192157, 1 )
 polygon = PoolVector2Array( 2.72076, 1.36038, 94.066, 0, 1026.72, 1.36038, 1026.72, 601.36, 2.72076, 601.36 )
