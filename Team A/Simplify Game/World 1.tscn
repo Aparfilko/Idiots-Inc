@@ -8,6 +8,7 @@
 [ext_resource path="res://Camera.gd" type="Script" id=6]
 [ext_resource path="res://World 1.gd" type="Script" id=7]
 [ext_resource path="res://assets/TSW0.tscn" type="PackedScene" id=8]
+[ext_resource path="res://pause menu.gd" type="Script" id=6]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 12, 1, 9 )
@@ -49,14 +50,20 @@ script = ExtResource( 6 )
 [node name="tree_blocks_fall" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.9, 0, 0, 0, 0.7, 0, 0, 0, 0.9, -2, 0, 0 )
 
-[node name="Control" type="Control" parent="."]
+[node name="overPLAYhahapun" type="CanvasLayer" parent="."]
+
+[node name="Menulayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="pause menu" type="Control" parent="Menulayer"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Panel" type="Panel" parent="Menulayer/pause menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 984.0
@@ -66,7 +73,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menulayer/pause menu/Panel"]
 margin_left = 422.0
 margin_top = 237.0
 margin_right = 626.0
@@ -75,24 +82,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Control/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Menulayer/pause menu/Panel/VBoxContainer"]
 margin_right = 204.0
 margin_bottom = 14.0
 text = "paused"
 align = 1
 valign = 1
 
-[node name="Button" type="Button" parent="Control/Panel/VBoxContainer"]
+[node name="Button" type="Button" parent="Menulayer/pause menu/Panel/VBoxContainer"]
 margin_top = 18.0
 margin_right = 204.0
 margin_bottom = 38.0
 
-[node name="Button2" type="Button" parent="Control/Panel/VBoxContainer"]
+[node name="Button2" type="Button" parent="Menulayer/pause menu/Panel/VBoxContainer"]
 margin_top = 42.0
 margin_right = 204.0
 margin_bottom = 62.0
 
-[node name="Button3" type="Button" parent="Control/Panel/VBoxContainer"]
+[node name="Button3" type="Button" parent="Menulayer/pause menu/Panel/VBoxContainer"]
 margin_top = 66.0
 margin_right = 204.0
 margin_bottom = 86.0
