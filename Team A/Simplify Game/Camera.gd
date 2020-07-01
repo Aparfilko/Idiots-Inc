@@ -8,7 +8,7 @@ func _ready():
 
 func _process(delta):
 	_x+=delta
-	Camera.set_offset([_x,0])
+	Camera.set_offset(_x,0)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
