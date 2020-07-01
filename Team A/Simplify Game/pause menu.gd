@@ -9,7 +9,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		visible = not visible
 

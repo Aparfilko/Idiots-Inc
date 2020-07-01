@@ -10,9 +10,9 @@ var count = 0
 func _ready():
 	pass # Replace with function body.
 
-func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_SPACE:
+func _unhandled_input(_event):
+	if _event is InputEventKey:
+		if _event.pressed and _event.scancode == KEY_SPACE:
 			$SpotLight.visible = true
 			count += 1
 			$SpotLight.translate(spot)
