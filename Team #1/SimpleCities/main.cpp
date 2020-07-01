@@ -33,10 +33,13 @@ class GDMain:public Spatial{
 	
 	ResourceLoader* rl;
 	Ref<PackedScene> foundationPacked;
-	Spatial* foundation;
+	Ref<PackedScene> housePacked;
+	Ref<PackedScene> officePacked;
 	Input* input;
 	Camera* cam;
-	std::vector<Spatial*> buildPads;
+	std::vector<Spatial*> foundations;
+	std::vector<Spatial*> houses;
+	std::vector<Spatial*> offices;
 	
 	public:
 	GDMain(){}
@@ -45,6 +48,8 @@ class GDMain:public Spatial{
 	void _init(){
 		rl=ResourceLoader::get_singleton();
 		foundationPacked=rl->load("res://foundation.tscn");
+		housePacked=rl->load("res://model/house.glb");
+		officePacked=rl->load("res://model/office.glb");
 		
 		input=Input::get_singleton();
 		add_child(cam=Camera::_new());
@@ -96,12 +101,12 @@ class GDMain:public Spatial{
 			for(int y=b;y<=d;y++){
 				for(int x=a;x<=c;x++){
 					lvl[y*xDim+x]=1;
-					buildPads.push_back((Spatial*)foundationPacked->instance());
-					buildPads.back()->set_translation(Vector3(x,0,y));
-					add_child(buildPads.back());
-					//initMeshPart(buildPads.back(),0,Vector3(x,0,y));
+					foundations.push_back((Spatial*)foundationPacked->instance());
+					foundations.back()->set_translation(Vector3(x,0,y));
+					add_child(foundations.back());
 				}
 			}
+			
 		}
 		fclose(fid);
 	}
