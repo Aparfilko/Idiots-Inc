@@ -68,8 +68,36 @@ class GDMain:public Spatial{
 		add_child(roads.back());
 	}
 	
+	void bfs(int x0,int y0,int x1,int y1,int c){
+		paths.push_back(carPath());
+		paths.back().color=c;
+		paths.back().p.push_back({10,10});
+		paths.back().p.push_back({11,10});
+		paths.back().p.push_back({12,10});
+	}
+	
+	void populateRoads(){
+		for(int y0=0;y0<yDim;y0++){
+			for(int x0=0;x0<xDim;x0++){
+				if(lvl[xDim*y0+x0].type==3){
+					for(int y1=0;y1<yDim;y1++){
+						for(int x1=0;x1<xDim;x1++){
+							if(lvl[xDim*y1+x1].type==2 && lvl[xDim*y1+x1].color==lvl[xDim*y0+x0].color){
+								bfs(x0,y0,x1,y1,lvl[xDim*y0+x0].color);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	void placeRoads(){
-		addRoad(10,10);
+		for(carPath p:paths){
+			for(carPathNode n:p.p){
+				addRoad(n.x,n.y);
+			}
+		}
 	}
 	
 	void printMap(){
@@ -150,9 +178,10 @@ class GDMain:public Spatial{
 		addHouse(1,11,5);
 		addOffice(7,1,5);
 		
+		populateRoads();
 		placeRoads();
 		
-		printMap();
+		//printMap();
 	}
 	
 	void _input(InputEvent* in){
