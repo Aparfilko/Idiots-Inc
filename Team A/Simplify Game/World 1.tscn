@@ -53,11 +53,11 @@ position = Vector2( 128, 118 )
 script = ExtResource( 9 )
 
 [node name="tempSelect2" parent="overPLAYhahapun" instance=ExtResource( 7 )]
-position = Vector2( 154, 346 )
+position = Vector2( 875, 406 )
 script = ExtResource( 9 )
 
 [node name="Timer" type="Timer" parent="overPLAYhahapun"]
-wait_time = 0.3
+wait_time = 0.2
 
 [node name="Menulayer" type="CanvasLayer" parent="."]
 layer = 2
