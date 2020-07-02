@@ -20,7 +20,7 @@ func _process(_dt):
 	if holding and not noPick:
 		curNode.set_global_position(mousePos)
 	#release when mouse is let go
-	if Input.is_action_just_released("click"):
+	if Input.is_action_just_released("click") and holding:
 		holding = false
 		noPick = true
 		fadeNode = curNode
