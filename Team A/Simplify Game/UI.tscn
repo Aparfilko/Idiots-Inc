@@ -40,6 +40,7 @@ margin_left = 9.0
 margin_top = 9.0
 margin_right = 1018.0
 margin_bottom = 89.0
+mouse_filter = 2
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "this is a test. This text could say whatever, I just want to know how it looks"
