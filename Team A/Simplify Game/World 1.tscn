@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/TBG0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/TCB0.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/glTF format/new_opensimplexnoise.tres" type="OpenSimplexNoise" id=4]
 [ext_resource path="res://ponderance.wav" type="AudioStream" id=5]
 [ext_resource path="res://pause menu.gd" type="Script" id=6]
+[ext_resource path="res://tempSelect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://moveNSelect.gd" type="Script" id=8]
+[ext_resource path="res://select.gd" type="Script" id=9]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 12, 1, 9 )
@@ -43,6 +46,18 @@ transform = Transform( 0.989293, 0, -0.145945, 0, 1, 0, 0.145945, 0, 0.989293, -
 transform = Transform( 0.989881, -0.059407, 0.12887, -0.0156874, 0.856771, 0.515458, -0.141034, -0.512263, 0.847169, 0.577534, 2.26469, 2.94784 )
 
 [node name="overPLAYhahapun" type="CanvasLayer" parent="."]
+script = ExtResource( 8 )
+
+[node name="tempSelect" parent="overPLAYhahapun" instance=ExtResource( 7 )]
+position = Vector2( 128, 118 )
+script = ExtResource( 9 )
+
+[node name="tempSelect2" parent="overPLAYhahapun" instance=ExtResource( 7 )]
+position = Vector2( 154, 346 )
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="overPLAYhahapun"]
+wait_time = 0.3
 
 [node name="Menulayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -99,3 +114,4 @@ margin_bottom = 86.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 autoplay = true
+[connection signal="timeout" from="overPLAYhahapun/Timer" to="overPLAYhahapun" method="_resetTimer"]
