@@ -82,97 +82,97 @@ disabled = true
 [node name="Card_Square" type="StaticBody2D" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Square"]
-position = Vector2( 250, 150 )
+position = Vector2( 300, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Square"]
-position = Vector2( 250, 150 )
+position = Vector2( 300, 150 )
 shape = SubResource( 3 )
 disabled = true
 
 [node name="Card_Round" type="StaticBody2D" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Round"]
-position = Vector2( 350, 150 )
+position = Vector2( 400, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Round"]
-position = Vector2( 350, 150 )
+position = Vector2( 400, 150 )
 shape = SubResource( 3 )
 disabled = true
 
 [node name="Card_Branchy" type="StaticBody2D" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Branchy"]
-position = Vector2( 450, 150 )
+position = Vector2( 500, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Branchy"]
-position = Vector2( 450, 150 )
+position = Vector2( 500, 150 )
 shape = SubResource( 3 )
 disabled = true
 
 [node name="Card_Red" type="StaticBody2D" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Red"]
-position = Vector2( 550, 150 )
+position = Vector2( 650, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Red"]
-position = Vector2( 550, 150 )
+position = Vector2( 650, 150 )
 shape = SubResource( 3 )
 disabled = true
 
 [node name="Card_Green" type="StaticBody2D" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Green"]
-position = Vector2( 650, 150 )
+position = Vector2( 750, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Green"]
-position = Vector2( 650, 150 )
+position = Vector2( 750, 150 )
 shape = SubResource( 3 )
 disabled = true
 
 [node name="Card_Blue" type="StaticBody2D" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Blue"]
-position = Vector2( 750, 150 )
+position = Vector2( 850, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Blue"]
-position = Vector2( 750, 150 )
+position = Vector2( 850, 150 )
 shape = SubResource( 3 )
 disabled = true
 
 [node name="Card_White" type="StaticBody2D" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Card_White"]
-position = Vector2( 850, 150 )
+position = Vector2( 950, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Card_White"]
-position = Vector2( 850, 150 )
+position = Vector2( 950, 150 )
 shape = SubResource( 3 )
 disabled = true
