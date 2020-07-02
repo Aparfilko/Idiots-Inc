@@ -50,3 +50,5 @@ current = true
 fov = 50.0
 
 [node name="World 1" parent="VSplitContainer/ViewportContainer(3D)/Viewport" instance=ExtResource( 2 )]
+
+[node name="Selector" type="CanvasLayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Kenney Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://TALL.png" type="Texture" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://SHORT.png" type="Texture" id=9]
 [ext_resource path="res://ROUND.png" type="Texture" id=10]
 [ext_resource path="res://SQUARE.png" type="Texture" id=11]
+[ext_resource path="res://select.gd" type="Script" id=12]
+[ext_resource path="res://moveNSelect.gd" type="Script" id=13]
+[ext_resource path="res://tempSelect.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -51,128 +54,158 @@ polygon = PoolVector2Array( 2.72076, 1.36038, 94.066, 0, 1026.72, 1.36038, 1026.
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Polygon2D"]
 mesh = SubResource( 2 )
 
-[node name="Card_Tall" type="StaticBody2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 13 )
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Tall"]
-position = Vector2( 50, 150 )
-scale = Vector2( 1, -1 )
-z_index = 2
-mesh = ExtResource( 3 )
-texture = ExtResource( 2 )
+[node name="Card_Red" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource( 12 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Tall"]
-position = Vector2( 50, 150 )
-shape = SubResource( 3 )
-disabled = true
-
-[node name="Card_Short" type="StaticBody2D" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Short"]
-position = Vector2( 150, 150 )
-scale = Vector2( 1, -1 )
-z_index = 2
-mesh = ExtResource( 3 )
-texture = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Short"]
-position = Vector2( 150, 150 )
-shape = SubResource( 3 )
-disabled = true
-
-[node name="Card_Square" type="StaticBody2D" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Square"]
-position = Vector2( 300, 150 )
-scale = Vector2( 1, -1 )
-z_index = 2
-mesh = ExtResource( 3 )
-texture = ExtResource( 11 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Square"]
-position = Vector2( 300, 150 )
-shape = SubResource( 3 )
-disabled = true
-
-[node name="Card_Round" type="StaticBody2D" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Round"]
-position = Vector2( 400, 150 )
-scale = Vector2( 1, -1 )
-z_index = 2
-mesh = ExtResource( 3 )
-texture = ExtResource( 10 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Round"]
-position = Vector2( 400, 150 )
-shape = SubResource( 3 )
-disabled = true
-
-[node name="Card_Branchy" type="StaticBody2D" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Branchy"]
-position = Vector2( 500, 150 )
-scale = Vector2( 1, -1 )
-z_index = 2
-mesh = ExtResource( 3 )
-texture = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Branchy"]
-position = Vector2( 500, 150 )
-shape = SubResource( 3 )
-disabled = true
-
-[node name="Card_Red" type="StaticBody2D" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Red"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Card_Red"]
 position = Vector2( 650, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Red"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Card_Red"]
 position = Vector2( 650, 150 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="Card_Green" type="StaticBody2D" parent="."]
+[node name="Card_Tall" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource( 12 )
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Green"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Card_Tall"]
+position = Vector2( 50, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Card_Tall"]
+position = Vector2( 50, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Short" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource( 12 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Card_Short"]
+position = Vector2( 150, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Card_Short"]
+position = Vector2( 150, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Square" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource( 12 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Card_Square"]
+position = Vector2( 300, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Card_Square"]
+position = Vector2( 300, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Round" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource( 12 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Card_Round"]
+position = Vector2( 400, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Card_Round"]
+position = Vector2( 400, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Branchy" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource( 12 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Card_Branchy"]
+position = Vector2( 500, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Card_Branchy"]
+position = Vector2( 500, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Green" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource( 12 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Card_Green"]
 position = Vector2( 750, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Green"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Card_Green"]
 position = Vector2( 750, 150 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="Card_Blue" type="StaticBody2D" parent="."]
+[node name="Card_Blue" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource( 12 )
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Blue"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Card_Blue"]
 position = Vector2( 850, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Blue"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Card_Blue"]
 position = Vector2( 850, 150 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="Card_White" type="StaticBody2D" parent="."]
+[node name="Card_White" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource( 12 )
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_White"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Card_White"]
 position = Vector2( 950, 150 )
 scale = Vector2( 1, -1 )
 z_index = 2
 mesh = ExtResource( 3 )
 texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_White"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Card_White"]
 position = Vector2( 950, 150 )
 shape = SubResource( 3 )
 disabled = true
+
+[node name="tempSelect" parent="CanvasLayer" instance=ExtResource( 14 )]
+position = Vector2( 147.265, 397.299 )
+script = ExtResource( 12 )
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+wait_time = 0.2
+one_shot = true
+[connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_resetTimer"]
