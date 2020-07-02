@@ -81,7 +81,7 @@ position = Vector2( 850, 150 )
 position = Vector2( 950, 150 )
 
 [node name="tempSelect" parent="CanvasLayer" instance=ExtResource( 14 )]
-position = Vector2( 145.595, 317.13 )
+position = Vector2( 579.758, 72.4711 )
 script = ExtResource( 12 )
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
