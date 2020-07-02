@@ -2,6 +2,7 @@ extends StaticBody2D
 signal clicked(node)
 
 func _ready():
+	$CollisionShape2D.set_disabled(false)
 	set_pickable(true)
 	connect("clicked", get_parent(), "_selectWord")
 	
