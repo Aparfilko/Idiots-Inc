@@ -71,6 +71,12 @@ class GDMain:public Spatial{
 			lvl[xDim*y+x].color=1;
 		}
 	}
+	void addRoadConnector(float x,float y){
+		roads.push_back(MeshInstance::_new());
+		roads.back()->set_mesh(cubes[0]);
+		roads.back()->set_translation(Vector3(x,0,y));
+		add_child(roads.back());
+	}
 	
 	void bfs(int x0,int y0,int x1,int y1,int c){
 		std::vector<bfsNode> map(xDim*yDim);
@@ -130,6 +136,24 @@ class GDMain:public Spatial{
 		for(carPath p:paths){
 			for(carPathNode n:p.p){
 				addRoad(n.x,n.y);
+			}
+		}
+		for(int y=0;y<yDim;y++){
+			for(int x=0;x<xDim-1;x++){
+				if(
+				(lvl[y*xDim+x].type>1||(lvl[y*xDim+x].type==1&&lvl[y*xDim+x].color))&&
+				(lvl[y*xDim+x+1].type>1||(lvl[y*xDim+x+1].type==1&&lvl[y*xDim+x+1].color))){
+					addRoadConnector(x+.5,y);
+				}
+			}
+		}
+		for(int y=0;y<yDim-1;y++){
+			for(int x=0;x<xDim;x++){
+				if(
+				(lvl[y*xDim+x].type>1||(lvl[y*xDim+x].type==1&&lvl[y*xDim+x].color))&&
+				(lvl[(y+1)*xDim+x].type>1||(lvl[(y+1)*xDim+x].type==1&&lvl[(y+1)*xDim+x].color))){
+					addRoadConnector(x,y+.5);
+				}
 			}
 		}
 	}
