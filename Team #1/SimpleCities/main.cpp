@@ -10,12 +10,13 @@
 #include <ResourceLoader.hpp>
 #include <PackedScene.hpp>
 #include <Ref.hpp>
+#include <RandomNumberGenerator.hpp>
 
 #include <vector>
 
 #define DIM 5
 #define MATSNUM 7
-#define CUBESNUM 1
+#define CUBESNUM 7
 
 namespace godot{
 class GDMain:public Spatial{
@@ -25,10 +26,21 @@ class GDMain:public Spatial{
 	typedef struct {int x,y;} carPathNode;
 	typedef struct {char color;std::vector<carPathNode> p;} carPath;
 	typedef struct {int steps;carPathNode from;} bfsNode;
+	typedef struct {
+		int dir;
+		int pathInd;
+		float time;
+		MeshInstance* mesh;
+		int timeInd;
+		carPathNode to,from;
+		Vector3 offset;
+		float rot;
+	} car;
 	
 	SpatialMaterial* mats[MATSNUM];//gray,red,orange,yellow,green,blue,purple
-	CubeMesh* cubes[CUBESNUM];//floorTile,roadCenter,roadCorner,roadCurbCenter,roadCurbCorner,buildingMain,buildingConn
+	CubeMesh* cubes[CUBESNUM];//road,cars(1-7)
 	
+	RandomNumberGenerator* rng;
 	ResourceLoader* rl;
 	Ref<PackedScene> foundationPacked;
 	Ref<PackedScene> housePacked;
@@ -41,6 +53,7 @@ class GDMain:public Spatial{
 	int xDim,yDim;
 	std::vector<mapTile> lvl;
 	std::vector<carPath> paths;
+	std::vector<car> cars;
 	
 	void addHouse(int x,int y,int c){
 		buildings.push_back((MeshInstance*)housePacked->instance());
@@ -133,8 +146,8 @@ class GDMain:public Spatial{
 	}
 	
 	void placeRoads(){
-		for(carPath p:paths){
-			for(carPathNode n:p.p){
+		for(carPath &p:paths){
+			for(carPathNode &n:p.p){
 				addRoad(n.x,n.y);
 			}
 		}
@@ -158,20 +171,13 @@ class GDMain:public Spatial{
 		}
 	}
 	
-	void printMap(){
-		for(int y=0;y<yDim;y++){
-			for(int x=0;x<xDim;x++){
-				std::cout<<(int)lvl[y*xDim+x].type<<" ";
-			}
-			std::cout<<std::endl;
-		}
-	}
-	
 	public:
 	GDMain(){}
 	~GDMain(){}
 
 	void _init(){
+		rng=RandomNumberGenerator::_new();
+		
 		rl=ResourceLoader::get_singleton();
 		foundationPacked=rl->load("res://foundation.tscn");
 		housePacked=rl->load("res://house.tscn");
@@ -194,6 +200,10 @@ class GDMain:public Spatial{
 		for(int i=0;i<CUBESNUM;i++){cubes[i]=CubeMesh::_new();}
 		cubes[0]->set_size(Vector3(.5,.05,.5));
 		cubes[0]->set_material(mats[0]);
+		for(int i=1;i<CUBESNUM;i++){
+			cubes[i]->set_size(Vector3(.2,.15,.4));
+			cubes[i]->set_material(mats[i]);
+		}
 		}
 		
 		FILE* fid=fopen("lvl1.cty","r");
@@ -224,22 +234,42 @@ class GDMain:public Spatial{
 		}
 		fclose(fid);
 		
-		addHouse(1,1,1);
-		addHouse(18,6,1);
-		addHouse(18,18,1);
-		addHouse(1,13,1);
-		addOffice(18,10,1);
+		addOffice(1,1,1);
+		addOffice(12,6,4);
+		addOffice(7,13,5);
 		
-		addHouse(3,1,5);
-		addHouse(15,7,5);
-		addHouse(15,18,5);
-		addHouse(1,11,5);
-		addOffice(7,1,5);
+		addHouse(18,15,1);
+		addHouse(18,16,1);
+		addHouse(18,17,1);
+		addHouse(18,18,1);
+		
+		addHouse(5,1,4);
+		addHouse(5,2,4);
+		addHouse(5,3,4);
+		addHouse(5,4,1);
+		
+		addHouse(10,5,1);
+		addHouse(10,6,1);
+		addHouse(9,5,4);
+		addHouse(9,6,4);
+		
+		addHouse(10,9,5);
+		addHouse(10,10,5);
+		addHouse(9,9,1);
+		addHouse(9,10,1);
 		
 		populateRoads();
 		placeRoads();
-		
-		//printMap();
+		for(int i=0;i<paths.size();i++){
+			cars.push_back(car());
+			add_child(cars.back().mesh=MeshInstance::_new());
+			cars.back().mesh->set_mesh(cubes[paths[i].color]);
+			cars.back().pathInd=i;
+			cars.back().timeInd=-1;
+			cars.back().dir=0;
+			cars.back().time=rng->randf_range(1,10);
+			cars.back().mesh->set_translation(Vector3(paths[cars.back().pathInd].p[0].x,0,paths[cars.back().pathInd].p[0].y));
+		}
 	}
 	
 	void _input(InputEvent* in){
@@ -249,7 +279,52 @@ class GDMain:public Spatial{
 		if(in->is_action_pressed("d")){cam->set_translation(cam->get_translation()+Vector3(1,0,0));}
 	}
 	
-	void _process(float dt){}
+	void _process(float dt){
+		for(car &c:cars){
+			c.time-=dt;
+			if(c.dir==0){//atHouse
+				if(c.time<=0){c.dir=1;c.time=paths[c.pathInd].p.size()-1;}
+			}else if(c.dir==1){//drivingToOffice
+				float t=paths[c.pathInd].p.size()-1-c.time;
+				if((int)t!=c.timeInd){
+					c.timeInd=(int)t;
+					c.from=paths[c.pathInd].p[t];
+					c.to=paths[c.pathInd].p[t+1];
+					if(c.to.x>c.from.x){c.rot=4.71;c.offset=Vector3(0,0,.12);}else
+					if(c.to.y<c.from.y){c.rot=0.00;c.offset=Vector3(.12,0,0);}else
+					if(c.to.x<c.from.x){c.rot=1.57;c.offset=Vector3(0,0,-.12);}else
+					if(c.to.y>c.from.y){c.rot=3.14;c.offset=Vector3(-.12,0,0);}
+				}
+				float rat=fmod(t,1.0);
+				c.mesh->set_translation(Vector3(c.from.x,0,c.from.y)*(1.0-rat)+Vector3(c.to.x,0,c.to.y)*(rat)+c.offset);
+				c.mesh->set_rotation(Vector3(0,c.rot,0));
+				if(c.time<=0){
+					c.dir=2;c.time=rng->randf_range(1,10);c.timeInd=-1;
+					c.mesh->set_translation(Vector3(paths[c.pathInd].p.back().x,0,paths[c.pathInd].p.back().y));
+				}
+			}else if(c.dir==2){//atOffice
+				if(c.time<=0){c.dir=3;c.time=paths[c.pathInd].p.size()-1;}
+			}else if(c.dir==3){//drivingToHouse
+				float t=c.time;
+				if((int)t!=c.timeInd){
+					c.timeInd=(int)t;
+					c.from=paths[c.pathInd].p[t+1];
+					c.to=paths[c.pathInd].p[t];
+					if(c.to.x>c.from.x){c.rot=4.71;c.offset=Vector3(0,0,.12);}else
+					if(c.to.y<c.from.y){c.rot=0.00;c.offset=Vector3(.12,0,0);}else
+					if(c.to.x<c.from.x){c.rot=1.57;c.offset=Vector3(0,0,-.12);}else
+					if(c.to.y>c.from.y){c.rot=3.14;c.offset=Vector3(-.12,0,0);}
+				}
+				float rat=fmod(t,1.0);
+				c.mesh->set_translation(Vector3(c.from.x,0,c.from.y)*(rat)+Vector3(c.to.x,0,c.to.y)*(1.0-rat)+c.offset);
+				c.mesh->set_rotation(Vector3(0,c.rot,0));
+				if(c.time<=0){
+					c.dir=0;c.time=rng->randf_range(1,10);c.timeInd=-1;
+					c.mesh->set_translation(Vector3(paths[c.pathInd].p[0].x,0,paths[c.pathInd].p[0].y));
+				}
+			}
+		}
+	}
 
 	static void _register_methods(){
 		register_method("_input",&GDMain::_input);
