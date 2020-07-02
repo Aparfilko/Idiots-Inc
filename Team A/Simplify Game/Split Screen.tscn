@@ -6,6 +6,7 @@
 [node name="Node" type="Node"]
 
 [node name="VSplitContainer" type="VBoxContainer" parent="."]
+visible = false
 margin_right = 1025.0
 margin_bottom = 601.0
 custom_constants/separation = 1
@@ -14,6 +15,7 @@ __meta__ = {
 }
 
 [node name="ViewportContainer(2D)" type="ViewportContainer" parent="VSplitContainer"]
+visible = false
 margin_right = 1025.0
 margin_bottom = 211.0
 size_flags_vertical = 3
@@ -23,16 +25,17 @@ stretch = true
 [node name="Viewport" type="Viewport" parent="VSplitContainer/ViewportContainer(2D)"]
 size = Vector2( 1025, 211 )
 handle_input_locally = false
-render_target_update_mode = 3
+render_target_update_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="VSplitContainer/ViewportContainer(2D)/Viewport"]
+visible = false
 anchor_mode = 0
 current = true
 
 [node name="UI" parent="VSplitContainer/ViewportContainer(2D)/Viewport" instance=ExtResource( 1 )]
+visible = false
 
 [node name="ViewportContainer(3D)" type="ViewportContainer" parent="VSplitContainer"]
-margin_top = 212.0
 margin_right = 1025.0
 margin_bottom = 601.0
 size_flags_vertical = 3
@@ -40,15 +43,15 @@ size_flags_stretch_ratio = 27.15
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="VSplitContainer/ViewportContainer(3D)"]
-size = Vector2( 1025, 389 )
+size = Vector2( 1025, 601 )
 handle_input_locally = false
-render_target_update_mode = 3
+render_target_update_mode = 0
 
-[node name="Camera" type="Camera" parent="VSplitContainer/ViewportContainer(3D)/Viewport"]
-transform = Transform( 0.982762, -0.103265, 0.15335, 0, 0.829467, 0.558556, -0.184878, -0.548927, 0.815168, 0.219759, 2.31028, 2.95976 )
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.985742, -0.0692786, 0.153342, 0, 0.91131, 0.411721, -0.168266, -0.405851, 0.898316, 0.219759, 3.02459, 4.19973 )
 current = true
 fov = 50.0
 
-[node name="World 1" parent="VSplitContainer/ViewportContainer(3D)/Viewport" instance=ExtResource( 2 )]
+[node name="World 1" parent="." instance=ExtResource( 2 )]
 
-[node name="Selector" type="CanvasLayer" parent="."]
+[node name="Cards" parent="." instance=ExtResource( 1 )]
