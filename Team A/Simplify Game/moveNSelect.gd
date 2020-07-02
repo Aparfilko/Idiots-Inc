@@ -6,11 +6,13 @@ var basePosition
 var fadeNode
 var fadePosition
 const fadeSpeed = 0.2
-
 onready var noPick = false
 
 func _ready():
-	pass # Replace with function body.
+	var mouse = InputEventMouseButton.new()
+	mouse.set_button_index(1)
+	InputMap.add_action("click")
+	InputMap.action_add_event("click", mouse)
 	
 
 func _process(_dt):

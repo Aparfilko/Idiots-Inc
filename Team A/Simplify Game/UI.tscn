@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Kenney Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Card_Branchy.tscn" type="PackedScene" id=2]
@@ -10,9 +10,7 @@
 [ext_resource path="res://Card_Green.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Card_White.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Card_Red.tscn" type="PackedScene" id=10]
-[ext_resource path="res://select.gd" type="Script" id=12]
 [ext_resource path="res://moveNSelect.gd" type="Script" id=13]
-[ext_resource path="res://tempSelect.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -22,11 +20,7 @@ font_data = ExtResource( 1 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 3
-script = ExtResource( 13 )
-
-[node name="Polygon2D" type="ColorRect" parent="CanvasLayer"]
+[node name="Polygon2D" type="ColorRect" parent="."]
 margin_right = 1025.0
 margin_bottom = 211.0
 mouse_filter = 2
@@ -35,11 +29,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 9.0
 margin_top = 9.0
 margin_right = 1018.0
-margin_bottom = 89.0
+margin_bottom = 209.0
 mouse_filter = 2
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
@@ -48,6 +42,10 @@ override_selected_font_color = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+script = ExtResource( 13 )
 
 [node name="Card_Red" parent="CanvasLayer" instance=ExtResource( 10 )]
 position = Vector2( 650, 150 )
@@ -75,10 +73,6 @@ position = Vector2( 850, 150 )
 
 [node name="Card_White" parent="CanvasLayer" instance=ExtResource( 9 )]
 position = Vector2( 950, 150 )
-
-[node name="tempSelect" parent="CanvasLayer" instance=ExtResource( 14 )]
-position = Vector2( 531.675, 355.314 )
-script = ExtResource( 12 )
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
 wait_time = 0.2
