@@ -24,6 +24,7 @@ class GDMain:public Spatial{
 	typedef struct {char type,color;}mapTile;
 	typedef struct {int x,y;} carPathNode;
 	typedef struct {char color;std::vector<carPathNode> p;} carPath;
+	typedef struct {int steps;carPathNode from;} bfsNode;
 	
 	SpatialMaterial* mats[MATSNUM];//gray,red,orange,yellow,green,blue,purple
 	CubeMesh* cubes[CUBESNUM];//floorTile,roadCenter,roadCorner,roadCurbCenter,roadCurbCorner,buildingMain,buildingConn
@@ -62,18 +63,51 @@ class GDMain:public Spatial{
 	}
 	
 	void addRoad(int x,int y){
-		roads.push_back(MeshInstance::_new());
-		roads.back()->set_mesh(cubes[0]);
-		roads.back()->set_translation(Vector3(x,0,y));
-		add_child(roads.back());
+		if(!lvl[xDim*y+x].color){
+			roads.push_back(MeshInstance::_new());
+			roads.back()->set_mesh(cubes[0]);
+			roads.back()->set_translation(Vector3(x,0,y));
+			add_child(roads.back());
+			lvl[xDim*y+x].color=1;
+		}
 	}
 	
 	void bfs(int x0,int y0,int x1,int y1,int c){
-		paths.push_back(carPath());
-		paths.back().color=c;
-		paths.back().p.push_back({10,10});
-		paths.back().p.push_back({11,10});
-		paths.back().p.push_back({12,10});
+		std::vector<bfsNode> map(xDim*yDim);
+		for(int i=0;i<map.size();i++){map[i]={0,{0,0}};}
+		std::vector<carPathNode> frontier;
+		frontier.push_back({x0,y0});
+		map[xDim*y0+x0].steps=1;
+		while(!frontier.empty()){
+			carPathNode curr=frontier[0];
+			frontier.erase(frontier.begin());
+			if(curr.x==x1&&curr.y==y1){
+				paths.push_back(carPath());
+				paths.back().color=c;
+				paths.back().p.push_back({x1,y1});
+				while(!(paths.back().p.back().x==x0 && paths.back().p.back().y==y0)){
+					paths.back().p.push_back(map[xDim*paths.back().p.back().y+paths.back().p.back().x].from);
+				}
+				return;
+			}
+			
+			if(curr.x>0&&(lvl[xDim*curr.y+curr.x-1].type==1||(curr.y==y1&&curr.x-1==x1))&&(!map[xDim*curr.y+curr.x-1].steps||map[xDim*curr.y+curr.x-1].steps>map[xDim*curr.y+curr.x].steps+1)){
+				map[xDim*curr.y+curr.x-1]={map[xDim*curr.y+curr.x].steps+1,curr};
+				frontier.push_back({curr.x-1,curr.y});
+			}
+			if(curr.x+1<xDim&&(lvl[xDim*curr.y+curr.x+1].type==1||(curr.y==y1&&curr.x+1==x1))&&(!map[xDim*curr.y+curr.x+1].steps||map[xDim*curr.y+curr.x+1].steps>map[xDim*curr.y+curr.x].steps+1)){
+				map[xDim*curr.y+curr.x+1]={map[xDim*curr.y+curr.x].steps+1,curr};
+				frontier.push_back({curr.x+1,curr.y});
+			}
+			if(curr.y>0&&(lvl[xDim*(curr.y-1)+curr.x].type==1||(curr.y-1==y1&&curr.x==x1))&&(!map[xDim*(curr.y-1)+curr.x].steps||map[xDim*(curr.y-1)+curr.x].steps>map[xDim*curr.y+curr.x].steps+1)){
+				map[xDim*(curr.y-1)+curr.x]={map[xDim*curr.y+curr.x].steps+1,curr};
+				frontier.push_back({curr.x,curr.y-1});
+			}
+			if(curr.y+1<yDim&&(lvl[xDim*(curr.y+1)+curr.x].type==1||(curr.y+1==y1&&curr.x==x1))&&(!map[xDim*(curr.y+1)+curr.x].steps||map[xDim*(curr.y+1)+curr.x].steps>map[xDim*curr.y+curr.x].steps+1)){
+				map[xDim*(curr.y+1)+curr.x]={map[xDim*curr.y+curr.x].steps+1,curr};
+				frontier.push_back({curr.x,curr.y+1});
+			}
+		}
 	}
 	
 	void populateRoads(){
@@ -146,7 +180,7 @@ class GDMain:public Spatial{
 		fgets(line,256,fid);
 		sscanf(line,"%d%d",&xDim,&yDim);
 		lvl.resize(xDim*yDim);
-		for(int i=0;i<lvl.size();i++){lvl[i].type=0;}
+		for(int i=0;i<lvl.size();i++){lvl[i]={0,0};}
 		while(fgets(line,256,fid)){
 			if(line[0]=='\n'||line[0]=='#'){continue;}
 			if(line[0]=='='){break;}
@@ -156,12 +190,12 @@ class GDMain:public Spatial{
 			if(e<4){c=a;d=b;}
 			
 			for(int y=b;y<=d;y++){
-				for(int x=a;x<=c;x++){
+				for(int x=a;x<=c;x++){if(!lvl[y*xDim+x].type){
 					lvl[y*xDim+x].type=1;
 					foundations.push_back((Spatial*)foundationPacked->instance());
 					foundations.back()->set_translation(Vector3(x,0,y));
 					add_child(foundations.back());
-				}
+				}}
 			}
 		}
 		fclose(fid);
