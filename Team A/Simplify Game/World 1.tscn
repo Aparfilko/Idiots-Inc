@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/TBG0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/TCB0.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://World 1.gd" type="Script" id=7]
 [ext_resource path="res://assets/TSW0.tscn" type="PackedScene" id=8]
 [ext_resource path="res://pause menu.gd" type="Script" id=9]
+[ext_resource path="res://tempSelect.tscn" type="PackedScene" id=10]
+[ext_resource path="res://moveNSelect.gd" type="Script" id=11]
+[ext_resource path="res://select.gd" type="Script" id=12]
+
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 12, 1, 9 )
@@ -46,6 +50,18 @@ transform = Transform( 0.989293, 0, -0.145945, 0, 1, 0, 0.145945, 0, 0.989293, -
 transform = Transform( 0.9, 0, 0, 0, 0.7, 0, 0, 0, 0.9, -2, 0, 0 )
 
 [node name="overPLAYhahapun" type="CanvasLayer" parent="."]
+script = ExtResource( 8 )
+
+[node name="tempSelect" parent="overPLAYhahapun" instance=ExtResource( 7 )]
+position = Vector2( 128, 118 )
+script = ExtResource( 9 )
+
+[node name="tempSelect2" parent="overPLAYhahapun" instance=ExtResource( 7 )]
+position = Vector2( 875, 406 )
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="overPLAYhahapun"]
+wait_time = 0.2
 
 [node name="Menulayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -112,3 +128,6 @@ spot_range = 5.5
 spot_attenuation = 0.406126
 spot_angle = 8.6
 spot_angle_attenuation = 0.870551
+
+[connection signal="timeout" from="overPLAYhahapun/Timer" to="overPLAYhahapun" method="_resetTimer"]
+
