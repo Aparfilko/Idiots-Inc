@@ -24,11 +24,12 @@ func _process(dt):
 		holding = false
 		noPick = true
 		fadeNode = curNode
-		fadePosition = basePosition
+		
+		#can't select again until position resets fully
 		$Timer.start()
 	#generally just fade back when done
 	if is_instance_valid(fadeNode):
-		fadeNode.set_position(lerp(fadeNode.get_position(), fadePosition, fadeSpeed))
+		fadeNode.set_position(lerp(fadeNode.get_position(), basePosition, fadeSpeed))
 	
 	
 func _select_word(node):
@@ -38,5 +39,6 @@ func _select_word(node):
 	
 
 
+#ok, now you can select stuff
 func _resetTimer():
 	noPick = false
