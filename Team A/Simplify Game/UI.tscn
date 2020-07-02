@@ -1,6 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Kenney Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://TALL.png" type="Texture" id=2]
+[ext_resource path="res://CARD.tres" type="QuadMesh" id=3]
+[ext_resource path="res://GREEN.png" type="Texture" id=4]
+[ext_resource path="res://BLUE.png" type="Texture" id=5]
+[ext_resource path="res://BRANCH.png" type="Texture" id=6]
+[ext_resource path="res://RED.png" type="Texture" id=7]
+[ext_resource path="res://WHITE.png" type="Texture" id=8]
+[ext_resource path="res://SHORT.png" type="Texture" id=9]
+[ext_resource path="res://ROUND.png" type="Texture" id=10]
+[ext_resource path="res://SQUARE.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -9,6 +19,9 @@ outline_color = Color( 0.741176, 0.505882, 0.176471, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="QuadMesh" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40, 48 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -37,3 +50,129 @@ polygon = PoolVector2Array( 2.72076, 1.36038, 94.066, 0, 1026.72, 1.36038, 1026.
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Polygon2D"]
 mesh = SubResource( 2 )
+
+[node name="Card_Tall" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Tall"]
+position = Vector2( 50, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Tall"]
+position = Vector2( 50, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Short" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Short"]
+position = Vector2( 150, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Short"]
+position = Vector2( 150, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Square" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Square"]
+position = Vector2( 250, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Square"]
+position = Vector2( 250, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Round" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Round"]
+position = Vector2( 350, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Round"]
+position = Vector2( 350, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Branchy" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Branchy"]
+position = Vector2( 450, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Branchy"]
+position = Vector2( 450, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Red" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Red"]
+position = Vector2( 550, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Red"]
+position = Vector2( 550, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Green" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Green"]
+position = Vector2( 650, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Green"]
+position = Vector2( 650, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_Blue" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_Blue"]
+position = Vector2( 750, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_Blue"]
+position = Vector2( 750, 150 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Card_White" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Card_White"]
+position = Vector2( 850, 150 )
+scale = Vector2( 1, -1 )
+z_index = 2
+mesh = ExtResource( 3 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Card_White"]
+position = Vector2( 850, 150 )
+shape = SubResource( 3 )
+disabled = true
