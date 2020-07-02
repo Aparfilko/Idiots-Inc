@@ -13,7 +13,7 @@ func _ready():
 	pass # Replace with function body.
 	
 
-func _process(dt):
+func _process(_dt):
 	#make sure mouse position is always updated
 	mousePos = get_viewport().get_mouse_position()
 	#teleport current holding node to mouse
@@ -32,7 +32,7 @@ func _process(dt):
 		fadeNode.set_position(lerp(fadeNode.get_position(), fadePosition, fadeSpeed))
 	
 	
-func _select_word(node):
+func _selectWord(node):
 	basePosition = node.position
 	curNode = node
 	holding = true
@@ -42,3 +42,5 @@ func _select_word(node):
 #ok, now you can select stuff
 func _resetTimer():
 	noPick = false
+
+
