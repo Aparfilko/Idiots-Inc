@@ -190,3 +190,6 @@ texture = ExtResource( 8 )
 position = Vector2( 950, 150 )
 shape = SubResource( 3 )
 disabled = true
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+wait_time = 0.2
