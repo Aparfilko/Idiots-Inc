@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.685, 32.7551 )
 
-[node name="tempSelect" type="StaticBody2D"]
+[node name="tempSelect" type="KinematicBody2D"]
 input_pickable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -18,7 +18,7 @@ func _process(_dt):
 	mousePos = get_viewport().get_mouse_position()
 	#teleport current holding node to mouse
 	if holding and not noPick:
-		curNode.set_position(mousePos)
+		curNode.set_global_position(mousePos)
 	#release when mouse is let go
 	if Input.is_action_just_released("click"):
 		holding = false
