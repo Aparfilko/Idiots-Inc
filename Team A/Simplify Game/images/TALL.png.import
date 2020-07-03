@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ROUND.png-0404f65e2a026b2a9d21e268e20e18ac.stex"
+path="res://.import/TALL.png-32a193e5fb269555172d81366704005e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ROUND.png"
-dest_files=[ "res://.import/ROUND.png-0404f65e2a026b2a9d21e268e20e18ac.stex" ]
+source_file="res://images/TALL.png"
+dest_files=[ "res://.import/TALL.png-32a193e5fb269555172d81366704005e.stex" ]
 
 [params]
 

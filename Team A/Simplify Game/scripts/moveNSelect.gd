@@ -54,7 +54,7 @@ func letGo():
 	noPick = true
 	$Timer.start()
 
-func _in_select(_body, box):
+func _in_select(_body, _box):
 	print("yeah")
 	box1 = true
 func _out_Select1(_body):

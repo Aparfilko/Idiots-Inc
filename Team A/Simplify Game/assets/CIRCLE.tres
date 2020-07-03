@@ -1,7 +1,7 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=2]
 
 [ext_resource path="res://assets/glTF format/WOOD.material" type="Material" id=1]
-[ext_resource path="res://assets/glTF format/RED.material" type="Material" id=2]
+[ext_resource path="res://assets/glTF format/BLUE.material" type="Material" id=2]
 
 [resource]
 resource_name = "CIRCLE"
