@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/spookyhallway2.wav-536cbc2e2dafdf798941afc30582cea7.sample"
+path="res://.import/spookyhallway2.wav-8e7bb792a0be9e7909d74bd84d1713a9.sample"
 
 [deps]
 
-source_file="res://Assets/spookyhallway2.wav"
-dest_files=[ "res://.import/spookyhallway2.wav-536cbc2e2dafdf798941afc30582cea7.sample" ]
+source_file="res://assets/spookyhallway2.wav"
+dest_files=[ "res://.import/spookyhallway2.wav-8e7bb792a0be9e7909d74bd84d1713a9.sample" ]
 
 [params]
 

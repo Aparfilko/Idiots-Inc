@@ -9,7 +9,7 @@ func _ready():
 	_x = rand_range(100000,1000100)
 
 func _process(delta):
-	_x+=delta*0.01
+	_x+=delta*0.02
 	disp=0.1*(sin(_x)+sin(4*_x))
 	set("v_offset",disp)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
