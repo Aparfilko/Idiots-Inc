@@ -105,12 +105,10 @@ one_shot = true
 
 [node name="Select1" parent="Holder" instance=ExtResource( 11 )]
 position = Vector2( 425, 60 )
-collision_layer = 1
 collision_mask = 1
 
 [node name="Select2" parent="Holder" instance=ExtResource( 11 )]
 position = Vector2( 600, 60 )
-collision_layer = 1
 collision_mask = 1
 [connection signal="timeout" from="Holder/Timer" to="Holder" method="_resetTimer"]
 [connection signal="body_entered" from="Holder/Select1" to="Holder" method="_in_Select1"]

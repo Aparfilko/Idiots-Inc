@@ -45,9 +45,41 @@ func _on_AudioStreamPlayer_finished():
 	$AudioStreamPlayer.play()
 
 func _process(delta):
-	if Input.is_action_just_pressed("Q"):
-		lightItUp(thecolors[0])
+	pass
+	#if "RED NEEDS TO LIGHT UP":
+		#lightItUp(thecolors[0])
+	#if "GREEN NEEDS TO LIGHT UP":
+		#lightItUp(thecolors[1])
+	#if "BLUE NEEDS TO LIGHT UP":
+		#lightItUp(thecolors[2])
+	#if "WHITE NEEDS TO LIGHT UP":
+		#lightItUp(thecolors[3])
+	
+	#if "SHORT NEEDS TO LIGHT UP":
+		#LightTheHeight(theheights[0])
+	#if "TALL NEEDS TO LIGHT UP":
+		#LightTheHeight(theheights[1])
+	
+	#if "BRANCHY NEEDS TO LIGHT UP":
+		#TypeLight(thetypes[0])
+	#if "SQUARE NEEDS TO LIGHT UP":
+		#TypeLight(thetypes[1])
+	#if "CIRCLE NEEDS TO LIGHT UP":
+		#TypeLight(thetypes[2])
+
+
+
 func lightItUp(color):
 	for treenum in range(1,7):
 		if get_child(treenum).get_child(0).mesh.surface_get_material(0).resource_name == color:
+			get_child(treenum).get_child(1).visible = true
+
+func LightTheHeight(height):
+	for treenum in range(1,7):
+		if get_child(treenum).scale.y == height:
+			get_child(treenum).get_child(1).visible = true
+
+func TypeLight(type):
+	for treenum in range(1,7):
+		if get_child(treenum).get_child(0).mesh.resource_name == type:
 			get_child(treenum).get_child(1).visible = true
