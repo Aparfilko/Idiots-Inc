@@ -5,7 +5,8 @@ var disp=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	randomize()
+	_x = rand_range(100000,1000100)
 
 func _process(delta):
 	_x+=delta*0.01

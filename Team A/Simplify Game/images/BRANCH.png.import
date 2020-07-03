@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SHORT.png-214f6461841476da4407ea47c4a7573b.stex"
+path="res://.import/BRANCH.png-ac819bd002c3df715cc589ffab35c921.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SHORT.png"
-dest_files=[ "res://.import/SHORT.png-214f6461841476da4407ea47c4a7573b.stex" ]
+source_file="res://images/BRANCH.png"
+dest_files=[ "res://.import/BRANCH.png-ac819bd002c3df715cc589ffab35c921.stex" ]
 
 [params]
 
