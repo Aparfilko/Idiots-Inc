@@ -15,8 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Simplify Game"
-run/main_scene="res://Split Screen.tscn"
+config/name="Treesorter"
+run/main_scene="res://start screen.tscn"
 config/icon="res://images/icon.png"
 
 [display]

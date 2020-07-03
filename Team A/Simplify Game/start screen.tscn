@@ -45,17 +45,17 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="Panel/VBoxContainer"]
-margin_right = 314.0
+margin_right = 313.0
 margin_bottom = 22.0
 
 [node name="Button2" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 26.0
-margin_right = 314.0
+margin_right = 313.0
 margin_bottom = 48.0
 
 [node name="Button3" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 52.0
-margin_right = 314.0
+margin_right = 313.0
 margin_bottom = 74.0
 
 [node name="Title" type="Label" parent="Panel"]
