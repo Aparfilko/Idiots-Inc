@@ -15,12 +15,12 @@ var short=Vector3(.7,.5,.7)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Let's set the level!
-	changetype(1,tall,branchy,red)
-	changetype(2,short,branchy,green)
-	changetype(3,tall,branchy,blue)
-	changetype(4,short,branchy,white)
-	changetype(5,tall,branchy,green)
-	changetype(6,tall,branchy,green)
+	changetype(1,tall,square,red)
+	changetype(2,short,square,green)
+	changetype(3,tall,square,blue)
+	changetype(4,short,square,white)
+	changetype(5,tall,square,green)
+	changetype(6,tall,square,green)
 	print(get_child(1).get_child(0).mesh.surface_get_material(0))
 
 func changetype(tree,height,type,color):
