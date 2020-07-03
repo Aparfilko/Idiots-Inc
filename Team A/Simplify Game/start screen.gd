@@ -4,7 +4,7 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+onready var sound =$Panel/VBoxContainer/buttonpress
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +17,7 @@ func _ready():
 
 
 func _on_start_pressed():
+	#sound.play()
 	get_tree().change_scene('res://Split Screen.tscn')
 
 
@@ -26,5 +27,6 @@ func _on_levelselect_pressed():
 
 
 func _on_quit_pressed():
+	#$Panel/VBoxContainer/buttonpress.play()
 	get_tree().quit()
 
