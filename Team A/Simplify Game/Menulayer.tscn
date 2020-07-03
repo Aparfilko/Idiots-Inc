@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Kenney Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/pause menu.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.423529, 0.423529, 0.423529, 0.0627451 )
+
+[node name="Menulayer" type="CanvasLayer"]
+layer = 2
+
+[node name="pause menu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = SubResource( 2 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="pause menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 984.0
+margin_bottom = 560.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause menu/Panel"]
+margin_left = 422.0
+margin_top = 237.0
+margin_right = 626.0
+margin_bottom = 405.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="pause menu/Panel/VBoxContainer"]
+margin_right = 204.0
+margin_bottom = 16.0
+text = "paused"
+align = 1
+valign = 1
+
+[node name="Resume" type="Button" parent="pause menu/Panel/VBoxContainer"]
+margin_top = 20.0
+margin_right = 204.0
+margin_bottom = 42.0
+text = "Resume"
+
+[node name="toMenu" type="Button" parent="pause menu/Panel/VBoxContainer"]
+margin_top = 46.0
+margin_right = 204.0
+margin_bottom = 68.0
+text = "Back to Menu"
+
+[node name="Mute" type="Button" parent="pause menu/Panel/VBoxContainer"]
+margin_top = 72.0
+margin_right = 204.0
+margin_bottom = 94.0
+text = "Mute Music"
+[connection signal="pressed" from="pause menu/Panel/VBoxContainer/Resume" to="pause menu" method="_on_Resume_pressed"]
+[connection signal="pressed" from="pause menu/Panel/VBoxContainer/toMenu" to="pause menu" method="_on_toMenu_pressed"]
+[connection signal="pressed" from="pause menu/Panel/VBoxContainer/Mute" to="pause menu" method="_on_Mute_pressed"]

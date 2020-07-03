@@ -11,6 +11,7 @@ func _ready():
 	#Let's set the level!
 	#get_child(1).get_child(0).mesh.set_mesh()
 	print(get_child(1).get_child(0).mesh.surface_get_material(0))
+	
 #func _unhandled_input(_event):
 #	if _event is InputEventKey:
 #		if _event.pressed and _event.scancode == KEY_SPACE:
@@ -21,5 +22,7 @@ func _ready():
 #				$SpotLight.visible = true
 
 
-func _on_AudioStreamPlayer_finished():
-	$AudioStreamPlayer.play()
+
+
+
+
