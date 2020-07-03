@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/BRANCHY_WHITE.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/BRANCHY.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/TREE1.gd" type="Script" id=2]
 
 [node name="tree_oak" type="Spatial"]
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "5"
+}
 
 [node name="tree_oak 2" type="MeshInstance" parent="."]
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.00439145, 5.96046e-08, 0.0138403 )

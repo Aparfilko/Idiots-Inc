@@ -9,3 +9,4 @@ func _ready():
 func _input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("click"):
 		emit_signal("clicked", self)
+
