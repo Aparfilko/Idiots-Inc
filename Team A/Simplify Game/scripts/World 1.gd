@@ -17,6 +17,7 @@ var thecolors = ["RED","GREEN","BLUE","WHITE"]
 var thetypes = ["BRANCHY","SQUARE","CIRCLE"]
 var theheights = [.5,1]
 onready var list = ["nothing", "nothing"]
+onready var spots = [0,0,0,0,0,0]
 
 onready var nexttree = 1
 
@@ -60,26 +61,29 @@ func _process(_delta):
 	#"RED NEEDS TO LIGHT UP"
 	if list[0].match("Card_Red") or list[1].match("Card_Red"):
 		lightItUp(thecolors[0])
-	if list[0].match("Card_Green") or list[1].match("Card_Green"):
+	elif list[0].match("Card_Green") or list[1].match("Card_Green"):
 		lightItUp(thecolors[1])
-	if list[0].match("Card_Blue") or list[1].match("Card_Blue"):
+	elif list[0].match("Card_Blue") or list[1].match("Card_Blue"):
 		lightItUp(thecolors[2])
-	if list[0].match("Card_White") or list[1].match("Card_White"):
+	elif list[0].match("Card_White") or list[1].match("Card_White"):
 		lightItUp(thecolors[3])
 
 	if list[0].match("Card_Short") or list[1].match("Card_Short"):
 		LightTheHeight(theheights[0])
-	if list[0].match("Card_Tall") or list[1].match("Card_Tall"):
+	elif list[0].match("Card_Tall") or list[1].match("Card_Tall"):
 		LightTheHeight(theheights[1])
 
 	if list[0].match("Card_Branchy") or list[1].match("Card_Branchy"):
 		TypeLight(thetypes[0])
-	if list[0].match("Card_Square") or list[1].match("Card_Square"):
+	elif list[0].match("Card_Square") or list[1].match("Card_Square"):
 		TypeLight(thetypes[1])
-	if list[0].match("Card_Round") or list[1].match("Card_Round"):
+	elif list[0].match("Card_Round") or list[1].match("Card_Round"):
 		TypeLight(thetypes[2])
-
-	
+		
+	if list[0].match("nothing") or list[1].match("nothing"):
+		freebie()
+		
+	spotlights()
 	#increments the turn-off loop
 	nexttree += 1
 
@@ -87,18 +91,29 @@ func _process(_delta):
 func lightItUp(color): #function for turning on spotlights based on color
 	for treenum in range(1,7):
 		if get_child(treenum).get_child(0).mesh.surface_get_material(0).resource_name == color:
-			get_child(treenum).get_child(1).visible = true
+			spots[treenum-1] += 1
 
 func LightTheHeight(height): #function for turning on spotlights based on height
 	for treenum in range(1,7):
 		if get_child(treenum).scale.y == height:
-			get_child(treenum).get_child(1).visible = true
+			spots[treenum-1] += 1
 
 func TypeLight(type): #function for turning on spotlights based on tree type
 	for treenum in range(1,7):
 		if get_child(treenum).get_child(0).mesh.resource_name == type:
-			get_child(treenum).get_child(1).visible = true
+#			get_child(treenum).get_child(1).visible = true
+			spots[treenum-1] += 1
 			
+func freebie():
+	for treenum in range(1,7):
+		spots[treenum-1] += 1
+func spotlights():
+	
+	for treenum in range(1,7):
+		if spots[treenum-1] == 2:
+			get_child(treenum).get_child(1).visible = true
+		spots[treenum-1] = 0
+	
 func listCard(card, num, _n, _y):
 	list[num] = card.name
 	
