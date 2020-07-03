@@ -12,8 +12,10 @@ var box
 var boxRun
 var boxPos
 var boxReturn
+var basecard = [0, 0]
 #theBoxes
-signal returner(pos, card)
+signal returner(card)
+signal free()
 
 func _ready():
 	var mouse = InputEventMouseButton.new()
@@ -31,9 +33,10 @@ func _process(_dt):
 	#release when mouse is let go
 	if Input.is_action_just_released("click") and holding:
 		letGo()
+		#over box?
 		if is_instance_valid(box):
-			connect("returner", box, "goBack", [curNode.pos, curNode])
 			boxPos = box.get_position()
+		#no?
 		else:
 			fadeNode = curNode
 	#generally just fade back when done
@@ -52,7 +55,10 @@ func _selectWord(node):
 func _resetTimer():
 	noPick = false
 	if is_instance_valid(box):
-		emit_signal("returner", basePosition, curNode)
+		print(curNode)
+		connect("returner", box, "held", [curNode])
+		emit_signal("returner", curNode)
+		disconnect("returner", box, "held")
 		box = null
 
 func letGo():
@@ -60,9 +66,14 @@ func letGo():
 	noPick = true
 	$Timer.start()
 
-func _in_Select(_body, node):
-	if holding:
+func _in_Select(body, node):
+	if holding and not is_instance_valid(node.c):
+		print(body)
 		box = node
 func _out_Select(body, node):
 	box = null
-#	if not holding
+#	is there a card here?
+	if body == node.c:
+		connect("free", node, "freed")
+		emit_signal("free")
+		disconnect("free", node, "freed")
