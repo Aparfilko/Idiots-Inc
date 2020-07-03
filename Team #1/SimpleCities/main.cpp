@@ -36,6 +36,7 @@ class GDMain:public Spatial{
 		Vector3 offset;
 		float rot;
 	} car;
+	typedef struct {int x,y,type,color;MeshInstance* b;} building;
 	
 	SpatialMaterial* mats[MATSNUM];//gray,red,orange,yellow,green,blue,purple
 	CubeMesh* cubes[CUBESNUM];//road,cars(1-7)
@@ -48,31 +49,31 @@ class GDMain:public Spatial{
 	Input* input;
 	Camera* cam;
 	std::vector<Spatial*> foundations;
-	std::vector<MeshInstance*> buildings;
+	std::vector<building> buildings;
 	std::vector<MeshInstance*> roads;
 	int xDim,yDim;
 	std::vector<mapTile> lvl;
 	std::vector<carPath> paths;
 	std::vector<car> cars;
 	
-	void addHouse(int x,int y,int c){
-		buildings.push_back((MeshInstance*)housePacked->instance());
-		buildings.back()->set_surface_material(0,mats[c]);
-		buildings.back()->set_translation(Vector3(x,.4,y));
-		buildings.back()->set_rotation(Vector3(0,-1.57,0));
-		add_child(buildings.back());
-		lvl[xDim*y+x].type=2;
-		lvl[xDim*y+x].color=c;
+	void removeBuilding(int x,int y){
 	}
 	
-	void addOffice(int x,int y,int c){
-		buildings.push_back((MeshInstance*)officePacked->instance());
-		buildings.back()->set_surface_material(0,mats[c]);
-		buildings.back()->set_translation(Vector3(x,1.2,y));
-		buildings.back()->set_rotation(Vector3(0,-1.57,0));
-		add_child(buildings.back());
-		lvl[xDim*y+x].type=3;
-		lvl[xDim*y+x].color=c;
+	void addBuilding(int x,int y,int c,int type){
+		buildings.push_back(building());
+		if(type==2){
+			buildings.back().b=(MeshInstance*)housePacked->instance();
+			buildings.back().b->set_translation(Vector3(x,.4,y));
+		}else if(type==3){
+			buildings.back().b=(MeshInstance*)officePacked->instance();
+			buildings.back().b->set_translation(Vector3(x,1.2,y));
+		}
+		buildings.back().b->set_surface_material(0,mats[c]);
+		buildings.back().b->set_rotation(Vector3(0,-1.57,0));
+		add_child(buildings.back().b);
+		buildings.back().type=lvl[xDim*y+x].type=type;
+		buildings.back().color=lvl[xDim*y+x].color=c;
+		buildings.back().x=x;buildings.back().y=y;
 	}
 	
 	void addRoad(int x,int y){
@@ -135,8 +136,17 @@ class GDMain:public Spatial{
 				if(lvl[xDim*y0+x0].type==3){
 					for(int y1=0;y1<yDim;y1++){
 						for(int x1=0;x1<xDim;x1++){
-							if(lvl[xDim*y1+x1].type==2 && lvl[xDim*y1+x1].color==lvl[xDim*y0+x0].color){
-								bfs(x0,y0,x1,y1,lvl[xDim*y0+x0].color);
+							if((y0+y1<yDim && x0+x1<xDim) && lvl[xDim*(y0+y1)+x0+x1].type==2 && lvl[xDim*(y0+y1)+x0+x1].color==lvl[xDim*y0+x0].color){
+								bfs(x0,y0,x0+x1,y0+y1,lvl[xDim*y0+x0].color);
+							}
+							if((y1 && y0-y1>=0 && x0+x1<xDim) && lvl[xDim*(y0-y1)+x0+x1].type==2 && lvl[xDim*(y0-y1)+x0+x1].color==lvl[xDim*y0+x0].color){
+								bfs(x0,y0,x0+x1,y0-y1,lvl[xDim*y0+x0].color);
+							}
+							if((x1 && y0+y1<yDim && x0-x1>=0) && lvl[xDim*(y0+y1)+x0-x1].type==2 && lvl[xDim*(y0+y1)+x0-x1].color==lvl[xDim*y0+x0].color){
+								bfs(x0,y0,x0-x1,y0+y1,lvl[xDim*y0+x0].color);
+							}
+							if((y1&&x1 && y0-y1>=0 && x0-x1>=0) && lvl[xDim*(y0-y1)+x0-x1].type==2 && lvl[xDim*(y0-y1)+x0-x1].color==lvl[xDim*y0+x0].color){
+								bfs(x0,y0,x0-x1,y0-y1,lvl[xDim*y0+x0].color);
 							}
 						}
 					}
@@ -185,7 +195,7 @@ class GDMain:public Spatial{
 		
 		input=Input::get_singleton();
 		add_child(cam=Camera::_new());
-		cam->set_rotation(Vector3(-1.57,0,0));
+		cam->set_rotation(Vector3(-1.2,0,0));
 		
 		{
 		for(int i=0;i<MATSNUM;i++){mats[i]=SpatialMaterial::_new();}
@@ -234,29 +244,29 @@ class GDMain:public Spatial{
 		}
 		fclose(fid);
 		
-		addOffice(1,1,1);
-		addOffice(12,6,4);
-		addOffice(7,13,5);
+		addBuilding(1,1,1,3);
+		addBuilding(12,6,4,3);
+		addBuilding(7,13,5,3);
 		
-		addHouse(18,15,1);
-		addHouse(18,16,1);
-		addHouse(18,17,1);
-		addHouse(18,18,1);
+		addBuilding(18,15,1,2);
+		addBuilding(18,16,1,2);
+		addBuilding(18,17,1,2);
+		addBuilding(18,18,1,2);
 		
-		addHouse(5,1,4);
-		addHouse(5,2,4);
-		addHouse(5,3,4);
-		addHouse(5,4,1);
+		addBuilding(5,1,4,2);
+		addBuilding(5,2,4,2);
+		addBuilding(5,3,4,2);
+		addBuilding(5,4,1,2);
 		
-		addHouse(10,5,1);
-		addHouse(10,6,1);
-		addHouse(9,5,4);
-		addHouse(9,6,4);
+		addBuilding(10,5,1,2);
+		addBuilding(10,6,1,2);
+		addBuilding(9,5,4,2);
+		addBuilding(9,6,4,2);
 		
-		addHouse(10,9,5);
-		addHouse(10,10,5);
-		addHouse(9,9,1);
-		addHouse(9,10,1);
+		addBuilding(10,9,5,2);
+		addBuilding(10,10,5,2);
+		addBuilding(9,9,1,2);
+		addBuilding(9,10,1,2);
 		
 		populateRoads();
 		placeRoads();
