@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Kenney Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Card_Branchy.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Card_White.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Card_Red.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Selection box.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Selection box.gd" type="Script" id=12]
 [ext_resource path="res://moveNSelect.gd" type="Script" id=13]
 
 [sub_resource type="DynamicFont" id=1]
@@ -101,11 +102,11 @@ one_shot = true
 
 [node name="Select1" parent="Holder" instance=ExtResource( 11 )]
 position = Vector2( 450, 60 )
+monitorable = false
+script = ExtResource( 12 )
 
 [node name="Select2" parent="Holder" instance=ExtResource( 11 )]
 position = Vector2( 575, 60 )
+monitorable = false
+script = ExtResource( 12 )
 [connection signal="timeout" from="Holder/Timer" to="Holder" method="_resetTimer"]
-[connection signal="body_entered" from="Holder/Select1" to="Holder" method="_in_Select1"]
-[connection signal="body_exited" from="Holder/Select1" to="Holder" method="_out_Select1"]
-[connection signal="body_entered" from="Holder/Select2" to="Holder" method="_in_Select2"]
-[connection signal="body_exited" from="Holder/Select2" to="Holder" method="_out_Select2"]

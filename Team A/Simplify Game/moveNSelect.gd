@@ -8,13 +8,12 @@ var fadeNode
 var fadePosition
 const fadeSpeed = 0.2
 onready var noPick = false
-onready var box1Pos = $Select1.get_position()
-onready var box1 = false
-onready var box2Pos = $Select2.get_position()
-onready var box2 = true
-
+var box
+var boxRun
+var boxPos
+var boxReturn
 #theBoxes
-signal returner
+signal returner(pos, card)
 
 func _ready():
 	var mouse = InputEventMouseButton.new()
@@ -32,35 +31,38 @@ func _process(_dt):
 	#release when mouse is let go
 	if Input.is_action_just_released("click") and holding:
 		letGo()
-		fadeNode = curNode
-		fadePosition = basePosition
+		if is_instance_valid(box):
+			connect("returner", box, "goBack", [curNode.pos, curNode])
+			boxPos = box.get_position()
+		else:
+			fadeNode = curNode
 	#generally just fade back when done
+	if is_instance_valid(box) and not holding:
+		curNode.set_position(lerp(curNode.get_position(), boxPos, fadeSpeed))
 	if is_instance_valid(fadeNode):
-		fadeNode.set_position(lerp(fadeNode.get_position(), fadePosition, fadeSpeed))
+		fadeNode.set_position(lerp(fadeNode.get_position(), fadeNode.pos, fadeSpeed))
 	
 	
 func _selectWord(node):
 	if not noPick:
-		basePosition = node.position
 		curNode = node
 		holding = true
 	
 #ok, now you can select stuff
 func _resetTimer():
 	noPick = false
+	if is_instance_valid(box):
+		emit_signal("returner", basePosition, curNode)
+		box = null
 
 func letGo():
 	holding = false
 	noPick = true
 	$Timer.start()
 
-func _in_select(_body, box):
-	print("yeah")
-	box1 = true
-func _out_Select1(_body):
-	print("")
-	box1 = false
-func _in_Select2(_body):
-	box2 = true
-func _out_Select2(_body):
-	box2 = false
+func _in_Select(_body, node):
+	if holding:
+		box = node
+func _out_Select(body, node):
+	box = null
+#	if not holding
