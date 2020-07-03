@@ -18,4 +18,4 @@ func get_object_under_mouse():
 	
 func _input(event):
 	if event.is_action_pressed("left_click") and get_object_under_mouse() == true:
-		print("Pow")
+		_foundation_place_building()
