@@ -92,13 +92,12 @@ class GDMain:public Spatial{
 		add_child(roads.back());
 	}
 	
-	/*
 	void bfs(int x0,int y0,int x1,int y1,int c){
 		std::vector<bfsNode> map(xDim*yDim);
-		for(int i=0;i<map.size();i++){map[i]={0,{0,0}};}
+		for(int i=0;i<map.size();i++){map[i]={-1,-1};}
 		std::vector<carPathNode> frontier;
 		frontier.push_back({x0,y0});
-		map[xDim*y0+x0].steps=1;
+		map[xDim*y0+x0].steps=0;
 		while(!frontier.empty()){
 			carPathNode curr=frontier[0];
 			frontier.erase(frontier.begin());
@@ -108,25 +107,46 @@ class GDMain:public Spatial{
 				paths.back().p.push_back({x1,y1});
 				while(!(paths.back().p.back().x==x0 && paths.back().p.back().y==y0)){
 					int x=paths.back().p.back().x,y=paths.back().p.back().y;
-					//paths.back().p.push_back({0,0});
+					paths.back().p.push_back({x,y});
+					map[xDim*y+x].roadsPlaced=999999999;
+					if(map[xDim*y+x+1].steps==map[xDim*y+x].steps-1&&map[xDim*y+x+1].roadsPlaced<=map[xDim*y+x].roadsPlaced){
+						paths.back().p.back().x=x+1;
+						paths.back().p.back().y=y;
+						map[xDim*y+x].roadsPlaced=map[xDim*y+x+1].roadsPlaced;
+					}
+					if(map[xDim*y+x-1].steps==map[xDim*y+x].steps-1&&map[xDim*y+x-1].roadsPlaced<=map[xDim*y+x].roadsPlaced){
+						paths.back().p.back().x=x-1;
+						paths.back().p.back().y=y;
+						map[xDim*y+x].roadsPlaced=map[xDim*y+x-1].roadsPlaced;
+					}
+					if(map[xDim*(y+1)+x].steps==map[xDim*y+x].steps-1&&map[xDim*(y+1)+x].roadsPlaced<=map[xDim*y+x].roadsPlaced){
+						paths.back().p.back().x=x;
+						paths.back().p.back().y=y+1;
+						map[xDim*y+x].roadsPlaced=map[xDim*(y+1)+x].roadsPlaced;
+					}
+					if(map[xDim*(y-1)+x].steps==map[xDim*y+x].steps-1&&map[xDim*(y-1)+x].roadsPlaced<=map[xDim*y+x].roadsPlaced){
+						paths.back().p.back().x=x;
+						paths.back().p.back().y=y-1;
+						map[xDim*y+x].roadsPlaced=map[xDim*(y-1)+x].roadsPlaced;
+					}
 				}
 				return;
 			}
 			
-			if(curr.x>0&&(lvl[xDim*curr.y+curr.x-1].type==1||(curr.y==y1&&curr.x-1==x1))&&(!map[xDim*curr.y+curr.x-1].steps||map[xDim*curr.y+curr.x-1].steps>map[xDim*curr.y+curr.x].steps+1)){
-				map[xDim*curr.y+curr.x-1]={map[xDim*curr.y+curr.x].steps+1,curr};
+			if(curr.x>0&&(lvl[xDim*curr.y+curr.x-1].type==1||(curr.y==y1&&curr.x-1==x1))&&(map[xDim*curr.y+curr.x-1].steps==-1||map[xDim*curr.y+curr.x-1].steps>map[xDim*curr.y+curr.x].steps+1)){
+				map[xDim*curr.y+curr.x-1]={map[xDim*curr.y+curr.x].steps+1,map[xDim*curr.y+curr.x].roadsPlaced+!lvl[xDim*curr.y+curr.x-1].color};
 				frontier.push_back({curr.x-1,curr.y});
 			}
-			if(curr.x+1<xDim&&(lvl[xDim*curr.y+curr.x+1].type==1||(curr.y==y1&&curr.x+1==x1))&&(!map[xDim*curr.y+curr.x+1].steps||map[xDim*curr.y+curr.x+1].steps>map[xDim*curr.y+curr.x].steps+1)){
-				map[xDim*curr.y+curr.x+1]={map[xDim*curr.y+curr.x].steps+1,curr};
+			if(curr.x+1<xDim&&(lvl[xDim*curr.y+curr.x+1].type==1||(curr.y==y1&&curr.x+1==x1))&&(map[xDim*curr.y+curr.x+1].steps==-1||map[xDim*curr.y+curr.x+1].steps>map[xDim*curr.y+curr.x].steps+1)){
+				map[xDim*curr.y+curr.x+1]={map[xDim*curr.y+curr.x].steps+1,map[xDim*curr.y+curr.x].roadsPlaced+!lvl[xDim*curr.y+curr.x+1].color};
 				frontier.push_back({curr.x+1,curr.y});
 			}
-			if(curr.y>0&&(lvl[xDim*(curr.y-1)+curr.x].type==1||(curr.y-1==y1&&curr.x==x1))&&(!map[xDim*(curr.y-1)+curr.x].steps||map[xDim*(curr.y-1)+curr.x].steps>map[xDim*curr.y+curr.x].steps+1)){
-				map[xDim*(curr.y-1)+curr.x]={map[xDim*curr.y+curr.x].steps+1,curr};
+			if(curr.y>0&&(lvl[xDim*(curr.y-1)+curr.x].type==1||(curr.y-1==y1&&curr.x==x1))&&(map[xDim*(curr.y-1)+curr.x].steps==-1||map[xDim*(curr.y-1)+curr.x].steps>map[xDim*curr.y+curr.x].steps+1)){
+				map[xDim*(curr.y-1)+curr.x]={map[xDim*curr.y+curr.x].steps+1,map[xDim*curr.y+curr.x].roadsPlaced+!lvl[xDim*(curr.y-1)+curr.x].color};
 				frontier.push_back({curr.x,curr.y-1});
 			}
-			if(curr.y+1<yDim&&(lvl[xDim*(curr.y+1)+curr.x].type==1||(curr.y+1==y1&&curr.x==x1))&&(!map[xDim*(curr.y+1)+curr.x].steps||map[xDim*(curr.y+1)+curr.x].steps>map[xDim*curr.y+curr.x].steps+1)){
-				map[xDim*(curr.y+1)+curr.x]={map[xDim*curr.y+curr.x].steps+1,curr};
+			if(curr.y+1<yDim&&(lvl[xDim*(curr.y+1)+curr.x].type==1||(curr.y+1==y1&&curr.x==x1))&&(map[xDim*(curr.y+1)+curr.x].steps==-1||map[xDim*(curr.y+1)+curr.x].steps>map[xDim*curr.y+curr.x].steps+1)){
+				map[xDim*(curr.y+1)+curr.x]={map[xDim*curr.y+curr.x].steps+1,map[xDim*curr.y+curr.x].roadsPlaced+!lvl[xDim*(curr.y+1)+curr.x].color};
 				frontier.push_back({curr.x,curr.y+1});
 			}
 		}
@@ -156,8 +176,6 @@ class GDMain:public Spatial{
 			}
 		}
 	}
-	
-	*/
 	
 	void placeRoads(){
 		for(carPath &p:paths){
@@ -272,8 +290,8 @@ class GDMain:public Spatial{
 		addBuilding(9,9,1,2);
 		addBuilding(9,10,1,2);
 		
-		//populateRoads();
-		//placeRoads();
+		populateRoads();
+		placeRoads();
 		for(int i=0;i<paths.size();i++){
 			cars.push_back(car());
 			add_child(cars.back().mesh=MeshInstance::_new());
