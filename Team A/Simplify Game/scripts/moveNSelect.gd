@@ -52,10 +52,12 @@ func _selectWord(node):
 		if curNode == fadeNode:
 			fadeNode = null
 		holding = true
+		curNode.set_z_index(curNode.get_z_index()+1)
 	
 #ok, now you can select stuff
 func _resetTimer():
 	noPick = false
+	curNode.set_z_index(curNode.get_z_index()-1)
 	if is_instance_valid(box):
 		connect("returner", box, "held", [curNode])
 		emit_signal("returner", curNode)
