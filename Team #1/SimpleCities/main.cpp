@@ -25,7 +25,7 @@ class GDMain:public Spatial{
 	typedef struct {char type,color;}mapTile;
 	typedef struct {int x,y;} carPathNode;
 	typedef struct {char color;std::vector<carPathNode> p;} carPath;
-	typedef struct {int steps;carPathNode from;} bfsNode;
+	typedef struct {int steps;int roadsPlaced;} bfsNode;
 	typedef struct {
 		int dir;
 		int pathInd;
@@ -92,6 +92,7 @@ class GDMain:public Spatial{
 		add_child(roads.back());
 	}
 	
+	/*
 	void bfs(int x0,int y0,int x1,int y1,int c){
 		std::vector<bfsNode> map(xDim*yDim);
 		for(int i=0;i<map.size();i++){map[i]={0,{0,0}};}
@@ -106,7 +107,8 @@ class GDMain:public Spatial{
 				paths.back().color=c;
 				paths.back().p.push_back({x1,y1});
 				while(!(paths.back().p.back().x==x0 && paths.back().p.back().y==y0)){
-					paths.back().p.push_back(map[xDim*paths.back().p.back().y+paths.back().p.back().x].from);
+					int x=paths.back().p.back().x,y=paths.back().p.back().y;
+					//paths.back().p.push_back({0,0});
 				}
 				return;
 			}
@@ -154,6 +156,8 @@ class GDMain:public Spatial{
 			}
 		}
 	}
+	
+	*/
 	
 	void placeRoads(){
 		for(carPath &p:paths){
@@ -268,8 +272,8 @@ class GDMain:public Spatial{
 		addBuilding(9,9,1,2);
 		addBuilding(9,10,1,2);
 		
-		populateRoads();
-		placeRoads();
+		//populateRoads();
+		//placeRoads();
 		for(int i=0;i<paths.size();i++){
 			cars.push_back(car());
 			add_child(cars.back().mesh=MeshInstance::_new());
@@ -337,7 +341,11 @@ class GDMain:public Spatial{
 	}
 	
 	void _foundation_place_building(int x,int y,int color,int type){
-		addBuilding(x,y,color,type);
+		if(type){
+			addBuilding(x,y,color,type);
+		}else{
+			removeBuilding(x,y);
+		}
 	}
 
 	static void _register_methods(){
