@@ -1,6 +1,7 @@
-extends StaticBody2D
+extends KinematicBody2D
 signal clicked(node)
 var inBox
+onready var pos = get_position()
 
 func _ready():
 	$CollisionShape2D.set_disabled(false)

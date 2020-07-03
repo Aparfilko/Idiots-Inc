@@ -19,3 +19,7 @@ func _ready():
 #				$SpotLight.visible = false
 #			if $SpotLight.visible == false:
 #				$SpotLight.visible = true
+
+
+func _on_AudioStreamPlayer_finished():
+	$AudioStreamPlayer.play()
