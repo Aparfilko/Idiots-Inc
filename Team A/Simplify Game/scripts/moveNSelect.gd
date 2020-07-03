@@ -49,6 +49,8 @@ func _process(_dt):
 func _selectWord(node):
 	if not noPick:
 		curNode = node
+		if curNode == fadeNode:
+			fadeNode = null
 		holding = true
 	
 #ok, now you can select stuff
