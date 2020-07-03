@@ -4,12 +4,13 @@
 [ext_resource path="res://assets/TREE1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/TREE2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/glTF format/new_opensimplexnoise.tres" type="OpenSimplexNoise" id=4]
-[ext_resource path="res://ponderance.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/ponderance.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/TREE5.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/World 1.gd" type="Script" id=7]
 [ext_resource path="res://assets/TREE3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/pause menu.gd" type="Script" id=9]
 [ext_resource path="res://assets/TREE6.tscn" type="PackedScene" id=10]
+
 
 
 

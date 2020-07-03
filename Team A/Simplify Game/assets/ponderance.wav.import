@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/ponderance.wav-7726c72739bbbf090ed976c54c13da88.sample"
+path="res://.import/ponderance.wav-a24cae110266a26fa6a88fbd62f860ee.sample"
 
 [deps]
 
-source_file="res://ponderance.wav"
-dest_files=[ "res://.import/ponderance.wav-7726c72739bbbf090ed976c54c13da88.sample" ]
+source_file="res://assets/ponderance.wav"
+dest_files=[ "res://.import/ponderance.wav-a24cae110266a26fa6a88fbd62f860ee.sample" ]
 
 [params]
 

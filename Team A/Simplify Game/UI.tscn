@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Kenney Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://cards/Card_Branchy.tscn" type="PackedScene" id=2]
@@ -11,10 +11,8 @@
 [ext_resource path="res://cards/Card_White.tscn" type="PackedScene" id=9]
 [ext_resource path="res://cards/Card_Red.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Selection box.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/rollover3.ogg" type="AudioStream" id=12]
 [ext_resource path="res://scripts/moveNSelect.gd" type="Script" id=13]
-
-
-
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -49,6 +47,9 @@ __meta__ = {
 
 [node name="Holder" type="CanvasLayer" parent="."]
 script = ExtResource( 13 )
+
+[node name="Clicky" type="AudioStreamPlayer" parent="Holder"]
+stream = ExtResource( 12 )
 
 [node name="Card_Red" parent="Holder" groups=[
 "card",
@@ -99,7 +100,7 @@ position = Vector2( 850, 170 )
 position = Vector2( 950, 170 )
 
 [node name="Timer" type="Timer" parent="Holder"]
-wait_time = 0.4
+wait_time = 0.092
 one_shot = true
 
 [node name="Select1" parent="Holder" instance=ExtResource( 11 )]

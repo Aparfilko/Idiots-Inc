@@ -9,7 +9,7 @@ var white = "res://assets/glTF format/WHITE.material"
 func _ready():
 	pass
 	#Let's set the level!
-	set("get_child(1).get_child(0).mesh.get_surface_material(0)",green)
+	#get_child(1).get_child(0).mesh.set_mesh()
 	print(get_child(1).get_child(0).mesh.surface_get_material(0))
 #func _unhandled_input(_event):
 #	if _event is InputEventKey:

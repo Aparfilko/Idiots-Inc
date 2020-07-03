@@ -9,5 +9,6 @@ func _ready():
 	
 func _input_event(_viewport, _event, _shape_idx):
 	if Input.is_action_just_pressed("click") and not inBox:
+		get_parent().get_child(0).play()
 		emit_signal("clicked", self)
 
