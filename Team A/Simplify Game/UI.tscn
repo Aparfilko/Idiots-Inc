@@ -95,7 +95,7 @@ position = Vector2( 850, 170 )
 position = Vector2( 950, 170 )
 
 [node name="Timer" type="Timer" parent="Holder"]
-wait_time = 0.2
+wait_time = 0.3
 one_shot = true
 
 [node name="Select1" parent="Holder" instance=ExtResource( 11 )]

@@ -18,6 +18,7 @@ var thetypes = ["BRANCHY","SQUARE","CIRCLE"]
 var theheights = [.5,1]
 onready var list = ["nothing", "nothing"]
 onready var spots = [0,0,0,0,0,0]
+onready var inAnd = true
 
 onready var nexttree = 1
 
@@ -52,7 +53,13 @@ func changetype(tree,height,type,color):
 func _on_AudioStreamPlayer_finished():
 	$AudioStreamPlayer.play()
 
+#switch between OR rules or AND rules
+func _input(_event):
+	if Input.is_action_just_pressed("ui_accept"):
+		inAnd = not inAnd
+
 func _process(_delta):
+
 	#this part turns off all lights every loop
 	if nexttree > 6:
 		nexttree = 1
@@ -61,26 +68,26 @@ func _process(_delta):
 	#"RED NEEDS TO LIGHT UP"
 	if list[0].match("Card_Red") or list[1].match("Card_Red"):
 		lightItUp(thecolors[0])
-	elif list[0].match("Card_Green") or list[1].match("Card_Green"):
+	if list[0].match("Card_Green") or list[1].match("Card_Green"):
 		lightItUp(thecolors[1])
-	elif list[0].match("Card_Blue") or list[1].match("Card_Blue"):
+	if list[0].match("Card_Blue") or list[1].match("Card_Blue"):
 		lightItUp(thecolors[2])
-	elif list[0].match("Card_White") or list[1].match("Card_White"):
+	if list[0].match("Card_White") or list[1].match("Card_White"):
 		lightItUp(thecolors[3])
 
 	if list[0].match("Card_Short") or list[1].match("Card_Short"):
 		LightTheHeight(theheights[0])
-	elif list[0].match("Card_Tall") or list[1].match("Card_Tall"):
+	if list[0].match("Card_Tall") or list[1].match("Card_Tall"):
 		LightTheHeight(theheights[1])
 
 	if list[0].match("Card_Branchy") or list[1].match("Card_Branchy"):
 		TypeLight(thetypes[0])
-	elif list[0].match("Card_Square") or list[1].match("Card_Square"):
+	if list[0].match("Card_Square") or list[1].match("Card_Square"):
 		TypeLight(thetypes[1])
-	elif list[0].match("Card_Round") or list[1].match("Card_Round"):
+	if list[0].match("Card_Round") or list[1].match("Card_Round"):
 		TypeLight(thetypes[2])
 		
-	if list[0].match("nothing") or list[1].match("nothing"):
+	if (list[0].match("nothing") or list[1].match("nothing")) and inAnd:
 		freebie()
 		
 	spotlights()
@@ -107,10 +114,12 @@ func TypeLight(type): #function for turning on spotlights based on tree type
 func freebie():
 	for treenum in range(1,7):
 		spots[treenum-1] += 1
+		
 func spotlights():
-	
 	for treenum in range(1,7):
-		if spots[treenum-1] == 2:
+		if spots[treenum-1] == 2 and inAnd:
+			get_child(treenum).get_child(1).visible = true
+		elif spots[treenum-1] == 1 and not inAnd:
 			get_child(treenum).get_child(1).visible = true
 		spots[treenum-1] = 0
 	

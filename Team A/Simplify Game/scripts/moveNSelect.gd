@@ -57,7 +57,6 @@ func _selectWord(node):
 func _resetTimer():
 	noPick = false
 	if is_instance_valid(box):
-		print(curNode)
 		connect("returner", box, "held", [curNode])
 		emit_signal("returner", curNode)
 		disconnect("returner", box, "held")
@@ -70,7 +69,6 @@ func letGo():
 
 func _in_Select(body, node):
 	if holding and not is_instance_valid(node.c):
-		print(body)
 		box = node
 func _out_Select(body, node):
 	box = null
