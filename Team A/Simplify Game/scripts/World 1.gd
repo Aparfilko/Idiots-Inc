@@ -16,8 +16,9 @@ var short=Vector3(.7,.5,.7)
 var thecolors = ["RED","GREEN","BLUE","WHITE"]
 var thetypes = ["BRANCHY","SQUARE","CIRCLE"]
 var theheights = [.5,1]
+onready var list = ["nothing", "nothing"]
 
-var nexttree = 1
+onready var nexttree = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +27,6 @@ func _ready():
 	#height (tall or short)
 	#form (branchy, square, circle)
 	#color (red green blue white)
-	
 	changetype(1,tall,circle,red)
 	changetype(2,short,square,green)
 	changetype(3,tall,square,blue)
@@ -57,28 +57,28 @@ func _process(_delta):
 		nexttree = 1
 	get_child(nexttree).get_child(1).visible = false
 	
-	
-	#if "RED NEEDS TO LIGHT UP":
-		#lightItUp(thecolors[0])
-	#if "GREEN NEEDS TO LIGHT UP":
-		#lightItUp(thecolors[1])
-	#if "BLUE NEEDS TO LIGHT UP":
-		#lightItUp(thecolors[2])
-	#if "WHITE NEEDS TO LIGHT UP":
-		#lightItUp(thecolors[3])
-	
-	#if "SHORT NEEDS TO LIGHT UP":
-		#LightTheHeight(theheights[0])
-	#if "TALL NEEDS TO LIGHT UP":
-		#LightTheHeight(theheights[1])
-	
-	#if "BRANCHY NEEDS TO LIGHT UP":
-		#TypeLight(thetypes[0])
-	#if "SQUARE NEEDS TO LIGHT UP":
-		#TypeLight(thetypes[1])
-	#if "CIRCLE NEEDS TO LIGHT UP":
-		#TypeLight(thetypes[2])
-	
+	#"RED NEEDS TO LIGHT UP"
+	if list[0].match("Card_Red") or list[1].match("Card_Red"):
+		lightItUp(thecolors[0])
+	if list[0].match("Card_Green") or list[1].match("Card_Green"):
+		lightItUp(thecolors[1])
+	if list[0].match("Card_Blue") or list[1].match("Card_Blue"):
+		lightItUp(thecolors[2])
+	if list[0].match("Card_White") or list[1].match("Card_White"):
+		lightItUp(thecolors[3])
+
+	if list[0].match("Card_Short") or list[1].match("Card_Short"):
+		LightTheHeight(theheights[0])
+	if list[0].match("Card_Tall") or list[1].match("Card_Tall"):
+		LightTheHeight(theheights[1])
+
+	if list[0].match("Card_Branchy") or list[1].match("Card_Branchy"):
+		TypeLight(thetypes[0])
+	if list[0].match("Card_Square") or list[1].match("Card_Square"):
+		TypeLight(thetypes[1])
+	if list[0].match("Card_Round") or list[1].match("Card_Round"):
+		TypeLight(thetypes[2])
+
 	
 	#increments the turn-off loop
 	nexttree += 1
@@ -98,3 +98,9 @@ func TypeLight(type): #function for turning on spotlights based on tree type
 	for treenum in range(1,7):
 		if get_child(treenum).get_child(0).mesh.resource_name == type:
 			get_child(treenum).get_child(1).visible = true
+			
+func listCard(card, num, _n, _y):
+	list[num] = card.name
+	
+func deleteCard(num, _n):
+	list[num] = "nothing"

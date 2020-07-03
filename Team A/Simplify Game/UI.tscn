@@ -52,24 +52,19 @@ script = ExtResource( 13 )
 stream = ExtResource( 12 )
 
 [node name="Card_Red" parent="Holder" groups=[
-"card",
 "color",
 ] instance=ExtResource( 10 )]
 position = Vector2( 650, 170 )
 
-[node name="Card_Tall" parent="Holder" groups=[
-"height",
-] instance=ExtResource( 5 )]
+[node name="Card_Tall" parent="Holder" instance=ExtResource( 5 )]
 position = Vector2( 150, 170 )
 
 [node name="Card_Short" parent="Holder" groups=[
-"card",
 "height",
 ] instance=ExtResource( 6 )]
 position = Vector2( 50, 170 )
 
 [node name="Card_Square" parent="Holder" groups=[
-"card",
 "shape",
 ] instance=ExtResource( 4 )]
 position = Vector2( 300, 170 )
@@ -100,7 +95,7 @@ position = Vector2( 850, 170 )
 position = Vector2( 950, 170 )
 
 [node name="Timer" type="Timer" parent="Holder"]
-wait_time = 0.092
+wait_time = 0.2
 one_shot = true
 
 [node name="Select1" parent="Holder" instance=ExtResource( 11 )]
@@ -111,7 +106,3 @@ collision_mask = 1
 position = Vector2( 600, 60 )
 collision_mask = 1
 [connection signal="timeout" from="Holder/Timer" to="Holder" method="_resetTimer"]
-[connection signal="body_entered" from="Holder/Select1" to="Holder" method="_in_Select1"]
-[connection signal="body_exited" from="Holder/Select1" to="Holder" method="_out_Select1"]
-[connection signal="body_entered" from="Holder/Select2" to="Holder" method="_in_Select2"]
-[connection signal="body_exited" from="Holder/Select2" to="Holder" method="_out_Select2"]
