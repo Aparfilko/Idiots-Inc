@@ -335,10 +335,15 @@ class GDMain:public Spatial{
 			}
 		}
 	}
+	
+	void _foundation_place_building(int x,int y,int color,int type){
+		addBuilding(x,y,color,type);
+	}
 
 	static void _register_methods(){
 		register_method("_input",&GDMain::_input);
 		register_method("_process",&GDMain::_process);
+		register_method("_foundation_place_building",&GDMain::_foundation_place_building);
 	}
 };
 }
