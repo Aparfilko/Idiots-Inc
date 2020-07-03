@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 48 )
 
-[node name="Card_Branchy" type="KinematicBody2D"]
+[node name="Card_Branchy" type="StaticBody2D"]
 input_pickable = true
 script = ExtResource( 3 )
 
