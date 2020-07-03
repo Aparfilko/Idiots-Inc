@@ -119,7 +119,7 @@ func spotlights():
 	for treenum in range(1,7):
 		if spots[treenum-1] == 2 and inAnd:
 			get_child(treenum).get_child(1).visible = true
-		elif spots[treenum-1] == 1 and not inAnd:
+		elif spots[treenum-1] >= 1 and not inAnd:
 			get_child(treenum).get_child(1).visible = true
 		spots[treenum-1] = 0
 	
