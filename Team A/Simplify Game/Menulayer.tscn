@@ -62,7 +62,8 @@ text = "Resume"
 margin_top = 46.0
 margin_right = 204.0
 margin_bottom = 68.0
-text = "Back to Menu"
+disabled = true
+text = "Level Select"
 
 [node name="Mute" type="Button" parent="pause menu/Panel/VBoxContainer"]
 margin_top = 72.0
