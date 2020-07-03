@@ -13,9 +13,6 @@
 [ext_resource path="res://Selection box.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scripts/moveNSelect.gd" type="Script" id=13]
 
-
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 22
 outline_size = 1
@@ -103,12 +100,12 @@ wait_time = 0.4
 one_shot = true
 
 [node name="Select1" parent="Holder" instance=ExtResource( 11 )]
-position = Vector2( 450, 60 )
+position = Vector2( 425, 60 )
 collision_layer = 1
 collision_mask = 1
 
 [node name="Select2" parent="Holder" instance=ExtResource( 11 )]
-position = Vector2( 575, 60 )
+position = Vector2( 600, 60 )
 collision_layer = 1
 collision_mask = 1
 [connection signal="timeout" from="Holder/Timer" to="Holder" method="_resetTimer"]
