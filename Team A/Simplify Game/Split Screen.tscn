@@ -13,48 +13,6 @@ font_data = ExtResource( 3 )
 
 [node name="Node" type="Node"]
 
-[node name="VSplitContainer" type="VBoxContainer" parent="."]
-visible = false
-margin_right = 1025.0
-margin_bottom = 601.0
-custom_constants/separation = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ViewportContainer(2D)" type="ViewportContainer" parent="VSplitContainer"]
-visible = false
-margin_right = 1025.0
-margin_bottom = 211.0
-size_flags_vertical = 3
-size_flags_stretch_ratio = 14.76
-stretch = true
-
-[node name="Viewport" type="Viewport" parent="VSplitContainer/ViewportContainer(2D)"]
-size = Vector2( 1025, 211 )
-handle_input_locally = false
-render_target_update_mode = 0
-
-[node name="Camera2D" type="Camera2D" parent="VSplitContainer/ViewportContainer(2D)/Viewport"]
-visible = false
-anchor_mode = 0
-current = true
-
-[node name="UI" parent="VSplitContainer/ViewportContainer(2D)/Viewport" instance=ExtResource( 1 )]
-visible = false
-
-[node name="ViewportContainer(3D)" type="ViewportContainer" parent="VSplitContainer"]
-margin_right = 1025.0
-margin_bottom = 601.0
-size_flags_vertical = 3
-size_flags_stretch_ratio = 27.15
-stretch = true
-
-[node name="Viewport" type="Viewport" parent="VSplitContainer/ViewportContainer(3D)"]
-size = Vector2( 1025, 601 )
-handle_input_locally = false
-render_target_update_mode = 0
-
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.985742, -0.0692786, 0.153342, 0, 0.91131, 0.411721, -0.168266, -0.405851, 0.898316, 0.219759, 3.02459, 4.19973 )
 current = true

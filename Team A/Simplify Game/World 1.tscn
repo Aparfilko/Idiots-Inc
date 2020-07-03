@@ -53,8 +53,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1 )
 [node name="TREE 6" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 1 )
 
-[node name="overPLAYhahapun" type="CanvasLayer" parent="."]
-
 [node name="Menulayer" type="CanvasLayer" parent="."]
 layer = 2
 
