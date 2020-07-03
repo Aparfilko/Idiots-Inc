@@ -21,6 +21,7 @@ func _on_Resume_pressed():
 	visible = false
 
 func _on_toMenu_pressed():
+	#visible = not visible
 	pass # Replace with function body.
 
 func _on_Mute_pressed():
@@ -31,3 +32,7 @@ func _on_Mute_pressed():
 		get_parent().get_parent().get_child(5).play()
 		get_node("Panel/VBoxContainer/Mute").set_text("Mute Music")
 		
+
+
+func _on_Quit_pressed():
+	get_tree().quit()

@@ -48,7 +48,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="pause menu/Panel/VBoxContainer"]
 margin_right = 204.0
 margin_bottom = 16.0
-text = "paused"
+text = "Paused"
 align = 1
 valign = 1
 
@@ -69,6 +69,13 @@ margin_top = 72.0
 margin_right = 204.0
 margin_bottom = 94.0
 text = "Mute Music"
+
+[node name="Quit" type="Button" parent="pause menu/Panel/VBoxContainer"]
+margin_top = 98.0
+margin_right = 204.0
+margin_bottom = 120.0
+text = "Quit"
 [connection signal="pressed" from="pause menu/Panel/VBoxContainer/Resume" to="pause menu" method="_on_Resume_pressed"]
 [connection signal="pressed" from="pause menu/Panel/VBoxContainer/toMenu" to="pause menu" method="_on_toMenu_pressed"]
 [connection signal="pressed" from="pause menu/Panel/VBoxContainer/Mute" to="pause menu" method="_on_Mute_pressed"]
+[connection signal="pressed" from="pause menu/Panel/VBoxContainer/Quit" to="pause menu" method="_on_Quit_pressed"]
