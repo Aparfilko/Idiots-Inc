@@ -18,4 +18,6 @@ func get_object_under_mouse():
 	
 func _input(event):
 	if event.is_action_pressed("left_click") and get_object_under_mouse() == true:
-		get_parent().get_parent().get_parent()._foundation_place_building()
+		var x = get_parent().get_parent().get_translation().x
+		var z = get_parent().get_parent().get_translation().z
+		get_parent().get_parent().get_parent()._foundation_place_building(x,z,1,2)
