@@ -1,5 +1,7 @@
 extends CollisionShape
 
+var type = 0
+var color = 0
 
 func _ready():
 	set_process_input(true)
@@ -17,7 +19,13 @@ func get_object_under_mouse():
 		return false
 	
 func _input(event):
-	if event.is_action_pressed("left_click") and get_object_under_mouse() == true:
+	if get_object_under_mouse() == true:
 		var x = get_parent().get_parent().get_translation().x
 		var z = get_parent().get_parent().get_translation().z
-		get_parent().get_parent().get_parent()._foundation_place_building(x,z,1,2)
+		if event.is_action_pressed("left_click"):
+			type = 2
+		elif event.is_action_pressed("right_click"):
+			type = 3
+		elif event.is_action_pressed("middle_click"):
+			type = 0
+		get_parent().get_parent().get_parent()._foundation_place_building(x,z,2,type)
