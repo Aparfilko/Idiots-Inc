@@ -22,16 +22,6 @@ func _ready():
 	changetype(5,tall,branchy,green)
 	changetype(6,tall,branchy,green)
 	print(get_child(1).get_child(0).mesh.surface_get_material(0))
-	
-#func _unhandled_input(_event):
-#	if _event is InputEventKey:
-#		if _event.pressed and _event.scancode == KEY_SPACE:
-#			
-#			if $SpotLight.visible == true:
-#				$SpotLight.visible = false
-#			if $SpotLight.visible == false:
-#				$SpotLight.visible = true
-
 
 func changetype(tree,height,type,color):
 	var m = type[1]
@@ -46,7 +36,5 @@ func changetype(tree,height,type,color):
 	#set color
 	get_child(tree).get_child(0).mesh.surface_set_material(0,color)
 
-
-
-
-
+func _on_AudioStreamPlayer_finished():
+	$AudioStreamPlayer.play()
