@@ -7,7 +7,7 @@ onready var blue = preload("res://assets/glTF format/BLUE.material")
 onready var white = preload("res://assets/glTF format/WHITE.material")
 
 var branchy = [preload("res://assets/BRANCHY.mesh"), 0.25, -0.011, 0.006]
-var square = [preload("res://assets/SQUARE.mesh"), 0.5, 0.293, 0.5]
+var square = [preload("res://assets/SQUARE.mesh"), 0.5, 0.301, -0.291]
 var circle = [preload("res://assets/CIRCLE.mesh"), 1, 0.323, -0.374]
 
 var tall=Vector3(1,1,1)
@@ -20,7 +20,7 @@ func _ready():
 	changetype(3,tall,square,blue)
 	changetype(4,short,square,white)
 	changetype(5,tall,square,green)
-	changetype(6,tall,square,green)
+	changetype(6,tall,square,white)
 	print(get_child(1).get_child(0).mesh.surface_get_material(0))
 
 func changetype(tree,height,type,color):
@@ -33,6 +33,7 @@ func changetype(tree,height,type,color):
 	get_child(tree).get_child(0).translation = Vector3(x,0,z)
 	#set height
 	get_child(tree).scale = height
+	get_child(tree).get_child(1).light_energy = 12*height[0]*height[1]*height[2]
 	#set color
 	get_child(tree).get_child(0).mesh.surface_set_material(0,color)
 

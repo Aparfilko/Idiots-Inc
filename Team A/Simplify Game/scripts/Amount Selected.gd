@@ -13,6 +13,6 @@ func _process(_delta):
 		#Checks if the spotlight is on
 		if world.get_child(n).get_child(1).visible == true:
 			quantitty += 1
-	var amount = str(quantitty," selected")
+	var amount = str("\n ", quantitty," selected")
 	set("bbcode_text",amount)
 

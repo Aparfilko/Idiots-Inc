@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/CIRCLE.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/TREESCRIPT.gd" type="Script" id=3]
 
 [node name="tree_oak" type="Spatial"]
@@ -11,14 +10,11 @@ __meta__ = {
 
 [node name="tree_oak 2" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.322687, 8.01483e-32, -0.374077 )
-mesh = ExtResource( 1 )
-material/0 = null
-material/1 = null
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 4.5, 0 )
-light_energy = 11.84
+light_energy = 12.0
 spot_angle = 10.4
