@@ -49,13 +49,14 @@ func _process(_dt):
 func _selectWord(node):
 	if not noPick:
 		curNode = node
+		if curNode == fadeNode:
+			fadeNode = null
 		holding = true
 	
 #ok, now you can select stuff
 func _resetTimer():
 	noPick = false
 	if is_instance_valid(box):
-		print(curNode)
 		connect("returner", box, "held", [curNode])
 		emit_signal("returner", curNode)
 		disconnect("returner", box, "held")
@@ -68,7 +69,6 @@ func letGo():
 
 func _in_Select(body, node):
 	if holding and not is_instance_valid(node.c):
-		print(body)
 		box = node
 func _out_Select(body, node):
 	box = null

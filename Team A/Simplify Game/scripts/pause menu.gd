@@ -25,11 +25,11 @@ func _on_toMenu_pressed():
 	pass # Replace with function body.
 
 func _on_Mute_pressed():
-	if get_parent().get_parent().get_child(5).playing == true:
-		get_parent().get_parent().get_child(5).stop()
+	if get_parent().get_parent().get_child(5).get_stream_paused() == false:
+		get_parent().get_parent().get_child(5).set_stream_paused(true) 
 		get_node("Panel/VBoxContainer/Mute").set_text("Play Music")
 	else:
-		get_parent().get_parent().get_child(5).play()
+		get_parent().get_parent().get_child(5).set_stream_paused(false) 
 		get_node("Panel/VBoxContainer/Mute").set_text("Mute Music")
 		
 

@@ -17,6 +17,8 @@ var thecolors = ["RED","GREEN","BLUE","WHITE"]
 var thetypes = ["BRANCHY","SQUARE","CIRCLE"]
 var theheights = [.5,1]
 onready var list = ["nothing", "nothing"]
+onready var spots = [0,0,0,0,0,0]
+onready var inAnd = true
 
 onready var nexttree = 1
 
@@ -51,7 +53,13 @@ func changetype(tree,height,type,color):
 func _on_AudioStreamPlayer_finished():
 	$AudioStreamPlayer.play()
 
+#switch between OR rules or AND rules
+func _input(_event):
+	if Input.is_action_just_pressed("ui_accept"):
+		inAnd = not inAnd
+
 func _process(_delta):
+
 	#this part turns off all lights every loop
 	if nexttree > 6:
 		nexttree = 1
@@ -78,8 +86,11 @@ func _process(_delta):
 		TypeLight(thetypes[1])
 	if list[0].match("Card_Round") or list[1].match("Card_Round"):
 		TypeLight(thetypes[2])
-
-	
+		
+	if (list[0].match("nothing") or list[1].match("nothing")) and inAnd:
+		freebie()
+		
+	spotlights()
 	#increments the turn-off loop
 	nexttree += 1
 
@@ -87,18 +98,31 @@ func _process(_delta):
 func lightItUp(color): #function for turning on spotlights based on color
 	for treenum in range(1,7):
 		if get_child(treenum).get_child(0).mesh.surface_get_material(0).resource_name == color:
-			get_child(treenum).get_child(1).visible = true
+			spots[treenum-1] += 1
 
 func LightTheHeight(height): #function for turning on spotlights based on height
 	for treenum in range(1,7):
 		if get_child(treenum).scale.y == height:
-			get_child(treenum).get_child(1).visible = true
+			spots[treenum-1] += 1
 
 func TypeLight(type): #function for turning on spotlights based on tree type
 	for treenum in range(1,7):
 		if get_child(treenum).get_child(0).mesh.resource_name == type:
-			get_child(treenum).get_child(1).visible = true
+#			get_child(treenum).get_child(1).visible = true
+			spots[treenum-1] += 1
 			
+func freebie():
+	for treenum in range(1,7):
+		spots[treenum-1] += 1
+		
+func spotlights():
+	for treenum in range(1,7):
+		if spots[treenum-1] == 2 and inAnd:
+			get_child(treenum).get_child(1).visible = true
+		elif spots[treenum-1] == 1 and not inAnd:
+			get_child(treenum).get_child(1).visible = true
+		spots[treenum-1] = 0
+	
 func listCard(card, num, _n, _y):
 	list[num] = card.name
 	
