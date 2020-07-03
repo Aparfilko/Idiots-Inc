@@ -20,3 +20,4 @@ func goBack(base, card):
 	reset = true
 	b = base
 	c = card
+

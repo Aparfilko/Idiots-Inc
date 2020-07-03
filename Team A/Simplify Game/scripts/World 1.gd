@@ -15,13 +15,12 @@ var short=Vector3(.7,.5,.7)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Let's set the level!
-	changetype(1,tall,square,red)
+	changetype(1,tall,circle,red)
 	changetype(2,short,square,green)
 	changetype(3,tall,square,blue)
-	changetype(4,short,square,white)
-	changetype(5,tall,square,green)
-	changetype(6,tall,square,white)
-	print(get_child(1).get_child(0).mesh.surface_get_material(0))
+	changetype(4,short,branchy,white)
+	changetype(5,tall,branchy,green)
+	changetype(6,tall,square,red)
 
 func changetype(tree,height,type,color):
 	var m = type[1]
@@ -39,3 +38,9 @@ func changetype(tree,height,type,color):
 
 func _on_AudioStreamPlayer_finished():
 	$AudioStreamPlayer.play()
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		for treenum in range(1,7):
+			if get_child(treenum).get_child(0).mesh.surface_get_material(0).resource_name == "RED":
+				get_child(treenum).get_child(1).visible = true

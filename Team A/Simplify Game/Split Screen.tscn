@@ -46,8 +46,7 @@ custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0.905882, 0.486275, 0.486275, 1 )
 bbcode_enabled = true
 bbcode_text = "0 Selected"
-text = "
- 0 Selected"
+text = "0 Selected"
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
