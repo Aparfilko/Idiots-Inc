@@ -21,5 +21,6 @@ __meta__ = {
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -0.125056, 0.99215, 0, -0.99215, -0.125056, 0, 4.29501, -0.526443 )
+visible = false
 light_energy = 11.84
 spot_angle = 10.4

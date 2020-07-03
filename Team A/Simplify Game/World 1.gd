@@ -5,6 +5,7 @@ extends Spatial
 # var b = "text"
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#Let's set the level!
 	pass
 
 #func _unhandled_input(_event):

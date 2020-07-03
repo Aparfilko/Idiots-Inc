@@ -14,8 +14,7 @@ func _ready():
 		size = "SHORT"
 	type = get_child(0).mesh.resource_name
 	
-	print (size," ",color," ",type)
-	print (get("editor_description"))
+	print (get("editor_description"),": ",size," ",color," ",type)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
