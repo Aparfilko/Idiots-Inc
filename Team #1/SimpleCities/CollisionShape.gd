@@ -34,7 +34,7 @@ func _input(event):
 	if event.is_action_pressed("6"):
 		color = 6
 	
-	if get_object_under_mouse() == true:
+	if (event.is_action_pressed("left_click") or event.is_action_pressed("right_click") or event.is_action_pressed("middle_click")) and get_object_under_mouse() == true:
 		var x = get_parent().get_parent().get_translation().x
 		var z = get_parent().get_parent().get_translation().z
 		if event.is_action_pressed("left_click"):
