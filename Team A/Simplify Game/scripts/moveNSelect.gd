@@ -65,8 +65,6 @@ func letGo():
 func _in_Select(_body, node):
 	if holding:
 		box = node
-		print(box)
 func _out_Select(_body, _node):
 	box = null
-	print(box)
 #	if not holding

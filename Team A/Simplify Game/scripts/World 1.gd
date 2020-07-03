@@ -17,9 +17,16 @@ var thecolors = ["RED","GREEN","BLUE","WHITE"]
 var thetypes = ["BRANCHY","SQUARE","CIRCLE"]
 var theheights = [.5,1]
 
+var nexttree = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Let's set the level!
+	#tree number (1-6)
+	#height (tall or short)
+	#form (branchy, square, circle)
+	#color (red green blue white)
+	
 	changetype(1,tall,circle,red)
 	changetype(2,short,square,green)
 	changetype(3,tall,square,blue)
@@ -44,8 +51,13 @@ func changetype(tree,height,type,color):
 func _on_AudioStreamPlayer_finished():
 	$AudioStreamPlayer.play()
 
-func _process(delta):
-	pass
+func _process(_delta):
+	#this part turns off all lights every loop
+	if nexttree > 6:
+		nexttree = 1
+	get_child(nexttree).get_child(1).visible = false
+	
+	
 	#if "RED NEEDS TO LIGHT UP":
 		#lightItUp(thecolors[0])
 	#if "GREEN NEEDS TO LIGHT UP":
@@ -66,20 +78,23 @@ func _process(delta):
 		#TypeLight(thetypes[1])
 	#if "CIRCLE NEEDS TO LIGHT UP":
 		#TypeLight(thetypes[2])
+	
+	
+	#increments the turn-off loop
+	nexttree += 1
 
 
-
-func lightItUp(color):
+func lightItUp(color): #function for turning on spotlights based on color
 	for treenum in range(1,7):
 		if get_child(treenum).get_child(0).mesh.surface_get_material(0).resource_name == color:
 			get_child(treenum).get_child(1).visible = true
 
-func LightTheHeight(height):
+func LightTheHeight(height): #function for turning on spotlights based on height
 	for treenum in range(1,7):
 		if get_child(treenum).scale.y == height:
 			get_child(treenum).get_child(1).visible = true
 
-func TypeLight(type):
+func TypeLight(type): #function for turning on spotlights based on tree type
 	for treenum in range(1,7):
 		if get_child(treenum).get_child(0).mesh.resource_name == type:
 			get_child(treenum).get_child(1).visible = true
