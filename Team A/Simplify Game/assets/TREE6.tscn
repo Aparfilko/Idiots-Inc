@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/SQUARE.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/TREESCRIPT.gd" type="Script" id=2]
 
-
 [node name="tree_oak" type="Spatial"]
 script = ExtResource( 2 )
 __meta__ = {
@@ -17,6 +16,7 @@ material/0 = null
 material/1 = null
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.125056, 0.99215, 0, -0.99215, -0.125056, 0, 4.29501, -0.526443 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 4.5, 0 )
+visible = false
 light_energy = 11.84
 spot_angle = 10.4

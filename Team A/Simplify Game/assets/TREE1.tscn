@@ -4,7 +4,6 @@
 [ext_resource path="res://assets/TREESCRIPT.gd" type="Script" id=3]
 
 [node name="tree_oak" type="Spatial"]
-transform = Transform( 0.7, 0, 0, 0, 0.5, 0, 0, 0, 0.7, 0, 0, 0 )
 script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": "1"
@@ -20,7 +19,6 @@ __meta__ = {
 }
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.125056, 0.99215, 0, -0.99215, -0.125056, 0, 4.29501, -0.526443 )
-visible = false
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 4.5, 0 )
 light_energy = 11.84
 spot_angle = 10.4
