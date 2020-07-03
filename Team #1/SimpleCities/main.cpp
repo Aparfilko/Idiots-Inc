@@ -57,6 +57,13 @@ class GDMain:public Spatial{
 	std::vector<car> cars;
 	
 	void removeBuilding(int x,int y){
+		for(int i=0;i<buildings.size();i++){
+			if(buildings[i].x==x&&buildings[i].y==y){
+				buildings[i].b->queue_free();
+				buildings.erase(buildings.begin()+i--);
+			}
+		}
+		lvl[xDim*y+x].type=1;lvl[xDim*y+x].color=0;
 	}
 	
 	void addBuilding(int x,int y,int c,int type){
@@ -129,6 +136,7 @@ class GDMain:public Spatial{
 						paths.back().p.back().y=y-1;
 						map[xDim*y+x].roadsPlaced=map[xDim*(y-1)+x].roadsPlaced;
 					}
+					addRoad(x,y);
 				}
 				return;
 			}
@@ -309,6 +317,26 @@ class GDMain:public Spatial{
 		if(in->is_action_pressed("a")){cam->set_translation(cam->get_translation()+Vector3(-1,0,0));}
 		if(in->is_action_pressed("s")){cam->set_translation(cam->get_translation()+Vector3(0,0,1));}
 		if(in->is_action_pressed("d")){cam->set_translation(cam->get_translation()+Vector3(1,0,0));}
+		if(in->is_action_pressed("space")){
+			for(MeshInstance* m:roads){m->queue_free();}
+			for(car &c:cars){c.mesh->queue_free();}
+			cars.clear();
+			roads.clear();
+			paths.clear();
+			for(mapTile &m:lvl){if(m.type==1){m.color=0;}}
+			populateRoads();
+			placeRoads();
+			for(int i=0;i<paths.size();i++){
+				cars.push_back(car());
+				add_child(cars.back().mesh=MeshInstance::_new());
+				cars.back().mesh->set_mesh(cubes[paths[i].color]);
+				cars.back().pathInd=i;
+				cars.back().timeInd=-1;
+				cars.back().dir=0;
+				cars.back().time=rng->randf_range(1,10);
+				cars.back().mesh->set_translation(Vector3(paths[cars.back().pathInd].p[0].x,0,paths[cars.back().pathInd].p[0].y));
+			}
+		}
 	}
 	
 	void _process(float dt){
