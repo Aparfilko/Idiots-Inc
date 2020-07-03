@@ -16,8 +16,8 @@ func _input_event(_viewport, _event, _shape_idx):
 		c.set_position(b)
 		reset = false
 
-func goBack(base, card):
+func goBack(basecard):
 	reset = true
-	b = base
-	c = card
+	b = basecard[0]
+	c = basecard[1]
 

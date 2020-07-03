@@ -12,6 +12,7 @@ var box
 var boxRun
 var boxPos
 var boxReturn
+var basecard = [0, 0]
 #theBoxes
 signal returner(pos, card)
 
@@ -32,7 +33,7 @@ func _process(_dt):
 	if Input.is_action_just_released("click") and holding:
 		letGo()
 		if is_instance_valid(box):
-			connect("returner", box, "goBack", [curNode.pos, curNode])
+			#connect("returner", box, "goBack", [curNode.pos, curNode])
 			boxPos = box.get_position()
 		else:
 			fadeNode = curNode
@@ -52,7 +53,8 @@ func _selectWord(node):
 func _resetTimer():
 	noPick = false
 	if is_instance_valid(box):
-		emit_signal("returner", basePosition, curNode)
+		basecard = [basePosition, curNode]
+		emit_signal("returner",basecard)
 		box = null
 
 func letGo():
@@ -63,6 +65,8 @@ func letGo():
 func _in_Select(_body, node):
 	if holding:
 		box = node
-func _out_Select(body, node):
+		print(box)
+func _out_Select(_body, _node):
 	box = null
+	print(box)
 #	if not holding
