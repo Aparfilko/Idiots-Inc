@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Floor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 589.063, -8.37549 )
+
+[node name="Floor" parent="." instance=ExtResource( 1 )]
+position = Vector2( 271.223, 101.708 )
+
+[node name="Wall" parent="." instance=ExtResource( 3 )]
+position = Vector2( 665.113, -282.405 )
+
+[node name="Wall2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -116.511, 494.819 )
+
+[node name="Floor2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -517.726, 300.881 )
+
+[node name="Floor3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -616.34, 239.162 )
+
+[node name="Floor4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -305.107, 166.699 )
+
+[node name="Wall3" parent="." instance=ExtResource( 3 )]
+position = Vector2( -223.571, -152.219 )
+
+[node name="Goal" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1317.54, 301.015 )

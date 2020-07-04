@@ -8,22 +8,21 @@ onready var vel = Vector2()
 onready var age = 0
 onready var jump = [20000, 25000, 10000]
 
-
+var manager;
+func set_manager(m):
+	manager=m;
 
 func _ready():
 	#bind inputs here
 	get_node("form"+String(age)).set_disabled(false)
-	bind_key(KEY_A, "left")
-	bind_key(KEY_D, "right")
-	bind_key(KEY_SPACE, "jump")
-	bind_key(KEY_CONTROL, "age")
-
 
 func _physics_process(dt):
 	scan_age()
 	get_movement(dt)
 	move_and_slide(vel)
-	
+	for i in get_slide_count():
+		if(get_slide_collision(i)["collider"].get_class()=="Level_Goal"):
+			manager.goal_reached();
 
 #controls movement and jumping
 func get_movement(dt):
@@ -47,15 +46,6 @@ func get_movement(dt):
 	#if in air, then you must fall
 	else:
 		vel.y += grav * dt
-	
-
-#binds keyboard keys to a new action, probably won't work for binding multiple keys
-#to the same thing
-func bind_key(key, name):
-	var event = InputEventKey.new()
-	event.scancode = key
-	InputMap.add_action(name)
-	InputMap.action_add_event(name, event)
 
 #press age to go to the next form
 func scan_age():
