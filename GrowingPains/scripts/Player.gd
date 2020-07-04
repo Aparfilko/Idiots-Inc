@@ -29,8 +29,6 @@ func _physics_process(dt):
 	for i in get_slide_count():
 		if(get_slide_collision(i)["collider"].get_class()=="Level_Goal"):
 			manager.goal_reached();
-		if(get_slide_collision(i)["collider"].get_class()=="Enemy"):
-			manager.updateLvl();
 
 #controls movement and jumping
 func get_movement(dt):

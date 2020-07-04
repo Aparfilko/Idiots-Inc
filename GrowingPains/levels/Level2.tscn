@@ -25,11 +25,11 @@ position = Vector2( -517.726, 300.881 )
 [node name="Floor3" parent="." instance=ExtResource( 1 )]
 position = Vector2( -616.34, 239.162 )
 
-[node name="Goal" parent="." instance=ExtResource( 4 )]
+[node name="Floor4" parent="." instance=ExtResource( 4 )]
 position = Vector2( -305.107, 166.699 )
 
 [node name="Wall3" parent="." instance=ExtResource( 3 )]
 position = Vector2( -223.571, -152.219 )
 
-[node name="Floor4" parent="." instance=ExtResource( 1 )]
+[node name="Goal" parent="." instance=ExtResource( 1 )]
 position = Vector2( -1317.54, 301.015 )
