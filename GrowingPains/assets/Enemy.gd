@@ -56,7 +56,7 @@ func get_movement(dt):
 #press revert to teleport to previous pin
 func revert():
 	set_position(pins[age])
-	if age == 0:
+	if age == 1:
 		manager.updateLvl();
 	if age != 0:
 		get_node("form"+String(age)).set_disabled(true)
