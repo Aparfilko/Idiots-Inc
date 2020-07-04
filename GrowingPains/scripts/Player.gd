@@ -60,7 +60,7 @@ func revert():
 	set_position(pins[age])
 	if age == 0:
 		manager.updateLvl();
-	if age != 0:
+	else:
 		get_node("form"+String(age)).set_disabled(true)
 		age -= 1
 		get_node("form"+String(age)).set_disabled(false)
