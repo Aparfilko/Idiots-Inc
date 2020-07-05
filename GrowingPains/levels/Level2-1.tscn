@@ -35,7 +35,7 @@ __meta__ = {
 position = Vector2( 684.483, 206.204 )
 
 [node name="leftBound" type="Node2D" parent="Enemy"]
-position = Vector2( -811.929, -52.983 )
+position = Vector2( -751.786, -55.847 )
 
 [node name="rightBound" type="Node2D" parent="Enemy"]
 position = Vector2( 41.5272, -47.2552 )
