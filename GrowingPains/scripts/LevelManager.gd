@@ -4,6 +4,8 @@ onready var lvls=[
 	preload("res://levels/Level1.tscn"),
 	preload("res://levels/Level2.tscn"),
 	preload("res://levels/Level3.tscn"),
+	preload("res://levels/Level4.tscn"),
+	preload("res://levels/Level5.tscn"),
 	];
 onready var a=0;
 var currLvl;

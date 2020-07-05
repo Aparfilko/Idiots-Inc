@@ -1,16 +1,58 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/switches/Button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/switches/DoorOrange.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Enemy.tscn" type="PackedScene" id=6]
 
-[node name="Level3" type="Node2D"]
+[node name="Level" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( -65539, 0, 8, -65538, 0, 8, -65537, 0, 8, -131072, 0, 8, -131071, 0, 8, -131070, 0, 8, -131069, 0, 8, -131068, 0, 8, -131067, 0, 8, -131066, 0, 8, -131065, 0, 8, -131064, 0, 8, -131063, 0, 8, -131062, 0, 8, -131061, 0, 8, -131060, 0, 8, -3, 0, 8, -65524, 0, 8, 65533, 0, 8, 12, 0, 8, 131069, 0, 8, 65548, 0, 8, 196605, 0, 8, 196606, 0, 589830, 196607, 0, 589830, 131072, 0, 589830, 131073, 0, 589830, 131074, 0, 589830, 131075, 0, 589830, 131076, 0, 589830, 131077, 0, 589830, 131078, 0, 589830, 131079, 0, 589830, 131080, 0, 589830, 131081, 0, 589830, 131082, 0, 589830, 131083, 0, 589830, 131084, 0, 8, 1441789, 1, 0, 1441790, 1, 0 )
+tile_data = PoolIntArray( -131078, 0, 196610, -131077, 0, 786433, -131076, 0, 786433, -131075, 0, 262146, -65542, 0, 10, -65539, 0, 196610, -65538, 0, 786433, -65537, 0, 262146, -6, 0, 589825, -1, 0, 196610, -65536, 0, 786433, -65535, 0, 262146, 65530, 0, 589825, 1, 0, 196610, 2, 0, 720897, 131066, 0, 589825, 131067, 0, 196613, 196602, 0, 589825, 196603, 0, 720896, 196604, 0, 458752, 196605, 0, 458752, 196606, 0, 458752, 196607, 0, 458752, 131072, 0, 458752, 131073, 0, 458752, 131074, 0, 786433, 131075, 0, 786433, 131076, 0, 786433, 131077, 0, 786433, 131078, 0, 786433, 131079, 0, 786433, 131080, 0, 327682, 131081, 0, 196610, 131082, 0, 786433, 131083, 0, 786433, 131084, 0, 786433, 1441789, 1, 0, 1441790, 1, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -80.8181, 119.192 )
+position = Vector2( -0.750031, 104.307 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
-position = Vector2( 780.97, 91.0353 )
+position = Vector2( -276.374, 93.1542 )
+
+[node name="Enemy" parent="." instance=ExtResource( 6 )]
+position = Vector2( -308.066, -212.182 )
+
+[node name="leftBound" type="Node2D" parent="Enemy"]
+position = Vector2( -92.1039, -98.7781 )
+
+[node name="rightBound" type="Node2D" parent="Enemy"]
+position = Vector2( 363.809, 84.1248 )
+
+[node name="Button" parent="." instance=ExtResource( 3 )]
+position = Vector2( 823.2, 139.57 )
+
+[node name="Door" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( -228.043, -34.6649 )
+
+[node name="Door3" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( -228.233, -174.387 )
+
+[node name="Door4" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( -157.549, -34.7711 )
+
+[node name="Door5" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( -157.816, -105.114 )
+
+[node name="Door6" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( -158.181, -174.371 )
+
+[node name="Door2" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( -228.238, -104.426 )
+
+[node name="Door7" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( -999.2, -34.5697 )
+
+[node name="Door8" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( -999.656, -172.426 )
+
+[node name="Door9" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( -1000.2, -104.57 )

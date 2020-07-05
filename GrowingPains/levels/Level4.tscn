@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/switches/DoorBlue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/switches/DoorGreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/switches/DoorYellow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/switches/Button.tscn" type="PackedScene" id=7]
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource( 3 )]
+tile_data = PoolIntArray( 131068, 0, 262147, 196604, 0, 196618, 196605, 0, 196618, 196606, 0, 196618, 196607, 0, 196618, 131072, 0, 196618, 131073, 0, 196618, 131074, 0, 196618, 131075, 0, 196618, 131076, 0, 196618, 131077, 0, 196618, 131078, 0, 196618, 131079, 0, 196618, 131086, 0, 458763, 262136, 0, 327683, 196611, 0, 458763, 196622, 0, 458763, 327668, 0, 458763, 327672, 0, 196618, 327673, 0, 196618, 327679, 0, 196618, 262144, 0, 196618, 262147, 0, 458763, 262158, 0, 458763, 393204, 0, 458763, 393208, 0, 458763, 393212, 0, 196618, 393213, 0, 196618, 393214, 0, 196618, 327681, 0, 196618, 327682, 0, 196618, 327683, 0, 458763, 327684, 0, 196618, 327685, 0, 196618, 327686, 0, 196618, 327687, 0, 196618, 327688, 0, 196618, 327694, 0, 458763, 458740, 0, 458763, 458744, 0, 458763, 458745, 0, 196618, 458746, 0, 196618, 393217, 0, 458763, 393218, 0, 458763, 393219, 0, 458763, 393224, 0, 458763, 393230, 0, 458763, 524276, 0, 458763, 524280, 0, 458763, 524283, 0, 196618, 524284, 0, 196618, 524285, 0, 196618, 524286, 0, 196618, 524287, 0, 196618, 458752, 0, 196618, 458753, 0, 458763, 458754, 0, 458763, 458755, 0, 458763, 458760, 0, 458763, 458766, 0, 458763, 589812, 0, 458763, 589816, 0, 458763, 524296, 0, 458763, 524302, 0, 458763, 655348, 0, 458763, 655349, 0, 196618, 655350, 0, 196618, 655351, 0, 196618, 655352, 0, 458763, 589832, 0, 458763, 589838, 0, 458763, 655368, 0, 458763, 655369, 0, 196618, 655370, 0, 196618, 655371, 0, 196618, 655372, 0, 196618, 655373, 0, 196618, 655374, 0, 458763, 1441789, 1, 0, 1441790, 1, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 16.0398, 482.09 )
+
+[node name="Goal" parent="." instance=ExtResource( 2 )]
+position = Vector2( 139.896, 278.123 )
+
+[node name="Button" parent="." instance=ExtResource( 7 )]
+position = Vector2( -663.166, 628.297 )
+
+[node name="Door" parent="Button" instance=ExtResource( 4 )]
+position = Vector2( 487.909, -383.112 )
+
+[node name="Door2" parent="Button" instance=ExtResource( 4 )]
+position = Vector2( 488.015, -312.99 )
+
+[node name="Door4" parent="Button" instance=ExtResource( 4 )]
+position = Vector2( 490.166, -593.297 )
+
+[node name="Door3" parent="Button" instance=ExtResource( 4 )]
+position = Vector2( 490.299, -523.357 )
+
+[node name="Button2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 808.116, 699.685 )
+
+[node name="Door4" parent="Button2" instance=ExtResource( 5 )]
+position = Vector2( -913.208, -384.859 )
+
+[node name="Door" parent="Button2" instance=ExtResource( 5 )]
+position = Vector2( -352.903, -454.733 )
+
+[node name="Door2" parent="Button2" instance=ExtResource( 5 )]
+position = Vector2( -353.059, -384.836 )
+
+[node name="Door3" parent="Button2" instance=ExtResource( 5 )]
+position = Vector2( -913.045, -454.557 )
+
+[node name="Button3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 342.966, 349.141 )
+
+[node name="Door6" parent="Button3" instance=ExtResource( 6 )]
+position = Vector2( -308.63, -104.402 )
+
+[node name="Door5" parent="Button3" instance=ExtResource( 6 )]
+position = Vector2( -378.477, -104.402 )

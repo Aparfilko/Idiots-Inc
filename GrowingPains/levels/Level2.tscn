@@ -2,11 +2,11 @@
 
 [ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/switches/Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/switches/DoorOrange.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/switches/Button.tscn" type="PackedScene" id=5]
 
-[node name="Level3" type="Node2D"]
+[node name="Level" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 tile_data = PoolIntArray( 5, 0, 196618, 6, 0, 196618, 7, 0, 196618, 8, 0, 196618, 9, 0, 196618, 10, 0, 196618, 11, 0, 196618, 12, 0, 196618, 65548, 0, 458763, 196605, 0, 8, 196606, 0, 589830, 196607, 0, 589830, 131072, 0, 589830, 131073, 0, 589830, 131074, 0, 589830, 131075, 0, 589830, 131076, 0, 589830, 131077, 0, 589830, 131078, 0, 589830, 131079, 0, 589830, 131080, 0, 589830, 131081, 0, 589830, 131082, 0, 589830, 131083, 0, 589830, 131084, 0, 8, 1441789, 1, 0, 1441790, 1, 0 )
@@ -21,7 +21,4 @@ position = Vector2( 780.97, 91.0353 )
 position = Vector2( 640.04, 0 )
 
 [node name="Door" parent="Button" instance=ExtResource( 3 )]
-position = Vector2( 9.41223, 119.854 )
-
-[node name="Door2" parent="Button" instance=ExtResource( 3 )]
-position = Vector2( 9.50244, 90.2146 )
+position = Vector2( 25.61, 105.6 )
