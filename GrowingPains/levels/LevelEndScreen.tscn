@@ -17,10 +17,10 @@ tile_data = PoolIntArray( -65543, 0, 458755, -131068, 0, 458755, -8, 0, 196618, 
 position = Vector2( -80.8181, 119.192 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 284.225
-margin_top = -116.536
-margin_right = 432.225
-margin_bottom = -61.5359
+margin_left = 282.965
+margin_top = -119.687
+margin_right = 430.965
+margin_bottom = -64.6871
 rect_scale = Vector2( 0.6, 0.6 )
 text = "Congratulations!"
 __meta__ = {
