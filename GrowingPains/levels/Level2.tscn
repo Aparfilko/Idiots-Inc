@@ -20,10 +20,10 @@ position = Vector2( 665.113, -282.405 )
 position = Vector2( -116.511, 494.819 )
 
 [node name="Floor2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -517.726, 300.881 )
+position = Vector2( -517.726, 320.831 )
 
 [node name="Floor3" parent="." instance=ExtResource( 1 )]
-position = Vector2( -616.34, 239.162 )
+position = Vector2( -615.39, 228.712 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( -305.107, 166.699 )
@@ -32,4 +32,4 @@ position = Vector2( -305.107, 166.699 )
 position = Vector2( -223.571, -152.219 )
 
 [node name="Floor4" parent="." instance=ExtResource( 1 )]
-position = Vector2( -1317.54, 301.015 )
+position = Vector2( -1317.54, 320.965 )
