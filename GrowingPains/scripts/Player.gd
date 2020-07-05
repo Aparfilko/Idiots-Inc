@@ -3,7 +3,9 @@ extends KinematicBody2D
 
 const grav = 1000
 const accel = 0.5
+const bashLength = Vector2(50,0)
 signal music(age)
+signal killed()
 onready var vel = Vector2()
 onready var age = 0
 onready var speed = [15000, 25000, 7500] 
@@ -22,8 +24,10 @@ func _ready():
 func _input(event):
 	if event.is_action("revert") and Input.is_action_just_pressed("revert"):
 		revert()
-	if event.is_action("age") and Input.is_action_just_pressed("age"):
+	elif event.is_action("age") and Input.is_action_just_pressed("age"):
 		scan_age()
+	elif event.is_action("bash") and Input.is_action_just_pressed("bash") and age == 2:
+		attack()
 
 func _physics_process(dt):
 	get_movement(dt)
@@ -56,6 +60,13 @@ func get_movement(dt):
 	#if in air, then you must fall
 	else:
 		vel.y += grav * dt
+	#bash raycast must face direction player is moving
+	if vel.x > 0:
+		$bash.set_cast_to(bashLength)
+	elif vel.x < 0:
+		$bash.set_cast_to(- bashLength)
+	print($bash.get_cast_to())
+	
 
 #press revert to teleport to previous pin
 func revert():
@@ -87,5 +98,11 @@ func scan_age():
 		$sprite.play("form"+ String(age))
 		emit_signal("music", age + 1)
 		
-		
-		
+#as an old man you can attack
+func attack():
+	var enemy = $bash.get_collider()
+	#if you just attacked an enemy then let them know to be killed
+	if is_instance_valid(enemy) and enemy.name.match("Enemy"):
+		connect("killed", enemy, "death")
+		emit_signal("killed")
+		disconnect("killed", enemy, "death")

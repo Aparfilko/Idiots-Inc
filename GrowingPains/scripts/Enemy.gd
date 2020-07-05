@@ -12,7 +12,8 @@ func get_class():
 	return "Enemy";
 
 func _physics_process(dt):
-	get_movement(dt)
+	if not $form.is_disabled():
+		get_movement(dt)
 	var pos0=position;
 	move_and_slide(vel,Vector2(0,-1))
 	var pos1=position;
@@ -46,3 +47,11 @@ func get_movement(dt):
 	#if in air, then you must fall
 	else:
 		vel.y += grav * dt
+
+#when attacked, die
+func killed():
+	$form.set_disabled(true)
+	$Timer.start()
+
+func _on_Timer_timeout():
+	queue_free()

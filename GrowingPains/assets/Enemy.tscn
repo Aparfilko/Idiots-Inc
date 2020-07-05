@@ -9,12 +9,12 @@ extents = Vector2( 20, 40 )
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 800, 0, 400, 800 )
+region = Rect2( 0, 0, 400, 800 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 400, 800 )
+region = Rect2( 800, 0, 400, 800 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -25,12 +25,12 @@ region = Rect2( 400, 0, 400, 800 )
 animations = [ {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "form2",
+"name": "form0",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "form0",
+"name": "form2",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
@@ -61,3 +61,7 @@ collide_with_areas = true
 enabled = true
 cast_to = Vector2( 80, 0 )
 collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
