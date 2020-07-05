@@ -8,7 +8,7 @@ onready var lvls=[
 	preload("res://levels/Level4.tscn"),
 	preload("res://levels/Level5.tscn"),
 	preload("res://levels/Level6.tscn"),
-#	preload("res://levels/Level7.tscn")
+	preload("res://levels/Level7.tscn"),
 	preload("res://levels/LevelEndScreen.tscn"),
 	];
 onready var a=0;
