@@ -41,7 +41,7 @@ func _physics_process(dt):
 		_attacking()
 	for i in get_slide_count():
 		if(get_slide_collision(i)["collider"].get_class()=="Level_Goal"):
-			manager.goal_reached();
+			manager.goal_reached()
 		if(get_slide_collision(i)["collider"].get_class()=="Enemy"):
 			revert();
 	if get_position().y > death:
