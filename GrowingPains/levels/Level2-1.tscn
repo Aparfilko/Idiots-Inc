@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/textures/KenneyPixelSquare.tres" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 6 )
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( -131075, 0, 196618, -196596, 0, 0, -65539, 0, 458763, -131060, 0, 0, -3, 0, 458763, -65524, 0, 0, 65533, 0, 458763, 0, 0, 196618, 1, 0, 196618, 2, 0, 196618, 3, 0, 196618, 4, 0, 196618, 5, 0, 196618, 6, 0, 196618, 7, 0, 196618, 8, 0, 196618, 9, 0, 196618, 10, 0, 196618, 11, 0, 196618, 12, 0, 196618, 131069, 0, 458763, 65548, 0, 458763, 196605, 0, 458763, 131084, 0, 458763, 262141, 0, 458763, 262142, 0, 458763, 262143, 0, 458763, 196608, 0, 458763, 196609, 0, 458763, 196610, 0, 458763, 196611, 0, 458763, 196612, 0, 458763, 196613, 0, 458763, 196614, 0, 458763, 196615, 0, 458763, 196616, 0, 458763, 196617, 0, 458763, 196618, 0, 458763, 196619, 0, 458763, 196620, 0, 458763, 1441789, 1, 0, 1441790, 1, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 765.506, -3.85216 )
+
+[node name="Goal" parent="." instance=ExtResource( 4 )]
+position = Vector2( 772.549, 135.246 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 4.57483
+margin_top = -168.044
+margin_right = 229.575
+margin_bottom = -107.044
+custom_fonts/normal_font = SubResource( 1 )
+text = "Press \"F\" to attack as the old man"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 684.483, 206.204 )
+
+[node name="leftBound" type="Node2D" parent="Enemy"]
+position = Vector2( -811.929, -52.983 )
+
+[node name="rightBound" type="Node2D" parent="Enemy"]
+position = Vector2( 41.5272, -47.2552 )
