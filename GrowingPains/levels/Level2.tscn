@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/switches/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/switches/Button.tscn" type="PackedScene" id=5]
 
 [node name="Level3" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( -65539, 0, 8, -65538, 0, 8, -65537, 0, 8, -131072, 0, 8, -131071, 0, 8, -131070, 0, 8, -131069, 0, 8, -131068, 0, 8, -131067, 0, 8, -131066, 0, 8, -131065, 0, 8, -131064, 0, 8, -131063, 0, 8, -131062, 0, 8, -131061, 0, 8, -131060, 0, 8, -3, 0, 8, -65524, 0, 8, 65533, 0, 8, 12, 0, 8, 131069, 0, 8, 65548, 0, 8, 196605, 0, 8, 196606, 0, 589830, 196607, 0, 589830, 131072, 0, 589830, 131073, 0, 589830, 131074, 0, 589830, 131075, 0, 589830, 131076, 0, 589830, 131077, 0, 589830, 131078, 0, 589830, 131079, 0, 589830, 131080, 0, 589830, 131081, 0, 589830, 131082, 0, 589830, 131083, 0, 589830, 131084, 0, 8, 1441789, 1, 0, 1441790, 1, 0 )
+tile_data = PoolIntArray( 5, 0, 196618, 6, 0, 196618, 7, 0, 196618, 8, 0, 196618, 9, 0, 196618, 10, 0, 196618, 11, 0, 196618, 12, 0, 196618, 65548, 0, 458763, 196605, 0, 8, 196606, 0, 589830, 196607, 0, 589830, 131072, 0, 589830, 131073, 0, 589830, 131074, 0, 589830, 131075, 0, 589830, 131076, 0, 589830, 131077, 0, 589830, 131078, 0, 589830, 131079, 0, 589830, 131080, 0, 589830, 131081, 0, 589830, 131082, 0, 589830, 131083, 0, 589830, 131084, 0, 8, 1441789, 1, 0, 1441790, 1, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -80.8181, 119.192 )
@@ -16,11 +17,11 @@ position = Vector2( -80.8181, 119.192 )
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 780.97, 91.0353 )
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 311.127, 135.765 )
+[node name="Button" parent="." instance=ExtResource( 5 )]
+position = Vector2( 640.04, 0 )
 
-[node name="leftBound" type="Node2D" parent="Enemy"]
-position = Vector2( -107.48, -11.3137 )
+[node name="Door" parent="Button" instance=ExtResource( 3 )]
+position = Vector2( 9.41223, 119.854 )
 
-[node name="rightBound" type="Node2D" parent="Enemy"]
-position = Vector2( 130.108, -12.7279 )
+[node name="Door2" parent="Button" instance=ExtResource( 3 )]
+position = Vector2( 9.50244, 90.2146 )
