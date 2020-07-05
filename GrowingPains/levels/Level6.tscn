@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=2]
@@ -6,20 +6,21 @@
 [ext_resource path="res://assets/Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/switches/DoorBlue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/switches/Button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/switches/DoorGreen.tscn" type="PackedScene" id=7]
 
 [node name="Level" type="Node2D"]
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1086.95, 184.844 )
+position = Vector2( 365.431, 204.886 )
 
 [node name="rightBound" type="Node2D" parent="Enemy"]
-position = Vector2( -64.1835, -45.3059 )
+position = Vector2( 84.4626, -43.6357 )
 
 [node name="leftBound" type="Node2D" parent="Enemy"]
-position = Vector2( -717.344, -30.204 )
+position = Vector2( -548.656, -48.576 )
 
 [node name="TileMap" parent="." instance=ExtResource( 3 )]
-tile_data = PoolIntArray( -196611, 0, 458763, -196610, 0, 458763, -196609, 0, 458763, -262144, 0, 458763, -131075, 0, 458763, -6, 0, 720900, -5, 0, 589827, -4, 0, 589827, -3, 0, 589827, -2, 0, 589827, -1, 0, 589827, -65536, 0, 589827, -65535, 0, 589827, -65534, 0, 589828, 7, 0, 458763, 8, 0, 458763, 9, 0, 458763, 10, 0, 458763, 131059, 0, 720900, 131060, 0, 589827, 131061, 0, 589827, 131062, 0, 589828, 65543, 0, 458763, 65546, 0, 458763, 131082, 0, 458763, 262134, 0, 720900, 262135, 0, 589827, 262136, 0, 589827, 262137, 0, 589827, 262138, 0, 589827, 262139, 0, 589827, 262140, 0, 589827, 262141, 0, 589827, 262142, 0, 589827, 262143, 0, 589827, 196608, 0, 589827, 196609, 0, 589827, 196610, 0, 589827, 196611, 0, 589827, 196612, 0, 589827, 196613, 0, 589827, 196614, 0, 589827, 196615, 0, 589827, 196616, 0, 589827, 196617, 0, 589827, 196618, 0, 589828, 1441789, 1, 0, 1441790, 1, 0 )
+tile_data = PoolIntArray( -327673, 0, 393222, -196611, 0, 589825, -196610, 0, 589825, -196609, 0, 589825, -262144, 0, 589825, -262137, 0, 786437, -131075, 0, 589825, -196601, 0, 720902, -196599, 0, 786437, -65548, 0, 786437, -131065, 0, 786437, -131064, 0, 393222, -131063, 0, 0, -131062, 0, 720902, -12, 0, 720902, -6, 0, 720900, -5, 0, 589827, -4, 0, 589827, -3, 0, 589827, -2, 0, 589827, -1, 0, 589827, -65536, 0, 589827, -65535, 0, 589827, -65534, 0, 589828, -65529, 0, 0, -65528, 0, 720902, -65527, 0, 786437, -65526, 0, 393222, 65523, 0, 786437, 65524, 0, 0, 65526, 0, 262147, 7, 0, 589825, 8, 0, 589825, 9, 0, 589825, 10, 0, 589825, 131059, 0, 720900, 131060, 0, 589827, 131061, 0, 589827, 131062, 0, 589828, 65543, 0, 589825, 65546, 0, 589825, 196598, 0, 393222, 131082, 0, 589825, 262134, 0, 720900, 262135, 0, 589827, 262136, 0, 589827, 262137, 0, 589827, 262138, 0, 589827, 262139, 0, 589827, 262140, 0, 589827, 262141, 0, 589827, 262142, 0, 589827, 262143, 0, 589827, 196608, 0, 589827, 196609, 0, 589827, 196610, 0, 589827, 196611, 0, 589827, 196612, 0, 589827, 196613, 0, 589827, 196614, 0, 589827, 196615, 0, 589827, 196616, 0, 589827, 196617, 0, 589827, 196618, 0, 589828, 1441789, 1, 0, 1441790, 1, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -399.985, 206.669 )
@@ -28,13 +29,22 @@ position = Vector2( -399.985, 206.669 )
 position = Vector2( -64.7898, -146.874 )
 
 [node name="Button" parent="." instance=ExtResource( 6 )]
-position = Vector2( -425.866, -289.428 )
+position = Vector2( -173.645, 210.102 )
 
 [node name="Door" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 155.432, 324.701 )
+position = Vector2( -96.7892, -174.829 )
 
 [node name="Door2" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 155.42, 394.664 )
+position = Vector2( -96.8006, -104.866 )
 
 [node name="Door3" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 155.42, 464.635 )
+position = Vector2( -96.8008, -34.895 )
+
+[node name="Button2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 623.738, 210.102 )
+
+[node name="Door" parent="Button2" instance=ExtResource( 7 )]
+position = Vector2( -588.782, -385.018 )
+
+[node name="Door2" parent="Button2" instance=ExtResource( 7 )]
+position = Vector2( -588.777, -314.971 )
