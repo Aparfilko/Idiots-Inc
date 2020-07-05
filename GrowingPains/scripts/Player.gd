@@ -41,7 +41,7 @@ func _physics_process(dt):
 		_attacking()
 	for i in get_slide_count():
 		if(get_slide_collision(i)["collider"].get_class()=="Level_Goal"):
-			manager.goal_reached();
+			manager.goal_reached()
 		if(get_slide_collision(i)["collider"].get_class()=="Enemy"):
 			revert();
 	if get_position().y > death:
@@ -114,7 +114,7 @@ func scan_age():
 		
 #as an old man you can attack
 func attackStart():
-	print("attack")
+#	print("attack")
 	$bash.set_enabled(true)
 	$realSprite.play("attack")
 	$Timer.start()
@@ -126,7 +126,7 @@ func _attacking():
 		emit_signal("killed")
 		disconnect("killed", enemy, "death")
 func attackEnd():
-	print("done")
+#	print("done")
 	$bash.set_enabled(false)
 func _animate():
 	#make sure animation is always facing where player is moving
@@ -151,12 +151,14 @@ func ghost(i):
 		var ghost0 = Sprite.new()
 		ghost0.texture = load("res://sprites/playerSprites/baby.png")
 		ghost0.name = "ghost0"
+		ghost0.scale = Vector2(2,2)
 		get_parent().add_child(ghost0)
 		ghost0.position = position
 	elif i == 1:
 		var ghost1 = Sprite.new()
 		ghost1.texture = load("res://sprites/playerSprites/teen.png")
 		ghost1.name = "ghost1"
+		ghost1.scale = Vector2(2,2)
 		get_parent().add_child(ghost1)
 		ghost1.position = position
 	elif i == -2:
