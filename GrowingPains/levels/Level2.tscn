@@ -1,24 +1,39 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/switches/DoorOrange.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/switches/Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/textures/KenneyPixelSquare.tres" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 6 )
 
 [node name="Level" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( 5, 0, 196618, 6, 0, 196618, 7, 0, 196618, 8, 0, 196618, 9, 0, 196618, 10, 0, 196618, 11, 0, 196618, 12, 0, 196618, 65548, 0, 458763, 196605, 0, 8, 196606, 0, 589830, 196607, 0, 589830, 131072, 0, 589830, 131073, 0, 589830, 131074, 0, 589830, 131075, 0, 589830, 131076, 0, 589830, 131077, 0, 589830, 131078, 0, 589830, 131079, 0, 589830, 131080, 0, 589830, 131081, 0, 589830, 131082, 0, 589830, 131083, 0, 589830, 131084, 0, 8, 1441789, 1, 0, 1441790, 1, 0 )
+tile_data = PoolIntArray( -196596, 0, 0, -131060, 0, 0, -3, 0, 0, -65524, 0, 0, 65533, 0, 0, 5, 0, 196618, 6, 0, 196618, 7, 0, 196618, 8, 0, 196618, 9, 0, 196618, 10, 0, 196618, 11, 0, 196618, 12, 0, 196618, 131069, 0, 0, 65548, 0, 458763, 196605, 0, 0, 131075, 0, 0, 131081, 0, 393221, 131084, 0, 458763, 262141, 0, 655366, 262142, 0, 589830, 262143, 0, 589830, 196608, 0, 589830, 196609, 0, 589830, 196610, 0, 589830, 196611, 0, 589830, 196612, 0, 589830, 196613, 0, 589830, 196614, 0, 589830, 196615, 0, 589830, 196616, 0, 589830, 196617, 0, 589830, 196618, 0, 589830, 196619, 0, 589830, 196620, 0, 458763, 1441789, 1, 0, 1441790, 1, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -80.8181, 119.192 )
+position = Vector2( -86.5181, 195.192 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
-position = Vector2( 780.97, 91.0353 )
+position = Vector2( 772.549, 135.246 )
 
 [node name="Button" parent="." instance=ExtResource( 5 )]
 position = Vector2( 640.04, 0 )
 
 [node name="Door" parent="Button" instance=ExtResource( 3 )]
 position = Vector2( 25.61, 105.6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -57.35
+margin_top = 30.6
+margin_right = 167.65
+margin_bottom = 68.6
+custom_fonts/normal_font = SubResource( 1 )
+text = "Press \"Ctrl\" to grow"
+__meta__ = {
+"_edit_use_anchors_": false
+}
