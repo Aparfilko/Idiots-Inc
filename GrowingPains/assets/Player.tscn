@@ -1,7 +1,19 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://sprites/playerSprites/tempAges.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://sprites/playerSprites/baby.png" type="Texture" id=3]
+[ext_resource path="res://sprites/playerSprites/teen run 1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/playerSprites/baby crawl 2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/playerSprites/teen.png" type="Texture" id=6]
+[ext_resource path="res://sprites/playerSprites/baby crawl 1.png" type="Texture" id=7]
+[ext_resource path="res://sprites/playerSprites/teen run 2.png" type="Texture" id=8]
+[ext_resource path="res://sprites/playerSprites/old attack 1.png" type="Texture" id=9]
+[ext_resource path="res://sprites/playerSprites/old walk 2.png" type="Texture" id=10]
+[ext_resource path="res://sprites/playerSprites/old walk 1.png" type="Texture" id=11]
+[ext_resource path="res://sprites/playerSprites/teen jump.png" type="Texture" id=12]
+[ext_resource path="res://sprites/playerSprites/old.png" type="Texture" id=13]
+[ext_resource path="res://sprites/playerSprites/old attack 2.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 34, 34 )
@@ -20,12 +32,12 @@ region = Rect2( 0, 0, 400, 800 )
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 800, 0, 400, 800 )
+region = Rect2( 400, 0, 400, 800 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 400, 0, 400, 800 )
+region = Rect2( 800, 0, 400, 800 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -36,13 +48,66 @@ animations = [ {
 }, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "form2",
+"name": "form1",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ) ],
 "loop": true,
-"name": "form1",
+"name": "form2",
 "speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "attack",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "standForm0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walkForm0",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walkForm1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "standForm1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "standForm2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "jumpForm2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "jumpForm0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "jumpForm1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "walkForm2",
+"speed": 2.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -81,3 +146,15 @@ collide_with_areas = true
 position = Vector2( 0, -40 )
 enabled = true
 cast_to = Vector2( 150, 0 )
+
+[node name="realSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 2.20487, -96.069 )
+scale = Vector2( 6.81663, 6.48066 )
+frames = SubResource( 8 )
+animation = "attack"
+frame = 1
+playing = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+[connection signal="timeout" from="Timer" to="." method="attackEnd"]

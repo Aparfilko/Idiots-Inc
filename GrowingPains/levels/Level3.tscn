@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
@@ -6,11 +6,15 @@
 [ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/switches/DoorOrange.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/textures/KenneyPixelSquare.tres" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
 
 [node name="Level" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( -131078, 0, 196610, -131077, 0, 786433, -131076, 0, 786433, -131075, 0, 262146, -65542, 0, 10, -65539, 0, 196610, -65538, 0, 786433, -65537, 0, 262146, -6, 0, 589825, -1, 0, 196610, -65536, 0, 786433, -65535, 0, 262146, 65530, 0, 589825, 1, 0, 196610, 2, 0, 720897, 131066, 0, 589825, 131067, 0, 196613, 196602, 0, 589825, 196603, 0, 720896, 196604, 0, 458752, 196605, 0, 458752, 196606, 0, 458752, 196607, 0, 458752, 131072, 0, 458752, 131073, 0, 458752, 131074, 0, 786433, 131075, 0, 786433, 131076, 0, 786433, 131077, 0, 786433, 131078, 0, 786433, 131079, 0, 786433, 131080, 0, 327682, 131081, 0, 196610, 131082, 0, 786433, 131083, 0, 786433, 131084, 0, 786433, 1441789, 1, 0, 1441790, 1, 0 )
+tile_data = PoolIntArray( -131078, 0, 196610, -131077, 0, 786433, -131076, 0, 786433, -131075, 0, 262146, -65542, 0, 10, -65539, 0, 196610, -65538, 0, 786433, -65537, 0, 262146, -131059, 0, 720899, -6, 0, 589825, -1, 0, 196610, -65536, 0, 786433, -65535, 0, 262146, -65523, 0, 393222, 65530, 0, 589825, 1, 0, 196610, 2, 0, 720897, 13, 0, 0, 14, 0, 393226, 131066, 0, 589825, 131067, 0, 196613, 65549, 0, 786437, 65550, 0, 786438, 196602, 0, 589825, 196603, 0, 720896, 196604, 0, 458752, 196605, 0, 458752, 196606, 0, 458752, 196607, 0, 458752, 131072, 0, 458752, 131073, 0, 458752, 131074, 0, 786433, 131075, 0, 786433, 131076, 0, 786433, 131077, 0, 786433, 131078, 0, 786433, 131079, 0, 786433, 131080, 0, 327682, 131081, 0, 196610, 131082, 0, 786433, 131083, 0, 786433, 131084, 0, 786433, 131085, 0, 786433, 131086, 0, 720897, 1441789, 1, 0, 1441790, 1, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -0.750031, 104.307 )
@@ -56,3 +60,25 @@ position = Vector2( -999.656, -172.426 )
 
 [node name="Door9" parent="Button" instance=ExtResource( 5 )]
 position = Vector2( -1000.2, -104.57 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -114.0
+margin_top = 5.0
+margin_right = 66.0
+margin_bottom = 63.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Press \"R\" to become younger"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 220.0
+margin_top = 4.0
+margin_right = 400.0
+margin_bottom = 62.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Press \"r\" as the baby to restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
