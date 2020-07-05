@@ -5,7 +5,7 @@ const grav = 1000
 const accel = 0.5
 onready var vel = Vector2()
 onready var speed = 7500
-onready var jump = 20000
+onready var jump = 30000
 onready var lr = 1; #0=left,1=right
 
 func get_class():
