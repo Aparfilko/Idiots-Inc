@@ -19,10 +19,11 @@ func _physics_process(dt):
 	var pos1=position;
 	$leftBound.position-=pos1-pos0;
 	$rightBound.position-=pos1-pos0;
+	$leftJumpCheck.add_exception(get_parent().get_node("Player"))
+	$rightJumpCheck.add_exception(get_parent().get_node("Player"))
 
 #controls movement and jumping
 func get_movement(dt):
-	print(lr);
 	if $leftBound.position.x>0:
 		lr=1;
 	if $rightBound.position.x<0:
@@ -49,7 +50,7 @@ func get_movement(dt):
 		vel.y += grav * dt
 
 #when attacked, die
-func killed():
+func death():
 	$form.set_disabled(true)
 	$Timer.start()
 

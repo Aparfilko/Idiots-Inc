@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 const grav = 1000
 const accel = 0.5
-const bashLength = Vector2(50,0)
+const bashLength = Vector2(100,0)
 signal music(age)
 signal killed()
 onready var vel = Vector2()
@@ -18,6 +18,7 @@ func set_manager(m):
 
 func _ready():
 	#bind inputs here
+	$bash.set_enabled(true)
 	connect("music", get_parent().get_parent(), "update_music")
 	get_node("form"+String(age)).set_disabled(false)
 	
@@ -65,7 +66,6 @@ func get_movement(dt):
 		$bash.set_cast_to(bashLength)
 	elif vel.x < 0:
 		$bash.set_cast_to(- bashLength)
-	print($bash.get_cast_to())
 	
 
 #press revert to teleport to previous pin
