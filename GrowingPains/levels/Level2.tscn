@@ -21,7 +21,4 @@ position = Vector2( 780.97, 91.0353 )
 position = Vector2( 640.04, 0 )
 
 [node name="Door" parent="Button" instance=ExtResource( 3 )]
-position = Vector2( 9.41223, 119.854 )
-
-[node name="Door2" parent="Button" instance=ExtResource( 3 )]
-position = Vector2( 9.50244, 90.2146 )
+position = Vector2( 25.61, 105.6 )

@@ -8,4 +8,4 @@ func _ready():
 func _switch(_body_id, node, _body_shape, _area_shape):
 	if node.name.match("Player"):
 		$CollisionShape2D.call_deferred("set", "disabled", not $CollisionShape2D.is_disabled())
-		$AnimatedSprite.call_deferred("set", "visible", not $AnimatedSprite.is_visible())
+		$Sprite.call_deferred("set", "visible", not $Sprite.is_visible())

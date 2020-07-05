@@ -21,19 +21,10 @@ position = Vector2( 780.97, 91.0353 )
 position = Vector2( 105.616, 139.743 )
 
 [node name="Door" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 176.048, -19.6895 )
-
-[node name="Door2" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 176.033, -59.3322 )
+position = Vector2( 208.702, -35.102 )
 
 [node name="Door3" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 175.142, -137.494 )
+position = Vector2( 208.749, -104.169 )
 
 [node name="Door5" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 175.142, -189.278 )
-
-[node name="Door6" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 175.142, -162.791 )
-
-[node name="Door4" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 176.201, -98.2938 )
+position = Vector2( 208.816, -174.686 )
