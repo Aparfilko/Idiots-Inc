@@ -1,36 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/Floor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/Enemy.tscn" type="PackedScene" id=5]
 
 [node name="Level3" type="Node2D"]
 
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( -65539, 0, 8, -65538, 0, 8, -65537, 0, 8, -131072, 0, 8, -131071, 0, 8, -131070, 0, 8, -131069, 0, 8, -131068, 0, 8, -131067, 0, 8, -131066, 0, 8, -131065, 0, 8, -131064, 0, 8, -131063, 0, 8, -131062, 0, 8, -131061, 0, 8, -131060, 0, 8, -3, 0, 8, -65524, 0, 8, 65533, 0, 8, 12, 0, 8, 131069, 0, 8, 65548, 0, 8, 196605, 0, 8, 196606, 0, 589830, 196607, 0, 589830, 131072, 0, 589830, 131073, 0, 589830, 131074, 0, 589830, 131075, 0, 589830, 131076, 0, 589830, 131077, 0, 589830, 131078, 0, 589830, 131079, 0, 589830, 131080, 0, 589830, 131081, 0, 589830, 131082, 0, 589830, 131083, 0, 589830, 131084, 0, 8, 1441789, 1, 0, 1441790, 1, 0 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -82.937, 55.6245 )
-
-[node name="Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 371.9, 84.7245 )
-
-[node name="leftBound" type="Node2D" parent="Enemy"]
-position = Vector2( -238.393, -22.0431 )
-
-[node name="rightBound" type="Node2D" parent="Enemy"]
-position = Vector2( 70.9983, -26.1916 )
-
-[node name="Floor" parent="." instance=ExtResource( 1 )]
-position = Vector2( 271.223, 101.708 )
-
-[node name="Wall" parent="." instance=ExtResource( 3 )]
-position = Vector2( 276.292, 457.72 )
-
-[node name="Wall2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -125.95, -282.933 )
+position = Vector2( -80.8181, 119.192 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
-position = Vector2( 634.764, 48.6568 )
-
-[node name="Wall3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 507.201, 464.724 )
+position = Vector2( 780.97, 91.0353 )

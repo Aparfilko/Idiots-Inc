@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/liquidLava.png-e614d41e3ab5e57d3b273f0fd9fccfc7.stex"
+path="res://.import/teen.png-b29737c0a8f672ecb7b13254579b4192.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/liquidLava.png"
-dest_files=[ "res://.import/liquidLava.png-e614d41e3ab5e57d3b273f0fd9fccfc7.stex" ]
+source_file="res://sprites/playerSprites/teen.png"
+dest_files=[ "res://.import/teen.png-b29737c0a8f672ecb7b13254579b4192.stex" ]
 
 [params]
 

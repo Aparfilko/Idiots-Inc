@@ -1,40 +1,39 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/Floor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/switches/Button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/switches/Door.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/switches/Button.tscn" type="PackedScene" id=6]
 
-[node name="Level1" type="Node2D"]
+[node name="Level3" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( -65539, 0, 8, -65538, 0, 8, -65537, 0, 8, -131072, 0, 8, -131071, 0, 8, -131070, 0, 8, -131069, 0, 8, -131068, 0, 8, -131067, 0, 8, -131066, 0, 8, -131065, 0, 8, -131064, 0, 8, -131063, 0, 8, -131062, 0, 8, -131061, 0, 8, -131060, 0, 8, -3, 0, 8, -65524, 0, 8, 65533, 0, 8, 12, 0, 8, 131069, 0, 8, 65548, 0, 8, 196605, 0, 8, 196606, 0, 589830, 196607, 0, 589830, 131072, 0, 589830, 131073, 0, 589830, 131074, 0, 589830, 131075, 0, 589830, 131076, 0, 589830, 131077, 0, 589830, 131078, 0, 589830, 131079, 0, 589830, 131080, 0, 589830, 131081, 0, 589830, 131082, 0, 589830, 131083, 0, 589830, 131084, 0, 8, 1441789, 1, 0, 1441790, 1, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -57, 29 )
-
-[node name="Floor" parent="." instance=ExtResource( 1 )]
-position = Vector2( 271.223, 101.708 )
-
-[node name="Wall" parent="." instance=ExtResource( 3 )]
-position = Vector2( -137.73, -288.174 )
-
-[node name="Wall2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 661.306, 511.79 )
-
-[node name="Floor2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 898.425, 673.818 )
-
-[node name="Floor3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1072.18, 898.425 )
+position = Vector2( -80.8181, 119.192 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
-position = Vector2( 734.13, 828.786 )
+position = Vector2( 780.97, 91.0353 )
 
-[node name="Button" parent="." instance=ExtResource( 6 )]
-position = Vector2( 100, 90 )
+[node name="Button" parent="." instance=ExtResource( 3 )]
+position = Vector2( 105.616, 139.743 )
 
 [node name="Door" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 500, -20 )
+position = Vector2( 176.048, -19.6895 )
 
 [node name="Door2" parent="Button" instance=ExtResource( 5 )]
-position = Vector2( 500, -60 )
+position = Vector2( 176.033, -59.3322 )
+
+[node name="Door3" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( 175.142, -137.494 )
+
+[node name="Door5" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( 175.142, -189.278 )
+
+[node name="Door6" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( 175.142, -162.791 )
+
+[node name="Door4" parent="Button" instance=ExtResource( 5 )]
+position = Vector2( 176.201, -98.2938 )

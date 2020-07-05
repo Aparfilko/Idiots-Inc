@@ -13,15 +13,18 @@ script = ExtResource( 1 )
 
 [node name="form0" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 3 )
+volume_db = -30.0
 bus = "form0"
 script = ExtResource( 5 )
 
 [node name="form1" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 4 )
+volume_db = -30.0
 bus = "form1"
 script = ExtResource( 5 )
 
 [node name="form2" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 2 )
+volume_db = -30.0
 bus = "form2"
 script = ExtResource( 5 )
