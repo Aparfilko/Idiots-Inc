@@ -86,6 +86,7 @@ func revert():
 		manager.updateLvl();
 	else:
 		get_node("form"+String(age)).set_disabled(true)
+		ghost(-age)
 		age -= 1
 		get_node("form"+String(age)).set_disabled(false)
 		$sprite.play("form"+ String(age))
@@ -99,9 +100,11 @@ func scan_age():
 			return
 		#set current position as pin
 		pins[age+1] = get_position()
+		
 		#current collision box stops
 		get_node("form"+String(age)).set_disabled(true)
 		#increment age, go back if 3
+		ghost(age)
 		age += 1
 		#switch collision
 		get_node("form"+String(age)).set_disabled(false)
@@ -141,3 +144,22 @@ func _animate():
 			$realSprite.play("walkForm" + String(age))
 	else:
 		$realSprite.play("jumpForm" + String(age))
+
+#ghost sprites - spawn in ghosts to show where the player will end up
+func ghost(i):
+	if i == 0:
+		var ghost0 = Sprite.new()
+		ghost0.texture = load("res://sprites/playerSprites/baby.png")
+		ghost0.name = "ghost0"
+		get_parent().add_child(ghost0)
+		ghost0.position = position
+	elif i == 1:
+		var ghost1 = Sprite.new()
+		ghost1.texture = load("res://sprites/playerSprites/teen.png")
+		ghost1.name = "ghost1"
+		get_parent().add_child(ghost1)
+		ghost1.position = position
+	elif i == -2:
+		get_parent().get_node("ghost1").queue_free()
+	elif i == -1:
+		get_parent().get_node("ghost0").queue_free()
