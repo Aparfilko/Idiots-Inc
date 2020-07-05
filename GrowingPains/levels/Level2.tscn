@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/TileMapMain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
@@ -6,11 +6,16 @@
 [ext_resource path="res://assets/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/switches/Button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/textures/KenneyPixelSquare.tres" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/bg/3.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
 
 [node name="Level" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 20, 20 )
+texture = ExtResource( 7 )
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 tile_data = PoolIntArray( -196596, 0, 131074, -131060, 0, 786437, -3, 0, 786437, -65524, 0, 393222, 65533, 0, 393222, 5, 0, 196618, 6, 0, 196618, 7, 0, 196618, 8, 0, 196618, 9, 0, 196618, 10, 0, 196618, 11, 0, 196618, 12, 0, 196618, 131069, 0, 720902, 65548, 0, 458763, 196605, 0, 0, 131075, 0, 393227, 131084, 0, 458763, 262141, 0, 655366, 262142, 0, 589830, 262143, 0, 589830, 196608, 0, 589830, 196609, 0, 589830, 196610, 0, 589830, 196611, 0, 589830, 196612, 0, 589830, 196613, 0, 589830, 196614, 0, 589830, 196615, 0, 589830, 196616, 0, 589830, 196617, 0, 589830, 196618, 0, 589830, 196619, 0, 589830, 196620, 0, 458763, 1441789, 1, 0, 1441790, 1, 0 )
