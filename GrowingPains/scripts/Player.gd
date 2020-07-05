@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 const grav = 1000
 const accel = 0.5
+signal music(age)
 onready var vel = Vector2()
 onready var age = 0
 onready var speed = [15000, 25000, 7500] 
@@ -15,6 +16,7 @@ func set_manager(m):
 
 func _ready():
 	#bind inputs here
+	connect("music", get_parent().get_parent(), "update_music")
 	get_node("form"+String(age)).set_disabled(false)
 	
 func _input(event):
@@ -65,6 +67,7 @@ func revert():
 		age -= 1
 		get_node("form"+String(age)).set_disabled(false)
 		$sprite.play("form"+ String(age))
+		emit_signal("music", age + 1)
 
 #press age to go to the next form
 func scan_age():
@@ -82,6 +85,7 @@ func scan_age():
 		get_node("form"+String(age)).set_disabled(false)
 		#switch animation
 		$sprite.play("form"+ String(age))
+		emit_signal("music", age + 1)
 		
 		
 		
