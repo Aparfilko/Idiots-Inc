@@ -9,19 +9,17 @@ func _ready():
 #takes the node of the level and plays audio for it
 func chooseMusic(level):
 	#make sure that the levelEndMusic isn't playing
-	var audioFile = "res://audio/" + level.name + ".ogg"
+	var audioFile = "res://audio/levels/" + level.name + ".ogg"
 	if File.new().file_exists(audioFile):
 		var song = load(audioFile)
 		song.set_loop(true)
 		$levelMusic.stream = song
 		$levelMusic.play()
-
 #call this when the level is beaten
 func endLevel():
 	fade($levelMusic, 3, FADEOUT)
 	fade($levelEnd/winMusic, 5, FADEIN)
 	$levelEnd/jingle.play()
-
 #activates tween to fade out the song
 #FADEOUT or FADEIN
 func fade(audioplayer, seconds, fade):
