@@ -1,15 +1,20 @@
 extends AudioStreamPlayer
+var target
+var speed
 
 func _ready():
-	get_parent().connect("music", self, "chooseMusic")
-
-#call this when the level changes, but NOT WHEN IT RESETS
-#takes the node of the level and plays audio for it
-func chooseMusic(level):
-	var audioFile = "res://audio/" + level.name + ".ogg"
-	if File.new().file_exists(audioFile):
-		var song = load(audioFile)
-		song.set_loop(true)
-		stream = song
-		play()
+	pass # Replace with function body.
 	
+#fades in the song in the given amount of seconds
+func fade_in(seconds):
+	set_volume_db(-80)
+	target = 0
+	speed = seconds
+	play()
+	
+func fade_out(seconds):
+	target = -80
+	speed = seconds
+	
+func _process(dt):
+	pass

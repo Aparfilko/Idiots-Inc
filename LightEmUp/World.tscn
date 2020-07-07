@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://music.gd" type="Script" id=1]
+[ext_resource path="res://musicManager.gd" type="Script" id=1]
+[ext_resource path="res://audio/jingle.wav" type="AudioStream" id=2]
+[ext_resource path="res://audio/win.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/Level1.ogg" type="AudioStream" id=4]
 
 [node name="World" type="Node2D"]
 
-[node name="music" type="AudioStreamPlayer" parent="."]
+[node name="musicManager" type="Node" parent="."]
 script = ExtResource( 1 )
+
+[node name="levelMusic" type="AudioStreamPlayer" parent="musicManager"]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="levelEnd" type="Node" parent="musicManager"]
+
+[node name="jingle" type="AudioStreamPlayer" parent="musicManager/levelEnd"]
+stream = ExtResource( 2 )
+
+[node name="winMusic" type="AudioStreamPlayer" parent="musicManager/levelEnd"]
+stream = ExtResource( 3 )

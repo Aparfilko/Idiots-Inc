@@ -1,0 +1,45 @@
+extends Node
+enum {FADEOUT, FADEIN}
+
+func _ready():
+	get_parent().get_parent().connect("music", self, "chooseMusic")
+	get_parent().get_parent().connect("win", self, "endLevel")
+	
+#call this when the level changes, but NOT WHEN IT RESETS
+#takes the node of the level and plays audio for it
+func chooseMusic(level):
+	#make sure that the levelEndMusic isn't playing
+	var audioFile = "res://audio/" + level.name + ".ogg"
+	if File.new().file_exists(audioFile):
+		var song = load(audioFile)
+		song.set_loop(true)
+		$levelMusic.stream = song
+		$levelMusic.play()
+
+#call this when the level is beaten
+func endLevel():
+	fade($levelMusic, 3, FADEOUT)
+	fade($levelEnd/winMusic, 5, FADEIN)
+	$levelEnd/jingle.play()
+
+#activates tween to fade out the song
+#FADEOUT or FADEIN
+func fade(audioplayer, seconds, fade):
+	var t = [0, -80]
+	#FADEIN inputted
+	if bool(fade):
+		audioplayer.play()
+		print("in")
+		t = [-80, 0]
+	audioplayer.set_volume_db(t[0])
+	var tween = Tween.new()
+	add_child(tween)
+	tween.interpolate_property(audioplayer, "volume_db", t[0], t[1], seconds, tween.TRANS_LINEAR, tween.EASE_IN, 0)
+	tween.start()
+	tween.connect("tween_all_completed", self, "delete_tween", [tween])	
+#deletes tweens once they are finished
+func delete_tween(tween):
+	print("done")
+	remove_child(tween)
+	tween.queue_free()
+	
