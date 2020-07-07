@@ -4,7 +4,6 @@ enum {FADEOUT, FADEIN}
 func _ready():
 	get_parent().get_parent().connect("music", self, "chooseMusic")
 	get_parent().get_parent().connect("win", self, "endLevel")
-	
 #call this when the level changes, but NOT WHEN IT RESETS
 #takes the node of the level and plays audio for it
 func chooseMusic(level):
@@ -26,18 +25,20 @@ func fade(audioplayer, seconds, fade):
 	var t = [0, -80]
 	#FADEIN inputted
 	if bool(fade):
-		audioplayer.play()
-		print("in")
 		t = [-80, 0]
+	else:
+		audioplayer.loop
 	audioplayer.set_volume_db(t[0])
 	var tween = Tween.new()
 	add_child(tween)
 	tween.interpolate_property(audioplayer, "volume_db", t[0], t[1], seconds, tween.TRANS_LINEAR, tween.EASE_IN, 0)
 	tween.start()
-	tween.connect("tween_all_completed", self, "delete_tween", [tween])	
+	tween.connect("tween_completed", self, "delete_tween", [tween])	
 #deletes tweens once they are finished
-func delete_tween(tween):
-	print("done")
+func delete_tween(audio, _key, tween):
 	remove_child(tween)
 	tween.queue_free()
+	#stop the audio if it's a fadeOut
+	if audio.get_db_level() == -80:
+		audio.stop()
 	
