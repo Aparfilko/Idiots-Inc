@@ -5,12 +5,12 @@
 [resource]
 0/name = "test.png 0"
 0/texture = ExtResource( 1 )
-0/tex_offset = Vector2( 0, 0 )
+0/tex_offset = Vector2( 0, -16 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 3, 0, 474, 161 )
+0/region = Rect2( 0, 0, 4096, 72 )
 0/tile_mode = 2
 0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 158, 161 )
+0/autotile/tile_size = Vector2( 64, 72 )
 0/autotile/spacing = 0
 0/autotile/occluder_map = [  ]
 0/autotile/navpoly_map = [  ]
