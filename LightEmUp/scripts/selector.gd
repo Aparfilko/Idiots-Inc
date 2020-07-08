@@ -41,7 +41,6 @@ func hover(item):
 		if prev[1] == INVALID_CELL:
 			$Selection.set_cell(index.x, index.y, SELECT,false,false,false,prev[2])
 			set_cell(index.x, index.y, item, false,false,false,prev[2])
-			get_parent().update_tiles();
 			return true
 		#something there, can't select
 		else:
@@ -53,8 +52,8 @@ func delete():
 	#revert previous tiles
 	#don't select over nothing!
 	var free = get_parent().get_node("Floor").get_cellv(index) != INVALID_CELL
+	#erase the red highlight on the move
 	if index != prev[0]:
-		set_cell(prev[0].x, prev[0].y, prev[1], false, false, false, prev[2])
 		$Selection.set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
 		prev = [index, get_cellv(index), get_cell_autotile_coord(index.x, index.y)]
 	if prev[1] != WALL and free:
@@ -81,6 +80,7 @@ func get_choice(c):
 				set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
 			#place tile
 			$Selection.set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
+			get_parent().update_tiles()
 			prev = [Vector2(-999,-999) ,get_cell(-999,-999), get_cell_autotile_coord(-999,-999)]
 	#switch back from delete mode
 	elif choose == NOSELECT and c == NOSELECT:

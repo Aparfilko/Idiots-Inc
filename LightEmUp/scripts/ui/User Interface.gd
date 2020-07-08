@@ -1,6 +1,7 @@
 extends Control
 enum {NOTHING = -1, ALLLAMP = 1,DOWNLAMP = 2, LEFTLAMP = 3, UPLAMP = 4, RIGHTLAMP = 5, DELETE = 6, PLACE = 10}
 signal pass_choice(choice)
+var c
 
 func _ready():
 	connect("pass_choice", get_parent().get_parent().get_node("Obs"), "get_choice")
@@ -33,3 +34,22 @@ func _input(event):
 		express_choice(DELETE)
 func express_choice(tile):
 	emit_signal("pass_choice", tile)
+
+func _cancelDelete():
+	if $toolbar/cancelDelete.text.match("delete"):
+		$toolbar/cancelDelete.text = "cancel"
+		c = DELETE
+		express_choice(c)
+	else:
+		$toolbar/cancelDelete.text = "delete"
+		if c == DELETE:
+			express_choice(c)
+		else:
+			express_choice(NOTHING)
+		c = NOTHING
+
+func _activateLamp(lamp):
+	c = lamp
+	express_choice(c)
+	$toolbar/cancelDelete.text = "cancel"
+
