@@ -44,15 +44,12 @@ func update():
 				mat[1][ind][1]=Vector2(l*16+l*4+l,0);
 
 func traceLight(x0,y0,x1,y1):
-	var out=1;
-	while(1):
+	var out=1/pow((sqrt(pow(x1-x0,2)+pow(y1-y0,2))+4.5)/4.5,2);
+	while(x0!=x1 and y0!=y1):
 		if(abs(x1-x0)>abs(y1-y0)):
 			x0+=1 if x1>x0 else -1;
 		else:
 			y0+=1 if y1>y0 else -1;
-		if(x0==x1 and y0==y1):
-			return out;
-		elif(mat[1][y0*xDim+x0][0]==0):
+		if(mat[1][y0*xDim+x0][0]==0):
 			return 0;
-		out*=.5;
-	return 0;
+	return out;
