@@ -1,6 +1,6 @@
 extends TileMap
 
-enum {WALL = 0, CANTSELECT = 3, SELECT = 12, LAMP = 48}
+enum {WALL = 0, ALLLAMP = 1,DOWNLAMP = 2, UPLAMP = 3, LEFTLAMP = 4, RIGHTLAMP = 5, NOSELECT = 6, SELECT = 7}
 #m for mode
 onready var m = false
 var index
@@ -28,14 +28,14 @@ func _process(_dt):
 		set_cellv(index, SELECT)
 	#something there, can't select
 	elif free:
-		set_cellv(index, CANTSELECT)
+		set_cellv(index, NOSELECT)
 		print("no")
 	
 	
 	
 	
 func noMode():
-	m = SELECT
+	m = WALL
 	
 func placeMode():
-	m = LAMP
+	m = ALLLAMP
