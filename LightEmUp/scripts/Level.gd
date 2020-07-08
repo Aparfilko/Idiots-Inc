@@ -34,5 +34,3 @@ func _input(event):
 		$Camera2D.position+=Vector2(-16,-32);
 	if event.is_action_pressed("ui_down"):
 		$Camera2D.position-=Vector2(-16,-32);
-	if event.is_action_pressed("ui_accept"):
-		print(print_tiles());
