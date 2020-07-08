@@ -1,16 +1,21 @@
 extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#save level data to the user's computer to keep unlocked levels
+func save(content):
+	var file = File.new()
+	file.open("user://save_game.dat", File.WRITE)
+	file.store_string(content)
+	file.close()
+func load():
+	var file = File.new()
+	file.open("user://save_game.dat", File.READ)
+	var content = file.get_as_text()
+	file.close()
+	return content
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	pass
+	
+func _physics_process(_delta):
+	pass
