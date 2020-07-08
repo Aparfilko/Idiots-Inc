@@ -21,15 +21,15 @@ func _process(_dt):
 		set_cellv(prev[0], prev[1])
 		prev = [index, get_cellv(index)]
 	#grab current tile
-	print(index)
-	print(prev)
+	#print(index)
+	#print(prev)
 	#you're ok, change it
 	if prev[1] == INVALID_CELL and free:
 		set_cellv(index, SELECT)
 	#something there, can't select
 	elif free:
 		set_cellv(index, NOSELECT)
-		print("no")
+		#print("no")
 	
 	
 	
