@@ -9,7 +9,7 @@
 [ext_resource path="res://tiles/lamp_right.png" type="Texture" id=7]
 [ext_resource path="res://tiles/lamp_left.png" type="Texture" id=8]
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.552941, 0.552941, 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -18,21 +18,25 @@ bg_color = Color( 0.666667, 0.117647, 0.117647, 1 )
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.890196, 0.117647, 0.117647, 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.607843, 0.992157, 1, 1 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.027451, 0.745098, 0.745098, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.0509804, 0.784314, 0.74902, 1 )
 
 [node name="User Interface" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -300.0
+margin_right = -512.0
+margin_bottom = -300.0
 mouse_filter = 1
 script = ExtResource( 1 )
 __meta__ = {
@@ -48,8 +52,9 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="toolbar"]
-margin_right = 1024.0
-margin_bottom = 100.0
+margin_left = -100.0
+margin_right = 4900.0
+margin_bottom = 200.0
 color = Color( 0.980392, 0.729412, 0.458824, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,10 +66,10 @@ margin_top = 15.0
 margin_right = 102.0
 margin_bottom = 87.0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 6 )
+custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.827451, 0.6, 0, 1 )
 text = "delete"
@@ -78,10 +83,10 @@ margin_top = 15.0
 margin_right = 194.0
 margin_bottom = 87.0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.654902, 1, 0.619608, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.34902, 1 )
@@ -102,10 +107,10 @@ margin_top = 15.0
 margin_right = 286.0
 margin_bottom = 87.0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.654902, 1, 0.619608, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.34902, 1 )
@@ -126,10 +131,10 @@ margin_top = 15.0
 margin_right = 470.0
 margin_bottom = 87.0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.654902, 1, 0.619608, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.34902, 1 )
@@ -150,10 +155,10 @@ margin_top = 15.0
 margin_right = 378.0
 margin_bottom = 87.0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.654902, 1, 0.619608, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.34902, 1 )
@@ -174,10 +179,10 @@ margin_top = 15.0
 margin_right = 562.0
 margin_bottom = 87.0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.654902, 1, 0.619608, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.34902, 1 )

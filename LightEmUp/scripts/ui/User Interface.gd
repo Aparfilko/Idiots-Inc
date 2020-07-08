@@ -5,33 +5,35 @@ var c
 
 func _ready():
 	connect("pass_choice", get_parent().get_parent().get_node("Obs"), "get_choice")
+	get_tree().get_root().connect("size_changed", self, "resize")
+	resize()
 
 #hotkeys
 func _input(event):
 	#press spacebar to cancel selection
 	if event.is_action("ui_select") and Input.is_action_just_pressed("ui_select"):
-		express_choice(NOTHING)
+		_activateLamp(NOTHING)
 	#1
 	if event.is_action("alllamp") and Input.is_action_just_pressed("alllamp"):
-		express_choice(ALLLAMP)
+		_activateLamp(ALLLAMP)
 	#2
 	if event.is_action("downlamp") and Input.is_action_just_pressed("downlamp"):
-		express_choice(DOWNLAMP)
+		_activateLamp(DOWNLAMP)
 	#3
 	if event.is_action("uplamp") and Input.is_action_just_pressed("uplamp"):
-		express_choice(UPLAMP)
+		_activateLamp(UPLAMP)
 	#4
 	if event.is_action("leftlamp") and Input.is_action_just_pressed("leftlamp"):
-		express_choice(LEFTLAMP)
+		_activateLamp(LEFTLAMP)
 	#5
 	if event.is_action("rightlamp") and Input.is_action_just_pressed("rightlamp"):
-		express_choice(RIGHTLAMP)
+		_activateLamp(RIGHTLAMP)
 	#left click to place
 	if event.is_action("place") and Input.is_action_just_pressed("place"):
 		express_choice(PLACE)
 	#right click to activate delete mode
 	if event.is_action("delete") and Input.is_action_just_pressed("delete"):
-		express_choice(DELETE)
+		_cancelDelete()
 func express_choice(tile):
 	emit_signal("pass_choice", tile)
 
@@ -51,5 +53,13 @@ func _cancelDelete():
 func _activateLamp(lamp):
 	c = lamp
 	express_choice(c)
-	$toolbar/cancelDelete.text = "cancel"
-
+	if lamp != NOTHING:
+		$toolbar/cancelDelete.text = "cancel"
+	else:
+		$toolbar/cancelDelete.text = "delete"
+		
+func resize():
+	var size = get_viewport_rect().size
+	rect_position = -size/2
+	rect_size = size
+	$toolbar.rect_position.y = size.y - 100

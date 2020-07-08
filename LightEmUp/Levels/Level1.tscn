@@ -14,10 +14,6 @@ position = Vector2( 119.018, -193.843 )
 z_index = 2
 
 [node name="User Interface" parent="Camera2D" instance=ExtResource( 4 )]
-margin_left = -512.0
-margin_top = -300.0
-margin_right = -512.0
-margin_bottom = -300.0
 
 [node name="Floor" type="TileMap" parent="."]
 mode = 2
