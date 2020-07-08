@@ -40,6 +40,7 @@ mode = 2
 tile_set = ExtResource( 1 )
 cell_custom_transform = Transform2D( 48, -16, -16, -32, 0, 0 )
 cell_tile_origin = 1
+cell_y_sort = true
 format = 1
 
 [node name="LightEngine" parent="." instance=ExtResource( 5 )]
