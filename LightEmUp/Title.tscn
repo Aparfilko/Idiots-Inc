@@ -27,36 +27,43 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 384.296
-margin_top = 235.676
-margin_right = 680.296
-margin_bottom = 302.676
+margin_left = 384.0
+margin_top = 236.0
+margin_right = 722.0
+margin_bottom = 353.0
 custom_fonts/normal_font = SubResource( 1 )
 text = "Light 'Em Up"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level Select" type="Button" parent="."]
-margin_left = 440.638
-margin_top = 311.568
-margin_right = 623.638
-margin_bottom = 349.568
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 443.278
+margin_top = 310.165
+margin_right = 626.278
+margin_bottom = 390.165
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level Select" type="Button" parent="VBoxContainer"]
+margin_right = 183.0
+margin_bottom = 38.0
 custom_fonts/font = SubResource( 2 )
 text = "Level Select"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="."]
-margin_left = 440.638
-margin_top = 356.839
-margin_right = 623.638
-margin_bottom = 394.839
+[node name="Quit" type="Button" parent="VBoxContainer"]
+margin_top = 42.0
+margin_right = 183.0
+margin_bottom = 80.0
 custom_fonts/font = SubResource( 3 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Level Select" to="." method="_on_Level_Select_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Level Select" to="." method="_on_Level_Select_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
