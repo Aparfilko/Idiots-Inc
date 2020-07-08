@@ -10,6 +10,7 @@ onready var choose = INVALID_CELL
 onready var select = false
 
 func _ready():
+	print(INVALID_CELL);
 	#connect so buttons do things
 	index = world_to_map(get_global_mouse_position())
 	
@@ -40,6 +41,7 @@ func hover(item):
 		if prev[1] == INVALID_CELL:
 			$Selection.set_cell(index.x, index.y, SELECT,false,false,false,prev[2])
 			set_cell(index.x, index.y, item, false,false,false,prev[2])
+			get_parent().update_tiles();
 			return true
 		#something there, can't select
 		else:
