@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scripts/lamp.gd" type="Script" id=1]
 [ext_resource path="res://fonts/kenney_mini_square.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
@@ -36,7 +35,6 @@ custom_colors/font_color_hover = Color( 0.654902, 1, 0.619608, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.34902, 1 )
 toggle_mode = true
 text = "lamp"
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
