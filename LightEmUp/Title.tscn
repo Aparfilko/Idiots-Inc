@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Title.gd" type="Script" id=1]
 [ext_resource path="res://fonts/kenney_mini_square.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://audio/levels/Level1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://LevelSelect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://tiles/lamp_right.png" type="Texture" id=5]
+[ext_resource path="res://tiles/lamp.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -17,6 +19,10 @@ font_data = ExtResource( 2 )
 size = 25
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 2 )
+
 [node name="Title" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -27,15 +33,26 @@ current = true
 [node name="LevelSelect" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 1000 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Main Menu" type="ColorRect" parent="."]
 margin_right = 1025.0
 margin_bottom = 600.0
+rect_pivot_offset = Vector2( 513, 0 )
 color = Color( 0.352941, 0.784314, 0.313726, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="lamp" type="Sprite" parent="Main Menu"]
+position = Vector2( 845.161, 284.916 )
+scale = Vector2( 3.19761, 3.36467 )
+texture = ExtResource( 7 )
+offset = Vector2( -10.0148, 9.94212 )
+
+[node name="lamp_right" type="Sprite" parent="Main Menu/lamp"]
+position = Vector2( -192.195, 11.7184 )
+texture = ExtResource( 5 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main Menu"]
 margin_left = 384.0
 margin_top = 236.0
 margin_right = 722.0
@@ -46,7 +63,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu"]
 margin_left = 443.278
 margin_top = 310.165
 margin_right = 626.278
@@ -56,7 +73,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level Select" type="Button" parent="VBoxContainer"]
+[node name="Level Select" type="Button" parent="Main Menu/VBoxContainer"]
 margin_right = 183.0
 margin_bottom = 38.0
 custom_fonts/font = SubResource( 2 )
@@ -65,7 +82,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="Main Menu/VBoxContainer"]
 margin_top = 42.0
 margin_right = 183.0
 margin_bottom = 80.0
@@ -78,5 +95,17 @@ __meta__ = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
-[connection signal="pressed" from="VBoxContainer/Level Select" to="." method="_on_Level_Select_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+
+[node name="Back" type="Button" parent="."]
+margin_left = 8.864
+margin_top = 1009.97
+margin_right = 96.864
+margin_bottom = 1053.97
+custom_fonts/font = SubResource( 4 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Main Menu/VBoxContainer/Level Select" to="." method="_on_Level_Select_pressed"]
+[connection signal="pressed" from="Main Menu/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

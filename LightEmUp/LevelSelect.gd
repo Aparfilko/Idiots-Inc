@@ -1,5 +1,8 @@
 extends Node2D
-
+var flipper = 1
+var doaflip = false
+var dx = -0.05
+var gotoMain= false
 
 func _on_1_pressed():
 	get_tree().change_scene("res://Levels/Level1.tscn")
@@ -47,5 +50,7 @@ func _on_15_pressed():
 	get_tree().change_scene('res://Levels/15.tscn')
 
 func _on_Back_pressed():
-	get_parent().get_child(0).offset.y=0
+	pass
+	#get_parent().get_child(0).offset.y=0
 	#get_tree().change_scene('res://Title.tscn')
+
