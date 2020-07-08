@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tiles/Level.tres" type="TileSet" id=1]
 [ext_resource path="res://scripts/Level.gd" type="Script" id=2]
 [ext_resource path="res://scripts/selector.gd" type="Script" id=3]
 [ext_resource path="res://assets/User Interface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/LightEngine.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 2 )
@@ -32,3 +33,5 @@ cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 65536, 0, 0, 65543, 0, 0, 131072, 0, 0, 131075, 1, 0, 131079, 0, 0, 196608, 0, 0, 196613, 1, 0, 196614, 2, 0, 196615, 0, 0, 262144, 0, 0, 262146, 1, 0, 262151, 0, 0, 327680, 0, 0, 327684, 1, 0, 327685, 5, 0, 327686, 3, 0, 327687, 0, 0, 393216, 0, 0, 393218, 4, 0, 393223, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0 )
 script = ExtResource( 3 )
+
+[node name="LightEngine" parent="." instance=ExtResource( 5 )]
