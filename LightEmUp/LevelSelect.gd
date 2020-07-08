@@ -2,10 +2,10 @@ extends Node2D
 
 
 func _on_1_pressed():
-	get_tree().change_scene('res://Levels/1.tscn')
+	get_tree().change_scene("res://Levels/Level1.tscn")
 
 func _on_2_pressed():
-	get_tree().change_scene('res://Levels/2.tscn')
+	get_tree().change_scene('res://Levels/Level2.tscn')
 
 func _on_3_pressed():
 	get_tree().change_scene('res://Levels/3.tscn')
@@ -47,4 +47,5 @@ func _on_15_pressed():
 	get_tree().change_scene('res://Levels/15.tscn')
 
 func _on_Back_pressed():
-	get_tree().change_scene('res://Title.tscn')
+	get_parent().get_child(0).offset.y=0
+	#get_tree().change_scene('res://Title.tscn')
