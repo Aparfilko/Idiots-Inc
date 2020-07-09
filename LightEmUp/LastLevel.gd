@@ -2,4 +2,4 @@ extends Node2D
 
 
 func _on_Last_pressed():
-	pass
+	get_parent().get_parent().choose_level(-1)
