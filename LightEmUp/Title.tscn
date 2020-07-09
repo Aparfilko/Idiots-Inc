@@ -34,6 +34,7 @@ current = true
 position = Vector2( 0, 1000 )
 
 [node name="Main Menu" type="ColorRect" parent="."]
+show_behind_parent = true
 margin_right = 1025.0
 margin_bottom = 600.0
 rect_pivot_offset = Vector2( 513, 0 )
