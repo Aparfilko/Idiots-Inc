@@ -3,7 +3,7 @@ var flipper = 1
 var doaflip = false
 var dx = -0.05
 var gotoMain= false
-var level
+var num
 
 func goToLevel(num):
 	$musicManager.chooseMusic(num)
@@ -22,5 +22,5 @@ func _on_Back_pressed():
 	#get_tree().change_scene('res://Title.tscn')
 
 func choose_level(i):
-	level=level+i
-	goToLevel(level)
+	num=num+i
+	goToLevel(num)
