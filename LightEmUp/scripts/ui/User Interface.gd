@@ -53,6 +53,7 @@ func _cancelDelete():
 		c = NOTHING
 
 func _activateLamp(lamp):
+	print(lamp)
 	lamp = int(lamp)
 	c = lamp
 	express_choice(c)
@@ -62,7 +63,7 @@ func _activateLamp(lamp):
 		$toolbar/cancelDelete.text = "delete"
 		
 func resize():
-	var size = get_viewport_rect().size
+	var size = get_viewport_rect().size * get_parent().get_zoom()
 	rect_position = -size/2
 	rect_size = size
 	$toolbar.rect_position.y = size.y - 100

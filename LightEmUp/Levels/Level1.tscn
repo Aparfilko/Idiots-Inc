@@ -7,7 +7,18 @@
 [ext_resource path="res://assets/LightEngine.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
+z_index = 1
 script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -500.0
+margin_top = -750.0
+margin_right = 1000.0
+margin_bottom = 750.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 119.018, -193.843 )
