@@ -15,21 +15,12 @@ func _ready():
 	index = world_to_map(get_global_mouse_position())
 	
 func _process(_dt):
-	#canceled, go to normal
-	if choose == INVALID_CELL:
-		pass
-	#should have delete mode here
-	elif choose == NOSELECT:
-		select = delete()
-	#otherwise, hover with selection
-	else:
-		select = hover(choose)
+	select = hover(choose)
 	
 	
 func hover(item):
 	#I know it's dumb
 	index = get_parent().get_node("Floor").world_to_map(get_global_mouse_position()) + Vector2(9,27)
-	print(index)
 	#don't select over nothing!
 	var free = get_parent().get_node("Floor").get_cellv(index) != INVALID_CELL
 	#revert previous tiles
@@ -50,47 +41,33 @@ func hover(item):
 	return false
 	
 func delete():
-	index = get_parent().get_node("Floor").world_to_map(get_global_mouse_position()) + Vector2(9,27)
-	#revert previous tiles
-	#don't select over nothing!
-	var free = get_parent().get_node("Floor").get_cellv(index) != INVALID_CELL
-	#erase the red highlight on the move
-	if index != prev[0]:
-		$Selection.set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
-		prev = [index, get_cellv(index), get_cell_autotile_coord(index.x, index.y)]
-	if prev[1] != WALL and free:
-		#mark this as something to delete
-		$Selection.set_cell(index.x, index.y, NOSELECT,false,false,false,prev[2])
-		return true
-	return false
+	$Selection.set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
+	if not select:
+		set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
+		get_parent().update_tiles()
+		prev = [Vector2(-999,-999) ,get_cell(-999,-999), get_cell_autotile_coord(-999,-999)]
 	
 func revert():
 	set_cell(prev[0].x, prev[0].y, prev[1], false, false, false, prev[2])
-	$Selection.set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
 	
 	
 func get_choice(c):
-	print(c)
 	c = int(c)
-	if c == INVALID_CELL:
-		choose = c
+	#
+	if c == INVALID_CELL or c == choose:
+		choose = INVALID_CELL
 		revert()
 	#place item
 	elif c == PLACE:
 		#don't let place happen if there's stuff already there
 		if select:
-			#delete tile
-			if choose == NOSELECT:
-				set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
 			#place tile
 			$Selection.set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
 			get_parent().update_tiles()
 			prev = [Vector2(-999,-999) ,get_cell(-999,-999), get_cell_autotile_coord(-999,-999)]
-	#switch back from delete mode
-	elif choose == NOSELECT and c == NOSELECT:
-		$Selection.set_cell(prev[0].x, prev[0].y, INVALID_CELL, false, false, false, prev[2])
-		prev = [Vector2(-999,-999) ,get_cell(-999,-999), get_cell_autotile_coord(-999,-999)]
+	#delete
+	elif c == NOSELECT:
+		delete()
 		choose = INVALID_CELL
-	#select item to place/go into delete mode
 	else:
 		choose = c
