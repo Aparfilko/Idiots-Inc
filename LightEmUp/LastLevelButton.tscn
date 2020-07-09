@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/arrowLeft.png" type="Texture" id=1]
+[ext_resource path="res://LastLevel.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Last" type="Button" parent="."]
+margin_left = -41.0
+margin_top = -34.0
+margin_right = 43.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Last"]
+position = Vector2( 41, 34 )
+texture = ExtResource( 1 )
+[connection signal="pressed" from="Last" to="." method="_on_Last_pressed"]
