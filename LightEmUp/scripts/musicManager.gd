@@ -8,17 +8,25 @@ func _ready():
 #takes the node of the level and plays audio for it
 func chooseMusic(level):
 	#make sure that the levelEndMusic isn't playing
-	var audioFile = "res://audio/levels/" + level.name + ".ogg"
+	var audioFile = "res://audio/levels/Level" + level + ".ogg"
 	if File.new().file_exists(audioFile):
 		var song = load(audioFile)
 		song.set_loop(true)
 		$levelMusic.stream = song
 		$levelMusic.play()
+		fade($levelMusic, 2, FADEIN)
+	if $levelEnd/winMusic.is_playing():
+		fade($levelEnd/winMusic, 2, FADEOUT)
+	elif $title.is_playing():
+		fade($title, 2, FADEOUT)
+		
 #call this when the level is beaten
 func endLevel():
 	fade($levelMusic, 3, FADEOUT)
 	fade($levelEnd/winMusic, 5, FADEIN)
-	$levelEnd/jingle.play()
+	$levelEnd/jingle.play() 
+
+
 #activates tween to fade out the song
 #FADEOUT or FADEIN
 func fade(audioplayer, seconds, fade):
@@ -26,8 +34,6 @@ func fade(audioplayer, seconds, fade):
 	#FADEIN inputted
 	if bool(fade):
 		t = [-80, 0]
-	else:
-		audioplayer.loop
 	audioplayer.set_volume_db(t[0])
 	var tween = Tween.new()
 	add_child(tween)
@@ -39,6 +45,6 @@ func delete_tween(audio, _key, tween):
 	remove_child(tween)
 	tween.queue_free()
 	#stop the audio if it's a fadeOut
-	if audio.get_db_level() == -80:
+	if audio.get_volume_db() == -80:
 		audio.stop()
 	

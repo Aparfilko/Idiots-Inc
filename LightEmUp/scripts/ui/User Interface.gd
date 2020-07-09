@@ -2,6 +2,7 @@ extends Control
 enum {NOTHING = -1, ALLLAMP = 1,DOWNLAMP = 2, LEFTLAMP = 3, UPLAMP = 4, RIGHTLAMP = 5, DELETE = 6, PLACE = 10}
 signal pass_choice(choice)
 var c
+signal resize()
 
 func _ready():
 	connect("pass_choice", get_parent().get_parent().get_node("Obs"), "get_choice")
@@ -34,6 +35,7 @@ func _input(event):
 	#right click to activate delete mode
 	if event.is_action("delete") and Input.is_action_just_pressed("delete"):
 		_cancelDelete()
+		
 func express_choice(tile):
 	emit_signal("pass_choice", tile)
 
@@ -51,6 +53,7 @@ func _cancelDelete():
 		c = NOTHING
 
 func _activateLamp(lamp):
+	lamp = int(lamp)
 	c = lamp
 	express_choice(c)
 	if lamp != NOTHING:
@@ -63,3 +66,4 @@ func resize():
 	rect_position = -size/2
 	rect_size = size
 	$toolbar.rect_position.y = size.y - 100
+	emit_signal("resize")

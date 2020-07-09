@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Title.gd" type="Script" id=1]
 [ext_resource path="res://fonts/kenney_mini_square.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://audio/levels/Level1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://LevelSelect.tscn" type="PackedScene" id=4]
 [ext_resource path="res://tiles/lamp_right.png" type="Texture" id=5]
 [ext_resource path="res://tiles/lamp.png" type="Texture" id=7]
@@ -91,10 +90,6 @@ text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-autoplay = true
 
 [node name="Back" type="Button" parent="."]
 margin_left = 8.864

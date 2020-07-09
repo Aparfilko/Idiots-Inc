@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/title.ogg-c0eba36d60ccbb90d23018fb1d97011a.oggstr"
+
+[deps]
+
+source_file="res://audio/levels/title.ogg"
+dest_files=[ "res://.import/title.ogg-c0eba36d60ccbb90d23018fb1d97011a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

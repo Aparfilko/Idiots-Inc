@@ -68,6 +68,7 @@ func revert():
 	
 	
 func get_choice(c):
+	c = int(c)
 	if c == INVALID_CELL:
 		choose = c
 		revert()

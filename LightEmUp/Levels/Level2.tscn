@@ -190,6 +190,7 @@ script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 260, -360 )
+z_index = 2
 zoom = Vector2( 1.4, 1.4 )
 
 [node name="User Interface" parent="Camera2D" instance=ExtResource( 3 )]
