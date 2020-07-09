@@ -16,14 +16,14 @@ func load():
 
 #array to run forward or back through levels
 onready var lvls=[
-	preload("res://levels/Level1.tscn"),
-	preload("res://levels/Level2.tscn"),
-#	preload("res://levels/Level3.tscn"),
-#	preload("res://levels/Level4.tscn"),
-#	preload("res://levels/Level5.tscn"),
-#	preload("res://levels/Level6.tscn"),
-#	preload("res://levels/Level7.tscn"),
-#	preload("res://levels/LevelEndScreen.tscn")
+	preload("res://Levels/Level1.tscn"),
+	preload("res://Levels/Level2.tscn"),
+#	preload("res://Levels/Level3.tscn"),
+#	preload("res://Levels/Level4.tscn"),
+#	preload("res://Levels/Level5.tscn"),
+#	preload("res://Levels/Level6.tscn"),
+#	preload("res://Levels/Level7.tscn"),
+#	preload("res://Levels/LevelEndScreen.tscn")
 	];
 onready var a=0;
 var currLvl;
@@ -38,6 +38,6 @@ func updateLvl():
 	currLvl.get_node("Player").set_manager(self);
 	add_child(currLvl);
 
-func _choose_level(i):
+func choose_level(i):
 	a=a+i;
 	updateLvl();
