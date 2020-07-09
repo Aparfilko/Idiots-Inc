@@ -12,8 +12,6 @@ func _ready():
 #hotkeys
 func _input(event):
 	#press spacebar to cancel selection
-	if event.is_action("ui_select") and Input.is_action_just_pressed("ui_select"):
-		_activateLamp(NOTHING)
 	#1
 	if event.is_action("alllamp") and Input.is_action_just_pressed("alllamp"):
 		_activateLamp(ALLLAMP)
@@ -34,33 +32,17 @@ func _input(event):
 		express_choice(PLACE)
 	#right click to activate delete mode
 	if event.is_action("delete") and Input.is_action_just_pressed("delete"):
-		_cancelDelete()
+		express_choice(DELETE)
 		
 func express_choice(tile):
 	emit_signal("pass_choice", tile)
 
-func _cancelDelete():
-	if $toolbar/cancelDelete.text.match("delete"):
-		$toolbar/cancelDelete.text = "cancel"
-		c = DELETE
-		express_choice(c)
-	else:
-		$toolbar/cancelDelete.text = "delete"
-		if c == DELETE:
-			express_choice(c)
-		else:
-			express_choice(NOTHING)
-		c = NOTHING
 
 func _activateLamp(lamp):
 	print(lamp)
 	lamp = int(lamp)
 	c = lamp
 	express_choice(c)
-	if lamp != NOTHING:
-		$toolbar/cancelDelete.text = "cancel"
-	else:
-		$toolbar/cancelDelete.text = "delete"
 		
 func resize():
 	var size = get_viewport_rect().size * get_parent().get_zoom()
