@@ -186,7 +186,18 @@
 9/z_index = 0
 
 [node name="Level" type="Node2D"]
+z_index = 1
 script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -740.0
+margin_top = -860.0
+margin_right = 4260.0
+margin_bottom = 4140.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 260, -360 )

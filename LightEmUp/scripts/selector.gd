@@ -27,7 +27,9 @@ func _process(_dt):
 	
 	
 func hover(item):
-	index = get_parent().get_node("Floor").world_to_map(get_global_mouse_position())
+	#I know it's dumb
+	index = get_parent().get_node("Floor").world_to_map(get_global_mouse_position()) + Vector2(9,27)
+	print(index)
 	#don't select over nothing!
 	var free = get_parent().get_node("Floor").get_cellv(index) != INVALID_CELL
 	#revert previous tiles
@@ -48,7 +50,7 @@ func hover(item):
 	return false
 	
 func delete():
-	index = get_parent().get_node("Floor").world_to_map(get_global_mouse_position())
+	index = get_parent().get_node("Floor").world_to_map(get_global_mouse_position()) + Vector2(9,27)
 	#revert previous tiles
 	#don't select over nothing!
 	var free = get_parent().get_node("Floor").get_cellv(index) != INVALID_CELL
@@ -68,6 +70,7 @@ func revert():
 	
 	
 func get_choice(c):
+	print(c)
 	c = int(c)
 	if c == INVALID_CELL:
 		choose = c
