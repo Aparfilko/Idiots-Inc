@@ -11,7 +11,7 @@ func close():
 
 func open():
 	visible = true
-	resume_button.ui_cancel()
+	resume_button.grab_focus()
 
 func _on_Resume_pressed():
 	get_tree().paused = false
@@ -30,4 +30,4 @@ func _on_Menu_pressed():
 		$"../../Black/SplitContainer/ViewportContainer1".free()
 	get_tree().paused = false
 	visible = false
-	get_tree().change_scene("res://src/Main/StartScreen.tscn")
+	get_tree().change_scene("res://Title.tscn")
