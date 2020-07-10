@@ -3,7 +3,7 @@ extends Node
 var refOverlay;
 var refCurr;
 onready var resLevel=[
-	preload("level/Track1.tscn"),
+	preload("res://level/Track1.tscn"),
 ];
 
 func _ready():
