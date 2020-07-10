@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 100, 1, 100 )
 
 [sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=4]
 
 [node name="TestTrack" type="Spatial"]
 
@@ -16,4 +20,48 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody/CollisionShape"]
 transform = Transform( 94.9797, 0, 0, 0, 1, 0, 0, 0, 94.9797, 0, 0, 0 )
 mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Wall1" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 94, 2, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall1"]
+transform = Transform( 1, 0, 0, 0, 2.53799, 0, 0, 0, 95, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall1/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Wall2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 2, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall2"]
+transform = Transform( 1, 0, 0, 0, 2.53799, 0, 0, 0, 95, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall2/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Wall4" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 2, 94 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall4"]
+transform = Transform( 1, 0, 0, 0, 2.53799, 0, 0, 0, 95, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall4/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Wall5" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 2, -94 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall5"]
+transform = Transform( 1, 0, 0, 0, 2.53799, 0, 0, 0, 95, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall5/CollisionShape"]
+mesh = SubResource( 4 )
 material/0 = null
