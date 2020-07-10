@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Brakes Optional"
+run/main_scene="res://Main node.tscn"
 config/icon="res://icon.png"
 
 [rendering]
