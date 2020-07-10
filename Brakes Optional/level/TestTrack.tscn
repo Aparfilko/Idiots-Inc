@@ -3,7 +3,7 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 100, 1, 100 )
 
-[node name="Test Track" type="Spatial"]
+[node name="TestTrack" type="Spatial"]
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
