@@ -17,8 +17,8 @@ _global_script_class_icons={
 
 config/name="Brakes Optional"
 run/main_scene="res://MainNode.tscn"
-config/icon="res://icon.png"
+config/icon="res://img/icon.png"
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://assets/default_env.tres"
