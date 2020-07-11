@@ -2,5 +2,4 @@
 
 [resource]
 resource_name = "ON"
-material = null
 size = Vector2( 2, 2 )
