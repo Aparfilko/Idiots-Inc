@@ -36,6 +36,8 @@ transform = Transform( -6.65853e-08, -0.91267, 0.408697, -1.48693e-07, 0.408697,
 visible = false
 
 [node name="PauseBox" type="CanvasLayer" parent="."]
+pause_mode = 2
 layer = 3
 
 [node name="Pausenode" parent="PauseBox" instance=ExtResource( 5 )]
+pause_mode = 2
