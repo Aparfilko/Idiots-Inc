@@ -29,7 +29,7 @@ ADVERSARY
 	So you're the punk making all the ruckus!
 	Race me, or forfeit your pods!
 COACH
-	Watch out, Bud! Your opponent doesnt play fair...
+	Watch out, Bud! Your ODIOUS opponent doesnt play fair...
 	They cut some of your power plugs!!!
 Lvl 4
 Adversary
