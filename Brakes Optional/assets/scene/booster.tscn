@@ -4,7 +4,7 @@
 [ext_resource path="res://script/booster.gd" type="Script" id=2]
 [ext_resource path="res://assets/scene/boost.tres" type="QuadMesh" id=3]
 [ext_resource path="res://assets/scene/blackpuff.tres" type="Material" id=4]
-[ext_resource path="res://assets/scene/on.material" type="Material" id=5]
+[ext_resource path="res://assets/scene/off.tres" type="Material" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.235294, 0.235294, 0.235294, 1 )
