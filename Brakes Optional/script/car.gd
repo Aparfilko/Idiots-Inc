@@ -19,6 +19,7 @@ func _physics_process(delta):
 	if(col):
 		pass;
 
+
 func _input(event):
 	b=[
 		(b[0] or event.is_action_pressed("q")) and not event.is_action_released("q"),
@@ -28,3 +29,5 @@ func _input(event):
 		(b[4] or event.is_action_pressed("s")) and not event.is_action_released("s"),
 		(b[5] or event.is_action_pressed("d")) and not event.is_action_released("d"),
 		];
+	if event.is_action_pressed("space"):
+		$WinState.visible = not $WinState.visible
