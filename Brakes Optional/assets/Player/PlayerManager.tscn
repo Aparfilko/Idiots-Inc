@@ -1,0 +1,442 @@
+[gd_scene load_steps=56 format=2]
+
+[ext_resource path="res://script/Player/Hud.gd" type="Script" id=1]
+[ext_resource path="res://sprites/hudBase.png" type="Texture" id=2]
+[ext_resource path="res://sprites/wheel.png" type="Texture" id=3]
+[ext_resource path="res://fonts/courbd.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sprites/thrust.png" type="Texture" id=5]
+[ext_resource path="res://sprites/mph.png" type="Texture" id=6]
+[ext_resource path="res://assets/Player/socket.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/left.png" type="Texture" id=8]
+[ext_resource path="res://sprites/brake.png" type="Texture" id=9]
+[ext_resource path="res://sprites/levitate.png" type="Texture" id=10]
+[ext_resource path="res://sprites/IGNITION.png" type="Texture" id=11]
+[ext_resource path="res://sprites/right.png" type="Texture" id=12]
+[ext_resource path="res://assets/Player/plug.tscn" type="PackedScene" id=13]
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 203, 64 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 6 )
+region = Rect2( 406, 0, 203, 64 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 6 )
+region = Rect2( 609, 0, 203, 64 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 6 )
+region = Rect2( 203, 0, 203, 64 )
+
+[sub_resource type="SpriteFrames" id=45]
+animations = [ {
+"frames": [ SubResource( 41 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 42 ), SubResource( 43 ) ],
+"loop": true,
+"name": "danger",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 44 ) ],
+"loop": true,
+"name": "warning",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=46]
+size = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 5 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 5 )
+region = Rect2( 344, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 5 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 5 )
+region = Rect2( 172, 0, 172, 28 )
+
+[sub_resource type="SpriteFrames" id=52]
+animations = [ {
+"frames": [ SubResource( 47 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 48 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 49 ), SubResource( 49 ), SubResource( 50 ) ],
+"loop": true,
+"name": "danger",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 51 ) ],
+"loop": true,
+"name": "warning",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 9 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 9 )
+region = Rect2( 344, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 9 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 9 )
+region = Rect2( 172, 0, 172, 28 )
+
+[sub_resource type="SpriteFrames" id=58]
+animations = [ {
+"frames": [ SubResource( 53 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 54 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 55 ), SubResource( 55 ), SubResource( 56 ) ],
+"loop": true,
+"name": "danger",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 57 ) ],
+"loop": true,
+"name": "warning",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 11 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 11 )
+region = Rect2( 344, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 11 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 11 )
+region = Rect2( 172, 0, 172, 28 )
+
+[sub_resource type="SpriteFrames" id=64]
+animations = [ {
+"frames": [ SubResource( 59 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 60 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 61 ), SubResource( 61 ), SubResource( 62 ) ],
+"loop": true,
+"name": "danger",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 63 ) ],
+"loop": true,
+"name": "warning",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 8 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 8 )
+region = Rect2( 344, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 8 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=69]
+atlas = ExtResource( 8 )
+region = Rect2( 172, 0, 172, 28 )
+
+[sub_resource type="SpriteFrames" id=70]
+animations = [ {
+"frames": [ SubResource( 65 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 66 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 67 ), SubResource( 67 ), SubResource( 68 ) ],
+"loop": true,
+"name": "danger",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 69 ) ],
+"loop": true,
+"name": "warning",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 10 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 10 )
+region = Rect2( 344, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=74]
+atlas = ExtResource( 10 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 10 )
+region = Rect2( 172, 0, 172, 28 )
+
+[sub_resource type="SpriteFrames" id=76]
+animations = [ {
+"frames": [ SubResource( 71 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 72 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 73 ), SubResource( 73 ), SubResource( 74 ) ],
+"loop": true,
+"name": "danger",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 75 ) ],
+"loop": true,
+"name": "warning",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 12 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 12 )
+region = Rect2( 344, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 12 )
+region = Rect2( 516, 0, 172, 28 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 12 )
+region = Rect2( 172, 0, 172, 28 )
+
+[sub_resource type="SpriteFrames" id=81]
+animations = [ {
+"frames": [ SubResource( 77 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 78 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 40 ), SubResource( 79 ) ],
+"loop": true,
+"name": "danger",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 80 ) ],
+"loop": true,
+"name": "warning",
+"speed": 5.0
+} ]
+
+[node name="PlayerNode" type="Node"]
+
+[node name="PlayerCar" type="KinematicBody" parent="."]
+
+[node name="Hud" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="base" type="Sprite" parent="Hud"]
+position = Vector2( 0, -540 )
+texture = ExtResource( 2 )
+
+[node name="wheel" type="Sprite" parent="Hud"]
+position = Vector2( -663.753, -110.362 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="mph" type="AnimatedSprite" parent="Hud"]
+position = Vector2( -280.316, -184.208 )
+frames = SubResource( 45 )
+playing = true
+
+[node name="Label" type="Label" parent="Hud/mph"]
+margin_left = 13.8135
+margin_top = -30.508
+margin_right = 53.8135
+margin_bottom = -7.508
+rect_scale = Vector2( 4.97954, 6.39508 )
+custom_fonts/font = SubResource( 46 )
+custom_colors/font_color = Color( 0, 1, 0.321569, 1 )
+text = "009"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sockets" type="Control" parent="Hud"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="thrust socket2" parent="Hud/sockets" instance=ExtResource( 7 )]
+position = Vector2( 160, -170 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/thrust socket2"]
+position = Vector2( 0, -48 )
+frames = SubResource( 52 )
+animation = "off"
+playing = true
+
+[node name="brake socket" parent="Hud/sockets" instance=ExtResource( 7 )]
+position = Vector2( 160, -45 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/brake socket"]
+position = Vector2( 0, -48 )
+frames = SubResource( 58 )
+animation = "off"
+playing = true
+
+[node name="ignition socket2" parent="Hud/sockets" instance=ExtResource( 7 )]
+position = Vector2( -40, -170 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/ignition socket2"]
+position = Vector2( 0, -48 )
+frames = SubResource( 64 )
+animation = "off"
+playing = true
+
+[node name="left socket" parent="Hud/sockets" instance=ExtResource( 7 )]
+position = Vector2( -40, -45 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/left socket"]
+position = Vector2( 0, -48 )
+frames = SubResource( 70 )
+animation = "off"
+playing = true
+
+[node name="fly socket" parent="Hud/sockets" instance=ExtResource( 7 )]
+position = Vector2( 360, -170 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/fly socket"]
+position = Vector2( 0, -48 )
+frames = SubResource( 76 )
+animation = "off"
+playing = true
+
+[node name="right socket" parent="Hud/sockets" instance=ExtResource( 7 )]
+position = Vector2( 360, -45 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/right socket"]
+position = Vector2( 0, -48 )
+frames = SubResource( 81 )
+animation = "off"
+playing = true
+
+[node name="plugs" type="Control" parent="Hud"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="plug" parent="Hud/plugs" instance=ExtResource( 13 )]
+position = Vector2( 500, -180 )
+
+[node name="plug2" parent="Hud/plugs" instance=ExtResource( 13 )]
+position = Vector2( 580, -180 )
+
+[node name="plug3" parent="Hud/plugs" instance=ExtResource( 13 )]
+position = Vector2( 660, -180 )
+
+[node name="plug4" parent="Hud/plugs" instance=ExtResource( 13 )]
+position = Vector2( 740, -180 )
+
+[node name="plug5" parent="Hud/plugs" instance=ExtResource( 13 )]
+position = Vector2( 820, -180 )
+
+[node name="plug6" parent="Hud/plugs" instance=ExtResource( 13 )]
+position = Vector2( 900, -180 )
