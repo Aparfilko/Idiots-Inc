@@ -10,13 +10,22 @@ albedo_color = Color( 0.588235, 0.729412, 0.717647, 1 )
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.8, 0.7, 4 )
 
-[node name="Spatial" type="KinematicBody"]
+[node name="car" type="KinematicBody"]
 script = ExtResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="body" type="MeshInstance" parent="."]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 mesh = ExtResource( 1 )
 material/0 = SubResource( 1 )
+
+[node name="booster" parent="body" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 4.9738e-13, 0, 0.5, 0, -4.9738e-13, 0, 0.5, 4, 0.67, 1.6 )
+
+[node name="booster2" parent="body" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 4.9738e-13, 0, 0.5, 0, -4.9738e-13, 0, 0.5, -4, 0.67, 1.6 )
+
+[node name="booster3" parent="body" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15674e-06, 0.75, 3.55 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.8 )
@@ -24,12 +33,4 @@ shape = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, 6.05146e-08, -3.20173e-07, 0, 0.982603, 0.185718, 3.25841e-07, 0.185718, -0.982603, 0, 7.178, -12 )
-
-[node name="booster" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.5, 0, -1.62921e-07, 0, 0.5, 0, 1.62921e-07, 0, -0.5, -4, 0.67, -1.6 )
-
-[node name="booster2" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.5, 0, -1.62921e-07, 0, 0.5, 0, 1.62921e-07, 0, -0.5, 4, 0.67, -1.6 )
-
-[node name="booster3" parent="." instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.75, -3.55 )
+far = 200.0
