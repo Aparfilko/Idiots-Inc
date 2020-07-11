@@ -14,7 +14,7 @@ func _ready():
 func _physics_process(delta):
 	var q=Quat(Vector3(0,1,0),rotation[1]);
 	angVel+=(.1*delta if b[3] else 0)-(.1*delta if b[5] else 0);
-	angVel*=.99
+	angVel*=.99 #angular deceleration when not turning
 	vel+=q*Vector3(0,0,(10*delta if b[1] else 0)+(3*delta if b[3] else 0)+(3*delta if b[5] else 0)-(10*delta if b[4] else 0));
 	vel-=q*Vector3(.5,0,0)*vel.dot(q*Vector3(1,0,0))
 	if($RayCast.is_colliding()):
@@ -25,7 +25,7 @@ func _physics_process(delta):
 	vel[1]*=.99;
 	rotation[1]+=angVel;
 	var _col=move_and_slide(vel);
-	
+
 func _input(event):
 	b=[
 		(b[0] or event.is_action_pressed("q")) and not event.is_action_released("q"),

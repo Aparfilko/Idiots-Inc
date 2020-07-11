@@ -8,6 +8,9 @@ _data = {
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+metallic = 0.25
+metallic_specular = 1.0
+roughness = 0.45
 
 [node name="Track2" type="Spatial"]
 
@@ -20,7 +23,7 @@ curve = SubResource( 1 )
 [node name="CSGPolygon" type="CSGPolygon" parent="Path"]
 use_collision = true
 invert_faces = true
-polygon = PoolVector2Array( -5, 0, -4.5, 1, -4.5, 0.1, 4.5, 0.1, 4.5, 1, 5, 0 )
+polygon = PoolVector2Array( -5, 0, -4.5, 0.5, -4.5, 0.1, 4.5, 0.1, 4.5, 0.5, 5, 0 )
 mode = 2
 path_node = NodePath("..")
 path_interval = 1.0
