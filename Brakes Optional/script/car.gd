@@ -32,7 +32,11 @@ func _physics_process(delta):
 	$body.rotation[2]*=(1-4.8*delta);
 	$body.rotation[0]-=(3*delta if b[0] else (2*delta if b[1] else 0))-(2*delta if b[4] else 0)
 	$body.rotation[0]*=(1-12*delta);
-	$Camera.translation[0]=vel.dot(q*Vector3(-.5,0,0));
+	if(1):
+		$Camera.translation[0]=lerp($Camera.translation[0],vel.dot(q*Vector3(-.5,0,0)),.1);
+	else:
+		$Camera.rotation[1]=lerp($Camera.rotation[1],PI-vel.dot(q*Vector3(-1,0,0))/(vel.length()),.1);
+		$Camera.translation[0]=lerp($Camera.translation[0],17*tan(vel.dot(q*Vector3(-1,0,0))/(vel.length())),.1);
 	
 	var col=move_and_collide(vel*delta);
 	if(col):
