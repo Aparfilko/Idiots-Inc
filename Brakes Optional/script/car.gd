@@ -5,7 +5,6 @@ onready var ass_mat=[
 
 var vel=Vector3();
 var acc=0;
-var ang=0;
 var angVel=0;
 var angAcc=0;
 var b=[0,0,0,0,0,0];#ign,thrust,lev,left,brake,right
@@ -15,9 +14,8 @@ func _ready():
 
 func _physics_process(delta):
 	angVel+=(.1*delta if b[3] else 0)-(.1*delta if b[5] else 0);
-	ang+=angVel;
-	rotation=Vector3(0,ang,0);
-	vel+=Quat(Vector3(0,1,0),ang)*Vector3(0,0,(1 if b[1] else 0)-(1 if b[4] else 0));
+	rotation[1]+=angVel;
+	vel+=Quat(Vector3(0,1,0),rotation[1])*Vector3(0,0,(1 if b[1] else 0)-(1 if b[4] else 0));
 	var col=move_and_slide(vel);
 	if(col):
 		pass;
