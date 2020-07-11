@@ -1,19 +1,36 @@
 Lvl 1
+COACH
 	Welcome to the RADICAL HYPER MEGA TRACK!
 	Now that you signed all the waivers,
 	I can show you the functionality of your SWEET RIDE
 	Check her out...
 	Hop inside and I'll show you how to start the engine pods!
-	First, hold down brake [S]
-	While holding brake [S], start the igniter [Q]
-	While holding the igniter [Q], release the brake, and accelerate [W]!
+	First, hold down the igniter [Shift]
+	While holding the igniter [Shift], accelerate with [W]!
 	On these CUTTING-EDGE DEMONS OF SPEED,
 	The engine pods are designed only to go FAST
 	If you go too slow for too long,
 	the pods will stall, and you will need to restart them!
 	Activate the Main thruster with [W]
 	Activate the side thrusters with [A] and [D], respectively.
-	Launch yourself into the air with [E]!
-	And lastly, slow down and reverse with [S].
+	Levitate above obstacles with [Space]!
+	And lastly, slow down with [S].
 	Try navigating this course to complete your training!
-
+Lvl 2
+COACH
+	Your BODACIOUS controls are unplugged!
+	Drag the power plugs to the controls to activate them.
+	You are up against the ghost of the driver
+	Who went out of control on this track!
+	Be careful not to fall off the edge-
+	Slow down before bends to avoid missing the sharp turn!
+Lvl 3
+ADVERSARY
+	So you're the punk making all the ruckus!
+	Race me, or forfeit your pods!
+COACH
+	Watch out, Bud! Your opponent doesnt play fair...
+	They cut some of your power plugs!!!
+Lvl 4
+Adversary
+	Rematch- this time I wont go easy on you!
