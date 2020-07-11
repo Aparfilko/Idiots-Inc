@@ -38,16 +38,17 @@ func _physics_process(dt):
 func _input_event(_body, _event, _shape_idx):
 	#only pick self, and if just clicked
 	#when doing so, change animation and eliminite nice collision
-	if Input.is_action_just_pressed("click") and not held:
-		pickUp()
-	elif Input.is_action_just_released("click") and held:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		if hover:
-			plugIn()
-		else:
+	if not $AnimatedSprite.get_animation().match("hell"):
+		if Input.is_action_just_pressed("click") and not held:
+			pickUp()
+		elif Input.is_action_just_released("click") and held:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			if hover:
+				plugIn()
+			else:
+				plugOut()
+		elif Input.is_action_just_pressed("unplug") and plugged:
 			plugOut()
-	elif Input.is_action_just_pressed("unplug") and plugged:
-		plugOut()
 #
 
 func plugIn():

@@ -1,7 +1,7 @@
 extends Control
 enum {OFF = 0, ON = 1, WARNING = 2, DANGER = 3}
 onready var screenInit = Vector2(1920, 1080)
-onready var numPlugs = 6
+onready var numPlugs = 4
 var thrust = OFF
 var brake = OFF
 var ignition = OFF
@@ -25,7 +25,7 @@ func deploy_plugs(num):
 	for f in $plugs.get_children():
 		i += 1
 		if i <= num:
-			f.visible = true
+			f.get_node("AnimatedSprite").play("default")
 	
 
 #grabs the thing to activate/make stronger/turn off
