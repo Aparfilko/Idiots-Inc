@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
+[ext_resource path="res://assets/pending.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1920, 1040 )
 
 [node name="Title Screen" type="Node2D"]
 
