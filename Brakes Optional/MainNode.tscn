@@ -17,10 +17,10 @@ script = ExtResource( 7 )
 [node name="car" parent="." instance=ExtResource( 1 )]
 
 [node name="CamStand" type="Spatial" parent="car"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 4, -10.3177 )
+transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 4, 9.56829 )
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.177392, -9.5553 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0535874, 3.88862 )
 target = NodePath("../car/CamStand")
 speed = 10.0
 enabled = true
