@@ -1,15 +1,19 @@
 Lvl 1
-COACH
 	Welcome to the RADICAL HYPER MEGA TRACK!
 	Now that you signed all the waivers,
 	I can show you the functionality of your SWEET RIDE
-PLAYER
-	Show me! Show me!
-COACH
 	Check her out...
-	Hop inside and I'll show you how to start the engine!
-PLAYER
-	Wait... The engine doesnt start automatically?
-COACH
-	On these CUTTING-EDGE DEMONS OF SPEED
-	
+	Hop inside and I'll show you how to start the engine pods!
+	First, hold down brake [S]
+	While holding brake [S], start the igniter [Q]
+	While holding the igniter [Q], release the brake, and accelerate [W]!
+	On these CUTTING-EDGE DEMONS OF SPEED,
+	The engine pods are designed only to go FAST
+	If you go too slow for too long,
+	the pods will stall, and you will need to restart them!
+	Activate the Main thruster with [W]
+	Activate the side thrusters with [A] and [D], respectively.
+	Launch yourself into the air with [E]!
+	And lastly, slow down and reverse with [S].
+	Try navigating this course to complete your training!
+

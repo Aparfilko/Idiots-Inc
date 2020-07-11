@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/scene/car.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/ManagerLevel.gd" type="Script" id=6]
 [ext_resource path="res://script/ManagerOverlay.gd" type="Script" id=7]
 [ext_resource path="res://script/MainNode.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
 
 [node name="MainNode" type="Node"]
 script = ExtResource( 8 )
@@ -16,3 +18,21 @@ script = ExtResource( 7 )
 
 [node name="car" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0 )
+
+[node name="WinState" type="PopupDialog" parent="car"]
+visible = true
+margin_right = 256.0
+margin_bottom = 120.0
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinText" type="RichTextLabel" parent="car/WinState"]
+margin_right = 231.0
+margin_bottom = 61.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "YOU WIN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
