@@ -1,0 +1,15 @@
+Lvl 1
+COACH
+	Welcome to the RADICAL HYPER MEGA TRACK!
+	Now that you signed all the waivers,
+	I can show you the functionality of your SWEET RIDE
+PLAYER
+	Show me! Show me!
+COACH
+	Check her out...
+	Hop inside and I'll show you how to start the engine!
+PLAYER
+	Wait... The engine doesnt start automatically?
+COACH
+	On these CUTTING-EDGE DEMONS OF SPEED
+	
