@@ -9,7 +9,7 @@ _data = {
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 1, 0, 0, 1 )
 
-[node name="Spatial" type="Spatial"]
+[node name="Spatial" type="StaticBody"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 
 [node name="Path" type="Path" parent="."]
