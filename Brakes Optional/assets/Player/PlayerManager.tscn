@@ -333,12 +333,13 @@ position = Vector2( 0, -540 )
 texture = ExtResource( 2 )
 
 [node name="wheel" type="Sprite" parent="Hud"]
-position = Vector2( -663.753, -110.362 )
+position = Vector2( -700, -110.362 )
 scale = Vector2( 2, 2 )
+z_index = 3
 texture = ExtResource( 3 )
 
 [node name="mph" type="AnimatedSprite" parent="Hud"]
-position = Vector2( -280.316, -184.208 )
+position = Vector2( -340, -185 )
 frames = SubResource( 5 )
 playing = true
 
@@ -364,7 +365,7 @@ __meta__ = {
 }
 
 [node name="thrust" parent="Hud/sockets" instance=ExtResource( 7 )]
-position = Vector2( 160, -170 )
+position = Vector2( 115, -170 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/thrust"]
 position = Vector2( 0, -48 )
@@ -373,7 +374,7 @@ animation = "off"
 playing = true
 
 [node name="brake" parent="Hud/sockets" instance=ExtResource( 7 )]
-position = Vector2( 160, -45 )
+position = Vector2( 115, -45 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/brake"]
 position = Vector2( 0, -48 )
@@ -382,7 +383,7 @@ animation = "off"
 playing = true
 
 [node name="ignition" parent="Hud/sockets" instance=ExtResource( 7 )]
-position = Vector2( -40, -170 )
+position = Vector2( -130, -170 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/ignition"]
 position = Vector2( 0, -48 )
@@ -391,7 +392,7 @@ animation = "off"
 playing = true
 
 [node name="left" parent="Hud/sockets" instance=ExtResource( 7 )]
-position = Vector2( -40, -45 )
+position = Vector2( -130, -45 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/left"]
 position = Vector2( 0, -48 )
@@ -414,8 +415,7 @@ position = Vector2( 360, -45 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Hud/sockets/right"]
 position = Vector2( 0, -48 )
 frames = SubResource( 42 )
-animation = "danger"
-frame = 1
+animation = "off"
 playing = true
 
 [node name="plugs" type="Control" parent="Hud"]
@@ -427,25 +427,19 @@ __meta__ = {
 }
 
 [node name="plug" parent="Hud/plugs" instance=ExtResource( 13 )]
-visible = false
-position = Vector2( 500, -180 )
+position = Vector2( 500, -200 )
 
 [node name="plug2" parent="Hud/plugs" instance=ExtResource( 13 )]
-visible = false
-position = Vector2( 580, -180 )
+position = Vector2( 580, -200 )
 
 [node name="plug3" parent="Hud/plugs" instance=ExtResource( 13 )]
-visible = false
-position = Vector2( 660, -180 )
+position = Vector2( 660, -200 )
 
 [node name="plug4" parent="Hud/plugs" instance=ExtResource( 13 )]
-visible = false
-position = Vector2( 740, -180 )
+position = Vector2( 740, -200 )
 
 [node name="plug5" parent="Hud/plugs" instance=ExtResource( 13 )]
-visible = false
-position = Vector2( 820, -180 )
+position = Vector2( 820, -200 )
 
 [node name="plug6" parent="Hud/plugs" instance=ExtResource( 13 )]
-visible = false
-position = Vector2( 900, -180 )
+position = Vector2( 900, -200 )
