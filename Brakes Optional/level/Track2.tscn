@@ -16,6 +16,14 @@ _data = {
 curve = SubResource( 1 )
 
 [node name="CSGPolygon" type="CSGPolygon" parent="Path"]
+invert_faces = true
+mode = 2
+path_node = NodePath("..")
+path_interval = 1.0
+path_rotation = 2
+path_local = false
+path_continuous_u = false
+path_joined = false
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -1, 0 )
