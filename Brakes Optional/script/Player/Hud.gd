@@ -2,12 +2,8 @@ extends Control
 enum {OFF = 0, ON = 1, WARNING = 2, DANGER = 3}
 onready var screenInit = Vector2(1920, 1080)
 onready var numPlugs = 4
-var thrust = OFF
-var brake = OFF
-var ignition = OFF
-var left = OFF
-var fly = OFF
-var right = OFF
+#ign,thrust,lev,left,brake,right
+onready var socks = [OFF,OFF,OFF,OFF,OFF,OFF]
 
 func _ready():
 	deploy_plugs(numPlugs)
@@ -16,8 +12,9 @@ func _ready():
 
 #make sure the hud is sized up to the screen
 func resize():
-	var s = OS.get_window_size().x/screenInit.x
-	set_scale(Vector2(s, 1))
+	var x = OS.get_window_size().x/screenInit.x
+	var y = OS.get_window_size().y/screenInit.y
+	set_scale(Vector2(x, y))
 	
 #this varies depending on the level, makes a variable amount of plugs visible
 func deploy_plugs(num):
@@ -31,36 +28,36 @@ func deploy_plugs(num):
 #grabs the thing to activate/make stronger/turn off
 func get_plug(name, onOff):
 	match name:
-		"thrust":
-			if onOff and thrust < 3:
-				thrust += 1
-			elif not onOff:
-				thrust = OFF
-		"brake":
-			if onOff and brake < 3:
-				brake += 1
-			elif not onOff:
-				brake = OFF	
 		"ignition":
-			if onOff and ignition < 3:
-				ignition += 1
+			if onOff and socks[0] < 3:
+				socks[0] += 1
 			elif not onOff:
-				ignition = OFF
-		"left":
-			if onOff and left < 3:
-				left += 1
+				socks[0] = OFF
+		"thrust":
+			if onOff and socks[1] < 3:
+				socks[1] += 1
 			elif not onOff:
-				left = OFF
+				socks[1] = OFF
 		"fly":
-			if onOff and fly < 3:
-				fly += 1
+			if onOff and socks[2] < 3:
+				socks[2] += 1
 			elif not onOff:
-				fly = OFF
+				socks[2] = OFF
+		"left":
+			if onOff and socks[3] < 3:
+				socks[3] += 1
+			elif not onOff:
+				socks[3] = OFF
+		"brake":
+			if onOff and socks[4] < 3:
+				socks[4] += 1
+			elif not onOff:
+				socks[4] = OFF	
 		"right":
-			if onOff and right < 3:
-				right += 1
+			if onOff and socks[5] < 3:
+				socks[5] += 1
 			elif not onOff:
-				right = OFF
+				socks[5] = OFF
 
 
 
