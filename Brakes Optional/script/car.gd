@@ -29,6 +29,8 @@ func _physics_process(delta):
 	rotation[1]+=angVel;
 	$body.rotation[2]+=(.05 if b[3] else 0)-(.05 if b[5] else 0);
 	$body.rotation[2]*=.92;
+	$body.rotation[0]-=(.05 if b[1] else 0)-(.05 if b[4] else 0)
+	$body.rotation[0]*=.8
 	var _col=move_and_slide(vel);
 
 func _input(event):
