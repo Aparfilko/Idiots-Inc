@@ -19,16 +19,19 @@ script = ExtResource( 6 )
 script = ExtResource( 7 )
 
 [node name="car" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0 )
 
 [node name="WinState" parent="car" instance=ExtResource( 2 )]
 
 [node name="Hud" parent="car" instance=ExtResource( 4 )]
+pause_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
+pause_mode = 1
 transform = Transform( -6.65853e-08, -0.91267, 0.408697, -1.48693e-07, 0.408697, 0.91267, -1, 0, -1.62921e-07, 0, 10, 0 )
 visible = false
 
