@@ -43,7 +43,7 @@ func _input(event):
 	b=[
 		(b[0] or event.is_action_pressed("q")) and not event.is_action_released("q"),
 		(b[1] or event.is_action_pressed("w")) and not event.is_action_released("w"),
-		(b[2] or event.is_action_pressed("e")) and not event.is_action_released("e"),
+		(b[2] or event.is_action_pressed("space")) and not event.is_action_released("space"),
 		(b[3] or event.is_action_pressed("a")) and not event.is_action_released("a"),
 		(b[4] or event.is_action_pressed("s")) and not event.is_action_released("s"),
 		(b[5] or event.is_action_pressed("d")) and not event.is_action_released("d"),
