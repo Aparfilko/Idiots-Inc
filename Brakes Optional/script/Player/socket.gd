@@ -10,8 +10,8 @@ func _ready():
 	var _err
 	_err = connect("body_entered", self, "readyPlug")
 	_err = connect("body_exited", self, "unreadyPlug")
-	_err = connect("pluggedIn", get_parent().get_parent().get_parent(), "get_plug")
-	_err = connect("goUp", get_parent().get_parent().get_parent(), "get_plug")
+	_err = connect("pluggedIn", get_parent().get_parent(), "get_plug")
+	_err = connect("goUp", get_parent().get_parent(), "get_plug")
 	$AnimatedSprite.play("off")
 	create_timer(suck)
 	
