@@ -1,8 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/booster.tres" type="ArrayMesh" id=1]
-[ext_resource path="res://assets/scene/booster.gd" type="Script" id=2]
+[ext_resource path="res://script/booster.gd" type="Script" id=2]
 [ext_resource path="res://assets/scene/booster.tres" type="Material" id=3]
+
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.235294, 0.235294, 0.235294, 1 )
