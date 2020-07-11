@@ -60,6 +60,8 @@ func _deactivate():
 	$dangerous.stop()
 	$warnings.stop()
 	playSfx("plugs", "plugOut")
+	if not curPlug.held:
+		unreadyPlug(curPlug)
 #	print(name + " is deactivated")
 	
 func create_timer(time):
