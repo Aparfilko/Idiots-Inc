@@ -1,46 +1,41 @@
 extends Area2D
 var curPlug
-signal pluggedIn(socket)
+signal pluggedIn(socket, onOff)
 
 func _ready():
 	connect("body_entered", self, "readyPlug")
 	connect("body_exited", self, "unreadyPlug")
 	connect("pluggedIn", get_parent().get_parent(), "get_plug")
-	connect("pluggedIn", self, "_activate_time")
+	connect("pluggedOut", get_parent().get_parent(), "get_plug")
 	$AnimatedSprite.play("off")
-	
-func _process(_dt):
-	if is_instance_valid(curPlug) and curPlug.plugged == false:
-		$AnimatedSprite.play("off")
-	
-	
 	
 	
 func readyPlug(plug):
-	if plug.is_in_group("plug") and not is_instance_valid(curPlug) and not plug.plugged and plug.held:
+	#has no plugs, and
+	if plug.is_in_group("plug") and not is_instance_valid(curPlug) and plug.held:
+		plug.connect("read", self, "_activate")
 		plug.hover = true
-		plug.pos= get_position() + Vector2(0,9)
+		plug.pos= get_position() + Vector2(0,10)
 		curPlug = plug
+		$s.play("select")
 		
 func unreadyPlug(plug):
 	#make sure it's the plug you're using that's unplugging
 	if is_instance_valid(curPlug) and plug == curPlug:
+		curPlug.disconnect("read", self, "_activate")
 		plug.hover = false
 		plug.pos = plug.basePos
 		curPlug = null
-		$AnimatedSprite.play("off")
+		$s.play("default")
 		
 
-func _input_event(_viewport, _event, _shape_idx):
-	if Input.is_action_just_pressed("click") :
-		emit_signal("pluggedIn", self)
-	elif Input.is_action_just_pressed("unplug") and is_instance_valid(curPlug):
-		curPlug.z_index += 1
-		curPlug.plugged = false
-		curPlug.pos = curPlug.basePos
-		curPlug.plugOut()
-		curPlug = null
-		$AnimatedSprite.play("off")
-
-func _activate_time(_whatever):
+func _activate():
+	emit_signal("pluggedIn", self, true)
+	curPlug.connect("gone", self, "_deactivate")
 	$AnimatedSprite.play("on")
+	
+func _deactivate():
+	emit_signal("pluggedOut", self, true)
+	curPlug.disconnect("gone", self, "_deactivate")
+	$AnimatedSprite.play("off")
+	$s.play("default")
