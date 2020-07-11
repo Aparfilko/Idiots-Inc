@@ -32,8 +32,7 @@ path_joined = false
 material = SubResource( 4 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 50, 0, -1, 0 )
-visible = false
+transform = Transform( 95, 0, 0, 0, 1, 0, 0, 0, 50, 0, -1, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 2 )
