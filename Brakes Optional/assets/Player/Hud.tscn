@@ -421,25 +421,19 @@ __meta__ = {
 }
 
 [node name="plug" parent="plugs" instance=ExtResource( 12 )]
-visible = false
 position = Vector2( 500, -200 )
 
 [node name="plug2" parent="plugs" instance=ExtResource( 12 )]
-visible = false
 position = Vector2( 580, -200 )
 
 [node name="plug3" parent="plugs" instance=ExtResource( 12 )]
-visible = false
 position = Vector2( 660, -200 )
 
 [node name="plug4" parent="plugs" instance=ExtResource( 12 )]
-visible = false
 position = Vector2( 740, -200 )
 
 [node name="plug5" parent="plugs" instance=ExtResource( 12 )]
-visible = false
 position = Vector2( 820, -200 )
 
 [node name="plug6" parent="plugs" instance=ExtResource( 12 )]
-visible = false
 position = Vector2( 900, -200 )
