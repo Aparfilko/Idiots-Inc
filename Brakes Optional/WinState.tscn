@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 
 [node name="WinState" type="PopupDialog"]
-visible = true
 margin_left = 400.0
 margin_top = 200.0
 margin_right = 650.0
@@ -19,6 +18,7 @@ margin_left = 95.0534
 margin_top = 25.0
 margin_right = 163.053
 margin_bottom = 48.0
+text = "YOU WIN!"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

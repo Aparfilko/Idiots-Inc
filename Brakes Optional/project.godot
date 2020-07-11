@@ -122,4 +122,5 @@ e={
 
 [rendering]
 
+quality/driver/fallback_to_gles2=true
 environment/default_environment="res://assets/default_env.tres"

@@ -23,8 +23,9 @@ func _physics_process(delta):
 	vel[1]-=9*delta;
 	vel[1]*=.99;
 	rotation[1]+=angVel;
-	var col_=move_and_slide(vel);
+	var _col=move_and_slide(vel);
 	
+
 
 
 func _input(event):
