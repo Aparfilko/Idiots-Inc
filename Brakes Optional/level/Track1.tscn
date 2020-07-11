@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://assets/Textures/Road.tres" type="Material" id=1]
+
 [sub_resource type="Curve3D" id=1]
 _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -53.8267, 0, -44.9122, -0.3396, 0, -44.4877, 0.3396, 0, 44.4877, -109.521, 0, 0.0849029, 0, 0, 0, 0, 0, 0, -54.5059, 0, 45.4216, 0, 0, 0, 0, 0, 0, 53.3173, 0, 44.4028, 0.3396, 0, 44.6575, -0.3396, 0, -44.6575, 105.786, 0, -0.0848996, 0, 0, 0, 0, 0, 0, 52.4683, 0, -45.4216, 0, 0, 0, 0, 0, 0, -53.8267, 0, -44.9122 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
 }
-
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="Track1" type="Spatial"]
 
@@ -30,4 +29,4 @@ path_rotation = 2
 path_local = false
 path_continuous_u = false
 path_joined = true
-material = SubResource( 2 )
+material = ExtResource( 1 )

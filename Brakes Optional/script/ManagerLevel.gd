@@ -4,7 +4,7 @@ var refOverlay;
 var refCurr;
 var refCar;
 onready var resLevel=[
-	preload("res://level/Track2.tscn"),
+	preload("res://level/Track3.tscn"),
 ];
 
 func _ready():
