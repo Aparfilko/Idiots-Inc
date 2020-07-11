@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/car.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://script/car.gd" type="Script" id=2]
 [ext_resource path="res://assets/scene/booster.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/default_env.tres" type="Environment" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.588235, 0.729412, 0.717647, 1 )
@@ -40,6 +41,7 @@ shape = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, 6.05146e-08, -3.20173e-07, 0, 0.982603, 0.185718, 3.25841e-07, 0.185718, -0.982603, 0, 7.178, -12 )
+environment = ExtResource( 4 )
 far = 200.0
 
 [node name="RayCast" type="RayCast" parent="."]
