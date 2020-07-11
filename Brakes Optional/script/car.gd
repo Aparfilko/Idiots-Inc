@@ -22,9 +22,9 @@ func _physics_process(delta):
 	
 	if($RayCast.is_colliding()):
 		var d=(translation[1]-$RayCast.get_collision_point()[1]);
-		if(d<scale[1]*(40 if b[2] else 10)):
-			vel[1]+=(scale[1]*(40 if b[2] else 10)-d)*200*delta;
-	vel[1]-=30*delta;
+		if(d<scale[1]*(50 if b[2] else 20)):
+			vel[1]+=(scale[1]*(50 if b[2] else 20)-d)*100*delta;
+	vel[1]-=60*delta;
 	vel[1]*=(1-4.2*delta);
 	
 	rotation[1]+=angVel;
@@ -32,7 +32,10 @@ func _physics_process(delta):
 	$body.rotation[2]*=(1-4.8*delta);
 	$body.rotation[0]-=(3*delta if b[1] else 0)-(3*delta if b[4] else 0)
 	$body.rotation[0]*=(1-12*delta);
-	var _col=move_and_slide(vel);
+	var col=move_and_collide(vel*delta);
+	if(col):
+		vel=vel.bounce(col.normal);
+		move_and_collide(col.remainder);
 
 func _input(event):
 	b=[
