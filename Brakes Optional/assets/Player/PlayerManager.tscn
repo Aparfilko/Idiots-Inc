@@ -415,6 +415,7 @@ position = Vector2( 360, -45 )
 position = Vector2( 0, -48 )
 frames = SubResource( 42 )
 animation = "danger"
+frame = 1
 playing = true
 
 [node name="plugs" type="Control" parent="Hud"]

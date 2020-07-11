@@ -49,6 +49,7 @@ func _deactivate():
 	$AnimatedSprite.play("off")
 	$s.play("default")
 	$dangerous.stop()
+	$warnings.stop()
 	playSfx("plugs", "plugOut")
 	
 func create_timer(time):
@@ -66,8 +67,10 @@ func increase_danger():
 		match $AnimatedSprite.get_animation():
 			"on":
 				$AnimatedSprite.play("warning")
+				playSfx("warnings", "warning")
 			"warning":
 				$AnimatedSprite.play("danger")
+				playSfx("warnings", "danger")
 				
 
 func playSfx(bus,sfxName):
