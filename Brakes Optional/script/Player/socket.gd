@@ -2,12 +2,16 @@ extends Area2D
 var curPlug
 onready var suck = 5
 signal pluggedIn(socket, onOff)
+signal goUp(socket, onOff)
+onready var i = 0
 
 
 func _ready():
-	connect("body_entered", self, "readyPlug")
-	connect("body_exited", self, "unreadyPlug")
-	connect("pluggedIn", get_parent().get_parent().get_parent(), "get_plug")
+	var _err
+	_err = connect("body_entered", self, "readyPlug")
+	_err = connect("body_exited", self, "unreadyPlug")
+	_err = connect("pluggedIn", get_parent().get_parent().get_parent(), "get_plug")
+	_err = connect("goUp", get_parent().get_parent().get_parent(), "get_plug")
 	$AnimatedSprite.play("off")
 	create_timer(suck)
 	
@@ -32,10 +36,12 @@ func unreadyPlug(plug):
 		
 
 func _activate():
-	emit_signal("pluggedIn", name, true)
-	curPlug.connect("gone", self, "_deactivate")
-	$AnimatedSprite.play("on")
-	$dangerous.start()
+	if not curPlug.is_connected("gone", self, "_deactivate"):
+		emit_signal("pluggedIn", name, true)
+		curPlug.connect("gone", self, "_deactivate")
+		$AnimatedSprite.play("on")
+		$dangerous.start()
+		playSfx("plugs", "plugIn")
 	
 func _deactivate():
 	emit_signal("pluggedIn", name, false)
@@ -43,6 +49,7 @@ func _deactivate():
 	$AnimatedSprite.play("off")
 	$s.play("default")
 	$dangerous.stop()
+	playSfx("plugs", "plugOut")
 	
 func create_timer(time):
 	var t = Timer.new()
@@ -55,9 +62,16 @@ func create_timer(time):
 func increase_danger():
 	if not ($AnimatedSprite.get_animation().match("off") or $AnimatedSprite.get_animation().match("danger")):
 		$dangerous.start()
-		emit_signal("pluggedIn", name, true)
+		emit_signal("goUp", name, true)
 		match $AnimatedSprite.get_animation():
 			"on":
 				$AnimatedSprite.play("warning")
 			"warning":
 				$AnimatedSprite.play("danger")
+				
+
+func playSfx(bus,sfxName):
+	var audio = get_node(bus)
+	audio.stop()
+	audio.stream = load("res://audio/sfx/"+sfxName+".wav")
+	audio.play()

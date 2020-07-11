@@ -3,7 +3,7 @@ enum {OFF = 0, ON = 1, WARNING = 2, DANGER = 3}
 onready var screenInit = Vector2(1920, 1080)
 
 func _ready():
-#	resize()
+	resize()
 	pass
 
 
@@ -13,8 +13,4 @@ func resize():
 	set_scale(Vector2(s, 1))
 	
 	
-
-func _process(delta):
-	pass
-
 

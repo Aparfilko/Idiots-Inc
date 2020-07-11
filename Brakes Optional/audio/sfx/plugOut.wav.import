@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/plugOut.wav-c8ffecf2b202bb88bcb72086b81604a6.sample"
+
+[deps]
+
+source_file="res://audio/sfx/plugOut.wav"
+dest_files=[ "res://.import/plugOut.wav-c8ffecf2b202bb88bcb72086b81604a6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

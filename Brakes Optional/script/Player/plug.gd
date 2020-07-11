@@ -54,7 +54,6 @@ func plugIn():
 		$AnimatedSprite.play("plugged")
 	else:
 		$AnimatedSprite.play("pluggedBelow")
-#	$Timer.start()
 	plugged = true
 	emit_signal("read")
 	
