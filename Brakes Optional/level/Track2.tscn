@@ -19,6 +19,7 @@ albedo_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 curve = SubResource( 1 )
 
 [node name="CSGPolygon" type="CSGPolygon" parent="Path"]
+use_collision = true
 invert_faces = true
 polygon = PoolVector2Array( -5, 0, -5, 2, -4.5, 0.1, 4.5, 0.1, 5, 2, 5, 0 )
 mode = 2
@@ -27,7 +28,7 @@ path_interval = 1.0
 path_rotation = 2
 path_local = false
 path_continuous_u = false
-path_joined = false
+path_joined = true
 material = SubResource( 4 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
