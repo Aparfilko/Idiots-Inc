@@ -1,16 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://script/car.gd" type="Script" id=1]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 3, 1, 2 )
+extents = Vector3( 2, 1, 4 )
 
-[node name="CAR" type="VehicleBody"]
-transform = Transform( 1.50596, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mode = 3
+[node name="car" type="KinematicBody"]
+script = ExtResource( 1 )
 
 [node name="CSGPolygon" type="CSGPolygon" parent="."]
-transform = Transform( 0.985393, 0, 0, 0, 0.985393, 0, 0, 0, 0.985393, 0, 0, 2 )
-polygon = PoolVector2Array( -3, 0, -2.60937, 0.727694, -1.68452, 1.05306, -0.822543, 1.90252, 1.02155, 1.82231, 1.89947, 1.04671, 2.98882, 0.780701, 3, 0 )
+transform = Transform( -1.60541e-07, 0, -0.985393, 0, 0.985393, 0, 0.985393, 0, -1.60541e-07, -2, 0, 0 )
+polygon = PoolVector2Array( -4.05528, 0.00681031, -3.86773, 0.861385, -2.20559, 1.11158, -1.68654, 2.03716, 0.324957, 2.01886, 2.02779, 1.02764, 3.57372, 0.776106, 4.05855, -0.000417724 )
 depth = 4.0
+smooth_faces = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
