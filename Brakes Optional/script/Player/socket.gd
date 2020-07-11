@@ -1,13 +1,15 @@
 extends Area2D
 var curPlug
+onready var suck = 5
 signal pluggedIn(socket, onOff)
+
 
 func _ready():
 	connect("body_entered", self, "readyPlug")
 	connect("body_exited", self, "unreadyPlug")
-	connect("pluggedIn", get_parent().get_parent(), "get_plug")
-	connect("pluggedOut", get_parent().get_parent(), "get_plug")
+	connect("pluggedIn", get_parent().get_parent().get_parent(), "get_plug")
 	$AnimatedSprite.play("off")
+	create_timer(suck)
 	
 	
 func readyPlug(plug):
@@ -30,12 +32,32 @@ func unreadyPlug(plug):
 		
 
 func _activate():
-	emit_signal("pluggedIn", self, true)
+	emit_signal("pluggedIn", name, true)
 	curPlug.connect("gone", self, "_deactivate")
 	$AnimatedSprite.play("on")
+	$dangerous.start()
 	
 func _deactivate():
-	emit_signal("pluggedOut", self, true)
+	emit_signal("pluggedIn", name, false)
 	curPlug.disconnect("gone", self, "_deactivate")
 	$AnimatedSprite.play("off")
 	$s.play("default")
+	$dangerous.stop()
+	
+func create_timer(time):
+	var t = Timer.new()
+	add_child(t)
+	t.wait_time = time
+	t.one_shot = true
+	t.name = "dangerous"
+	t.connect("timeout", self, "increase_danger")
+	
+func increase_danger():
+	if not ($AnimatedSprite.get_animation().match("off") or $AnimatedSprite.get_animation().match("danger")):
+		$dangerous.start()
+		emit_signal("pluggedIn", name, true)
+		match $AnimatedSprite.get_animation():
+			"on":
+				$AnimatedSprite.play("warning")
+			"warning":
+				$AnimatedSprite.play("danger")
