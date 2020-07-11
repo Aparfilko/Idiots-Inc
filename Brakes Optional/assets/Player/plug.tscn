@@ -14,11 +14,11 @@ region = Rect2( 128, 0, 128, 1500 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 384, 0, 128, 1500 )
+region = Rect2( 256, 0, 128, 1500 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 256, 0, 128, 1500 )
+region = Rect2( 384, 0, 128, 1500 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -34,12 +34,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "pluggedBelow",
+"name": "plugged",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "plugged",
+"name": "pluggedBelow",
 "speed": 5.0
 } ]
 
@@ -50,7 +50,7 @@ extents = Vector2( 37, 37 )
 radius = 37.2775
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 18.6905
+radius = 3.05386
 
 [node name="plug" type="KinematicBody2D" groups=[
 "plug",
