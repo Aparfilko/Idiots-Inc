@@ -7,7 +7,7 @@ var ass_mat;
 
 func set_ass(a):
 	$ass.material=ass_mat[a];
-func _process(delta):
+func _process(_delta):
 	randomize()
 	e = (randf()-0.5)
 	b = (randf()-0.5)
