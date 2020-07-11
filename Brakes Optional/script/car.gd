@@ -17,7 +17,7 @@ func _physics_process(delta):
 	
 	var q=Quat(Vector3(0,1,0),rotation[1]);
 	vel+=q*Vector3(0,0,(10*delta if (b[1] and (b[0] or vel.length()>5)) else 0)+(.5*delta if b[3] else 0)+(.5*delta if b[5] else 0)-(20*delta if (b[4] and vel.dot(q*Vector3(0,0,1))>-5) else 0));
-	vel-=q*Vector3(0 if b[0] else 3*delta,0,0)*vel.dot(q*Vector3(1,0,0))
+	vel-=q*Vector3(0 if b[0] else 30*delta,0,0)*vel.dot(q*Vector3(1,0,0))
 	vel*=(1-.18*delta);
 	
 	if($RayCast.is_colliding()):
@@ -42,7 +42,7 @@ func _physics_process(delta):
 
 func _input(event):
 	b=[
-		(b[0] or event.is_action_pressed("q")) and not event.is_action_released("q"),
+		(b[0] or event.is_action_pressed("shift")) and not event.is_action_released("shift"),
 		(b[1] or event.is_action_pressed("w")) and not event.is_action_released("w"),
 		(b[2] or event.is_action_pressed("space")) and not event.is_action_released("space"),
 		(b[3] or event.is_action_pressed("a")) and not event.is_action_released("a"),
