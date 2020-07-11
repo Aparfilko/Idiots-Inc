@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/car.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://script/car.gd" type="Script" id=2]
@@ -6,7 +6,19 @@
 [ext_resource path="res://assets/default_env.tres" type="Environment" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.588235, 0.729412, 0.717647, 1 )
+albedo_color = Color( 0.670588, 0.0666667, 0.0666667, 1 )
+metallic = 1.0
+metallic_specular = 0.6
+roughness = 0.5
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+albedo_color = Color( 0.235294, 0.403922, 0.568627, 0.54902 )
+metallic_specular = 1.0
+roughness = 0.3
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.0862745, 0.109804, 0.184314, 1 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.8, 0.7, 4.48376 )
@@ -31,6 +43,14 @@ transform = Transform( 0.5, 0, 4.9738e-13, 0, 0.5, 0, -4.9738e-13, 0, 0.5, -4, 0
 [node name="booster3" parent="body" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15674e-06, 0.75, 3.55 )
 
+[node name="glass" type="CSGSphere" parent="body"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 2, 0, 1.4, 0.5 )
+material = SubResource( 4 )
+
+[node name="player" type="CSGSphere" parent="body"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.6, 1 )
+material = SubResource( 5 )
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.445377 )
 shape = SubResource( 2 )
@@ -40,7 +60,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664877, -1.1599 )
 shape = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -1, -3.40595e-08, 3.24056e-07, 6.88027e-08, 0.950027, 0.312169, -3.18494e-07, 0.312169, -0.950027, 0, 6.3132, -16.9324 )
+transform = Transform( -1, 1.11444e-07, -3.06191e-07, 0, 0.939693, 0.34202, 3.25841e-07, 0.34202, -0.939693, 0, 7, -17 )
 environment = ExtResource( 4 )
 far = 400.0
 
