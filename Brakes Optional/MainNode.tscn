@@ -15,4 +15,4 @@ script = ExtResource( 6 )
 script = ExtResource( 7 )
 
 [node name="car" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0 )
