@@ -12,7 +12,7 @@ albedo_color = Color( 0.588235, 0.729412, 0.717647, 1 )
 extents = Vector3( 1.8, 0.7, 4.48376 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 4.80932, 1, 0.762977 )
+extents = Vector3( 4.71939, 0.744514, 0.762977 )
 
 [node name="car" type="KinematicBody"]
 script = ExtResource( 2 )
@@ -36,7 +36,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.445377 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1599 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664877, -1.1599 )
 shape = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="."]
