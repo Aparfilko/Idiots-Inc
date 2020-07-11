@@ -3,19 +3,24 @@ extends Control
 
 # Declare member variables here. Examples:
 # var a = 2
-# var b = "text"
+var pauseState = false
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	visible = false
-func _input(_event):
-	if Input.is_action_just_pressed("ui_cancel"):
-		visible = true
+	visible = pauseState
+	get_tree().paused = pauseState
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		pauseState = true
+		visible = pauseState
+		get_tree().paused = pauseState
 
 func _on_Resume_pressed(): #resume
-	visible = false
+	pauseState = false
+	visible = pauseState
+	get_tree().paused = pauseState
 
 
 func _on_Restart_pressed(): #restart track
