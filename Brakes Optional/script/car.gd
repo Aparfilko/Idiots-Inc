@@ -16,8 +16,8 @@ func _physics_process(delta):
 	angVel*=(1-3*delta) #angular deceleration when not turning
 	
 	var q=Quat(Vector3(0,1,0),rotation[1]);
-	vel+=q*Vector3(0,0,(20*delta if (b[0] and b[1]) else (10*delta if b[1] else 0))+(3*delta if b[3] else 0)+(3*delta if b[5] else 0)-(20*delta if b[4] else 0));
-	vel-=q*Vector3(.5,0,0)*vel.dot(q*Vector3(1,0,0))
+	vel+=q*Vector3(0,0,(20*delta if b[0] else (10*delta if b[1] else 0))+(3*delta if b[3] else 0)+(3*delta if b[5] else 0)-(20*delta if (b[4] and vel.dot(q*Vector3(0,0,1))>-5) else 0));
+	vel-=q*Vector3(3*delta,0,0)*vel.dot(q*Vector3(1,0,0))
 	vel*=(1-.18*delta);
 	
 	if($RayCast.is_colliding()):
@@ -30,7 +30,7 @@ func _physics_process(delta):
 	rotation[1]+=angVel;
 	$body.rotation[2]+=(3*delta if b[3] else 0)-(3*delta if b[5] else 0);
 	$body.rotation[2]*=(1-4.8*delta);
-	$body.rotation[0]-=(3*delta if b[1] else 0)-(3*delta if b[4] else 0)
+	$body.rotation[0]-=(3*delta if b[0] else (2*delta if b[1] else 0))-(2*delta if b[4] else 0)
 	$body.rotation[0]*=(1-12*delta);
 	var col=move_and_collide(vel*delta);
 	if(col):
@@ -46,5 +46,4 @@ func _input(event):
 		(b[4] or event.is_action_pressed("s")) and not event.is_action_released("s"),
 		(b[5] or event.is_action_pressed("d")) and not event.is_action_released("d"),
 		];
-	if event.is_action_pressed("space"):
-		$WinState.visible = not $WinState.visible
+	

@@ -33,7 +33,10 @@ func _physics_process(dt):
 	elif plugged:
 		position = pos
 	else:
-		position = position.linear_interpolate(pos, accel*dt)
+		if pos == position:
+			z_index = 1
+		else:
+			position = position.linear_interpolate(pos, accel*dt)
 		
 func _input_event(_body, _event, _shape_idx):
 	#only pick self, and if just clicked
@@ -52,7 +55,6 @@ func _input_event(_body, _event, _shape_idx):
 #
 
 func plugIn():
-	z_index = 1
 	held = false
 	if pos.y < -100:
 		$AnimatedSprite.play("plugged")
@@ -67,7 +69,6 @@ func plugIn():
 	
 func plugOut():
 	pos = shake(0, 20)
-	z_index = 1
 	held = false
 	$AnimatedSprite.play("default")
 	plugged = false
@@ -80,7 +81,7 @@ func plugOut():
 	
 func pickUp():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	z_index = 2
+	z_index = 4
 	held = true
 	$AnimatedSprite.play("selected")
 	plugged = false
