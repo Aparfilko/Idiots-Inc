@@ -22,7 +22,7 @@ func resize():
 #this varies depending on the level, makes a variable amount of plugs visible
 func deploy_plugs(num):
 	var i = 0
-	for f in $Hud/plugs.get_children():
+	for f in $plugs.get_children():
 		i += 1
 		if i <= num:
 			f.visible = true
