@@ -3,6 +3,7 @@ extends KinematicBody2D
 const accel = 10
 signal read()
 signal gone()
+signal panic()
 onready var realAcc = false
 #collisions
 onready var colSelectEx = Vector2(37,37)
@@ -17,6 +18,8 @@ onready var plugged = false
 
 func _ready():
 	set_collision(colSelectEx)
+	pos = shake(0,20)
+	set_position(pos)
 
 #changes collsion rects of normal
 func set_collision(vec):
@@ -35,41 +38,59 @@ func _physics_process(dt):
 func _input_event(_body, _event, _shape_idx):
 	#only pick self, and if just clicked
 	#when doing so, change animation and eliminite nice collision
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") and not held:
 		pickUp()
-	elif Input.is_action_just_released("click"):
+	elif Input.is_action_just_released("click") and held:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		if hover:
 			plugIn()
 		else:
 			plugOut()
-	elif Input.is_action_just_pressed("unplug"):
+	elif Input.is_action_just_pressed("unplug") and plugged:
 		plugOut()
 #
 
 func plugIn():
 	z_index = 1
 	held = false
-	$disable.set_disabled(true)
 	if pos.y < -100:
 		$AnimatedSprite.play("plugged")
 	else:
 		$AnimatedSprite.play("pluggedBelow")
 	plugged = true
+	$disable.set_disabled(true)
+	$select.set_disabled(true)
+	$normal.set_disabled(false)
+	print(name + " plugs in")
 	emit_signal("read")
 	
 func plugOut():
-	pos = basePos
+	pos = shake(0, 20)
 	z_index = 1
 	held = false
-	$disable.set_disabled(false)
 	$AnimatedSprite.play("default")
 	plugged = false
+	$disable.set_disabled(false)
+	$select.set_disabled(true)
+	$normal.set_disabled(false)
+	print(name + " goes back home")
 	emit_signal("gone")
+
 	
 func pickUp():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	z_index = 2
 	held = true
 	$AnimatedSprite.play("selected")
-	$disable.set_disabled(true)
 	plugged = false
+	print(name + " picked up")
+	
+	$disable.set_disabled(true)
+	$select.set_disabled(false)
+	$normal.set_disabled(true)
 	emit_signal("gone")
+	
+func shake(x, y):
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	return basePos + Vector2(0, rng.randf_range(-y,y))
