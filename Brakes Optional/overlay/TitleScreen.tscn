@@ -1,11 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/pending.png" type="Texture" id=2]
+[ext_resource path="res://assets/MrPixel/VTF MisterPixel/otf/Mister Pixel Regular.otf" type="DynamicFontData" id=3]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 1920, 1040 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 78
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 38
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 38
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 38
+font_data = ExtResource( 3 )
 
 [node name="Title Screen" type="Node2D"]
 
@@ -18,8 +35,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 182.222
+margin_top = 126.651
+margin_right = 832.222
+margin_bottom = 205.651
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
+text = "•Breaks Optional•"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-margin_left = 425.0
-margin_top = 201.228
-margin_right = 625.0
-margin_bottom = 401.228
+margin_left = 411.0
+margin_top = 390.0
+margin_right = 624.0
+margin_bottom = 515.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+margin_right = 213.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 3 )
+text = "Start"
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 43.0
+margin_right = 213.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 4 )
+text = "Controls"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 86.0
+margin_right = 213.0
+margin_bottom = 125.0
+custom_fonts/font = SubResource( 5 )
+text = "Quit"
