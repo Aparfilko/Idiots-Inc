@@ -1,26 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/booster.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://script/booster.gd" type="Script" id=2]
 [ext_resource path="res://assets/scene/boost.tres" type="QuadMesh" id=3]
 [ext_resource path="res://assets/scene/blackpuff.tres" type="Material" id=4]
-[ext_resource path="res://assets/scene/off.tres" type="Material" id=5]
+[ext_resource path="res://assets/scene/on.material" type="Material" id=5]
+[ext_resource path="res://assets/scene/redpuff.tres" type="Material" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.235294, 0.235294, 0.235294, 1 )
-
-[sub_resource type="OpenSimplexNoise" id=2]
-seed = 226
-
-[sub_resource type="NoiseTexture" id=3]
-seamless = true
-as_normalmap = true
-noise = SubResource( 2 )
-
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.521569, 0, 0, 0.184314 )
-metallic_specular = 1.0
-metallic_texture = SubResource( 3 )
 
 [node name="booster" type="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.252893, 0.17082, 0.0548542 )
@@ -34,10 +22,10 @@ mesh = ExtResource( 3 )
 material/0 = ExtResource( 5 )
 
 [node name="RedPuff" type="CSGSphere" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.0243984, -0.0463078, -0.463836 )
+transform = Transform( 0.5, 0, 0, 0, -4.37114e-08, -0.5, 0, 1, -2.18557e-08, 0.0243984, -0.0463078, -0.463836 )
 radius = 0.6
-material = SubResource( 4 )
+material = ExtResource( 6 )
 
 [node name="BlackPuff" type="CSGSphere" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.507973 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, 0, -0.508 )
 material = ExtResource( 4 )
