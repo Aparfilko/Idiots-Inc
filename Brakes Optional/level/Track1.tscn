@@ -14,7 +14,7 @@ albedo_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 [node name="Track1" type="Spatial"]
 
 [node name="SpawnPoint" type="Spatial" parent="."]
-transform = Transform( -1.62921e-08, 0, 0.1, 0, 0.1, 0, -0.1, 0, -1.62921e-08, 0, 0.642758, 41.8176 )
+transform = Transform( -1.62921e-08, 0, 0.1, 0, 0.1, 0, -0.1, 0, -1.62921e-08, 0, 0.642758, 40.8635 )
 
 [node name="Path" type="Path" parent="."]
 transform = Transform( 0.834461, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )

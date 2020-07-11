@@ -13,6 +13,7 @@ func _ready():
 func _physics_process(delta):
 	angVel+=(.1*delta if b[3] else 0)-(.1*delta if b[5] else 0);
 	vel+=Quat(Vector3(0,1,0),rotation[1])*Vector3(0,0,(10*delta if b[1] else 0)+(3*delta if b[3] else 0)+(3*delta if b[5] else 0)-(10*delta if b[4] else 0));
+#	vel+=Vector3(1,0,0)*vel.dot(Quat(Vector3(0,1,0),rotation[1])*Vector3(1,0,0))
 	rotation[1]+=angVel;
 	var col=move_and_slide(vel);
 	if(col):
