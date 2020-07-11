@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Textures/Road.tres" type="Material" id=1]
 [ext_resource path="res://assets/Archway.tscn" type="PackedScene" id=2]
@@ -8,6 +8,13 @@ _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -53.8267, 0, -44.9122, -0.3396, 0, -44.4877, 0.3396, 0, 44.4877, -109.521, 0, 0.0849029, 0, 0, 0, 0, 0, 0, -54.5059, 0, 45.4216, 0, 0, 0, 0, 0, 0, 53.3173, 0, 44.4028, 0.3396, 0, 44.6575, -0.3396, 0, -44.6575, 105.786, 0, -0.0848996, 0, 0, 0, 0, 0, 0, 52.4683, 0, -45.4216, 0, 0, 0, 0, 0, 0, -53.8267, 0, -44.9122 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
 }
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 5.49853, 1, 1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="BoxShape" id=4]
 
 [node name="Track1" type="Spatial"]
 
@@ -35,8 +42,17 @@ material = ExtResource( 1 )
 [node name="Start" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -0.0374832, -0.028049, 40.6602 )
 
+[node name="CollisionShape" type="CollisionShape" parent="Start"]
+shape = SubResource( 2 )
+
 [node name="1" parent="." instance=ExtResource( 2 )]
 transform = Transform( -0.215605, -0.976481, 1.59089e-07, 0, -1.62921e-07, -1, 0.976481, -0.215605, 3.51265e-08, 106.274, -0.028049, -37.8054 )
 
+[node name="CollisionShape" type="CollisionShape" parent="1"]
+shape = SubResource( 3 )
+
 [node name="2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.216951, -0.976183, 1.5904e-07, 0, -1.62921e-07, -1, 0.976183, 0.216951, -3.53457e-08, -106.856, -0.028049, -38.0172 )
+
+[node name="CollisionShape" type="CollisionShape" parent="2"]
+shape = SubResource( 4 )
