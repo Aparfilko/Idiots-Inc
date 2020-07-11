@@ -11,7 +11,7 @@ _data = {
 [node name="Track3" type="Spatial"]
 
 [node name="SpawnPoint" type="Spatial" parent="."]
-transform = Transform( -0.05, 0, -1.94707e-08, 0, 0.05, 0, 1.94707e-08, 0, -0.05, -77.6175, 3.49795, 1.63696 )
+transform = Transform( -0.05, 0, -1.94707e-08, 0, 0.05, 0, 1.94707e-08, 0, -0.05, -77.6175, 1.39216, 1.63696 )
 
 [node name="Path" type="Path" parent="."]
 curve = SubResource( 1 )
@@ -19,7 +19,7 @@ curve = SubResource( 1 )
 [node name="CSGPolygon" type="CSGPolygon" parent="Path"]
 use_collision = true
 invert_faces = true
-polygon = PoolVector2Array( -5, 0, -4.5, 0.5, -4.5, 0.1, 4.5, 0.1, 4.5, 0.5, 5, 0 )
+polygon = PoolVector2Array( -5, 0, -4.5, 0.8, -4.5, 0.1, 4.5, 0.1, 4.5, 0.8, 5, 0 )
 mode = 2
 path_node = NodePath("..")
 path_interval = 1.0
