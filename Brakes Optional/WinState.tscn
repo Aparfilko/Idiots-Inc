@@ -14,10 +14,10 @@ __meta__ = {
 }
 
 [node name="WinText" type="RichTextLabel" parent="."]
-margin_left = 95.0534
-margin_top = 25.0
-margin_right = 163.053
-margin_bottom = 48.0
+margin_left = 79.563
+margin_top = 23.5298
+margin_right = 175.563
+margin_bottom = 46.5298
 text = "YOU WIN!"
 scroll_active = false
 __meta__ = {

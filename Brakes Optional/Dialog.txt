@@ -32,5 +32,6 @@ COACH
 	Watch out, Bud! Your ODIOUS opponent doesnt play fair...
 	They cut some of your power plugs!!!
 Lvl 4
-Adversary
-	Rematch- this time I wont go easy on you!
+ADVERSARY
+	Rematch- this time I wont go easy on you...
+	I will use my IGNITION DRIFTING skills to beat you!

@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/car.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://script/car.gd" type="Script" id=2]
 [ext_resource path="res://assets/scene/booster.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/default_env.tres" type="Environment" id=4]
-
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.588235, 0.729412, 0.717647, 1 )
+[ext_resource path="res://assets/Textures/GLASS.tres" type="Material" id=5]
+[ext_resource path="res://assets/Textures/HEAD.tres" type="Material" id=6]
+[ext_resource path="res://assets/Textures/car.tres" type="Material" id=7]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.8, 0.7, 4.48376 )
@@ -20,7 +20,7 @@ script = ExtResource( 2 )
 [node name="body" type="MeshInstance" parent="."]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 mesh = ExtResource( 1 )
-material/0 = SubResource( 1 )
+material/0 = ExtResource( 7 )
 
 [node name="booster" parent="body" instance=ExtResource( 3 )]
 transform = Transform( 0.5, 0, 4.9738e-13, 0, 0.5, 0, -4.9738e-13, 0, 0.5, 4, 0.67, 1.6 )
@@ -30,6 +30,14 @@ transform = Transform( 0.5, 0, 4.9738e-13, 0, 0.5, 0, -4.9738e-13, 0, 0.5, -4, 0
 
 [node name="booster3" parent="body" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15674e-06, 0.75, 3.55 )
+
+[node name="CSGSphere" type="CSGSphere" parent="body"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 2, 0, 1.4, 0.7 )
+material = ExtResource( 5 )
+
+[node name="CSGSphere2" type="CSGSphere" parent="body"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.05657e-07, 1.63044, 1.24496 )
+material = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.445377 )
