@@ -31,7 +31,8 @@ func meas():
 func initGhosts(a,onlyNemesis):
 	var testString="ghost_"+str(a)+"_";
 	if onlyNemesis:
-		testString+="NEMESIS_";
+		testString+="TONY_";
+	print(testString);
 	var dir=Directory.new();
 	dir.open("res://ghost/");
 	dir.list_dir_begin();
@@ -39,7 +40,8 @@ func initGhosts(a,onlyNemesis):
 		var file=dir.get_next();
 		if file=="":
 			break;
-		if file.begins_with("ghost_"+str(a)+"_"):
+		if file.begins_with(testString):
+			print(file);
 			var f=File.new();
 			f.open("res://ghost/"+file,File.READ);
 			var s=f.get_line();

@@ -5,13 +5,15 @@ var refCurr;
 var refCar;
 onready var cnt = 1
 var resLevel
-var onlyNemesis=1;
+var onlyNemesis=true;
 
 func _ready():
+	print("GLOBALLEVEL: ",Global.level);
 	if Global.level>0:
 		cnt=Global.level
-		onlyNemesis=0;
+		onlyNemesis=false;
 		Global.level=0
+	print("ONLYNEMESIS: ",onlyNemesis);
 	refCar=get_parent().get_node("car");
 	connect("reset", refCar, "reset")
 	resLevel = load("res://level/Track"+String(cnt)+".tscn")
