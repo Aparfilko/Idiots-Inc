@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Slipstream.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/comettail.png" type="Texture" id=5]
 [ext_resource path="res://Panel.gd" type="Script" id=6]
 [ext_resource path="res://audio/music/title.ogg" type="AudioStream" id=7]
+[ext_resource path="res://img/GMTK.png" type="Texture" id=8]
+[ext_resource path="res://img/Godot_icon.svg" type="Texture" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -140,7 +142,6 @@ custom_fonts/font = SubResource( 7 )
 text = "Quit"
 
 [node name="Panel2" type="Panel" parent="."]
-visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
 theme = ExtResource( 1 )
@@ -202,6 +203,16 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="Panel2"]
+position = Vector2( 1573.47, 563.977 )
+scale = Vector2( 0.253426, 0.273393 )
+texture = ExtResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="Panel2"]
+position = Vector2( 292.585, 552.848 )
+scale = Vector2( 0.380075, 0.367675 )
+texture = ExtResource( 9 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
