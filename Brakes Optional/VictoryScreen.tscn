@@ -1,10 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://VictoryScreen.gd" type="Script" id=2]
+[ext_resource path="res://audio/music/title.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/MrPixel/VTF MisterPixel/otf/Mister Pixel Regular.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/DaveAndChadCake.png" type="Texture" id=5]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.152941, 0.176471, 0.196078, 1 )
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 57
+outline_size = 2
+outline_color = Color( 0.298039, 0.298039, 0.298039, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 38
+use_filter = true
+font_data = ExtResource( 4 )
 
 [node name="VictoryScreen" type="Node2D"]
 script = ExtResource( 2 )
@@ -17,3 +33,32 @@ custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 1065.0
+margin_top = 69.0
+margin_right = 1945.0
+margin_bottom = 442.0
+custom_fonts/font = SubResource( 2 )
+text = "BODACIOUS dude!
+ You just rose up to the challenge
+   and beat that BIGSHOT RACER!
+Have this RAD cake!
+ ... Try not to drive into it though,
+    hahahaha!"
+
+[node name="Button" type="Button" parent="Panel"]
+margin_left = 97.0
+margin_top = 911.0
+margin_right = 414.0
+margin_bottom = 990.0
+custom_fonts/font = SubResource( 3 )
+text = "Back to Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panel"]
+stream = ExtResource( 3 )
+autoplay = true
+[connection signal="pressed" from="Panel/Button" to="." method="_on_Button_pressed"]
