@@ -5,7 +5,7 @@ var tBooster=[0,0,0];
 
 var vel=Vector3();
 var angVel=0;
-var b=[0,0,0,0,0,0];#ign,thrust,lev,left,brake,right
+var b=[0,0,0,0,0,0];#ign,thrust,drift,left,brake,right
 
 func _ready():
 	$RayCast.cast_to=Vector3(0,-40,0);
@@ -21,13 +21,13 @@ func _physics_process(delta):
 	(.5*delta if b[3] and $Hud.socks[3] else 0)+
 	(.5*delta if b[5] and $Hud.socks[5] else 0)-
 	(20*delta if (b[4] and $Hud.socks[4] and (vel.length()<2 or $Hud.socks[0]) and vel.dot(q*Vector3(0,0,1))>-5) else 0));
-	vel-=q*Vector3(0 if b[0] else 30*delta,0,0)*vel.dot(q*Vector3(1,0,0))
+	vel-=q*Vector3(0 if b[2] and $Hud.socks[2] else 30*delta,0,0)*vel.dot(q*Vector3(1,0,0))
 	vel*=(1-.18*delta);
 	
 	if($RayCast.is_colliding()):
 		var d=(translation[1]-$RayCast.get_collision_point()[1]);
-		if(d<scale[1]*(50 if b[2] and $Hud.socks[2] else 20)):
-			vel[1]+=(scale[1]*(50 if b[2] and $Hud.socks[2] else 20)-d)*100*delta;
+		if(d<scale[1]*20):
+			vel[1]+=(scale[1]*20-d)*100*delta;
 	vel[1]-=60*delta;
 	vel[1]*=(1-4.2*delta);
 	
