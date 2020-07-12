@@ -1,9 +1,7 @@
 extends KinematicBody2D
-
 const accel = 10
 signal read()
 signal gone()
-signal panic()
 onready var realAcc = false
 #collisions
 onready var colSelectEx = Vector2(37,37)

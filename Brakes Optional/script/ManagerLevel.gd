@@ -1,13 +1,15 @@
 extends Node
-
+signal reset()
 var refOverlay;
 var refCurr;
 var refCar;
 onready var cnt = 1
 onready var resLevel = preload("res://level/Track1.tscn")
 
+
 func _ready():
 	refCar=get_parent().get_node("car");
+	connect("reset", refCar.get_node("Hud"), "reset")
 	nextOne()
 
 func nextOne():
@@ -25,3 +27,4 @@ func next_level():
 	refCurr.queue_free()
 	resLevel = load("res://level/Track"+String(cnt)+".tscn")
 	nextOne()
+	emit_signal("reset")
