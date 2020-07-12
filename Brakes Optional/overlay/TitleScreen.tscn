@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Slipstream.png" type="Texture" id=2]
 [ext_resource path="res://assets/MrPixel/VTF MisterPixel/otf/Mister Pixel Regular.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://script/StartScreemb.gd" type="Script" id=4]
 [ext_resource path="res://assets/comettail.png" type="Texture" id=5]
+[ext_resource path="res://audio/music/title.ogg" type="AudioStream" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -106,6 +107,10 @@ margin_right = 440.0
 margin_bottom = 146.0
 custom_fonts/font = SubResource( 6 )
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
 [connection signal="pressed" from="Panel/VBoxContainer/start" to="Panel" method="_on_start_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/credits" to="Panel" method="_on_credits_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/LeabDisPwace" to="Panel" method="_on_LeabDisPwace_pressed"]
