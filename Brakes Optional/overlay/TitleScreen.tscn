@@ -130,6 +130,7 @@ custom_fonts/font = SubResource( 6 )
 text = "Quit"
 
 [node name="Panel2" type="Panel" parent="."]
+visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
 theme = ExtResource( 1 )
@@ -183,9 +184,9 @@ __meta__ = {
 
 [node name="Back" type="Button" parent="Panel2"]
 margin_left = 500.0
-margin_top = 970.0
+margin_top = 940.0
 margin_right = 900.0
-margin_bottom = 1018.0
+margin_bottom = 988.0
 custom_fonts/font = SubResource( 10 )
 text = "Back"
 __meta__ = {
