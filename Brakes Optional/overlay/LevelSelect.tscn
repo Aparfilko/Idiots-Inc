@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://script/LevelSelect.gd" type="Script" id=2]
@@ -7,21 +7,20 @@
 [ext_resource path="res://assets/Textures/Track2Preview.PNG" type="Texture" id=5]
 [ext_resource path="res://assets/Textures/Track5Preview.PNG" type="Texture" id=6]
 [ext_resource path="res://assets/Textures/Track4Preview.PNG" type="Texture" id=7]
+[ext_resource path="res://overlay/Panel.gd" type="Script" id=8]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -1.948
-margin_right = 1918.05
-margin_bottom = 1082.0
-theme = ExtResource( 1 )
-color = Color( 0.52549, 0.168627, 0.109804, 1 )
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="Button" parent="Panel"]
 margin_left = 26.532
 margin_top = 19.3883
 margin_right = 121.532
@@ -33,7 +32,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Track1" type="Button" parent="."]
+[node name="Track1" type="Button" parent="Panel"]
 margin_left = 144.74
 margin_top = 164.312
 margin_right = 1309.74
@@ -44,7 +43,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Track2" type="Button" parent="."]
+[node name="Track2" type="Button" parent="Panel"]
 margin_left = 775.961
 margin_top = 162.584
 margin_right = 1353.96
@@ -55,7 +54,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Track3" type="Button" parent="."]
+[node name="Track3" type="Button" parent="Panel"]
 margin_left = 1353.64
 margin_top = 171.104
 margin_right = 2037.64
@@ -67,7 +66,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Track4" type="Button" parent="."]
+[node name="Track4" type="Button" parent="Panel"]
 margin_left = 502.349
 margin_top = 617.312
 margin_right = 1064.35
@@ -78,7 +77,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Track5" type="Button" parent="."]
+[node name="Track5" type="Button" parent="Panel"]
 margin_left = 1104.0
 margin_top = 624.948
 margin_right = 1658.0
@@ -88,9 +87,9 @@ icon = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="Track1" to="." method="_on_Track1_pressed"]
-[connection signal="pressed" from="Track2" to="." method="_on_Track2_pressed"]
-[connection signal="pressed" from="Track3" to="." method="_on_Track3_pressed"]
-[connection signal="pressed" from="Track4" to="." method="_on_Track4_pressed"]
-[connection signal="pressed" from="Track5" to="." method="_on_Track5_pressed"]
+[connection signal="pressed" from="Panel/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Panel/Track1" to="." method="_on_Track1_pressed"]
+[connection signal="pressed" from="Panel/Track2" to="." method="_on_Track2_pressed"]
+[connection signal="pressed" from="Panel/Track3" to="." method="_on_Track3_pressed"]
+[connection signal="pressed" from="Panel/Track4" to="." method="_on_Track4_pressed"]
+[connection signal="pressed" from="Panel/Track5" to="." method="_on_Track5_pressed"]
