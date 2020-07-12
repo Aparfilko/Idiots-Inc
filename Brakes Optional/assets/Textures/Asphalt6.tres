@@ -1,0 +1,21 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://img/Asphalt_006_ROUGH.png" type="Texture" id=1]
+[ext_resource path="res://img/Asphalt_006_COLOR.jpg" type="Texture" id=2]
+[ext_resource path="res://img/Asphalt_006_NRM.jpg" type="Texture" id=3]
+[ext_resource path="res://img/Asphalt_006_OCC.jpg" type="Texture" id=4]
+
+[resource]
+params_point_size = 0.1
+albedo_color = Color( 0.705882, 0.407843, 0.909804, 1 )
+albedo_texture = ExtResource( 2 )
+metallic_specular = 0.0
+roughness_texture = ExtResource( 1 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource( 3 )
+ao_enabled = true
+ao_light_affect = 0.2
+ao_texture = ExtResource( 4 )
+ao_on_uv2 = false
+ao_texture_channel = 0

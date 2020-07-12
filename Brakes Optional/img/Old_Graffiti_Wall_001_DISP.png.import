@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Asphalt_006_ROUGH.png-5a075bbe420a527307dd7fd20b6ebfdb.s3tc.stex"
-path.etc2="res://.import/Asphalt_006_ROUGH.png-5a075bbe420a527307dd7fd20b6ebfdb.etc2.stex"
+path.s3tc="res://.import/Old_Graffiti_Wall_001_DISP.png-1357b8752a8ebb06848b4f4a64fa09c5.s3tc.stex"
+path.etc2="res://.import/Old_Graffiti_Wall_001_DISP.png-1357b8752a8ebb06848b4f4a64fa09c5.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://img/Asphalt_006_ROUGH.png"
-dest_files=[ "res://.import/Asphalt_006_ROUGH.png-5a075bbe420a527307dd7fd20b6ebfdb.s3tc.stex", "res://.import/Asphalt_006_ROUGH.png-5a075bbe420a527307dd7fd20b6ebfdb.etc2.stex" ]
+source_file="res://img/Old_Graffiti_Wall_001_DISP.png"
+dest_files=[ "res://.import/Old_Graffiti_Wall_001_DISP.png-1357b8752a8ebb06848b4f4a64fa09c5.s3tc.stex", "res://.import/Old_Graffiti_Wall_001_DISP.png-1357b8752a8ebb06848b4f4a64fa09c5.etc2.stex" ]
 
 [params]
 

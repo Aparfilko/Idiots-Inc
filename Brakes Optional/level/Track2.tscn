@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/Textures/Road.tres" type="Material" id=1]
+[ext_resource path="res://assets/Textures/Brick7.tres" type="Material" id=1]
 [ext_resource path="res://assets/Archway.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/Track2.gd" type="Script" id=3]
 [ext_resource path="res://audio/music/track2.ogg" type="AudioStream" id=4]

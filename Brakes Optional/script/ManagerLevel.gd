@@ -22,6 +22,8 @@ func _on_DeathZone_body_entered(body):
 	
 func next_level():
 	cnt += 1
+	if cnt == 5:
+		get_tree().change_scene("res://overlay/TitleScreen.tscn")
 	remove_child(refCurr)
 	refCurr.queue_free()
 	resLevel = load("res://level/Track"+String(cnt)+".tscn")
