@@ -28,7 +28,10 @@ func meas():
 		(1 if c.isBooster[2] else 0)
 	);
 
-func initGhosts(a):
+func initGhosts(a,onlyNemesis):
+	var testString="ghost_"+str(a)+"_";
+	if onlyNemesis:
+		testString+="NEMESIS_";
 	var dir=Directory.new();
 	dir.open("res://ghost/");
 	dir.list_dir_begin();
@@ -56,8 +59,8 @@ func initGhosts(a):
 				print("addedGhost: ",g.gName);
 	dir.list_dir_end();
 
-func recordStart(a):
-	initGhosts(a);
+func recordStart(a,onlyNemesis):
+	initGhosts(a,onlyNemesis);
 	fid=File.new();
 	fid.open("res://ghost/ghost_"+str(a)+"_"+userName+str(randi())+".dat",File.WRITE)
 	fid.store_line("0 "+floatTo10char(float(0)));
