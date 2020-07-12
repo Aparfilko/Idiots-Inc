@@ -17,7 +17,7 @@ func _ready():
 
 #startGame
 func _on_start_pressed():
-	get_tree().change_scene("res://level/LevelSelect.tscn")
+	get_tree().change_scene("res://MainNode.tscn")
 
 
 #exit, probably should have a dialog box?

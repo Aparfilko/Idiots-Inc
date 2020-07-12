@@ -10,26 +10,26 @@
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 860, 210 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 95
 outline_size = 2
 outline_color = Color( 0.372549, 0.372549, 0.372549, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 38
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=4]
 size = 38
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
+size = 38
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 38
 font_data = ExtResource( 3 )
 
@@ -57,7 +57,7 @@ margin_left = 427.051
 margin_top = 55.0
 margin_right = 1451.05
 margin_bottom = 296.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -67,7 +67,7 @@ anchor_right = 1.0
 margin_top = 126.651
 margin_right = 0.00012207
 margin_bottom = 222.651
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "BRAKES OPTIONAL!"
 align = 1
@@ -88,23 +88,23 @@ __meta__ = {
 
 [node name="start" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 21.0
-margin_right = 439.0
+margin_right = 440.0
 margin_bottom = 60.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Start"
 
 [node name="credits" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 64.0
-margin_right = 439.0
+margin_right = 440.0
 margin_bottom = 103.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
 text = "Credits"
 
 [node name="LeabDisPwace" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 107.0
-margin_right = 439.0
+margin_right = 440.0
 margin_bottom = 146.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Quit"
 [connection signal="pressed" from="Panel/VBoxContainer/start" to="Panel" method="_on_start_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/credits" to="Panel" method="_on_credits_pressed"]
