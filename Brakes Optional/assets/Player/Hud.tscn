@@ -129,11 +129,11 @@ font_data = ExtResource( 15 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 172, 28 )
+region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 5 )
-region = Rect2( 516, 0, 172, 28 )
+region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 5 )
@@ -151,12 +151,12 @@ region = Rect2( 516, 0, 172, 28 )
 animations = [ {
 "frames": [ SubResource( 19 ) ],
 "loop": true,
-"name": "on",
+"name": "off",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 20 ) ],
 "loop": true,
-"name": "off",
+"name": "on",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 21 ) ],
@@ -172,11 +172,11 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 172, 28 )
+region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 3 )
-region = Rect2( 516, 0, 172, 28 )
+region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 3 )
@@ -194,12 +194,12 @@ region = Rect2( 516, 0, 172, 28 )
 animations = [ {
 "frames": [ SubResource( 25 ) ],
 "loop": true,
-"name": "on",
+"name": "off",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "off",
+"name": "on",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 27 ) ],
@@ -215,11 +215,11 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 172, 28 )
+region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 10 )
-region = Rect2( 516, 0, 172, 28 )
+region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 10 )
@@ -237,12 +237,12 @@ region = Rect2( 516, 0, 172, 28 )
 animations = [ {
 "frames": [ SubResource( 31 ) ],
 "loop": true,
-"name": "on",
+"name": "off",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 32 ) ],
 "loop": true,
-"name": "off",
+"name": "on",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 33 ) ],
@@ -258,11 +258,11 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 172, 28 )
+region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 7 )
-region = Rect2( 516, 0, 172, 28 )
+region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 7 )
@@ -280,12 +280,12 @@ region = Rect2( 516, 0, 172, 28 )
 animations = [ {
 "frames": [ SubResource( 37 ) ],
 "loop": true,
-"name": "on",
+"name": "off",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 38 ) ],
 "loop": true,
-"name": "off",
+"name": "on",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 39 ) ],
@@ -301,11 +301,11 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 172, 28 )
+region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=44]
 atlas = ExtResource( 6 )
-region = Rect2( 516, 0, 172, 28 )
+region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 6 )
@@ -323,12 +323,12 @@ region = Rect2( 516, 0, 172, 28 )
 animations = [ {
 "frames": [ SubResource( 43 ) ],
 "loop": true,
-"name": "on",
+"name": "off",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 44 ) ],
 "loop": true,
-"name": "off",
+"name": "on",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 45 ) ],
@@ -344,11 +344,11 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 172, 28 )
+region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 8 )
-region = Rect2( 516, 0, 172, 28 )
+region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=51]
 atlas = ExtResource( 8 )
@@ -366,12 +366,12 @@ region = Rect2( 516, 0, 172, 28 )
 animations = [ {
 "frames": [ SubResource( 49 ) ],
 "loop": true,
-"name": "on",
+"name": "off",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 50 ) ],
 "loop": true,
-"name": "off",
+"name": "on",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 51 ) ],
@@ -450,7 +450,7 @@ margin_bottom = -7.508
 rect_scale = Vector2( 4.97954, 6.39508 )
 custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0, 1, 0.321569, 1 )
-text = "009"
+text = "000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
