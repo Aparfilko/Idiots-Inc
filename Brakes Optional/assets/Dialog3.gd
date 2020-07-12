@@ -15,7 +15,7 @@ func _ready():
 	visible = true
 	rect_position.x = size[0]/2-300
 	rect_size = Vector2(600,250)
-	$speaker.texture = preload("res://img/icon.png")
+	$speaker.texture = preload("res://img/Dave.png")
 func _process(_delta):
 	$Label.percent_visible += 0.025
 func _input(event):

@@ -29,6 +29,7 @@ func reset(plugs, breaking, socks):
 
 func _physics_process(delta):
 	tic+=delta;
+	$raceTimer.setTime(tic);
 	isBooster[0]=b[3] and $Hud.socks[3];
 	isBooster[1]=b[5] and $Hud.socks[5];
 	isBooster[2]=(b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5);

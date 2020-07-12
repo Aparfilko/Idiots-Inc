@@ -7,7 +7,7 @@ var speech = ["You can toggle camera with the [Tab] key...",
 	"You wont outmatch my DRIFTING skills..."]
 var speaker = [0, 1, 1, 0, 0, 1]
 var n = 0
-var spk = [preload("res://img/icon.png"),preload("res://img/villian.png")]
+var spk = [preload("res://img/Dave.png"),preload("res://img/villian.png")]
 onready var size = get_viewport().size
 
 # Called when the node enters the scene tree for the first time.
