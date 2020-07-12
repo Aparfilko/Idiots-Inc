@@ -38,19 +38,3 @@ func _on_Track5_pressed():
 	_on_button_pressed()
 	Global.level = 5
 	get_tree().change_scene("res://MainNode.tscn")
-
-
-func _on_Track2_button_down():
-	pass # Replace with function body.
-
-
-func _on_Track3_button_down():
-	pass # Replace with function body.
-
-
-func _on_Track4_button_down():
-	pass # Replace with function body.
-
-
-func _on_Track5_button_down():
-	pass # Replace with function body.
