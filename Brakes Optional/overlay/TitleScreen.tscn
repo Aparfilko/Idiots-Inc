@@ -142,7 +142,6 @@ text = "Quit"
 [node name="buttonSfx" parent="Panel" instance=ExtResource( 11 )]
 
 [node name="Panel2" type="Panel" parent="."]
-visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
 theme = ExtResource( 1 )
@@ -195,10 +194,10 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="Panel2"]
-margin_left = 503.896
-margin_top = 975.064
-margin_right = 903.896
-margin_bottom = 1023.06
+margin_left = 729.993
+margin_top = 986.809
+margin_right = 1129.99
+margin_bottom = 1034.81
 custom_fonts/font = SubResource( 5 )
 text = "Back"
 __meta__ = {
@@ -206,9 +205,13 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Panel2"]
+position = Vector2( 1563.45, 561.419 )
+scale = Vector2( 0.300339, 0.321948 )
 texture = ExtResource( 8 )
 
 [node name="Sprite2" type="Sprite" parent="Panel2"]
+position = Vector2( 310.038, 550.275 )
+scale = Vector2( 0.438101, 0.412167 )
 texture = ExtResource( 9 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
