@@ -33,6 +33,7 @@ environment = ExtResource( 3 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 pause_mode = 1
 transform = Transform( -6.65853e-08, -0.91267, 0.408697, -1.48693e-07, 0.408697, 0.91267, -1, 0, -1.62921e-07, 0, 10, 0 )
+visible = false
 
 [node name="DeathZone" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
