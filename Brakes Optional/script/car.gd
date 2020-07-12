@@ -13,6 +13,11 @@ func _ready():
 	refBooster.append($body/booster2);
 	refBooster.append($body/booster3);
 
+func _reset():
+	vel=Vector3();
+	angVel=0;
+	b=[0,0,0,0,0,0];
+
 func _physics_process(delta):
 	#vel
 	var q=Quat(Vector3(0,1,0),rotation[1]);
@@ -53,9 +58,12 @@ func _physics_process(delta):
 	$Hud.mph(10*vel.length());
 	$Hud.wheel(-$body.rotation[2]);
 	
-	refBooster[0].set_ass(b[3] and $Hud.socks[3],.1);
-	refBooster[1].set_ass(b[5] and $Hud.socks[5],.5+vel.length()/100);
-	refBooster[2].set_ass((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5),1);
+	tBooster[0]=tBooster[0]+delta if b[3] else 0;
+	tBooster[1]=tBooster[1]+delta if b[5] else 0;
+	tBooster[2]=tBooster[2]+delta if b[1] else 0;
+	refBooster[0].set_ass(b[3] and $Hud.socks[3],min(1,tBooster[0]));
+	refBooster[1].set_ass(b[5] and $Hud.socks[5],min(1,tBooster[1]));
+	refBooster[2].set_ass((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5),min(1,tBooster[2]));
 
 func _input(event):
 	b=[
