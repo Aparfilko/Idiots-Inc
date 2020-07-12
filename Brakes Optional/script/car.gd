@@ -1,6 +1,7 @@
 extends KinematicBody
 
 var refBooster=[];#right,left,center
+var tBooster=[0,0,0];
 
 var vel=Vector3();
 var angVel=0;
@@ -52,8 +53,8 @@ func _physics_process(delta):
 	$Hud.mph(10*vel.length());
 	$Hud.wheel(-$body.rotation[2]);
 	
-	refBooster[0].set_ass(b[3] and $Hud.socks[3],1);
-	refBooster[1].set_ass(b[5] and $Hud.socks[5],1);
+	refBooster[0].set_ass(b[3] and $Hud.socks[3],.1);
+	refBooster[1].set_ass(b[5] and $Hud.socks[5],.5+vel.length()/100);
 	refBooster[2].set_ass((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5),1);
 
 func _input(event):
