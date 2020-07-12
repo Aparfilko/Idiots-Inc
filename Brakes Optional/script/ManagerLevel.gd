@@ -14,5 +14,5 @@ func _ready():
 	refCar.transform=refCurr.get_node("SpawnPoint").transform;
 
 
-func _on_DeathZone_body_entered(body):
+func _on_DeathZone_body_entered(_body):
 	pass # Replace with function body.
