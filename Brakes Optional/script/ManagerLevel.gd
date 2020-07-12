@@ -17,7 +17,6 @@ func nextOne():
 	print(refCurr.name)
 	add_child(refCurr);
 	refCar.transform=refCurr.get_node("SpawnPoint").transform;
-	refCar.reset();
 	
 func _on_DeathZone_body_entered(body):
 	print("welp")

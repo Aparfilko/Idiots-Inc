@@ -18,7 +18,7 @@ script = ExtResource( 8 )
 [node name="ManagerLevel" type="Node" parent="."]
 script = ExtResource( 6 )
 
-[node name="ManagerOverlay" type="Node" parent="."]
+[node name="ManagerReplay" type="Node" parent="."]
 script = ExtResource( 7 )
 
 [node name="car" parent="." instance=ExtResource( 1 )]
