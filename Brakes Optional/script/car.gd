@@ -49,9 +49,9 @@ func _physics_process(delta):
 	$Camera.rotation[1]=lerp($Camera.rotation[1],PI-vel.dot(q*Vector3(-1,0,0))/(vel.length()),.1);
 	$Camera.translation[0]=lerp($Camera.translation[0],17*tan(vel.dot(q*Vector3(-1,0,0))/(vel.length())),.1);
 	
-	refBooster[0].set_ass(b[3] and $Hud.socks[3]);
-	refBooster[1].set_ass(b[5] and $Hud.socks[5]);
-	refBooster[2].set_ass((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5));
+	refBooster[0].set_ass(b[3] and $Hud.socks[3],1);
+	refBooster[1].set_ass(b[5] and $Hud.socks[5],1);
+	refBooster[2].set_ass((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5),1);
 
 func _input(event):
 	b=[

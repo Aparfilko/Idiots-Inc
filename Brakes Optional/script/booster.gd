@@ -7,10 +7,12 @@ onready var ass_mat=[
 
 var ass_ind;
 
-func set_ass(a):
+func set_ass(a,b):
 	if ass_ind!=a:
 		$ass.set_surface_material(0,ass_mat[1 if a else 0]);
 		ass_ind=a;
+	if a:
+		$ass.get_surface_material(0).set_shader_param("uniform_name", Color(1,1,1))
 
 func _process(_delta):
 	randomize()
