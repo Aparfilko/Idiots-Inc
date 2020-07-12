@@ -25,5 +25,4 @@ func _on_LeabDisPwace_pressed(): #uwu
 	get_tree().quit();
 
 
-func _on_credits_pressed():
-	get_tree().change_scene("res://Credits Page.tscn")
+

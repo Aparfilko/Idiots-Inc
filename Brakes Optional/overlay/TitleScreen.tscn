@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Slipstream.png" type="Texture" id=2]
 [ext_resource path="res://assets/MrPixel/VTF MisterPixel/otf/Mister Pixel Regular.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://script/StartScreemb.gd" type="Script" id=4]
 [ext_resource path="res://assets/comettail.png" type="Texture" id=5]
+[ext_resource path="res://Panel.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -31,6 +32,26 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 38
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.152941, 0.176471, 0.196078, 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 110
+outline_size = 2
+outline_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 34
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 38
+use_filter = true
 font_data = ExtResource( 3 )
 
 [node name="Title Screen" type="Control"]
@@ -106,6 +127,68 @@ margin_right = 440.0
 margin_bottom = 146.0
 custom_fonts/font = SubResource( 6 )
 text = "Quit"
+
+[node name="Panel2" type="Panel" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 7 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel2"]
+margin_top = 41.0
+margin_right = 1917.0
+margin_bottom = 188.0
+custom_fonts/font = SubResource( 8 )
+text = "• CREDITS •"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="theCreditsLmao" type="Label" parent="Panel2"]
+margin_left = 235.0
+margin_top = 199.0
+margin_right = 1685.0
+margin_bottom = 883.0
+custom_fonts/font = SubResource( 9 )
+text = "A Game by Idiots Inc.:
+
+Brantley Balsamo
+Anjali Jothi
+Anthony Parfilko
+Sarah Poon
+Alex Radulescu
+Taylor Rondel
+
+Special thanks to 
+Carol Braddock
+
+Outside Assets Used:
+\"Mister Pixel\" font by Christophe Badani 
+\"Asphalt 006\" texture by Katsukagi
+
+Made in Godot"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="Panel2"]
+margin_left = 741.0
+margin_top = 940.0
+margin_right = 1179.0
+margin_bottom = 988.0
+custom_fonts/font = SubResource( 10 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Panel/VBoxContainer/start" to="Panel" method="_on_start_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/credits" to="Panel" method="_on_credits_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/credits" to="Panel2" method="_on_credits_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/LeabDisPwace" to="Panel" method="_on_LeabDisPwace_pressed"]
+[connection signal="pressed" from="Panel2/Back" to="Panel2" method="_on_Back_pressed"]
