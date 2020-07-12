@@ -47,4 +47,4 @@ layer = 3
 
 [node name="Pausenode" parent="PauseBox" instance=ExtResource( 5 )]
 pause_mode = 2
-[connection signal="body_entered" from="DeathZone" to="car" method="_on_DeathZone_body_entered"]
+[connection signal="body_entered" from="DeathZone" to="ManagerLevel" method="_on_DeathZone_body_entered"]
