@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Slipstream.png" type="Texture" id=2]
@@ -24,6 +24,10 @@ use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 38
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=11]
 size = 38
 font_data = ExtResource( 3 )
 
@@ -109,23 +113,29 @@ __meta__ = {
 }
 
 [node name="start" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 21.0
 margin_right = 440.0
-margin_bottom = 60.0
+margin_bottom = 39.0
 custom_fonts/font = SubResource( 4 )
 text = "Start"
 
-[node name="credits" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 64.0
+[node name="LevelSelect" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 43.0
 margin_right = 440.0
-margin_bottom = 103.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 11 )
+text = "Level Select"
+
+[node name="credits" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 86.0
+margin_right = 440.0
+margin_bottom = 125.0
 custom_fonts/font = SubResource( 5 )
 text = "Credits"
 
 [node name="LeabDisPwace" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 107.0
+margin_top = 129.0
 margin_right = 440.0
-margin_bottom = 146.0
+margin_bottom = 168.0
 custom_fonts/font = SubResource( 6 )
 text = "Quit"
 
@@ -183,10 +193,10 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="Panel2"]
-margin_left = 500.0
-margin_top = 940.0
-margin_right = 900.0
-margin_bottom = 988.0
+margin_left = 503.896
+margin_top = 975.064
+margin_right = 903.896
+margin_bottom = 1023.06
 custom_fonts/font = SubResource( 10 )
 text = "Back"
 __meta__ = {
@@ -197,6 +207,7 @@ __meta__ = {
 stream = ExtResource( 7 )
 autoplay = true
 [connection signal="pressed" from="Panel/VBoxContainer/start" to="Panel" method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/LevelSelect" to="Panel" method="_on_LevelSelect_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/credits" to="Panel2" method="_on_credits_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/LeabDisPwace" to="Panel" method="_on_LeabDisPwace_pressed"]
 [connection signal="pressed" from="Panel2/Back" to="Panel2" method="_on_Back_pressed"]
