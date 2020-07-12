@@ -13,14 +13,14 @@ func _ready():
 	refBooster.append($body/booster2);
 	refBooster.append($body/booster3);
 
-func reset():
+func reset(plugs, breaking, socks):
 	vel=Vector3();
 	angVel=0;
 	b=[0,0,0,0,0,0];
 	for i in get_node("Hud/plugs").get_children():
 		i.plugOut()
 		i.get_node("AnimatedSprite").play("hell")
-	$Hud.deploy_plugs($Hud.numPlugs, true)
+	$Hud.set_up(plugs, breaking, socks)
 	$Pausenode._ready()
 
 func _physics_process(delta):

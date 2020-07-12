@@ -1,5 +1,5 @@
 extends Node
-signal reset()
+signal reset(plugs, breaking, sockets)
 var refReplay;
 var refCurr;
 var refCar;
@@ -8,7 +8,7 @@ onready var resLevel = preload("res://level/Track1.tscn")
 
 func _ready():
 	refCar=get_parent().get_node("car");
-	connect("reset", refCar, "_reset")
+	connect("reset", refCar, "reset")
 	nextOne()
 
 func nextOne():
@@ -26,7 +26,7 @@ func next_level():
 	refCurr.queue_free()
 	resLevel = load("res://level/Track"+String(cnt)+".tscn")
 	nextOne()
-	emit_signal("reset")
+	emit_signal("reset", refCurr.plugs, refCurr.breaking, refCurr.socks)
 
 func choose_level(i):
 	cnt = i
@@ -34,4 +34,4 @@ func choose_level(i):
 	refCurr.queue_free()
 	resLevel = load("res://level/Track"+String(cnt)+".tscn")
 	nextOne()
-	emit_signal("reset")
+	emit_signal("reset", refCurr.plugs, refCurr.breaking, refCurr.socks)

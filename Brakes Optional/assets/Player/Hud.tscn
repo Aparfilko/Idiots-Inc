@@ -127,23 +127,23 @@ size = 8
 font_data = ExtResource( 15 )
 
 [sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 172, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 344, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="SpriteFrames" id=24]
@@ -166,27 +166,27 @@ animations = [ {
 "frames": [ SubResource( 22 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "danger",
-"speed": 5.0
+"speed": 10.0
 } ]
 
 [sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 5 )
 region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 5 )
 region = Rect2( 172, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 5 )
 region = Rect2( 344, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 5 )
 region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="SpriteFrames" id=30]
@@ -209,27 +209,27 @@ animations = [ {
 "frames": [ SubResource( 28 ), SubResource( 28 ), SubResource( 29 ) ],
 "loop": true,
 "name": "danger",
-"speed": 10.0
+"speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 6 )
 region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 6 )
 region = Rect2( 172, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 6 )
 region = Rect2( 344, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 6 )
 region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="SpriteFrames" id=36]
@@ -299,23 +299,23 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 3 )
 region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 3 )
 region = Rect2( 172, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 3 )
 region = Rect2( 344, 0, 172, 28 )
 
 [sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 3 )
 region = Rect2( 516, 0, 172, 28 )
 
 [sub_resource type="SpriteFrames" id=48]
@@ -464,31 +464,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ignition" parent="sockets" instance=ExtResource( 13 )]
+position = Vector2( -130, -170 )
+z_index = -4
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="sockets/ignition"]
+position = Vector2( 0, -48 )
+frames = SubResource( 24 )
+animation = "off"
+playing = true
+
 [node name="thrust" parent="sockets" instance=ExtResource( 13 )]
 position = Vector2( 115, -170 )
 z_index = -4
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="sockets/thrust"]
 position = Vector2( 0, -48 )
-frames = SubResource( 24 )
-animation = "off"
-playing = true
-
-[node name="brake" parent="sockets" instance=ExtResource( 13 )]
-position = Vector2( 115, -45 )
-z_index = -4
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="sockets/brake"]
-position = Vector2( 0, -48 )
 frames = SubResource( 30 )
 animation = "off"
 playing = true
 
-[node name="ignition" parent="sockets" instance=ExtResource( 13 )]
-position = Vector2( -130, -170 )
+[node name="fly" parent="sockets" instance=ExtResource( 13 )]
+position = Vector2( 360, -170 )
 z_index = -4
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="sockets/ignition"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="sockets/fly"]
 position = Vector2( 0, -48 )
 frames = SubResource( 36 )
 animation = "off"
@@ -504,11 +504,11 @@ frames = SubResource( 42 )
 animation = "off"
 playing = true
 
-[node name="fly" parent="sockets" instance=ExtResource( 13 )]
-position = Vector2( 360, -170 )
+[node name="brake" parent="sockets" instance=ExtResource( 13 )]
+position = Vector2( 115, -45 )
 z_index = -4
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="sockets/fly"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="sockets/brake"]
 position = Vector2( 0, -48 )
 frames = SubResource( 48 )
 animation = "off"
