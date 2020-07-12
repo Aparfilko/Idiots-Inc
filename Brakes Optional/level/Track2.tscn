@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Textures/Brick7.tres" type="Material" id=1]
 [ext_resource path="res://assets/Archway.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/Track2.gd" type="Script" id=3]
 [ext_resource path="res://audio/music/track2.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/Dialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Dialog2.gd" type="Script" id=6]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -75,6 +76,7 @@ stream = ExtResource( 4 )
 autoplay = true
 
 [node name="Dialog" parent="." instance=ExtResource( 5 )]
+script = ExtResource( 6 )
 [connection signal="body_entered" from="Start/Area1" to="." method="_on_Area1_body_entered"]
 [connection signal="body_entered" from="1/Area2" to="." method="_on_Area2_body_entered"]
 [connection signal="body_entered" from="2/Area3" to="." method="_on_Area3_body_entered"]
