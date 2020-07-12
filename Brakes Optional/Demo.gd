@@ -37,6 +37,7 @@ func _input(event):
 	else:
 		if n < speech.size()-1:
 			if $Dialog/Label.percent_visible == 1:
+				$Dialog/AudioStreamPlayer.play()
 				n += 1
 				$Dialog/Label.text = speech[n]
 				$Dialog/Label.percent_visible = 0
