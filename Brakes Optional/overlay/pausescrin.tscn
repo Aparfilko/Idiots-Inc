@@ -7,6 +7,8 @@
 bg_color = Color( 0.411765, 0.411765, 0.411765, 0.458824 )
 
 [node name="Pausenode" type="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -14,9 +16,8 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = -2.05054
-margin_top = -4.10107
-margin_right = 1917.95
+margin_left = -960.0
+margin_right = 960.0
 margin_bottom = 1075.9
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
@@ -25,10 +26,10 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 737.949
-margin_top = 453.899
-margin_right = 1127.95
-margin_bottom = 673.899
+margin_left = -195.0
+margin_top = 454.0
+margin_right = 195.0
+margin_bottom = 674.0
 theme = ExtResource( 1 )
 color = Color( 0.490196, 0.133333, 0.0745098, 0.482353 )
 __meta__ = {

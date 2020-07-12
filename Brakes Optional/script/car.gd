@@ -9,28 +9,31 @@ var b=[0,0,0,0,0,0];#ign,thrust,lev,left,brake,right
 
 func _ready():
 	$RayCast.cast_to=Vector3(0,-40,0);
-	pass # Replace with function body.
 
 func _physics_process(delta):
-	angVel+=(.1*delta if b[3] else 0)-(.1*delta if b[5] else 0);
+	angVel+=(.1*delta if b[3] and $Hud.socks[3] else 0)-(.1*delta if b[5] and $Hud.socks[5] else 0);
 	angVel*=(1-3*delta) #angular deceleration when not turning
 	
 	var q=Quat(Vector3(0,1,0),rotation[1]);
-	vel+=q*Vector3(0,0,(10*delta if (b[1] and (b[0] or vel.length()>5)) else 0)+(.5*delta if b[3] else 0)+(.5*delta if b[5] else 0)-(20*delta if (b[4] and vel.dot(q*Vector3(0,0,1))>-5) else 0));
+	vel+=q*Vector3(0,0,
+	(10*delta if ((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5)) else 0)+
+	(.5*delta if b[3] and $Hud.socks[3] else 0)+
+	(.5*delta if b[5] and $Hud.socks[5] else 0)-
+	(20*delta if (b[4] and $Hud.socks[4] and (vel.length()<2 or $Hud.socks[0]) and vel.dot(q*Vector3(0,0,1))>-5) else 0));
 	vel-=q*Vector3(0 if b[0] else 30*delta,0,0)*vel.dot(q*Vector3(1,0,0))
 	vel*=(1-.18*delta);
 	
 	if($RayCast.is_colliding()):
 		var d=(translation[1]-$RayCast.get_collision_point()[1]);
-		if(d<scale[1]*(50 if b[2] else 20)):
-			vel[1]+=(scale[1]*(50 if b[2] else 20)-d)*100*delta;
+		if(d<scale[1]*(50 if b[2] and $Hud.socks[2] else 20)):
+			vel[1]+=(scale[1]*(50 if b[2] and $Hud.socks[2] else 20)-d)*100*delta;
 	vel[1]-=60*delta;
 	vel[1]*=(1-4.2*delta);
 	
 	rotation[1]+=angVel;
-	$body.rotation[2]+=(3*delta if b[3] else 0)-(3*delta if b[5] else 0);
+	$body.rotation[2]+=(3*delta if b[3] and $Hud.socks[3] else 0)-(3*delta if b[5] and $Hud.socks[5] else 0);
 	$body.rotation[2]*=(1-4.8*delta);
-	$body.rotation[0]-=(2*delta if (b[1] and (b[0] or vel.length()>5)) else 0)-(2*delta if b[4] else 0)
+	$body.rotation[0]-=(2*delta if ((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5)) else 0)-(2*delta if b[4] and $Hud.socks[4] else 0)
 	$body.rotation[0]*=(1-12*delta);
 
 	$Camera.rotation[1]=lerp($Camera.rotation[1],PI-vel.dot(q*Vector3(-1,0,0))/(vel.length()),.1);
@@ -40,7 +43,7 @@ func _physics_process(delta):
 	var col=move_and_collide(vel*delta);
 	if(col):
 		vel=vel.bounce(col.normal);
-		move_and_collide(col.remainder);
+		col=move_and_collide(col.remainder);
 
 func _input(event):
 	b=[
