@@ -63,19 +63,19 @@ func initGhosts(a,onlyNemesis):
 
 func recordStart(a,onlyNemesis):
 	initGhosts(a,onlyNemesis);
-	fid=File.new();
-	fid.open("res://ghost/ghost_"+str(a)+"_"+userName+str(randi())+".dat",File.WRITE)
-	fid.store_line("0 "+floatTo10char(float(0)));
-	fid.store_line(userName);
-	timer.start();
-	tic=c.tic;
+	#fid=File.new();
+	#fid.open("res://ghost/ghost_"+str(a)+"_"+userName+str(randi())+".dat",File.WRITE)
+	#fid.store_line("0 "+floatTo10char(float(0)));
+	#fid.store_line(userName);
+	#timer.start();
+	#tic=c.tic;
 	meas();
 
 func recordStop():
-	fid.seek(0);
-	fid.store_line("1 "+floatTo10char(c.tic-tic));
-	fid.close();
-	print("File Written!: ",OS.get_user_data_dir(),", ",userName)
+	#fid.seek(0);
+	#fid.store_line("1 "+floatTo10char(c.tic-tic));
+	#fid.close();
+	#print("File Written!: ",OS.get_user_data_dir(),", ",userName)
 	timer.stop();
 
 func floatTo10char(a):
