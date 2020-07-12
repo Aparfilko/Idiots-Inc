@@ -21,7 +21,7 @@ extents = Vector3( 6.10634, 1, 2.85825 )
 script = ExtResource( 1 )
 
 [node name="SpawnPoint" type="Spatial" parent="."]
-transform = Transform( -0.05, 0, -1.94707e-08, 0, 0.05, 0, 1.94707e-08, 0, -0.05, -2.06641, 1.49698, 19.6607 )
+transform = Transform( -0.05, 0, -1.94707e-08, 0, 0.05, 0, 1.94707e-08, 0, -0.05, -2.06641, 2.1159, 19.6607 )
 
 [node name="Path" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86461, 0.353043, 0.389977 )

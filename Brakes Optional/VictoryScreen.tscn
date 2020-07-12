@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
+[ext_resource path="res://VictoryScreen.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.152941, 0.176471, 0.196078, 1 )
 
 [node name="VictoryScreen" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1920.0
