@@ -23,8 +23,8 @@ func reset(plugs, breaking, socks):
 	for i in get_node("Hud/plugs").get_children():
 		i.plugOut()
 		i.get_node("AnimatedSprite").play("hell")
-	$Hud.set_up(plugs, breaking, socks)
 	$raceTimer._ready()
+	$Hud.set_up(plugs, breaking, socks)
 	tic=0;
 
 func _physics_process(delta):

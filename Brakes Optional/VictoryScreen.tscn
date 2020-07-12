@@ -24,6 +24,7 @@ use_filter = true
 font_data = ExtResource( 4 )
 
 [node name="VictoryScreen" type="Node2D"]
+z_index = 10
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
