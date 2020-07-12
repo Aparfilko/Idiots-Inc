@@ -17,6 +17,11 @@ func _reset():
 	vel=Vector3();
 	angVel=0;
 	b=[0,0,0,0,0,0];
+	for i in get_node("Hud/plugs").get_children():
+		i.plugOut()
+		i.get_node("AnimatedSprite").play("hell")
+	$Hud.deploy_plugs($Hud.numPlugs)
+	$Pausenode._ready()
 
 func _physics_process(delta):
 	#vel

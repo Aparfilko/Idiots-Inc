@@ -9,12 +9,6 @@ func _ready():
 	deploy_plugs(numPlugs)
 	resize()
 
-func reset():
-	for i in get_node("plugs").get_children():
-		i.plugOut()
-		i.get_node("AnimatedSprite").play("hell")
-	deploy_plugs(numPlugs)
-
 #make sure the hud is sized up to the screen
 func resize():
 	var x = OS.get_window_size().x/screenInit.x
