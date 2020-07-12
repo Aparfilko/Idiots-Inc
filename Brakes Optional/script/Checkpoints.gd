@@ -4,7 +4,7 @@ var goals = NEXT2
 var lap = 0
 
 
-func _on_Area1_body_entered(body):
+func _on_Area1_body_entered(_body):
 	if goals == NEXT1:
 		print(lap)
 		goals = NEXT2
@@ -12,11 +12,11 @@ func _on_Area1_body_entered(body):
 		if lap == 3:
 			get_node("/root/MainNode/car/Hud/WinState").popup_centered()
 
-func _on_Area2_body_entered(body):
+func _on_Area2_body_entered(_body):
 	if goals == NEXT2:
 		goals = NEXT3
 
-func _on_Area3_body_entered(body):
+func _on_Area3_body_entered(_body):
 	if goals == NEXT3:
 		print(lap)
 		goals = NEXT1
