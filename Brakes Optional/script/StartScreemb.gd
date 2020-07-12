@@ -15,6 +15,7 @@ func _ready():
 	$Label.rect_size.x = OS.get_window_size().x
 	$Comet.rect_position.x = OS.get_window_size().x /2 - 590
 	$VBoxContainer.rect_position.x = OS.get_window_size().x /2 - 220
+	$VBoxContainer.rect_position.y = OS.get_window_size().y - 200
 
 
 #startGame
