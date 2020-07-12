@@ -6,16 +6,22 @@
 [ext_resource path="res://img/Asphalt_006_OCC.jpg" type="Texture" id=4]
 
 [resource]
+flags_albedo_tex_force_srgb = true
+flags_ensure_correct_normals = true
 params_point_size = 0.1
-albedo_color = Color( 0.705882, 0.407843, 0.909804, 1 )
+albedo_color = Color( 0.886275, 0.482353, 0.235294, 1 )
 albedo_texture = ExtResource( 2 )
 metallic_specular = 0.0
 roughness_texture = ExtResource( 1 )
+roughness_texture_channel = 3
 normal_enabled = true
-normal_scale = 2.0
+normal_scale = 3.0
 normal_texture = ExtResource( 3 )
+clearcoat_enabled = true
+clearcoat = 0.0
+clearcoat_gloss = 0.0
 ao_enabled = true
-ao_light_affect = 0.2
+ao_light_affect = 0.5
 ao_texture = ExtResource( 4 )
 ao_on_uv2 = false
 ao_texture_channel = 0
