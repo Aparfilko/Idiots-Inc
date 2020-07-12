@@ -31,7 +31,7 @@ func meas():
 func initGhosts(a,onlyNemesis):
 	var testString="ghost_"+str(a)+"_";
 	if onlyNemesis:
-		testString+="TONY_";
+		testString+="NEMESIS_";
 	print(testString);
 	var dir=Directory.new();
 	dir.open("res://ghost/");

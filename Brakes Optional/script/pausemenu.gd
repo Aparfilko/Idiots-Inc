@@ -44,6 +44,7 @@ func _on_Restart_pressed(): #restart track
 	var levelMan = get_parent().get_parent().get_node("ManagerLevel")
 	levelMan.emit_signal("reset")
 	levelMan.refCar.transform=levelMan.refCurr.get_node("SpawnPoint").transform;
+	levelMan.refCar.vel=Vector3();
 
 func _on_BackToStart_pressed(): #Return to either start screen or whatever main 
 	pauseState = false
