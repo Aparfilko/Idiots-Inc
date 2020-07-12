@@ -4,7 +4,10 @@ var refOverlay;
 var refCurr;
 var refCar;
 onready var resLevel=[
+#	preload("res://level/TestTrack.tscn"),
 	preload("res://level/Track1.tscn"),
+#	preload("res://level/Track2.tscn"),
+#	preload("res://level/Track3.tscn"),
 ];
 
 func _ready():
