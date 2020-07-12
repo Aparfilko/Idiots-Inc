@@ -2,7 +2,7 @@ extends Panel
 
 
 func _ready():
-	rect_size = OS.get_window_size()
+	rect_size = Vector2(1920,1080)
 	resize()
 
 func resize():
