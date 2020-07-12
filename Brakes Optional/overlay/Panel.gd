@@ -3,6 +3,7 @@ extends Panel
 
 func _ready():
 	rect_size = OS.get_window_size()
-	resize():
+	resize()
 
 func resize():
+	pass
