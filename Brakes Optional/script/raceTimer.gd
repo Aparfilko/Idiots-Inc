@@ -12,4 +12,4 @@ func resize():
 	set_scale(Vector2(x, y))
 	
 func setTime(a):
-	$ColorRect/time.text=str(a);
+	$ColorRect/time.text=str(a).pad_decimals(4);
