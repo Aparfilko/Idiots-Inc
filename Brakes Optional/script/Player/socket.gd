@@ -85,7 +85,8 @@ func increase_danger():
 				
 
 func playSfx(bus,sfxName):
-	var audio = get_node(bus)
-	audio.stop()
-	audio.stream = load("res://audio/sfx/"+sfxName+".wav")
-	audio.play()
+	if not AudioServer.is_bus_mute(2):
+		var audio = get_node(bus)
+		audio.stop()
+		audio.stream = load("res://audio/sfx/"+sfxName+".wav")
+		audio.play()

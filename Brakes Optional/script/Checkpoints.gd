@@ -14,6 +14,7 @@ func _on_Area1_body_entered(_body):
 			get_tree().paused = true
 			get_tree().get_root().get_node("MainNode/car/WinState").popup_centered()
 
+
 func _on_Area2_body_entered(_body):
 	if goals == NEXT2:
 		goals = NEXT3
