@@ -2,6 +2,7 @@ extends KinematicBody
 
 var refBooster=[];#right,left,center
 var tBooster=[0,0,0];
+var isBooster=[false,false,false];
 
 var vel=Vector3();
 var angVel=0;
@@ -24,12 +25,16 @@ func reset():
 	$Pausenode._ready()
 
 func _physics_process(delta):
+	isBooster[0]=b[3] and $Hud.socks[3];
+	isBooster[1]=b[5] and $Hud.socks[5];
+	isBooster[2]=(b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5);
+	
 	#vel
 	var q=Quat(Vector3(0,1,0),rotation[1]);
 	vel+=q*Vector3(0,0,
-	(10*delta if ((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5)) else 0)+
-	(.5*delta if b[3] and $Hud.socks[3] else 0)+
-	(.5*delta if b[5] and $Hud.socks[5] else 0)-
+	(10*delta if isBooster[2] else 0)+
+	(.5*delta if isBooster[0] else 0)+
+	(.5*delta if isBooster[1] else 0)-
 	(20*delta if (b[4] and $Hud.socks[4] and (vel.dot(q*Vector3(0,0,1))>-2 or ($Hud.socks[0] and b[0] and vel.dot(q*Vector3(0,0,1))>-10))) else 0));
 	vel-=q*Vector3(0 if b[2] and $Hud.socks[2] else 30*delta,0,0)*vel.dot(q*Vector3(1,0,0))
 	vel*=(1-.18*delta);
@@ -66,9 +71,9 @@ func _physics_process(delta):
 	tBooster[0]=tBooster[0]+delta if b[3] else 0;
 	tBooster[1]=tBooster[1]+delta if b[5] else 0;
 	tBooster[2]=tBooster[2]+delta if b[1] else 0;
-	refBooster[0].set_ass(b[3] and $Hud.socks[3],min(1,tBooster[0]));
-	refBooster[1].set_ass(b[5] and $Hud.socks[5],min(1,tBooster[1]));
-	refBooster[2].set_ass((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5),min(1,tBooster[2]));
+	refBooster[0].set_ass(isBooster[0],min(1,tBooster[0]));
+	refBooster[1].set_ass(isBooster[1],min(1,tBooster[1]));
+	refBooster[2].set_ass(isBooster[2],min(1,tBooster[2]));
 
 func _input(event):
 	b=[

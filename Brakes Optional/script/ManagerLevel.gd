@@ -9,13 +9,13 @@ onready var resLevel = preload("res://level/Track1.tscn")
 func _ready():
 	refCar=get_parent().get_node("car");
 	connect("reset", refCar, "_reset")
-	nextOne()
 
 func nextOne():
 	refCurr=resLevel.instance();
 	print(refCurr.name)
 	add_child(refCurr);
 	refCar.transform=refCurr.get_node("SpawnPoint").transform;
+	refReplay.recordStart(cnt);
 	
 func _on_DeathZone_body_entered(body):
 	print("welp")

@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/Player/Hud.tscn" type="PackedScene" id=4]
 [ext_resource path="res://overlay/pausescrin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://script/ManagerLevel.gd" type="Script" id=6]
-[ext_resource path="res://script/ManagerOverlay.gd" type="Script" id=7]
+[ext_resource path="res://ManagerReplay.gd" type="Script" id=7]
 [ext_resource path="res://script/MainNode.gd" type="Script" id=8]
 [ext_resource path="res://ManagerOverlay.gd" type="Script" id=9]
 
