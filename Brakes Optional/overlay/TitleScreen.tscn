@@ -1,4 +1,5 @@
-[gd_scene load_steps=21 format=2]
+
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Slipstream.png" type="Texture" id=2]
@@ -9,6 +10,8 @@
 [ext_resource path="res://audio/music/title.ogg" type="AudioStream" id=7]
 [ext_resource path="res://img/GMTK.png" type="Texture" id=8]
 [ext_resource path="res://img/Godot_icon.svg" type="Texture" id=9]
+[ext_resource path="res://assets/bedstead/bedstead-002.002/bedstead.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://assets/buttonSfx.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -141,6 +144,8 @@ margin_bottom = 168.0
 custom_fonts/font = SubResource( 6 )
 text = "Quit"
 
+[node name="buttonSfx" parent="Panel" instance=ExtResource( 11 )]
+
 [node name="Panel2" type="Panel" parent="."]
 visible = false
 margin_right = 1920.0
@@ -214,8 +219,18 @@ texture = ExtResource( 9 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
+[connection signal="mouse_entered" from="Panel/VBoxContainer/start" to="Panel" method="_on_button_hover"]
 [connection signal="pressed" from="Panel/VBoxContainer/start" to="Panel" method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/start" to="Panel" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/LevelSelect" to="Panel" method="_on_button_hover"]
 [connection signal="pressed" from="Panel/VBoxContainer/LevelSelect" to="Panel" method="_on_LevelSelect_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/LevelSelect" to="Panel" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/credits" to="Panel" method="_on_button_hover"]
+[connection signal="pressed" from="Panel/VBoxContainer/credits" to="Panel" method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/credits" to="Panel2" method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/LeabDisPwace" to="Panel" method="_on_button_hover"]
 [connection signal="pressed" from="Panel/VBoxContainer/LeabDisPwace" to="Panel" method="_on_LeabDisPwace_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/LeabDisPwace" to="Panel" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Panel2/Back" to="Panel" method="_on_button_hover"]
+[connection signal="pressed" from="Panel2/Back" to="Panel" method="_on_button_pressed"]
 [connection signal="pressed" from="Panel2/Back" to="Panel2" method="_on_Back_pressed"]
