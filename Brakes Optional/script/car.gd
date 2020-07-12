@@ -98,10 +98,10 @@ func _input(event):
 			$body/Camera2.current = false
 			$Camera.current = true
 		
-func sound(b):
-	$sfx/left.sound(b[3], $Hud.socks[3])
-	$sfx/brake.sound(b[4], $Hud.socks[4])
-	$sfx/right.sound(b[5], $Hud.socks[5])
+func sound(br):
+	$sfx/left.sound(br[3], $Hud.socks[3])
+	$sfx/brake.sound(br[4], $Hud.socks[4])
+	$sfx/right.sound(br[5], $Hud.socks[5])
 
 func thrust():
 	if (((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0])) or vel.length()>5)):

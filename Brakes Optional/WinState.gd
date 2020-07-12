@@ -16,5 +16,7 @@ func _on_Quit_pressed():
 func _input(event):
 	if Input.is_action_just_pressed("ui_page_up"):
 		get_parent().get_node("Pausenode").halt = true
+		$AudioStreamPlayer/.play()
 		get_tree().paused = true
 		popup_centered()
+		$AudioStreamPlayer/.play()
