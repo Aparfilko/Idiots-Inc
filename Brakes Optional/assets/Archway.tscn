@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://assets/Textures/Archway.tres" type="Material" id=1]
+
 [sub_resource type="Curve3D" id=1]
 _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -1.00183, 0, -0.00206411, -0.95451, 0.0150599, -0.134455, 0.95451, -0.0150599, 0.134455, 0.010502, 0.0112628, -2.11597, 0, 0, 0, 0, 0, 0, 0.999076, -0.000488281, -0.00648654 ),
 "tilts": PoolRealArray( 0, 0, 0 )
 }
-
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 1, 0, 0, 1 )
 
 [node name="Spatial" type="StaticBody"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
@@ -22,10 +21,13 @@ use_collision = true
 polygon = PoolVector2Array( 0, 0, 0.171021, 0.309845, 0.162979, 0.15625, 0.32019, 0.163727 )
 mode = 2
 path_node = NodePath("..")
-path_interval = 1.0
+path_interval = 0.25
 path_rotation = 2
 path_local = false
 path_continuous_u = false
 path_joined = false
 smooth_faces = true
-material = SubResource( 2 )
+material = ExtResource( 1 )
+
+[node name="Checkpoint" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -1.5 )

@@ -55,3 +55,30 @@ far = 400.0
 
 [node name="RayCast" type="RayCast" parent="."]
 enabled = true
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, -1.68523 )
+light_color = Color( 0.45098, 0.564706, 0.807843, 1 )
+light_energy = 9.0
+spot_range = 4.2
+spot_attenuation = 1.03527
+spot_angle = 32.1
+spot_angle_attenuation = 4.0
+
+[node name="SpotLight2" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0.968196 )
+light_color = Color( 0.45098, 0.564706, 0.807843, 1 )
+light_energy = 9.0
+spot_range = 4.2
+spot_attenuation = 1.03527
+spot_angle = 32.1
+spot_angle_attenuation = 4.0
+
+[node name="SpotLight3" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 3.51193 )
+light_color = Color( 0.45098, 0.564706, 0.807843, 1 )
+light_energy = 9.0
+spot_range = 4.2
+spot_attenuation = 1.03527
+spot_angle = 32.1
+spot_angle_attenuation = 4.0
