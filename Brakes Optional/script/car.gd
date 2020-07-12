@@ -20,7 +20,7 @@ func _reset():
 	for i in get_node("Hud/plugs").get_children():
 		i.plugOut()
 		i.get_node("AnimatedSprite").play("hell")
-	$Hud.deploy_plugs($Hud.numPlugs)
+	$Hud.deploy_plugs($Hud.numPlugs, true)
 	$Pausenode._ready()
 
 func _physics_process(delta):
