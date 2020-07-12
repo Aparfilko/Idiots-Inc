@@ -3,5 +3,6 @@
 [ext_resource path="res://assets/scene/booster_on.shader" type="Shader" id=1]
 
 [resource]
+resource_name = "ON"
 shader = ExtResource( 1 )
 shader_param/uIn = null

@@ -50,7 +50,7 @@ func _physics_process(delta):
 	
 	var col=move_and_collide(vel*delta);
 	if(col):
-		vel=vel.bounce(col.normal);
+		vel=.7*vel.bounce(col.normal);
 		if abs(col.normal.y) < 0.5 and vel.length() > 12.5 and not $sfx/crash.is_playing():
 			$sfx/crash.play()
 		col=move_and_collide(col.remainder);
