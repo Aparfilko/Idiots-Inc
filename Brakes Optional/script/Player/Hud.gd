@@ -59,5 +59,18 @@ func get_plug(name, onOff):
 			elif not onOff:
 				socks[5] = OFF
 
+#get the speed and display it on the dashboard
+func mph(speed):
+	speed = int(abs(speed))
+	if speed < 10:
+		$mph/Label.text = "00"+String(speed)
+	elif speed < 100:
+		$mph/Label.text = "0"+String(speed)
+	elif speed < 1000:
+		$mph/Label.text = String(speed)
+	else:
+		$mph/Label.text = "999"
 
-
+#get the rotation and turn the wheel that much MUST BE IN RAD
+func wheel(rot):
+	$wheel.rotation = rot
