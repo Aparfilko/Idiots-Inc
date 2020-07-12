@@ -5,6 +5,7 @@ func resize(screenInit):
 	var x = OS.get_window_size().x/screenInit.x
 	var y = OS.get_window_size().y/screenInit.y
 	set_scale(Vector2(x, y))
+
 func _on_button_hover():
 	$buttonSfx/hover.play()
 func _on_button_pressed():

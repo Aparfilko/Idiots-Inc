@@ -13,12 +13,14 @@ func _ready():
 		cnt=Global.level
 		onlyNemesis=false;
 		Global.level=0
+		print("LEVELSELECTED: ",cnt)
 	print("ONLYNEMESIS: ",onlyNemesis);
 	refCar=get_parent().get_node("car");
 	connect("reset", refCar, "reset")
 	resLevel = load("res://level/Track"+String(cnt)+".tscn")
 
 func nextOne():
+	print("NEXTONE: ",Global.level);
 	refCurr=resLevel.instance();
 	print(refCurr.name)
 	add_child(refCurr);
@@ -29,6 +31,7 @@ func _on_DeathZone_body_entered(_body):
 	refCar.transform = refCurr.get_node("SpawnPoint").transform
 	
 func next_level():
+	print("NEXTLEVEL: ",Global.level);
 	cnt += 1
 	if cnt == 6:
 		get_tree().change_scene("res://VictoryScreen.tscn")
@@ -41,6 +44,7 @@ func next_level():
 		refReplay.recordStart(cnt,onlyNemesis);
 
 func choose_level(i):
+	print("CHOOSELEVEL: ",Global.level);
 	cnt = i
 	remove_child(refCurr)
 	refCurr.queue_free()

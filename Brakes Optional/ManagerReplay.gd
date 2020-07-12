@@ -17,16 +17,17 @@ func _ready():
 	timer.set_one_shot(false)
 
 func meas():
-	fid.store_float(c.translation[0]);
-	fid.store_float(c.translation[1]);
-	fid.store_float(c.translation[2]);
-	fid.store_float(c.rotation[1]);
-	fid.store_float(cb.rotation[2]);
-	fid.store_8(
-		(4 if c.isBooster[0] else 0) +
-		(2 if c.isBooster[1] else 0) +
-		(1 if c.isBooster[2] else 0)
-	);
+	return;
+	#fid.store_float(c.translation[0]);
+	#fid.store_float(c.translation[1]);
+	#fid.store_float(c.translation[2]);
+	#fid.store_float(c.rotation[1]);
+	#fid.store_float(cb.rotation[2]);
+	#fid.store_8(
+	#	(4 if c.isBooster[0] else 0) +
+	#	(2 if c.isBooster[1] else 0) +
+	#	(1 if c.isBooster[2] else 0)
+	#);
 
 func initGhosts(a,onlyNemesis):
 	var testString="ghost_"+str(a)+"_";
@@ -63,20 +64,21 @@ func initGhosts(a,onlyNemesis):
 
 func recordStart(a,onlyNemesis):
 	initGhosts(a,onlyNemesis);
-	fid=File.new();
-	fid.open("res://ghost/ghost_"+str(a)+"_"+userName+str(randi())+".dat",File.WRITE)
-	fid.store_line("0 "+floatTo10char(float(0)));
-	fid.store_line(userName);
-	timer.start();
-	tic=c.tic;
+	#fid=File.new();
+	#fid.open("res://ghost/ghost_"+str(a)+"_"+userName+str(randi())+".dat",File.WRITE)
+	#fid.store_line("0 "+floatTo10char(float(0)));
+	#fid.store_line(userName);
+	#timer.start();
+	#tic=c.tic;
 	meas();
 
 func recordStop():
-	fid.seek(0);
-	fid.store_line("1 "+floatTo10char(c.tic-tic));
-	fid.close();
-	print("File Written!: ",OS.get_user_data_dir(),", ",userName)
-	timer.stop();
+	pass
+	#fid.seek(0);
+	#fid.store_line("1 "+floatTo10char(c.tic-tic));
+	#fid.close();
+	#print("File Written!: ",OS.get_user_data_dir(),", ",userName)
+	#timer.stop();
 
 func floatTo10char(a):
 	var s=str(a);

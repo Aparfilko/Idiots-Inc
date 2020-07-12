@@ -5,4 +5,4 @@ func _ready():
 	$ManagerReplay.c=$car;
 	$ManagerReplay.cb=$car/body;
 	$ManagerLevel.nextOne();
-	$ManagerReplay.recordStart($ManagerLevel.cnt,true);
+	$ManagerReplay.recordStart($ManagerLevel.cnt,$ManagerLevel.onlyNemesis);
