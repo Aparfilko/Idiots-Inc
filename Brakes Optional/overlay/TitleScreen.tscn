@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/pending.png" type="Texture" id=2]
 [ext_resource path="res://assets/MrPixel/VTF MisterPixel/otf/Mister Pixel Regular.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://script/StartScreemb.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -31,6 +32,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -58,22 +60,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+[node name="start" type="Button" parent="Panel/VBoxContainer"]
 margin_right = 213.0
 margin_bottom = 39.0
 custom_fonts/font = SubResource( 3 )
 text = "Start"
 
-[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+[node name="controls" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 43.0
 margin_right = 213.0
 margin_bottom = 82.0
 custom_fonts/font = SubResource( 4 )
 text = "Controls"
 
-[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+[node name="LeabDisPwace" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 86.0
 margin_right = 213.0
 margin_bottom = 125.0
 custom_fonts/font = SubResource( 5 )
 text = "Quit"
+[connection signal="pressed" from="Panel/VBoxContainer/start" to="Panel" method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/controls" to="Panel" method="_on_controls_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/LeabDisPwace" to="Panel" method="_on_LeabDisPwace_pressed"]

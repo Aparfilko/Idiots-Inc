@@ -11,6 +11,7 @@ func _on_Area1_body_entered(body):
 		Area2 = true
 		Area3 = false
 		lap+=1
+		print(lap)
 		if lap == 3:
 			get_node("root/MainNode/car/Hud/WinState.tscn").visible = true
 
