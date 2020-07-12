@@ -3,7 +3,7 @@ extends Node
 var timer;
 var isRecording=false;
 var fid;
-var userName="DOOTS";
+var userName="PLAYER";
 var c;
 var cb;
 var tic;
