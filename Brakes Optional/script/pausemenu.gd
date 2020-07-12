@@ -28,10 +28,8 @@ func _on_Resume_pressed(): #resume
 	visible = pauseState
 	get_tree().paused = pauseState
 
-
 func _on_Restart_pressed(): #restart track
 	pass # Replace with function body.
-
 
 func _on_BackToStart_pressed(): #Return to either start screen or whatever main 
 	#we develop
