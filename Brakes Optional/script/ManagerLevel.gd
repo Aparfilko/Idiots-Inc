@@ -4,7 +4,7 @@ var refReplay;
 var refCurr;
 var refCar;
 onready var cnt = 1
-onready var resLevel = preload("res://level/Track1.tscn")
+onready var resLevel = preload("res://level/Track3.tscn")
 
 func _ready():
 	refCar=get_parent().get_node("car");
