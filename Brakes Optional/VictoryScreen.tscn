@@ -35,10 +35,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Panel"]
-margin_left = 1065.0
-margin_top = 69.0
-margin_right = 1945.0
-margin_bottom = 442.0
+margin_left = 1018.23
+margin_top = 71.7511
+margin_right = 1898.23
+margin_bottom = 444.751
 custom_fonts/font = SubResource( 2 )
 text = "BODACIOUS dude!
  You just rose up to the challenge
@@ -46,6 +46,9 @@ text = "BODACIOUS dude!
 Have this RAD cake!
  ... Try not to drive into it though,
     hahahaha!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="Panel"]
 margin_left = 97.0
