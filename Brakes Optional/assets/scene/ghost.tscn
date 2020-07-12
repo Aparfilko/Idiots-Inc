@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/scene/booster.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scene/ghost.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/Textures/HEAD.tres" type="Material" id=5]
 [ext_resource path="res://assets/car.tres" type="ArrayMesh" id=6]
 [ext_resource path="res://assets/Textures/car.tres" type="Material" id=7]
+
+[sub_resource type="CapsuleShape" id=1]
 
 [node name="ghost" type="KinematicBody"]
 script = ExtResource( 2 )
@@ -31,3 +33,7 @@ material = ExtResource( 4 )
 [node name="CSGSphere2" type="CSGSphere" parent="body"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.05657e-07, 1.63044, 1.24496 )
 material = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+disabled = true
