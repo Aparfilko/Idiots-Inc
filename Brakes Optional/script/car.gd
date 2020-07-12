@@ -45,9 +45,9 @@ func _physics_process(delta):
 	if($RayCast.is_colliding()):
 		var d=(translation[1]-$RayCast.get_collision_point()[1]);
 		if(d<scale[1]*20):
-			vel[1]+=(scale[1]*20-d)*100*delta;
+			vel[1]+=(scale[1]*20-d)*300*delta;
 			
-	vel[1]-=60*delta;
+	vel[1]-=180*delta;
 	vel[1]*=(1-4.2*delta);
 	
 	var col=move_and_collide(vel*delta);
