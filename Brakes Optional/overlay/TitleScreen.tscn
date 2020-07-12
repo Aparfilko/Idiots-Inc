@@ -199,7 +199,7 @@ margin_left = 503.896
 margin_top = 975.064
 margin_right = 903.896
 margin_bottom = 1023.06
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false

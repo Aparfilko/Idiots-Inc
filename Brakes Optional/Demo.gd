@@ -27,7 +27,7 @@ func _ready():
 	$Dialog.visible = true
 	$Dialog.rect_position.x = size[0]/2-300
 	$Dialog.rect_size = Vector2(600,250)
-	$Dialog/speaker.texture = preload("res://img/icon.png")
+	$Dialog/speaker.texture = preload("res://img/Dave.png")
 func _process(_delta):
 	$car.rotation_degrees.y += 1
 	$Dialog/Label.percent_visible += 0.025
