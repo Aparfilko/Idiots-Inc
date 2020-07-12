@@ -16,6 +16,5 @@ func _ready():
 	add_child(refCurr);
 	refCar.transform=refCurr.get_node("SpawnPoint").transform;
 
-
 func _on_DeathZone_body_entered(_body):
 	pass # Replace with function body.
