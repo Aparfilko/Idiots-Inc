@@ -32,7 +32,7 @@ func _physics_process(dt):
 		position = pos
 	else:
 		if pos == position:
-			z_index = 1
+			z_index = -2
 		else:
 			position = position.linear_interpolate(pos, accel*dt)
 			
@@ -83,7 +83,7 @@ func plugOut():
 	
 func pickUp():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	z_index = 4
+	z_index = 0
 	held = true
 	$AnimatedSprite.play("selected")
 	plugged = false

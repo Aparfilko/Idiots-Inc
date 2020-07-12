@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Brakes Optional"
 run/main_scene="res://MainNode.tscn"
-config/icon="res://img/ship2.png"
+config/icon="res://img/ship.png"
 
 [display]
 
