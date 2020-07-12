@@ -205,13 +205,13 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Panel2"]
-position = Vector2( 1573.47, 563.977 )
-scale = Vector2( 0.253426, 0.273393 )
+position = Vector2( 1551.94, 533.581 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 8 )
 
 [node name="Sprite2" type="Sprite" parent="Panel2"]
-position = Vector2( 292.585, 552.848 )
-scale = Vector2( 0.380075, 0.367675 )
+position = Vector2( 348.129, 536.835 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 9 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
