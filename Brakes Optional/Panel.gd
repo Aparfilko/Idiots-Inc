@@ -13,7 +13,7 @@ func _ready():
 	$Label.rect_size.x = OS.get_window_size().x
 	$theCreditsLmao.rect_size.x = OS.get_window_size().x
 	$Back.rect_position.x = OS.get_window_size().x /2 - 200
-
+	$Back.rect_position.y = OS.get_window_size().y - 100
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
