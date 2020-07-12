@@ -15,15 +15,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-#startGame
-func _on_start_pressed():
-	get_tree().change_scene("res://MainNode.tscn")
 
-
-#exit, probably should have a dialog box?
-func _on_LeabDisPwace_pressed(): #uwu
-	get_tree().quit();
-
-
-func _on_credits_pressed():
-	get_tree().change_scene("res://Credits Page.tscn")
+func _on_Back_pressed():
+	get_tree().change_scene("res://overlay/TitleScreen.tscn")

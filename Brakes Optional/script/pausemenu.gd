@@ -41,6 +41,9 @@ func _on_Restart_pressed(): #restart track
 	levelMan.refCar.transform=levelMan.refCurr.get_node("SpawnPoint").transform;
 
 func _on_BackToStart_pressed(): #Return to either start screen or whatever main 
+	pauseState = false
+	visible = pauseState
+	get_tree().paused = pauseState
 	get_tree().change_scene("res://overlay/TitleScreen.tscn")
 
 func _on_Quit_pressed(): #quit game. no dialogue to confirm that yet.
