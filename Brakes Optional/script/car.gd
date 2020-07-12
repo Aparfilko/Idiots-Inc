@@ -48,7 +48,7 @@ func _physics_process(delta):
 	
 	var col=move_and_collide(vel*delta);
 	if(col):
-		vel=vel.bounce(col.normal);
+		vel=.7*vel.bounce(col.normal);
 		col=move_and_collide(col.remainder);
 	
 	#ang
