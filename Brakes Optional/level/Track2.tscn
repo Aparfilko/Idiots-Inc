@@ -20,7 +20,7 @@ curve = SubResource( 1 )
 [node name="CSGPolygon" type="CSGPolygon" parent="Path"]
 use_collision = true
 invert_faces = true
-polygon = PoolVector2Array( -5, 0, -4.5, 0.6, -4.5, 0.1, 4.5, 0.1, 4.5, 0.6, 5, 0 )
+polygon = PoolVector2Array( -6, 0, -4.5, 1.5, -4.5, 0.1, 4.5, 0.1, 4.5, 1.5, 6, 0 )
 mode = 2
 path_node = NodePath("..")
 path_interval = 1.0
