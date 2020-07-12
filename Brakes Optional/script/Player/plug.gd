@@ -64,7 +64,7 @@ func plugIn():
 	$disable.set_disabled(true)
 	$select.set_disabled(true)
 	$normal.set_disabled(false)
-	print(name + " plugs in")
+#	print(name + " plugs in")
 	emit_signal("read")
 	
 func plugOut():
@@ -75,7 +75,7 @@ func plugOut():
 	$disable.set_disabled(false)
 	$select.set_disabled(true)
 	$normal.set_disabled(false)
-	print(name + " goes back home")
+#	print(name + " goes back home")
 	emit_signal("gone")
 
 	
@@ -85,7 +85,7 @@ func pickUp():
 	held = true
 	$AnimatedSprite.play("selected")
 	plugged = false
-	print(name + " picked up")
+#	print(name + " picked up")
 	
 	$disable.set_disabled(true)
 	$select.set_disabled(false)
