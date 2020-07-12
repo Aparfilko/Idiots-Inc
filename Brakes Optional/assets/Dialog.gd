@@ -2,8 +2,8 @@ extends PopupDialog
 var speech = [
 	"Before starting, remember to connect up all your controls.",
 	"Before you can race away with the [W] [A] [S] [D] keys...",
-	"You must first start the thruster with the Igniter [Shift]",
-	"The Igniter allows you to accelerate while at low speeds.",
+	"You must first start the thruster with the Ignition [Shift]",
+	"The Ignition allows you to accelerate while at low speeds.",
 	"Don't forget: your BODACIOUS controls are unplugged!",
 	"Drag the power plugs to the controls to activate them.",
 	"Run 3 laps to complete your training!"]
