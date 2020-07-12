@@ -9,6 +9,7 @@ func _on_Area1_body_entered(_body):
 		lap+=1
 		if lap == 3:
 			get_tree().get_root().get_node("MainNode/car/Pausenode").halt = true
+			get_tree().get_root().get_node("MainNode/car/WinState/AudioStreamPlayer").play()
 			get_tree().paused = true
 			get_tree().get_root().get_node("MainNode/car/WinState").popup_centered()
 			get_tree().get_root().get_node("MainNode/ManagerReplay").recordStop();
