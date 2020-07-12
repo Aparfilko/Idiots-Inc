@@ -19,7 +19,6 @@ func nextOne():
 	print(refCurr.name)
 	add_child(refCurr);
 	refCar.transform=refCurr.get_node("SpawnPoint").transform;
-	refReplay.recordStart(cnt,0);
 	
 func _on_DeathZone_body_entered(_body):
 	emit_signal("reset")
@@ -37,6 +36,7 @@ func next_level():
 		resLevel = load("res://level/Track"+String(cnt)+".tscn")
 		nextOne()
 		emit_signal("reset", refCurr.plugs, refCurr.breaking, refCurr.socks)
+		refReplay.recordStart(cnt,0);
 
 func choose_level(i):
 	cnt = i
@@ -45,3 +45,4 @@ func choose_level(i):
 	resLevel = load("res://level/Track"+String(cnt)+".tscn")
 	nextOne()
 	emit_signal("reset", refCurr.plugs, refCurr.breaking, refCurr.socks)
+	refReplay.recordStart(cnt,0);

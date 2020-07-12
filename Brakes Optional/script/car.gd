@@ -25,6 +25,7 @@ func reset(plugs, breaking, socks):
 		i.get_node("AnimatedSprite").play("hell")
 	$Hud.set_up(plugs, breaking, socks)
 	$Pausenode._ready()
+	tic=0;
 
 func _physics_process(delta):
 	tic+=delta;
