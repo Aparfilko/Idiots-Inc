@@ -22,11 +22,10 @@ func _ready():
 func _on_start_pressed():
 	visible = false
 	get_parent().add_child(node)
-
+	
+func _on_LevelSelect_pressed():
+	get_tree().change_scene("res://overlay/LevelSelect.tscn")
 
 #exit, probably should have a dialog box?
 func _on_LeabDisPwace_pressed(): #uwu
 	get_tree().quit();
-
-
-
