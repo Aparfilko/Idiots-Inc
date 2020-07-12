@@ -10,7 +10,7 @@ noise = SubResource( 1 )
 
 [resource]
 flags_transparent = true
-albedo_color = Color( 0.521569, 0, 0, 0.235294 )
+albedo_color = Color( 0.505882, 0.0392157, 0.0392157, 0.145098 )
 metallic_specular = 0.0
 metallic_texture = SubResource( 2 )
 roughness = 0.66
