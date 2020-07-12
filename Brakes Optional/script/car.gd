@@ -50,7 +50,7 @@ func _physics_process(delta):
 	
 	var col=move_and_collide(vel*delta);
 	if(col):
-		vel=vel.bounce(col.normal);
+		vel=.7*vel.bounce(col.normal);
 		if abs(col.normal.y) < 0.5 and vel.length() > 12.5 and not $sfx/crash.is_playing():
 			$sfx/crash.play()
 		col=move_and_collide(col.remainder);
@@ -79,7 +79,7 @@ func _physics_process(delta):
 	refBooster[2].set_ass(isBooster[2],min(1,tBooster[2]));
 	sound(b)
 	thrust()
-	if Input.is_action_just_pressed("shift"):
+	if Input.is_action_just_pressed("shift") and $Hud.socks[0] == 1:
 		$sfx/ignition.play()
 func _input(event):
 	b=[
@@ -104,7 +104,7 @@ func sound(b):
 	$sfx/right.sound(b[5], $Hud.socks[5])
 
 func thrust():
-	if ((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5)):
+	if (((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0])) or vel.length()>5)):
 		$sfx/thrust.sound(b[1], $Hud.socks[1])
-	elif not (b[1] and $Hud.socks[1]):
+	elif not (b[1] and $Hud.socks[1]) or vel.length()< 5:
 		$sfx/thrust.stop()
