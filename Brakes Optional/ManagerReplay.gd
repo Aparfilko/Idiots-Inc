@@ -18,7 +18,7 @@ func meas():
 	fid.store_float(c.translation[1]);
 	fid.store_float(c.translation[2]);
 	fid.store_float(c.rotation[1]);
-	fid.store_8(c)
+	fid.store_8(0);
 
 func recordStart(a):
 	fid=File.new();
