@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Slipstream.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://audio/music/title.ogg" type="AudioStream" id=7]
 [ext_resource path="res://img/GMTK.png" type="Texture" id=8]
 [ext_resource path="res://img/Godot_icon.svg" type="Texture" id=9]
+[ext_resource path="res://assets/bedstead/bedstead-002.002/bedstead.otf" type="DynamicFontData" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -56,7 +57,20 @@ size = 34
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="DynamicFont" id=12]
+size = 31
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="DynamicFont" id=14]
+size = 31
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=15]
 size = 38
 use_filter = true
 font_data = ExtResource( 3 )
@@ -164,23 +178,24 @@ __meta__ = {
 }
 
 [node name="theCreditsLmao" type="Label" parent="Panel2"]
+margin_left = -3.896
 margin_top = 199.0
-margin_right = 1920.0
-margin_bottom = 883.0
+margin_right = 1916.1
+margin_bottom = 956.0
 custom_fonts/font = SubResource( 10 )
 text = "A Game by Idiots Inc.:
 
-Brantley Balsamo
-Anjali Jothi
-Anthony Parfilko
-Sarah Poon
-Alex Radulescu
-Taylor Rondel
+
+
+
+
+
+
 
 Created for the 2020 GMTK Game Jam
 
 Special thanks to 
-Carol Braddock
+
 
 Outside Assets Used:
 
@@ -193,12 +208,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label2" type="Label" parent="Panel2"]
+margin_left = 591.0
+margin_top = 253.0
+margin_right = 1182.0
+margin_bottom = 503.0
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
+text = "           Brantley Balsamo
+             Anjali Jothi
+            Anthony Parfilko
+              Sarah Poon
+          Alexander Radulescu
+             Taylor Rondel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Panel2"]
+margin_left = 762.0
+margin_top = 664.0
+margin_right = 1168.0
+margin_bottom = 710.0
+custom_styles/normal = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
+text = "Carol Braddock"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Back" type="Button" parent="Panel2"]
 margin_left = 503.896
 margin_top = 975.064
 margin_right = 903.896
 margin_bottom = 1023.06
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 15 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
