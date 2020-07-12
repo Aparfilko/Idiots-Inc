@@ -4,6 +4,7 @@ var refBooster=[];#right,left,center
 var tBooster=[0,0,0];
 var isBooster=[false,false,false];
 
+var tic=0;
 var vel=Vector3();
 var angVel=0;
 var b=[0,0,0,0,0,0];#ign,thrust,drift,left,brake,right
@@ -16,6 +17,7 @@ func _ready():
 	refBooster.append($body/booster3);
 
 func reset(plugs, breaking, socks):
+	tic=0;
 	vel=Vector3();
 	angVel=0;
 	b=[0,0,0,0,0,0];
@@ -26,6 +28,7 @@ func reset(plugs, breaking, socks):
 	$Pausenode._ready()
 
 func _physics_process(delta):
+	tic+=delta;
 	isBooster[0]=b[3] and $Hud.socks[3];
 	isBooster[1]=b[5] and $Hud.socks[5];
 	isBooster[2]=(b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5);

@@ -3,8 +3,8 @@ signal reset(plugs, breaking, sockets)
 var refReplay;
 var refCurr;
 var refCar;
-onready var cnt = 1
-onready var resLevel = preload("res://level/Track3.tscn")
+onready var cnt = 2
+onready var resLevel = preload("res://level/Track2.tscn")
 
 func _ready():
 	refCar=get_parent().get_node("car");
