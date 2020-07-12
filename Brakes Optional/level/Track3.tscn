@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Textures/Road.tres" type="Material" id=1]
 [ext_resource path="res://assets/Archway.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/Track3.gd" type="Script" id=3]
+[ext_resource path="res://audio/music/track1.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -67,6 +68,10 @@ transform = Transform( 1, 0, -2.66454e-15, 0, 1, -3.14193e-14, -1.77636e-15, 2.4
 
 [node name="CollisionShape" type="CollisionShape" parent="2/Area3"]
 shape = SubResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
 [connection signal="body_entered" from="Start/Area1" to="." method="_on_Area1_body_entered"]
 [connection signal="body_entered" from="1/Area2" to="." method="_on_Area2_body_entered"]
 [connection signal="body_entered" from="2/Area3" to="." method="_on_Area3_body_entered"]

@@ -15,8 +15,9 @@ func _ready():
 
 func set_up(num, isBreaking, sockets):
 	AudioServer.set_bus_mute(2, true)
+	destroy_plugs()
+	print("killed bug")
 	deploy_plugs(num, isBreaking)
-	supply_sockets(sockets)
 	AudioServer.set_bus_mute(2, false)
 	
 #make sure the hud is sized up to the screen
@@ -34,23 +35,25 @@ func deploy_plugs(num, isBreaking):
 			f.get_node("AnimatedSprite").play("default")
 	breaky = isBreaking
 	
-func supply_sockets(socks):
-	#check all sockets
-	var i = -1
-	for s in $sockets.get_children():
-		print(s.name)
-		i += 1
-		if socks[i] > OFF and not is_instance_valid(s.curPlug):
-			for p in $plugs.get_children():
-				if p.plugged:
-					continue
-				else:
-					p.held = true
-					s.readyPlug(p)
-					p.plugIn()
-					print(s.name + "is used")
-					break
-			print("done!")
+#func supply_sockets(socks):
+#	#check all sockets
+#	var i = 0
+#	for s in $sockets.get_children():
+#		if socks[i] > OFF and not is_instance_valid(s.curPlug):
+#			for p in $plugs.get_children():
+#				if p.plugged:
+#					continue
+#				else:
+#					p.held = true
+#					s.readyPlug(p)
+#					p.plugIn()
+#					break
+#			print("done!")
+#		i += 1
+func destroy_plugs():
+	for f in $plugs.get_children():
+		f.plugOut()
+		f.get_node("AnimatedSprite").play("hell")
 
 #grabs the thing to activate/make stronger/turn off
 func get_plug(name, onOff):

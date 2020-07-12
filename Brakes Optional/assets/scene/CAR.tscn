@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/default_env.tres" type="Environment" id=4]
 [ext_resource path="res://assets/Textures/GLASS.tres" type="Material" id=5]
 [ext_resource path="res://assets/Textures/HEAD.tres" type="Material" id=6]
-[ext_resource path="res://assets/Textures/car.tres" type="Material" id=7]
+[ext_resource path="res://assets/Textures/car1.tres" type="Material" id=7]
 [ext_resource path="res://audio/sfx/crash.wav" type="AudioStream" id=8]
 [ext_resource path="res://audio/sfx/brake.wav" type="AudioStream" id=10]
 [ext_resource path="res://audio/sfx/thrustFail.wav" type="AudioStream" id=12]
@@ -102,23 +102,29 @@ script = ExtResource( 13 )
 [node name="left" type="AudioStreamPlayer3D" parent="sfx"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15, 0, 0 )
 stream = SubResource( 3 )
+bus = "sfx"
 script = ExtResource( 13 )
 
 [node name="right" type="AudioStreamPlayer3D" parent="sfx"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15, 0, 0 )
 stream = ExtResource( 14 )
+bus = "sfx"
 script = ExtResource( 13 )
 
 [node name="thrust" type="AudioStreamPlayer3D" parent="sfx"]
 stream = SubResource( 4 )
 pitch_scale = 2.0
+bus = "sfx"
 script = ExtResource( 13 )
 
 [node name="ignition" type="AudioStreamPlayer3D" parent="sfx"]
 stream = ExtResource( 12 )
+bus = "sfx"
 script = ExtResource( 13 )
 
 [node name="stall" type="AudioStreamPlayer3D" parent="sfx"]
+bus = "sfx"
 
 [node name="carDestroyed" type="AudioStreamPlayer3D" parent="sfx"]
 stream = ExtResource( 16 )
+bus = "sfx"

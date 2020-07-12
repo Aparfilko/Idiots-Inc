@@ -1,5 +1,4 @@
 extends "res://script/Checkpoints.gd"
-
 onready var plugs = 4
 onready var breaking = false
 #ign,thrust,lev,left,brake,right
