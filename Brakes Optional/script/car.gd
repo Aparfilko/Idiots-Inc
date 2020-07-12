@@ -55,3 +55,11 @@ func _input(event):
 		(b[5] or event.is_action_pressed("d")) and not event.is_action_released("d"),
 		];
 	
+
+
+func _on_StaticBody_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_DeathZone_body_entered(body):
+	pass # Replace with function body.

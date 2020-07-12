@@ -8,7 +8,7 @@ onready var resLevel=[
 	preload("res://level/Track1.tscn"),
 	preload("res://level/Track2.tscn"),
 	preload("res://level/Track3.tscn"),
-];
+]
 
 func _ready():
 	refCar=get_parent().get_node("car");
