@@ -7,6 +7,8 @@ func _on_Area1_body_entered(_body):
 	if goals == NEXT1:
 		goals = NEXT2
 		lap+=1
+		if lap == 2:
+			pass
 		if lap == 3:
 			get_tree().get_root().get_node("MainNode/car/Pausenode").halt = true
 			get_tree().get_root().get_node("MainNode/car/WinState/AudioStreamPlayer").play()
