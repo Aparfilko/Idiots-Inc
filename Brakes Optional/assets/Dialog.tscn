@@ -38,7 +38,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="villian" type="Sprite" parent="."]
+[node name="speaker" type="Sprite" parent="."]
 position = Vector2( 103.575, 125.106 )
 scale = Vector2( 0.0730223, 0.0706748 )
 texture = ExtResource( 3 )

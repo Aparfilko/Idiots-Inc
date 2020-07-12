@@ -17,7 +17,7 @@ func nextOne():
 	refCar.transform=refCurr.get_node("SpawnPoint").transform;
 	refReplay.recordStart(cnt);
 	
-func _on_DeathZone_body_entered(body):
+func _on_DeathZone_body_entered(_body):
 	emit_signal("reset")
 	refCar.transform = refCurr.get_node("SpawnPoint").transform
 	

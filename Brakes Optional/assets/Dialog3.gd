@@ -1,10 +1,9 @@
 extends PopupDialog
-var speech = ["So you're the punk making all the ruckus!",
-	"Race me, or forfeit your pods!",
-	"Watch out, Bud! Your ODIOUS opponent doesnt play fair...",
-	"They've been cutting some of your power plugs!!!"]
+var speech = ["You are up against the ghosts of the drivers",
+	"Who went out of control on this track!",
+	"Slow down [S] before bends to avoid missing the sharp turns,",
+	"Or try holding [Space] to drift around the corner!"]
 var n = 0
-var mat = load("res://assets/scene/off.material")
 onready var size = get_viewport().size
 
 # Called when the node enters the scene tree for the first time.
@@ -16,6 +15,7 @@ func _ready():
 	visible = true
 	rect_position.x = size[0]/2-300
 	rect_size = Vector2(600,250)
+	$speaker.texture = preload("res://img/icon.png")
 func _process(_delta):
 	$Label.percent_visible += 0.025
 func _input(event):

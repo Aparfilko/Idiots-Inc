@@ -9,6 +9,11 @@ extends Panel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
+	rect_size = OS.get_window_size()
+	$Label.rect_size.x = OS.get_window_size().x
+	$theCreditsLmao.rect_size.x = OS.get_window_size().x
+	$Back.rect_position.x = OS.get_window_size().x /2 - 200
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,8 +1,7 @@
 extends PopupDialog
 var speech = ["Rematch- this time I wont go easy on you...",
-	"I will use my IGNITION DRIFTING skills to beat you!"]
+	"Good luck getting to the finish line this time!"]
 var n = 0
-var mat = load("res://assets/scene/off.material")
 onready var size = get_viewport().size
 
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +13,7 @@ func _ready():
 	visible = true
 	rect_position.x = size[0]/2-300
 	rect_size = Vector2(600,250)
+	$speaker.texture = preload("res://img/villian.png")
 func _process(_delta):
 	$Label.percent_visible += 0.025
 func _input(event):

@@ -1,13 +1,6 @@
 extends PopupDialog
-var speech = ["You can toggle camera with the [Tab] key...",
-	"So you're the punk making all the ruckus!",
-	"Race me, or forfeit your jets!",
-	"Watch out, Bud! Your ODIOUS opponent doesnt play fair...",
-	"They've cut one of your control plugs!!!",
-	"You wont outmatch my DRIFTING skills..."]
-var speaker = [0, 1, 1, 0, 0, 1]
+var speech = ["Let's raise the stakes, shall we?"]
 var n = 0
-var spk = [preload("res://img/icon.png"),preload("res://img/villian.png")]
 onready var size = get_viewport().size
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +12,7 @@ func _ready():
 	visible = true
 	rect_position.x = size[0]/2-300
 	rect_size = Vector2(600,250)
-	$speaker.texture =spk[0]
+	$speaker.texture = preload("res://img/villian.png")
 func _process(_delta):
 	$Label.percent_visible += 0.025
 func _input(event):
@@ -30,7 +23,6 @@ func _input(event):
 			if $Label.percent_visible == 1:
 				n += 1
 				$Label.text = speech[n]
-				$speaker.texture =spk[speaker[n]]
 				$Label.percent_visible = 0
 			else:
 				$Label.percent_visible = 1

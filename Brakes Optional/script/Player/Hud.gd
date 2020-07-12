@@ -7,16 +7,14 @@ onready var breaky = false
 onready var socks = [0,0,0,0,0,0]
 
 func _ready():
-	print("fuck this bus: " + String(AudioServer.get_bus_index("sfx")))
 	resize()
 	AudioServer.set_bus_mute(2, true)
 	set_up(numPlugs, breaky, socks)
 
 
-func set_up(num, isBreaking, sockets):
+func set_up(num, isBreaking, _sockets):
 	AudioServer.set_bus_mute(2, true)
 	destroy_plugs()
-	print("killed bug")
 	deploy_plugs(num, isBreaking)
 	AudioServer.set_bus_mute(2, false)
 	
@@ -97,7 +95,7 @@ func get_plug(name, onOff):
 				elif socks[4] < 3:
 					socks[4] += 1
 			elif not onOff:
-				socks[4] = OFF	
+				socks[4] = OFF
 		"right":
 			if onOff:
 				if not breaky:
@@ -119,6 +117,7 @@ func mph(speed):
 	else:
 		$mph/Label.text = "999"
 
+#get the rotation and turn the wheel that much MUST BE IN RAD
 #get the rotation and turn the wheel that much MUST BE IN RAD
 func wheel(rot):
 	$wheel.rotation = rot

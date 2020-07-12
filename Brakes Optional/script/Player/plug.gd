@@ -93,7 +93,7 @@ func pickUp():
 	emit_signal("gone")
 	print(name + " picked up")
 	
-func shake(x, y):
+func shake(_x, y):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	return basePos + Vector2(0, rng.randf_range(-y,y))

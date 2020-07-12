@@ -13,7 +13,7 @@ func _on_Quit_pressed():
 	get_tree().paused = false
 	get_tree().change_scene("res://overlay/TitleScreen.tscn")
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_page_up"):
 		get_parent().get_node("Pausenode").halt = true
 		$AudioStreamPlayer/.play()

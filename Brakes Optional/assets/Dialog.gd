@@ -1,19 +1,13 @@
 extends PopupDialog
-var speech = ["First, hold down the igniter [Shift].",
-	"While holding the igniter [Shift], accelerate with [W]!",
-	"On these CUTTING-EDGE DEMONS OF SPEED,",
-	"The engine pods are designed only to go FAST.",
-	"If you go too slow for too long,",
-	"the pods will stall, and you will need to restart them!",
-	"Activate the main thruster with [W]",
-	"Activate the side thrusters with [A] and [D], respectively.",
-	"You can try drifting with [Space]!",
-	"And use your brakes with [S].",
-	"Don't forget your BODACIOUS controls are unplugged!",
+var speech = [
+	"Before starting, remember to connect up all your controls.",
+	"Before you can race away with the [W] [A] [S] [D] keys...",
+	"You must first start the thruster with the Igniter [Shift]",
+	"The Igniter allows you to accelerate while at low speeds.",
+	"Don't forget: your BODACIOUS controls are unplugged!",
 	"Drag the power plugs to the controls to activate them.",
-	"Try navigating this course to complete your training!"]
+	"Run 3 laps to complete your training!"]
 var n = 0
-var mat = load("res://assets/scene/off.material")
 onready var size = get_viewport().size
 
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +19,7 @@ func _ready():
 	visible = true
 	rect_position.x = size[0]/2-300
 	rect_size = Vector2(600,250)
+	$speaker.texture = preload("res://img/icon.png")
 func _process(_delta):
 	$Label.percent_visible += 0.025
 func _input(event):
