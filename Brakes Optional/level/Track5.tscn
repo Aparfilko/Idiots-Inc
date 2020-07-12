@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://level/Track4.gd" type="Script" id=1]
-[ext_resource path="res://assets/Textures/Brick1.tres" type="Material" id=2]
+[ext_resource path="res://level/Track5.gd" type="Script" id=1]
+[ext_resource path="res://assets/Textures/Brick5.tres" type="Material" id=2]
 [ext_resource path="res://audio/music/track2.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/Archway.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Dialog.tscn" type="PackedScene" id=5]
