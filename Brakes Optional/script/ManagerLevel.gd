@@ -5,10 +5,12 @@ var refCurr;
 var refCar;
 onready var cnt = 1
 var resLevel
+var onlyNemesis=1;
 
 func _ready():
 	if Global.level>0:
 		cnt=Global.level
+		onlyNemesis=0;
 		Global.level=0
 	refCar=get_parent().get_node("car");
 	connect("reset", refCar, "reset")
@@ -36,7 +38,7 @@ func next_level():
 		resLevel = load("res://level/Track"+String(cnt)+".tscn")
 		nextOne()
 		emit_signal("reset", refCurr.plugs, refCurr.breaking, refCurr.socks)
-		refReplay.recordStart(cnt,0);
+		refReplay.recordStart(cnt,onlyNemesis);
 
 func choose_level(i):
 	cnt = i
@@ -45,4 +47,4 @@ func choose_level(i):
 	resLevel = load("res://level/Track"+String(cnt)+".tscn")
 	nextOne()
 	emit_signal("reset", refCurr.plugs, refCurr.breaking, refCurr.socks)
-	refReplay.recordStart(cnt,0);
+	refReplay.recordStart(cnt,onlyNemesis);
