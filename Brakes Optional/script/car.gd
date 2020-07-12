@@ -45,9 +45,9 @@ func _physics_process(delta):
 	if($RayCast.is_colliding()):
 		var d=(translation[1]-$RayCast.get_collision_point()[1]);
 		if(d<scale[1]*20):
-			vel[1]+=(scale[1]*20-d)*100*delta;
+			vel[1]+=(scale[1]*20-d)*300*delta;
 			
-	vel[1]-=60*delta;
+	vel[1]-=180*delta;
 	vel[1]*=(1-4.2*delta);
 	
 	var col=move_and_collide(vel*delta);
@@ -70,7 +70,7 @@ func _physics_process(delta):
 	$Camera.rotation[1]=lerp($Camera.rotation[1],PI-vel.dot(q*Vector3(-1,0,0))/(vel.length()),.1);
 	$Camera.translation[0]=lerp($Camera.translation[0],17*tan(vel.dot(q*Vector3(-1,0,0))/(vel.length())),.1);
 	
-	$Hud.mph(2*vel.length());
+	$Hud.mph(3*vel.length());
 	$Hud.wheel(-$body.rotation[2]);
 	
 	tBooster[0]=tBooster[0]+delta if b[3] else 0;

@@ -14,8 +14,8 @@ func _ready():
 	$theCreditsLmao.rect_size.x = OS.get_window_size().x
 	$Back.rect_position.x = OS.get_window_size().x /2 - 200
 	$Back.rect_position.y = OS.get_window_size().y - 100
-
-
+	$Sprite.position.x = OS.get_window_size().x - 300
+	$Sprite2.position.x = 300
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

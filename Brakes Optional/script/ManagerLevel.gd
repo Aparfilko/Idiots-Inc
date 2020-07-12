@@ -27,8 +27,9 @@ func _on_DeathZone_body_entered(_body):
 	
 func next_level():
 	cnt += 1
-	if cnt == 5:
+	if cnt == 6:
 		cnt = 1
+		get_node("res://overlay/TitleScreen.tscn").Panel2.visible = true
 		get_tree().change_scene("res://overlay/TitleScreen.tscn")
 	else:
 		remove_child(refCurr)
