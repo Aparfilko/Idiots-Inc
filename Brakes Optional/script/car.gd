@@ -13,7 +13,7 @@ func _ready():
 	refBooster.append($body/booster2);
 	refBooster.append($body/booster3);
 
-func _reset():
+func reset():
 	vel=Vector3();
 	angVel=0;
 	b=[0,0,0,0,0,0];
@@ -30,7 +30,7 @@ func _physics_process(delta):
 	(10*delta if ((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5)) else 0)+
 	(.5*delta if b[3] and $Hud.socks[3] else 0)+
 	(.5*delta if b[5] and $Hud.socks[5] else 0)-
-	(20*delta if (b[4] and $Hud.socks[4] and (vel.length()<2 or $Hud.socks[0]) and vel.dot(q*Vector3(0,0,1))>-5) else 0));
+	(20*delta if (b[4] and $Hud.socks[4] and (vel.dot(q*Vector3(0,0,1))>-2 or ($Hud.socks[0] and b[0] and vel.dot(q*Vector3(0,0,1))>-10))) else 0));
 	vel-=q*Vector3(0 if b[2] and $Hud.socks[2] else 30*delta,0,0)*vel.dot(q*Vector3(1,0,0))
 	vel*=(1-.18*delta);
 	
