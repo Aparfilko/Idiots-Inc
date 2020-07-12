@@ -13,6 +13,11 @@ func _ready():
 	refBooster.append($body/booster2);
 	refBooster.append($body/booster3);
 
+func _reset():
+	vel=Vector3();
+	angVel=0;
+	b=[0,0,0,0,0,0];
+
 func _physics_process(delta):
 	#vel
 	var q=Quat(Vector3(0,1,0),rotation[1]);
