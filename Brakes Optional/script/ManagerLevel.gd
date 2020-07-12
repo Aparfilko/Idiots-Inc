@@ -18,17 +18,20 @@ func nextOne():
 	refReplay.recordStart(cnt);
 	
 func _on_DeathZone_body_entered(body):
-	print("welp")
+	emit_signal("reset")
+	refCar.transform = refCurr.get_node("SpawnPoint").transform
 	
 func next_level():
 	cnt += 1
 	if cnt == 5:
+		cnt = 1
 		get_tree().change_scene("res://overlay/TitleScreen.tscn")
-	remove_child(refCurr)
-	refCurr.queue_free()
-	resLevel = load("res://level/Track"+String(cnt)+".tscn")
-	nextOne()
-	emit_signal("reset", refCurr.plugs, refCurr.breaking, refCurr.socks)
+	else:
+		remove_child(refCurr)
+		refCurr.queue_free()
+		resLevel = load("res://level/Track"+String(cnt)+".tscn")
+		nextOne()
+		emit_signal("reset", refCurr.plugs, refCurr.breaking, refCurr.socks)
 
 func choose_level(i):
 	cnt = i

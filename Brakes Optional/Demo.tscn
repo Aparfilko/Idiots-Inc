@@ -4,9 +4,7 @@
 [ext_resource path="res://assets/scene/car.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/default_env.tres" type="Environment" id=3]
 [ext_resource path="res://assets/Dialog.tscn" type="PackedScene" id=4]
-
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.12549, 0.105882, 0.105882, 1 )
+[ext_resource path="res://assets/Textures/Grafitti2.tres" type="Material" id=5]
 
 [node name="Demo" type="Spatial"]
 script = ExtResource( 1 )
@@ -15,7 +13,7 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.714519, 0 )
 width = 30.0
 depth = 30.0
-material = SubResource( 1 )
+material = ExtResource( 5 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.641637, 0.767008, 0, -0.767008, 0.641637, 0, 9, 12 )
@@ -23,7 +21,7 @@ environment = ExtResource( 3 )
 fov = 40.3
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.444072, 0.636496, -0.630613, 0, 0.703816, 0.710382, 0.895991, -0.315461, 0.312545, -11.6029, 4.57686, 2.21499 )
+transform = Transform( 0.738203, 0.667225, -0.0993312, -0.174978, 0.331604, 0.92705, 0.651489, -0.66697, 0.361541, -11.6029, 6.11563, 2.21499 )
 
 [node name="car" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.820846, 6.175 )
