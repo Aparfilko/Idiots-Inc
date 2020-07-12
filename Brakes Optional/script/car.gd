@@ -6,6 +6,7 @@ var tBooster=[0,0,0];
 var vel=Vector3();
 var angVel=0;
 var b=[0,0,0,0,0,0];#ign,thrust,drift,left,brake,right
+onready var engineStart = false
 
 func _ready():
 	$RayCast.cast_to=Vector3(0,-40,0);
@@ -38,14 +39,16 @@ func _physics_process(delta):
 		var d=(translation[1]-$RayCast.get_collision_point()[1]);
 		if(d<scale[1]*20):
 			vel[1]+=(scale[1]*20-d)*100*delta;
+			
 	vel[1]-=60*delta;
 	vel[1]*=(1-4.2*delta);
 	
 	var col=move_and_collide(vel*delta);
 	if(col):
 		vel=vel.bounce(col.normal);
+		if abs(col.normal.y) < 0.5 and vel.length() > 12.5 and not $sfx/crash.is_playing():
+			$sfx/crash.play()
 		col=move_and_collide(col.remainder);
-	
 	#ang
 	angVel+=(.1*delta if b[3] and $Hud.socks[3] else 0)-(.1*delta if b[5] and $Hud.socks[5] else 0);
 	angVel*=(1-3*delta) #angular deceleration when not turning
@@ -69,6 +72,10 @@ func _physics_process(delta):
 	refBooster[0].set_ass(b[3] and $Hud.socks[3],min(1,tBooster[0]));
 	refBooster[1].set_ass(b[5] and $Hud.socks[5],min(1,tBooster[1]));
 	refBooster[2].set_ass((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5),min(1,tBooster[2]));
+	sound(b)
+	thrust()
+	if Input.is_action_just_pressed("shift"):
+		$sfx/ignition.play()
 
 func _input(event):
 	b=[
@@ -79,3 +86,14 @@ func _input(event):
 		(b[4] or event.is_action_pressed("s")) and not event.is_action_released("s"),
 		(b[5] or event.is_action_pressed("d")) and not event.is_action_released("d"),
 	];
+		
+func sound(b):
+	$sfx/left.sound(b[3], $Hud.socks[3])
+	$sfx/brake.sound(b[4], $Hud.socks[4])
+	$sfx/right.sound(b[5], $Hud.socks[5])
+
+func thrust():
+	if ((b[1] and $Hud.socks[1]) and ((b[0] and $Hud.socks[0]) or vel.length()>5)):
+		$sfx/thrust.sound(b[1], $Hud.socks[1])
+	elif not (b[1] and $Hud.socks[1]):
+		$sfx/thrust.stop()
