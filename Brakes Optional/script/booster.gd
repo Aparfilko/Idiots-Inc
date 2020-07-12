@@ -1,8 +1,8 @@
 extends MeshInstance
 
 onready var ass_mat=[
-	preload("res://assets/scene/off.tres"),
-	preload("res://assets/scene/on.tres"),
+	preload("res://assets/scene/off.tres").duplicate(true),
+	preload("res://assets/scene/on.tres").duplicate(true),
 ];
 
 var ass_ind;
@@ -11,8 +11,7 @@ func set_ass(a,b):
 	if ass_ind!=a:
 		$ass.set_surface_material(0,ass_mat[1 if a else 0]);
 		ass_ind=a;
-	if a:
-		$ass.get_surface_material(0).set_shader_param("uniform_name", Color(1,1,1))
+	ass_mat[1].set_shader_param("uIn",b);
 
 func _process(_delta):
 	randomize()
