@@ -68,7 +68,8 @@ func create_timer(time):
 	t.wait_time = time
 	t.one_shot = true
 	t.name = "dangerous"
-	t.connect("timeout", self, "increase_danger")
+	if get_parent().get_parent().breaky == true:
+		t.connect("timeout", self, "increase_danger")
 	
 func increase_danger():
 	if not ($AnimatedSprite.get_animation().match("off") or $AnimatedSprite.get_animation().match("danger")):

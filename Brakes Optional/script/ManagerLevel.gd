@@ -9,7 +9,7 @@ onready var resLevel = preload("res://level/Track1.tscn")
 
 func _ready():
 	refCar=get_parent().get_node("car");
-	connect("reset", refCar.get_node("Hud"), "reset")
+	connect("reset", refCar, "_reset")
 	nextOne()
 
 func nextOne():
