@@ -1,18 +1,24 @@
 extends Control
 enum {OFF = 0, ON = 1, WARNING = 2, DANGER = 3}
 onready var screenInit = Vector2(1920, 1080)
-onready var numPlugs = 4
+onready var numPlugs = 6
 onready var breaky = false
 #ign,thrust,lev,left,brake,right
-onready var socks = [OFF,ON,OFF,OFF,ON,OFF]
+onready var socks = [0,0,0,0,0,0]
+
 func _ready():
 	print("fuck this bus: " + String(AudioServer.get_bus_index("sfx")))
-	AudioServer.set_bus_mute(2, true)
-	deploy_plugs(numPlugs, breaky)
-	supply_sockets(socks)
 	resize()
-	AudioServer.set_bus_mute(2, false)
+	AudioServer.set_bus_mute(2, true)
+	set_up(numPlugs, breaky, socks)
 
+
+func set_up(num, isBreaking, sockets):
+	AudioServer.set_bus_mute(2, true)
+	deploy_plugs(num, isBreaking)
+	supply_sockets(sockets)
+	AudioServer.set_bus_mute(2, false)
+	
 #make sure the hud is sized up to the screen
 func resize():
 	var x = OS.get_window_size().x/screenInit.x
@@ -32,6 +38,7 @@ func supply_sockets(socks):
 	#check all sockets
 	var i = -1
 	for s in $sockets.get_children():
+		print(s.name)
 		i += 1
 		if socks[i] > OFF and not is_instance_valid(s.curPlug):
 			for p in $plugs.get_children():
@@ -41,7 +48,9 @@ func supply_sockets(socks):
 					p.held = true
 					s.readyPlug(p)
 					p.plugIn()
+					print(s.name + "is used")
 					break
+			print("done!")
 
 #grabs the thing to activate/make stronger/turn off
 func get_plug(name, onOff):
