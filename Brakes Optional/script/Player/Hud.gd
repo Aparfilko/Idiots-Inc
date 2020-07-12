@@ -4,10 +4,14 @@ onready var screenInit = Vector2(1920, 1080)
 onready var numPlugs = 4
 onready var breaky = false
 #ign,thrust,lev,left,brake,right
-onready var socks = [OFF,OFF,OFF,OFF,OFF,OFF]
+onready var socks = [OFF,ON,OFF,OFF,ON,OFF]
 func _ready():
+	print("fuck this bus: " + String(AudioServer.get_bus_index("sfx")))
+	AudioServer.set_bus_mute(2, true)
 	deploy_plugs(numPlugs, breaky)
+	supply_sockets(socks)
 	resize()
+	AudioServer.set_bus_mute(2, false)
 
 #make sure the hud is sized up to the screen
 func resize():
@@ -24,6 +28,20 @@ func deploy_plugs(num, isBreaking):
 			f.get_node("AnimatedSprite").play("default")
 	breaky = isBreaking
 	
+func supply_sockets(socks):
+	#check all sockets
+	var i = -1
+	for s in $sockets.get_children():
+		i += 1
+		if socks[i] > OFF and not is_instance_valid(s.curPlug):
+			for p in $plugs.get_children():
+				if p.plugged:
+					continue
+				else:
+					p.held = true
+					s.readyPlug(p)
+					p.plugIn()
+					break
 
 #grabs the thing to activate/make stronger/turn off
 func get_plug(name, onOff):
