@@ -39,4 +39,4 @@ func _input(event):
 			else:
 				$Dialog/Label.percent_visible = 1
 		if n == speech.size()-1 and $Dialog/Label.percent_visible == 1:
-			load("MainNode.tscn")
+			get_tree().change_scene("res://MainNode.tscn")
