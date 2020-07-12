@@ -10,6 +10,7 @@ func _on_Next_pressed():
 	pass
 
 func _on_Quit_pressed():
+	get_tree().paused = false
 	get_tree().change_scene("res://overlay/TitleScreen.tscn")
 
 func _input(event):
