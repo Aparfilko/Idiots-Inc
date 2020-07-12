@@ -17,7 +17,6 @@ func _ready():
 	refBooster.append($body/booster3);
 
 func reset(plugs, breaking, socks):
-	tic=0;
 	vel=Vector3();
 	angVel=0;
 	b=[0,0,0,0,0,0];
