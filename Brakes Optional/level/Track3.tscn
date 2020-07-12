@@ -77,6 +77,10 @@ autoplay = true
 
 [node name="Dialog" parent="." instance=ExtResource( 5 )]
 script = ExtResource( 6 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.990073, 0.0812391, 0.1147, 0, -0.816047, 0.577986, 0.140556, -0.572248, -0.807946, 0, 26.4361, 0 )
+light_energy = 2.0
 [connection signal="body_entered" from="Start/Area1" to="." method="_on_Area1_body_entered"]
 [connection signal="body_entered" from="1/Area2" to="." method="_on_Area2_body_entered"]
 [connection signal="body_entered" from="2/Area3" to="." method="_on_Area3_body_entered"]
