@@ -37,20 +37,24 @@ func _physics_process(dt):
 			z_index = 1
 		else:
 			position = position.linear_interpolate(pos, accel*dt)
-		
+			
+func _input(_event):
+	if Input.is_action_just_released("click") and held:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if hover:
+			plugIn()
+		else:
+			plugOut()
+				
+				
 func _input_event(_body, _event, _shape_idx):
 	#only pick self, and if just clicked
 	#when doing so, change animation and eliminite nice collision
 	if not $AnimatedSprite.get_animation().match("hell"):
 		if Input.is_action_just_pressed("click") and not held:
 			pickUp()
-		elif Input.is_action_just_released("click") and held:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			if hover:
-				plugIn()
-			else:
-				plugOut()
 		elif Input.is_action_just_pressed("unplug") and plugged:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			plugOut()
 #
 
@@ -64,7 +68,7 @@ func plugIn():
 	$disable.set_disabled(true)
 	$select.set_disabled(true)
 	$normal.set_disabled(false)
-#	print(name + " plugs in")
+	print(name + " plugs in")
 	emit_signal("read")
 	
 func plugOut():
@@ -75,7 +79,7 @@ func plugOut():
 	$disable.set_disabled(false)
 	$select.set_disabled(true)
 	$normal.set_disabled(false)
-#	print(name + " goes back home")
+	print(name + " goes back home")
 	emit_signal("gone")
 
 	
@@ -85,12 +89,11 @@ func pickUp():
 	held = true
 	$AnimatedSprite.play("selected")
 	plugged = false
-#	print(name + " picked up")
-	
 	$disable.set_disabled(true)
 	$select.set_disabled(false)
 	$normal.set_disabled(true)
 	emit_signal("gone")
+	print(name + " picked up")
 	
 func shake(x, y):
 	var rng = RandomNumberGenerator.new()
