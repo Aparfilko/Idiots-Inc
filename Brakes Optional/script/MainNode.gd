@@ -2,4 +2,5 @@ extends Node
 
 func _ready():
 	$ManagerLevel.refReplay=$ManagerReplay;
-	$ManagerReplay.refLevel=$ManagerLevel;
+	$ManagerReplay.c=$car;
+	$ManagerLevel.nextOne();
