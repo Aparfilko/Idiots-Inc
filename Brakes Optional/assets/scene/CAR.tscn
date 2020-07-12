@@ -39,6 +39,33 @@ material = ExtResource( 5 )
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.05657e-07, 1.63044, 1.24496 )
 material = ExtResource( 6 )
 
+[node name="SpotLight" type="SpotLight" parent="body"]
+transform = Transform( -1, -3.25841e-07, -5.30863e-14, 0, -1.62921e-07, 1, -3.25841e-07, 1, 1.62921e-07, -5.49117e-07, 0, 1.68523 )
+light_color = Color( 0.45098, 0.564706, 0.807843, 1 )
+light_energy = 9.0
+spot_range = 4.2
+spot_attenuation = 1.03527
+spot_angle = 32.1
+spot_angle_attenuation = 4.0
+
+[node name="SpotLight2" type="SpotLight" parent="body"]
+transform = Transform( -1, -3.25841e-07, -5.30863e-14, 0, -1.62921e-07, 1, -3.25841e-07, 1, 1.62921e-07, 3.15478e-07, 0, -0.968196 )
+light_color = Color( 0.45098, 0.564706, 0.807843, 1 )
+light_energy = 9.0
+spot_range = 4.2
+spot_attenuation = 1.03527
+spot_angle = 32.1
+spot_angle_attenuation = 4.0
+
+[node name="SpotLight3" type="SpotLight" parent="body"]
+transform = Transform( -1, -3.25841e-07, -5.30863e-14, 0, -1.62921e-07, 1, -3.25841e-07, 1, 1.62921e-07, 1.14433e-06, 0, -3.51193 )
+light_color = Color( 0.45098, 0.564706, 0.807843, 1 )
+light_energy = 9.0
+spot_range = 4.2
+spot_attenuation = 1.03527
+spot_angle = 32.1
+spot_angle_attenuation = 4.0
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.445377 )
 shape = SubResource( 1 )
@@ -55,30 +82,3 @@ far = 400.0
 
 [node name="RayCast" type="RayCast" parent="."]
 enabled = true
-
-[node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, -1.68523 )
-light_color = Color( 0.45098, 0.564706, 0.807843, 1 )
-light_energy = 9.0
-spot_range = 4.2
-spot_attenuation = 1.03527
-spot_angle = 32.1
-spot_angle_attenuation = 4.0
-
-[node name="SpotLight2" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0.968196 )
-light_color = Color( 0.45098, 0.564706, 0.807843, 1 )
-light_energy = 9.0
-spot_range = 4.2
-spot_attenuation = 1.03527
-spot_angle = 32.1
-spot_angle_attenuation = 4.0
-
-[node name="SpotLight3" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 3.51193 )
-light_color = Color( 0.45098, 0.564706, 0.807843, 1 )
-light_energy = 9.0
-spot_range = 4.2
-spot_attenuation = 1.03527
-spot_angle = 32.1
-spot_angle_attenuation = 4.0
