@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://audio/sfx/button.wav" type="AudioStream" id=1]
+[ext_resource path="res://audio/sfx/plugExplode.wav" type="AudioStream" id=2]
+
+[node name="buttonSfx" type="Control"]
+margin_left = 740.0
+margin_top = 1035.0
+margin_right = 1180.0
+margin_bottom = 1035.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = 5.0
+bus = "sfx"
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "sfx"

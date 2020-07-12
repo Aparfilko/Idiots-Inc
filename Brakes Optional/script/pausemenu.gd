@@ -20,6 +20,11 @@ func resize():
 	var y = OS.get_window_size().y/screenInit.y
 	set_scale(Vector2(x, y))
 	
+func _on_button_hover():
+	$buttonSfx/hover.play()
+func _on_button_pressed():
+	$buttonSfx/click.play()
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel") and not halt:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

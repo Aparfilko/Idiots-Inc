@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://script/LevelSelect.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/Textures/Track2Preview.PNG" type="Texture" id=5]
 [ext_resource path="res://assets/Textures/Track5Preview.PNG" type="Texture" id=6]
 [ext_resource path="res://assets/Textures/Track4Preview.PNG" type="Texture" id=7]
+[ext_resource path="res://assets/buttonSfx.tscn" type="PackedScene" id=8]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource( 2 )
@@ -88,9 +89,18 @@ icon = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="buttonSfx" parent="." instance=ExtResource( 8 )]
+[connection signal="mouse_entered" from="Back" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Track1" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Track1" to="." method="_on_Track1_pressed"]
+[connection signal="mouse_entered" from="Track2" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Track2" to="." method="_on_Track2_pressed"]
+[connection signal="mouse_entered" from="Track3" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Track3" to="." method="_on_Track3_pressed"]
+[connection signal="mouse_entered" from="Track4" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Track4" to="." method="_on_Track4_pressed"]
+[connection signal="mouse_entered" from="Track5" to="." method="_on_button_hover"]
 [connection signal="pressed" from="Track5" to="." method="_on_Track5_pressed"]

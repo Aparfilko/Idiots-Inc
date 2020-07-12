@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://script/pausemenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/buttonSfx.tscn" type="PackedScene" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.411765, 0.411765, 0.411765, 0.458824 )
@@ -78,7 +79,17 @@ margin_top = 260.0
 margin_right = 300.0
 margin_bottom = 283.0
 text = "Quit"
+
+[node name="buttonSfx" parent="." instance=ExtResource( 3 )]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/Resume" to="." method="_on_button_hover"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/Restart" to="." method="_on_button_hover"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Restart" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/BackToStart" to="." method="_on_button_hover"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/BackToStart" to="." method="_on_BackToStart_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/BackToStart" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/Quit" to="." method="_on_button_hover"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Quit" to="." method="_on_button_pressed"]
