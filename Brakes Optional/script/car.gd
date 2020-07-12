@@ -68,7 +68,7 @@ func _physics_process(delta):
 	$Camera.rotation[1]=lerp($Camera.rotation[1],PI-vel.dot(q*Vector3(-1,0,0))/(vel.length()),.1);
 	$Camera.translation[0]=lerp($Camera.translation[0],17*tan(vel.dot(q*Vector3(-1,0,0))/(vel.length())),.1);
 	
-	$Hud.mph(10*vel.length());
+	$Hud.mph(2*vel.length());
 	$Hud.wheel(-$body.rotation[2]);
 	
 	tBooster[0]=tBooster[0]+delta if b[3] else 0;
@@ -90,6 +90,13 @@ func _input(event):
 		(b[4] or event.is_action_pressed("s")) and not event.is_action_released("s"),
 		(b[5] or event.is_action_pressed("d")) and not event.is_action_released("d"),
 	];
+	if event.is_action_pressed("tab"):
+		if $Camera.current:
+			$Camera.current = false
+			$body/Camera2.current = true
+		else:
+			$body/Camera2.current = false
+			$Camera.current = true
 		
 func sound(b):
 	$sfx/left.sound(b[3], $Hud.socks[3])
