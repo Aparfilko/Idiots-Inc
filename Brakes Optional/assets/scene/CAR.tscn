@@ -14,7 +14,7 @@ extents = Vector3( 1.8, 0.7, 4.48376 )
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 4.71939, 0.744514, 0.762977 )
 
-[node name="car" type="KinematicBody"]
+[node name="CAR" type="KinematicBody"]
 script = ExtResource( 2 )
 
 [node name="body" type="MeshInstance" parent="."]

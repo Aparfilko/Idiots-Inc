@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Textures/Road.tres" type="Material" id=1]
 [ext_resource path="res://assets/Archway.tscn" type="PackedScene" id=2]
+[ext_resource path="res://script/Checkpoints.gd" type="Script" id=3]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -9,7 +10,17 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 6.15295, 1, 3.38175 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 5.18233, 1, 3.069 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 6.10634, 1, 2.85825 )
+
 [node name="Track3" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="SpawnPoint" type="Spatial" parent="."]
 transform = Transform( -0.05, 0, -1.94707e-08, 0, 0.05, 0, 1.94707e-08, 0, -0.05, -77.6175, 1.39216, 1.63696 )
@@ -33,8 +44,29 @@ material = ExtResource( 1 )
 [node name="Start" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.999282, 0.037882, -6.17177e-09, 0, -1.62921e-07, -1, -0.037882, 0.999282, -1.62804e-07, -78.4548, 2.26987, -14.1385 )
 
+[node name="Area1" type="Area" parent="Start"]
+transform = Transform( 1, 0, 4.44089e-16, 0, 1, -2.84217e-14, -1.77636e-15, 1.42109e-14, 1, 0, 0, -2.60271 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Start/Area1"]
+shape = SubResource( 4 )
+
 [node name="1" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.0466704, 0.99891, -1.62743e-07, 0, -1.62921e-07, -1, -0.99891, 0.0466704, -7.60358e-09, 7.64526, 0, -37.6154 )
 
+[node name="Area2" type="Area" parent="1"]
+transform = Transform( 1, 0, 0, 0, 1, -3.15858e-14, 0, -3.19467e-14, 1, 0, -4.76837e-07, -3.01442 )
+
+[node name="CollisionShape" type="CollisionShape" parent="1/Area2"]
+shape = SubResource( 2 )
+
 [node name="2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.082321, -0.996606, 1.62368e-07, 0, -1.62921e-07, -1, 0.996606, 0.082321, -1.34118e-08, 4.66924, 0, 34.7454 )
+
+[node name="Area3" type="Area" parent="2"]
+transform = Transform( 1, 0, -2.66454e-15, 0, 1, -3.14193e-14, -1.77636e-15, 2.43139e-14, 1, 0, -4.76837e-07, -2.83109 )
+
+[node name="CollisionShape" type="CollisionShape" parent="2/Area3"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Start/Area1" to="." method="_on_Area1_body_entered"]
+[connection signal="body_entered" from="1/Area2" to="." method="_on_Area2_body_entered"]
+[connection signal="body_entered" from="2/Area3" to="." method="_on_Area3_body_entered"]

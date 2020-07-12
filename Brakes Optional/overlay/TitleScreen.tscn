@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/pending.png" type="Texture" id=2]
 [ext_resource path="res://assets/MrPixel/VTF MisterPixel/otf/Mister Pixel Regular.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://script/StartScreemb.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -24,21 +25,26 @@ font_data = ExtResource( 3 )
 size = 38
 font_data = ExtResource( 3 )
 
-[node name="Title Screen" type="Node2D"]
+[node name="Title Screen" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="Panel" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Panel"]
-margin_left = 182.222
+anchor_right = 1.0
 margin_top = 126.651
-margin_right = 832.222
 margin_bottom = 205.651
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
@@ -50,30 +56,33 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-margin_left = 411.0
-margin_top = 390.0
-margin_right = 624.0
-margin_bottom = 515.0
+margin_left = 882.0
+margin_top = 500.0
+margin_right = 1038.0
+margin_bottom = 643.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer"]
-margin_right = 213.0
+[node name="start" type="Button" parent="Panel/VBoxContainer"]
+margin_right = 155.0
 margin_bottom = 39.0
 custom_fonts/font = SubResource( 3 )
 text = "Start"
 
-[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+[node name="controls" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 43.0
-margin_right = 213.0
+margin_right = 155.0
 margin_bottom = 82.0
 custom_fonts/font = SubResource( 4 )
 text = "Controls"
 
-[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+[node name="LeabDisPwace" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 86.0
-margin_right = 213.0
+margin_right = 155.0
 margin_bottom = 125.0
 custom_fonts/font = SubResource( 5 )
 text = "Quit"
+[connection signal="pressed" from="Panel/VBoxContainer/start" to="Panel" method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/controls" to="Panel" method="_on_controls_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/LeabDisPwace" to="Panel" method="_on_LeabDisPwace_pressed"]

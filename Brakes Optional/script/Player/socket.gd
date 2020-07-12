@@ -28,11 +28,11 @@ func readyPlug(plug):
 		plug.pos= get_position() + Vector2(-17,-19)
 		curPlug = plug
 		$s.play("select")
-#		print(name + " is primed")
+		print(name + " is primed")
 		
 func unreadyPlug(plug):
 	#make sure it's the plug you're using that's unplugging
-	if is_instance_valid(curPlug) and plug == curPlug:
+	if is_instance_valid(curPlug) and plug == curPlug and not plug.plugged:
 		plug.disconnect("read", self, "_activate")
 		plug.hover = false
 #		plug.pos = plug.basePos
@@ -41,17 +41,17 @@ func unreadyPlug(plug):
 		#oh, there's another node you're still in, activate that
 #		if is_instance_valid(plug.secondOver): 
 #			plug.secondOver.readyPlug(plug)
-#		print(name + " is unprimed")
+		print(name + " is unprimed")
 
 
 func _activate():
-	if not curPlug.is_connected("gone", self, "_deactivate"):
-		emit_signal("pluggedIn", name, true)
-		curPlug.connect("gone", self, "_deactivate")
-		$AnimatedSprite.play("on")
-		$dangerous.start()
-		playSfx("plugs", "plugIn")
-#		print(name + " is activated")
+	emit_signal("pluggedIn", name, true)
+	curPlug.connect("gone", self, "_deactivate")
+	$AnimatedSprite.play("on")
+	$dangerous.start()
+	$s.play("default")
+	playSfx("plugs", "plugIn")
+	print(name + " is activated")
 	
 func _deactivate():
 	emit_signal("pluggedIn", name, false)
@@ -60,9 +60,7 @@ func _deactivate():
 	$dangerous.stop()
 	$warnings.stop()
 	playSfx("plugs", "plugOut")
-	if not curPlug.held:
-		unreadyPlug(curPlug)
-#	print(name + " is deactivated")
+	print(name + " is deactivated")
 	
 func create_timer(time):
 	var t = Timer.new()

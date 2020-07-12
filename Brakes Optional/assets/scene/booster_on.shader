@@ -1,4 +1,6 @@
 shader_type spatial;
+uniform float uIn;
+
 void fragment(){
 	float red, green, blue;
 	float r = 15.0;
@@ -7,5 +9,5 @@ void fragment(){
 	red = .7 + .3*sin(VERTEX[1]*TIME*r)+.3*sin(VERTEX[2]*TIME*r);
 	green = .1 + .1*sin(TIME/a);
 	blue = .1 + .1*sin(TIME/b);
-	ALBEDO= vec3(red,green,blue);
+	ALBEDO= vec3(uIn*red,.5*uIn*green,.5*uIn*blue);
 }

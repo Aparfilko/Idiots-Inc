@@ -450,7 +450,7 @@ margin_bottom = -7.508
 rect_scale = Vector2( 4.97954, 6.39508 )
 custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0, 1, 0.321569, 1 )
-text = "009"
+text = "000"
 __meta__ = {
 "_edit_use_anchors_": false
 }

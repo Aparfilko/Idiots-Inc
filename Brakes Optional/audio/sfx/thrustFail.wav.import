@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/thrustFail.wav-6bce5e99f4f4be6cd95bdd8fb66e6243.sample"
+
+[deps]
+
+source_file="res://audio/sfx/thrustFail.wav"
+dest_files=[ "res://.import/thrustFail.wav-6bce5e99f4f4be6cd95bdd8fb66e6243.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

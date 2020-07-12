@@ -9,6 +9,11 @@ func _ready():
 	deploy_plugs(numPlugs)
 	resize()
 
+func reset():
+	for i in get_node("plugs").get_children():
+		i.plugOut()
+		i.get_node("AnimatedSprite").play("hell")
+	deploy_plugs(numPlugs)
 
 #make sure the hud is sized up to the screen
 func resize():
@@ -59,5 +64,18 @@ func get_plug(name, onOff):
 			elif not onOff:
 				socks[5] = OFF
 
+#get the speed and display it on the dashboard
+func mph(speed):
+	speed = int(abs(speed))
+	if speed < 10:
+		$mph/Label.text = "00"+String(speed)
+	elif speed < 100:
+		$mph/Label.text = "0"+String(speed)
+	elif speed < 1000:
+		$mph/Label.text = String(speed)
+	else:
+		$mph/Label.text = "999"
 
-
+#get the rotation and turn the wheel that much MUST BE IN RAD
+func wheel(rot):
+	$wheel.rotation = rot
