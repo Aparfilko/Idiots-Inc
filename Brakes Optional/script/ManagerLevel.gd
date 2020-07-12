@@ -18,7 +18,6 @@ func nextOne():
 
 func _on_DeathZone_body_entered(body):
 	print("welp")
-	pass # Replace with function body.
 	
 func next_level():
 	cnt += 1
