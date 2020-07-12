@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Slipstream.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://audio/music/title.ogg" type="AudioStream" id=7]
 [ext_resource path="res://img/GMTK.png" type="Texture" id=8]
 [ext_resource path="res://img/Godot_icon.svg" type="Texture" id=9]
+[ext_resource path="res://overlay/TitleScreen.gd" type="Script" id=10]
 [ext_resource path="res://assets/buttonSfx.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -59,6 +60,7 @@ font_data = ExtResource( 3 )
 
 [node name="Title Screen" type="Control"]
 mouse_filter = 1
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

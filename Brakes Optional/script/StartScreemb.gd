@@ -4,11 +4,7 @@ extends Panel
 onready var node = preload("res://Demo.tscn").instance()
 
 func _ready():
-	rect_size = OS.get_window_size()
-	$Label.rect_size.x = OS.get_window_size().x
-	$Comet.rect_position.x = OS.get_window_size().x /2 - 590
-	$VBoxContainer.rect_position.x = OS.get_window_size().x /2 - 220
-	$VBoxContainer.rect_position.y = OS.get_window_size().y - 200
+	pass
 	
 func _on_button_hover():
 	$buttonSfx/hover.play()
