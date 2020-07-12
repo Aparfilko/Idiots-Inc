@@ -1,18 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Demo.gd" type="Script" id=1]
 [ext_resource path="res://assets/scene/car.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/default_env.tres" type="Environment" id=3]
-[ext_resource path="res://img/villian.png" type="Texture" id=4]
-[ext_resource path="res://assets/UI_THEME.tres" type="Theme" id=5]
-[ext_resource path="res://assets/MrPixel/VTF MisterPixel/otf/Mister Pixel Regular.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/Dialog.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.12549, 0.105882, 0.105882, 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 40
-font_data = ExtResource( 6 )
 
 [node name="Demo" type="Spatial"]
 script = ExtResource( 1 )
@@ -35,38 +29,4 @@ transform = Transform( 0.444072, 0.636496, -0.630613, 0, 0.703816, 0.710382, 0.8
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.820846, 6.175 )
 script = null
 
-[node name="Dialog" type="PopupDialog" parent="."]
-visible = true
-anchor_right = 1.127
-anchor_bottom = 0.701
-margin_left = 660.055
-margin_top = 84.5921
-margin_right = -903.785
-margin_bottom = -422.488
-rect_pivot_offset = Vector2( 300, 0 )
-theme = ExtResource( 5 )
-popup_exclusive = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Dialog"]
-anchor_left = 0.992
-anchor_top = 0.5
-anchor_right = 0.992
-anchor_bottom = 0.5
-margin_left = -342.2
-margin_top = -110.0
-margin_right = -42.2
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 2 )
-text = "Hey, you're finally awake..."
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="villian" type="Sprite" parent="Dialog"]
-position = Vector2( 103.575, 125.106 )
-scale = Vector2( 0.0730223, 0.0706748 )
-texture = ExtResource( 4 )
+[node name="Dialog" parent="." instance=ExtResource( 4 )]

@@ -17,7 +17,7 @@ func _ready():
 
 #startGame
 func _on_start_pressed():
-	get_tree().change_scene("res://MainNode.tscn")
+	get_tree().change_scene("res://Demo.tscn")
 
 
 #exit, probably should have a dialog box?
@@ -25,5 +25,4 @@ func _on_LeabDisPwace_pressed(): #uwu
 	get_tree().quit();
 
 
-func _on_credits_pressed():
-	get_tree().change_scene("res://Credits Page.tscn")
+

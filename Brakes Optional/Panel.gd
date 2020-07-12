@@ -8,7 +8,7 @@ extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,4 +17,8 @@ func _ready():
 
 
 func _on_Back_pressed():
-	get_tree().change_scene("res://overlay/TitleScreen.tscn")
+	visible = false
+
+
+func _on_credits_pressed():
+	visible = true
