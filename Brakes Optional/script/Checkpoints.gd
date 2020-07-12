@@ -10,7 +10,7 @@ func _on_Area1_body_entered(_body):
 		goals = NEXT2
 		lap+=1
 		if lap == 3:
-			get_node("/root/MainNode/car/Hud/WinState").popup_centered()
+			get_node("/root/MainNode/car/WinState").popup_centered()
 
 func _on_Area2_body_entered(_body):
 	if goals == NEXT2:
