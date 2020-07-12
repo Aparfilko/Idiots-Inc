@@ -5,3 +5,4 @@ func _ready():
 	$ManagerReplay.c=$car;
 	$ManagerReplay.cb=$car/body;
 	$ManagerLevel.nextOne();
+	$ManagerReplay.recordStart($ManagerLevel.cnt,0);
