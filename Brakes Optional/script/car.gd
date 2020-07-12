@@ -59,3 +59,7 @@ func _input(event):
 
 func _on_StaticBody_body_entered(body):
 	pass # Replace with function body.
+
+
+func _on_DeathZone_body_entered(body):
+	pass # Replace with function body.
