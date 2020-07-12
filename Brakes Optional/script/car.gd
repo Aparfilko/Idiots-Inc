@@ -70,7 +70,7 @@ func _physics_process(delta):
 	$Camera.rotation[1]=lerp($Camera.rotation[1],PI-vel.dot(q*Vector3(-1,0,0))/(vel.length()),.1);
 	$Camera.translation[0]=lerp($Camera.translation[0],17*tan(vel.dot(q*Vector3(-1,0,0))/(vel.length())),.1);
 	
-	$Hud.mph(2*vel.length());
+	$Hud.mph(3*vel.length());
 	$Hud.wheel(-$body.rotation[2]);
 	
 	tBooster[0]=tBooster[0]+delta if b[3] else 0;

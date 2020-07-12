@@ -4,11 +4,15 @@ var refReplay;
 var refCurr;
 var refCar;
 onready var cnt = 1
-onready var resLevel = preload("res://level/Track1.tscn")
+var resLevel
 
 func _ready():
+	if Global.level>0:
+		cnt=Global.level
+		Global.level=0
 	refCar=get_parent().get_node("car");
 	connect("reset", refCar, "reset")
+	resLevel = load("res://level/Track"+String(cnt)+".tscn")
 
 func nextOne():
 	refCurr=resLevel.instance();
