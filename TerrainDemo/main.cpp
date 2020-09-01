@@ -15,8 +15,8 @@
 
 #include <vector>
 
-const float DIMTILE=50.0f;//how big is each tile
-const int PADTILEARR=1;//how many tiles pad each direction
+const float DIMTILE=20.0f;//how big is each tile
+const int PADTILEARR=2;//how many tiles pad each direction
 const int DIMTILEARR=PADTILEARR*2+1;
 const int SIZETILEARR=DIMTILEARR*DIMTILEARR;
 
@@ -55,7 +55,7 @@ class GDMain:public Node{
 	
 	void genWorldTile(float xCenter,float yCenter,int xTileArr,int yTileArr){
 		float xOff=xCenter+DIMTILE*xTileArr,yOff=yCenter+DIMTILE*yTileArr;
-		MeshInstance** currTile=&floorTiles[DIMTILEARR*(yTileArr+1)+(xTileArr+1)];
+		MeshInstance** currTile=&floorTiles[DIMTILEARR*(yTileArr+PADTILEARR)+(xTileArr+PADTILEARR)];
 		
 		ArrayMesh *arrMesh=ArrayMesh::_new();
 		Array arr;arr.resize(arrMesh->ARRAY_MAX);
