@@ -15,7 +15,7 @@
 
 #include <vector>
 
-const float DIMTILE=10.0f;//how big is each tile
+const float DIMTILE=50.0f;//how big is each tile
 const int PADTILEARR=1;//how many tiles pad each direction
 const int DIMTILEARR=PADTILEARR*2+1;
 const int SIZETILEARR=DIMTILEARR*DIMTILEARR;
@@ -108,7 +108,7 @@ class GDMain:public Node{
 				}
 			}
 			for(int y=-PADTILEARR;y<=PADTILEARR;y++){
-				genWorldTile(xCenter,yCenter,1,y);
+				genWorldTile(xCenter,yCenter,PADTILEARR,y);
 			}
 		}
 		while(xCenterPrev>xCenterCurr){
@@ -122,7 +122,7 @@ class GDMain:public Node{
 				}
 			}
 			for(int y=-PADTILEARR;y<=PADTILEARR;y++){
-				genWorldTile(xCenter,yCenter,-1,y);
+				genWorldTile(xCenter,yCenter,-PADTILEARR,y);
 			}
 		}
 		while(yCenterPrev<yCenterCurr){
@@ -136,7 +136,7 @@ class GDMain:public Node{
 				}
 			}
 			for(int x=-PADTILEARR;x<=PADTILEARR;x++){
-				genWorldTile(xCenter,yCenter,x,1);
+				genWorldTile(xCenter,yCenter,x,PADTILEARR);
 			}
 		}
 		while(yCenterPrev>yCenterCurr){
@@ -150,7 +150,7 @@ class GDMain:public Node{
 				}
 			}
 			for(int x=-PADTILEARR;x<=PADTILEARR;x++){
-				genWorldTile(xCenter,yCenter,x,-1);
+				genWorldTile(xCenter,yCenter,x,-PADTILEARR);
 			}
 		}
 	}
