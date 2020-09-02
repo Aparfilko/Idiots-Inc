@@ -8,7 +8,7 @@
 
 //these are the dimensions regarding a DIMTILEARR x DIMTILEARR matrix,
 //where the player is always in the center
-const float DIMTILE=20.0f;//how big is each tile
+const float DIMTILE=50.0f;//how big is each tile
 const int PADTILEARR=2;//how many tiles pad each direction
 const int DIMTILEARR=PADTILEARR*2+1;//how many tiles make up one side of the tile array
 const int SIZETILEARR=DIMTILEARR*DIMTILEARR;//how many tiles are in the whole array
@@ -33,7 +33,7 @@ class GDTerrainGen:public Node{
 		return Vector3(
 		-.2f*cos(0.2f*x)-.4f*cos(0.4f*x+0.3f*y),
 		1,
-		-.5f*cos(0.5f*x)-.3f*cos(0.4f*x+0.3f*y)
+		-.5f*cos(0.5f*y)-.3f*cos(0.4f*x+0.3f*y)
 		);
 	}
 	
@@ -52,7 +52,7 @@ class GDTerrainGen:public Node{
 			for(float x=xOff;x<=xOff+DIMTILE;x+=1.0f){
 				vertArr.append(Vector3(x,_worldHeight(x,y),y));
 				vertNorm.append(worldNorm(x,y));
-				vertColor.append(Color(.1f,.4f+.1f*rand()/RAND_MAX,.3f));
+				vertColor.append(Color(0.5,0.2,.5));
 			}
 		}
 		for(int y=0;y<DIMTILE;y++){
