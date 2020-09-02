@@ -1,45 +1,29 @@
 #include <Godot.hpp>
 #include <Node.hpp>
 
-#include <InputEvent.hpp>
-
-#include <Camera.hpp>
-#include <DirectionalLight.hpp>
-
-#include <Spatial.hpp>
 #include <MeshInstance.hpp>
 #include <ArrayMesh.hpp>
-#include <CubeMesh.hpp>
 #include <ShaderMaterial.hpp>
 #include <Shader.hpp>
 
-#include <vector>
-
+//these are the dimensions regarding a DIMTILEARR x DIMTILEARR matrix,
+//where the player is always in the center
 const float DIMTILE=20.0f;//how big is each tile
 const int PADTILEARR=2;//how many tiles pad each direction
-const int DIMTILEARR=PADTILEARR*2+1;
-const int SIZETILEARR=DIMTILEARR*DIMTILEARR;
+const int DIMTILEARR=PADTILEARR*2+1;//how many tiles make up one side of the tile array
+const int SIZETILEARR=DIMTILEARR*DIMTILEARR;//how many tiles are in the whole array
 
 namespace godot{
-class GDMain:public Node{
-	GODOT_CLASS(GDMain,Node)
+class GDTerrainGen:public Node{
+	GODOT_CLASS(GDTerrainGen,Node)
 	public:
-	Camera *cam;
-	DirectionalLight *dirLight;
-	
-	Shader *floorShad;
-	ShaderMaterial *floorShadMat;
+	//buncha variable declarations
+	ShaderMaterial *mainShadMat;
 	MeshInstance* floorTiles[SIZETILEARR];
 	int xCenterPrev,yCenterPrev;
 	
-	Spatial *playerBase;
-	MeshInstance *playerInst;
-	Vector3 posPlayer;
-	Vector3 velPlayer;
-	unsigned char keyState{};
-	float t=0;
-	
-	float worldHeight(float x,float y){
+	//world generation functions
+	float _worldHeight(float x,float y){
 		return 
 		1.f*(sin(0.2f*x)+1)+
 		1.f*(sin(0.5f*y)+1)+
@@ -53,20 +37,21 @@ class GDMain:public Node{
 		);
 	}
 	
+	//fill the array at location (xTileArr,yTileArr), (where the center tile contains xCenter,yCenter)
 	void genWorldTile(float xCenter,float yCenter,int xTileArr,int yTileArr){
 		float xOff=xCenter+DIMTILE*xTileArr,yOff=yCenter+DIMTILE*yTileArr;
 		MeshInstance** currTile=&floorTiles[DIMTILEARR*(yTileArr+PADTILEARR)+(xTileArr+PADTILEARR)];
 		
 		ArrayMesh *arrMesh=ArrayMesh::_new();
 		Array arr;arr.resize(arrMesh->ARRAY_MAX);
-		PoolVector3Array vert;
-		PoolVector3Array norm;
+		PoolVector3Array vertArr;
+		PoolVector3Array vertNorm;
 		PoolColorArray vertColor;
 		PoolIntArray vertInd;
 		for(float y=yOff;y<=yOff+DIMTILE;y+=1.0f){
 			for(float x=xOff;x<=xOff+DIMTILE;x+=1.0f){
-				vert.append(Vector3(x,worldHeight(x,y),y));
-				norm.append(worldNorm(x,y));
+				vertArr.append(Vector3(x,_worldHeight(x,y),y));
+				vertNorm.append(worldNorm(x,y));
 				vertColor.append(Color(.1f,.4f+.1f*rand()/RAND_MAX,.3f));
 			}
 		}
@@ -80,18 +65,21 @@ class GDMain:public Node{
 				vertInd.append((y+1)*(DIMTILE+1)+x);
 			}
 		}
-		arr[arrMesh->ARRAY_VERTEX]=vert;
-		arr[arrMesh->ARRAY_NORMAL]=norm;
+		arr[arrMesh->ARRAY_VERTEX]=vertArr;
+		arr[arrMesh->ARRAY_NORMAL]=vertNorm;
 		arr[arrMesh->ARRAY_COLOR]=vertColor;
 		arr[arrMesh->ARRAY_INDEX]=vertInd;
 		arrMesh->add_surface_from_arrays(arrMesh->PRIMITIVE_TRIANGLES,arr);
 		
 		add_child(*currTile=MeshInstance::_new());
 		(*currTile)->set_mesh(arrMesh);
-		(*currTile)->set_surface_material(0,floorShadMat);
+		(*currTile)->set_surface_material(0,mainShadMat);
 	}
 	
-	void updateWorldTile(float xCenter,float yCenter){
+	//does nothing if the player is on the same tile as before
+	//if they shift tile locations, it shifts the pointers, and generates a new row in the empty spot
+	//this function is called externally
+	void _updateWorldTile(float xCenter,float yCenter){
 		xCenter=floor(xCenter/DIMTILE);
 		yCenter=floor(yCenter/DIMTILE);
 		int xCenterCurr=(int)xCenter,yCenterCurr=(int)yCenter;
@@ -155,81 +143,27 @@ class GDMain:public Node{
 		}
 	}
 	
+	//first thing that runs
 	void _init(){
-		{//light
-		add_child(dirLight=DirectionalLight::_new());
-		dirLight->set_rotation(Vector3(-2.5,2.4,0));
-		dirLight->set_shadow_mode(0);
-		dirLight->set_shadow(1);
-		}{//floor
-		floorShad=Shader::_new();
-		floorShad->set_code(R"(
-			shader_type spatial;
-			void vertex() {
-			}
-
-			void fragment(){
-				ALBEDO = COLOR.xyz;
-			}
-		)");
-		floorShadMat=ShaderMaterial::_new();
-		floorShadMat->set_shader(floorShad);
+		Shader *mainShad=Shader::_new();
+		mainShad->set_code("shader_type spatial;void fragment(){ALBEDO=COLOR.xyz;}");
+		mainShadMat=ShaderMaterial::_new();
+		mainShadMat->set_shader(mainShad);
 		for(int y=-PADTILEARR;y<=PADTILEARR;y++){
 			for(int x=-PADTILEARR;x<=PADTILEARR;x++){
 				genWorldTile(0.f,0.f,x,y);
 			}
 		}
 		xCenterPrev=0;yCenterPrev=0;
-		}{//player
-		add_child(playerBase=Spatial::_new());
-		playerBase->add_child(playerInst=MeshInstance::_new());
-		CubeMesh *cube=CubeMesh::_new();
-		cube->set_size(Vector3(.5f,1.f,.5f));
-		playerInst->set_mesh(cube);
-		playerInst->set_translation(Vector3(0,.5,0));
-		posPlayer=Vector3(0,0,0);
-		velPlayer=Vector3(0,0,0);
-		}{//cam
-		playerBase->add_child(cam=Camera::_new());
-		cam->set_translation(Vector3(0,5,5));
-		cam->set_rotation(Vector3(-.5,0,0));
-		}
-	}
-	
-	void _input(InputEvent *in){
-		if(in->is_action_type()){//      1,  2,  4,  8, 16, 32,     64,    128
-			static const String KEYS[]{"a","q","s","w","d","e","shift","space"};
-			unsigned char pressed{},released{};
-			for(int i=0;i<8;i++){
-				pressed |=(in->is_action_pressed( KEYS[i]))<<i;
-				released|=(in->is_action_released(KEYS[i]))<<i;
-			}
-			keyState|=pressed;keyState&=~released;
-		}
-	}
-	
-	void _process(float dt){
-		t+=dt;
-		
-		velPlayer=Vector3(
-		((bool)(keyState&16))-((bool)(keyState&1)),
-		0,
-		((bool)(keyState&4))-((bool)(keyState&8))
-		);
-		posPlayer+=velPlayer*dt*10;
-		posPlayer[1]=worldHeight(posPlayer[0],posPlayer[2]);
-		playerBase->set_translation(posPlayer);
-		
-		updateWorldTile(posPlayer[0],posPlayer[2]);
 	}
 
 	static void _register_methods(){
-		register_method("_input",&GDMain::_input);
-		register_method("_process",&GDMain::_process);
+		register_method("_updateWorldTile",&GDTerrainGen::_updateWorldTile);
+		register_method("_worldHeight",&GDTerrainGen::_worldHeight);
 	}
 };
 }
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o){godot::Godot::gdnative_init(o);}
 extern "C" void GDN_EXPORT godot_gdnative_terminate(godot_gdnative_terminate_options *o){godot::Godot::gdnative_terminate(o);}
-extern "C" void GDN_EXPORT godot_nativescript_init(void *p){godot::Godot::nativescript_init(p);godot::register_class<godot::GDMain>();}
+extern "C" void GDN_EXPORT godot_nativescript_init(void *p){godot::Godot::nativescript_init(p);godot::register_class<godot::GDTerrainGen>();}

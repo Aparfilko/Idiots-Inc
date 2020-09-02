@@ -6,7 +6,7 @@ reloadable=false
 
 [entry]
 X11.64=""
-Windows.64="res://bin/libgdmain.dll"
+Windows.64="res://bin/libgdterraingen.dll"
 OSX.64=""
 
 [dependencies]
